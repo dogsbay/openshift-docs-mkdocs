@@ -1,0 +1,55 @@
+---
+title: Backing up persistent volumes with CSI snapshots
+---
+
+# Backing up persistent volumes with CSI snapshots { #oadp-backing-up-pvs-csi-doc }
+
+Back up persistent volumes with Container Storage Interface (CSI) snapshots by editing the `VolumeSnapshotClass` custom resource (CR) before you create the `Backup` CR. This helps you to leverage cloud-native snapshot capabilities for faster and more efficient backups.
+
+For more information, see *CSI volume snapshots* and *Creating a Backup CR*.
+
+## Backing up persistent volumes with CSI snapshots { #backingup-persistent-volumes_backing-up-applications }
+
+Configure the `VolumeSnapshotClass` custom resource (CR) to back up persistent volumes with Container Storage Interface (CSI) snapshots. This helps you to prepare your cloud storage for CSI-based backup operations.
+
+**Prerequisites**
+
+- The cloud provider must support CSI snapshots.
+- You must enable CSI in the `DataProtectionApplication` CR.
+
+**Procedure**
+
+- Add the `metadata.labels.velero.io/csi-volumesnapshot-class: "true"` key-value pair to the `VolumeSnapshotClass` CR:
+
+    ```yaml title="Example configuration file"
+    apiVersion: snapshot.storage.k8s.io/v1
+    kind: VolumeSnapshotClass
+    metadata:
+      name: <volume_snapshot_class_name>
+      labels:
+        velero.io/csi-volumesnapshot-class: "true"
+      annotations:
+        snapshot.storage.kubernetes.io/is-default-class: true
+    driver: <csi_driver>
+    deletionPolicy: <deletion_policy_type>
+    ```
+
+    where:
+
+    `velero.io/csi-volumesnapshot-class: "true"`
+    :   Must be set to `true`.
+
+    `snapshot.storage.kubernetes.io/is-default-class: true`
+    :   If you are restoring this volume in another cluster with the same driver, make sure that you set the `snapshot.storage.kubernetes.io/is-default-class` parameter to `false` instead of setting it to `true`. Otherwise, the restore will partially fail.
+
+    `<deletion_policy_type>`
+    :   Specifies the deletion policy type. OADP supports the `Retain` and `Delete` deletion policy types for CSI and Data Mover backup and restore.
+
+**Next steps**
+
+- You can now create a `Backup` CR.
+
+**Additional resources**
+
+- [CSI volume snapshots](../../../storage/container_storage_interface/persistent-storage-csi-snapshots.md#persistent-storage-csi-snapshots-overview_persistent-storage-csi-snapshots)
+- [Creating a Backup CR](oadp-creating-backup-cr.md#oadp-creating-backup-cr-doc)

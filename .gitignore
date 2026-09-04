@@ -1,0 +1,4 @@
+site/
+# Left behind by the workflow's checkout and preprocessor; never content.
+source/
+.dogsbay/

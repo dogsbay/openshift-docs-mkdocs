@@ -1,0 +1,29 @@
+---
+title: Installation methods
+---
+
+# Installation methods { #preparing-to-install-on-ibm-cloud }
+
+You can install OpenShift Container Platform on IBM Cloud(R) by using installer-provisioned infrastructure. Choose an installation method based on your network connectivity, VPC configuration, and customization requirements.
+
+Installing OpenShift Container Platform on IBM Cloud(R) by using user-provisioned infrastructure is not supported at this time.
+
+## Installing a cluster on installer-provisioned infrastructure { #choosing-an-method-to-install-ocp-on-ibm-cloud-installer-provisioned }
+
+You can install a cluster on IBM Cloud(R) infrastructure that is provisioned by the OpenShift Container Platform installation program by using one of the following methods:
+
+- Installing a customized cluster on IBM Cloud(R): You can install a customized cluster on IBM Cloud(R) infrastructure that the installation program provisions. The installation program allows for some customization to be applied at the installation stage. Many other customization options are available post-installation.
+- Installing a cluster on IBM Cloud(R) with network customizations: You can customize your OpenShift Container Platform network configuration during installation, so that your cluster can coexist with your existing IP address allocations and adhere to your network requirements.
+- Installing a cluster on IBM Cloud(R) into an existing VPC: You can install OpenShift Container Platform on an existing IBM Cloud(R) Virtual Private Cloud (VPC). You can use this installation method if you have constraints set by the guidelines of your company, such as limits when creating new accounts or infrastructure.
+- Installing a private cluster on an existing VPC: You can install a private cluster on an existing VPC. You can use this method to deploy OpenShift Container Platform on an internal network that is not visible to the internet.
+- Installing a cluster on IBM Cloud in a restricted network: You can install OpenShift Container Platform on IBM Cloud on installer-provisioned infrastructure by using an internal mirror of the installation release content. You can use this method to install a cluster that does not require an active internet connection to obtain the software components.
+
+**Additional resources**
+
+- [Installation process](../../architecture/architecture-installation.md#installation-process_architecture-installation)
+- [Configuring an IBM Cloud(R) account](installing-ibm-cloud-account.md#installing-ibm-cloud-account)
+- [Postinstallation cluster tasks](../../post_installation_configuration/cluster-tasks.md#post-install-cluster-tasks)
+- [Installing a cluster on IBM Cloud(R) with customizations](installing-ibm-cloud-customizations.md#installing-ibm-cloud-customizations)
+- [Installing a cluster on IBM Cloud(R) into an existing VPC](installing-ibm-cloud-vpc.md#installing-ibm-cloud-vpc)
+- [Installing a private cluster on IBM Cloud](installing-ibm-cloud-private.md#installing-ibm-cloud-private)
+- [Installing a cluster on IBM Cloud in a disconnected environment](installing-ibm-cloud-restricted.md#installing-ibm-cloud-restricted)
