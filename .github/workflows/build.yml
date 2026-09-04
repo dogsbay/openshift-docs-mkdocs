@@ -1,0 +1,333 @@
+name: Build MkDocs site
+
+# OpenShift docs → MkDocs (Material), published to this repo's GitHub Pages.
+#
+# This repo does no conversion of its own. It CONSUMES the Dogsbay MD that
+# dogsbay/openshift-docs-markdown already produces from upstream AsciiDoc
+# (one content branch per OpenShift version) and runs the last leg only:
+#
+#   Dogsbay MD  --(dogsbay site build --export mkdocs)-->  mkdocs.yml + docs/
+#              --(mkdocs build)-->  site/  --> GitHub Pages
+#
+# The export runs through `site build` rather than `convert` on purpose: it
+# is the same page set the Astro site gets — attributes, conditionals and
+# includes resolved by the preprocessor, and `routablesFrom: nav` applied —
+# so the three published sites (Astro, MkDocs, Docusaurus) are built from
+# identical pages and can be compared page for page.
+#
+# Layout mirrors the markdown repo: `main` holds this workflow and nothing
+# else; the exported MkDocs PROJECT is committed to a content branch named
+# after the source branch, so what changed in the exporter is a readable
+# diff. The BUILT HTML is not committed — it is deployed from the artefact.
+#
+# Pages must already be enabled with source "GitHub Actions" (done once at
+# repo creation: `gh api repos/<owner>/<repo>/pages -X POST -f
+# build_type=workflow`). configure-pages' `enablement: true` cannot do it
+# with GITHUB_TOKEN — the action's own docs say it needs another token — and
+# the sibling repos never exercised that path (Pages already existed there).
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: "Content branch of openshift-docs-markdown (e.g. enterprise-4.22)"
+        required: true
+        default: "enterprise-4.22"
+  schedule:
+    # Two hours after the markdown repo's Monday 05:00 sync. Not guaranteed
+    # to run after it — scheduled runs slip under load — so a late sync just
+    # means this run builds last week's branch, and next Monday catches up.
+    - cron: "0 7 * * 1"
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: branch-${{ github.event.inputs.branch || 'enterprise-4.22' }}
+  cancel-in-progress: false
+
+env:
+  # `beta` dist-tag. Needs >= 0.2.0-beta.110: earlier CLIs export a Material
+  # config without `navigation.prune` (1.9 GB site, over the Pages cap) and
+  # no root page (the site's front door 404s).
+  DOGSBAY_VERSION: beta
+  SOURCE_REPO: dogsbay/openshift-docs-markdown
+  BRANCH: ${{ github.event.inputs.branch || 'enterprise-4.22' }}
+  # Routable pages — the nav-selected ~1,800, not the ~11,900 markdown files
+  # (the rest are include fragments). Below this the export broke.
+  MIN_PAGES: "1000"
+  # GitHub refuses to publish a site over 1 GB. Measured on 4.22: 650 MB
+  # with navigation.prune, 1.9 GB without.
+  MAX_SITE_MB: "950"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    steps:
+      - name: Checkout this repo (main — workflow only)
+        uses: actions/checkout@v4
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      # Only enterprise-* branches exist upstream, and the same name becomes
+      # a branch HERE — this stops a typo creating a stray orphan branch, and
+      # stops `main` (which holds this workflow) ever receiving content.
+      - name: Validate the branch name
+        run: |
+          set -euo pipefail
+          case "$BRANCH" in
+            enterprise-*) ;;
+            *) echo "::error::only enterprise-* content branches are supported; got '$BRANCH'"; exit 1 ;;
+          esac
+
+      # Sparse, cone mode: `markdown/` plus the root files (dogsbay.config.yml,
+      # which the build reads for attributes, excludeFromRoutes and
+      # routablesFrom). The branch also carries the built Astro `site/` —
+      # ~700 MB we never need — and sparse mode adds --filter=blob:none, so
+      # those blobs are never even downloaded. Symlinks inside markdown/ are
+      # materialised as on the Astro build; includes resolve through them.
+      - name: Checkout the Dogsbay MD source branch
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.SOURCE_REPO }}
+          ref: ${{ env.BRANCH }}
+          path: source
+          sparse-checkout: markdown
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Record the source commit
+        id: src
+        working-directory: source
+        run: |
+          set -euo pipefail
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          echo "short=$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
+          if [ ! -f dogsbay.config.yml ] || [ ! -d markdown ]; then
+            echo "::error::$SOURCE_REPO@$BRANCH has no markdown/ + dogsbay.config.yml — run its sync workflow first"
+            exit 1
+          fi
+          echo "markdown/: $(find markdown -name '*.md' | wc -l) file(s)"
+
+      - name: Set up Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Dogsbay CLI
+        run: npm install -g "dogsbay@${DOGSBAY_VERSION}"
+
+      - name: Record the exact toolchain
+        id: tools
+        run: echo "cli=$(dogsbay --version)" >> "$GITHUB_OUTPUT"
+
+      # --site-url carries the Pages path: the exporter writes it as
+      # `site_url`, and MkDocs derives every absolute link from that. Without
+      # it links resolve to <owner>.github.io/<page> and 404 on a project site.
+      # Derived from GITHUB_REPOSITORY, like the sibling repos, not from the
+      # event payload.
+      #
+      # --export-out is outside the checkout; the commit step copies in what
+      # it wants, so nothing stray rides along.
+      - name: Export Dogsbay MD → MkDocs project
+        run: |
+          set -euo pipefail
+          OWNER="${GITHUB_REPOSITORY_OWNER}"
+          REPO="${GITHUB_REPOSITORY#*/}"
+          dogsbay site build source --no-astro \
+            --export mkdocs --export-out "$RUNNER_TEMP/out" \
+            --site-url "https://${OWNER}.github.io/${REPO}"
+
+      - name: Refuse an implausibly small export
+        id: count
+        run: |
+          set -euo pipefail
+          n=$(find "$RUNNER_TEMP/out/docs" -name '*.md' | wc -l)
+          echo "pages=$n" >> "$GITHUB_OUTPUT"
+          echo "exported $n page(s)"
+          if [ "$n" -lt "$MIN_PAGES" ]; then
+            echo "::error::only $n pages (< $MIN_PAGES) — refusing to publish what looks like a broken export"
+            exit 1
+          fi
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # mkdocs-material pulls in mkdocs and pymdown-extensions, which is
+      # everything the emitted `markdown_extensions:` block needs.
+      - name: Install MkDocs Material
+        run: pip install --quiet "mkdocs-material>=9.6,<10"
+
+      # Not --strict: MkDocs warns on every anchor the source itself gets
+      # wrong, and a warning-free 1,800-page migration of someone else's
+      # corpus is not the bar. The count is reported so a jump is visible.
+      # Measured locally on 4.22 with mkdocs-material 9.7: 1,800 pages, ONE
+      # warning, ~15 min — MkDocs is single-threaded and some of these pages
+      # are hundreds of KB, hence the generous job timeout.
+      #
+      # `set -o pipefail` + tee: a failing build fails the step; the full log
+      # is dumped by the step below when that happens.
+      - name: Build with MkDocs
+        id: mkdocs
+        working-directory: ${{ runner.temp }}/out
+        run: |
+          set -euo pipefail
+          mkdocs build 2>&1 | tee "$RUNNER_TEMP/mkdocs-build.log" | tail -20
+          w=$(grep -c -E '^\s*WARNING' "$RUNNER_TEMP/mkdocs-build.log" || true)
+          echo "warnings=$w" >> "$GITHUB_OUTPUT"
+          h=$(find site -name '*.html' | wc -l)
+          mb=$(find site -type f -printf '%s\n' | awk '{s+=$1} END{printf "%d", s/1048576}')
+          echo "html=$h" >> "$GITHUB_OUTPUT"
+          echo "mb=$mb" >> "$GITHUB_OUTPUT"
+          echo "built $h HTML page(s), $mb MB, $w warning(s)"
+          if [ "$h" -lt "$MIN_PAGES" ]; then
+            echo "::error::only $h HTML pages — build did not produce the site"
+            exit 1
+          fi
+          if [ "$mb" -gt "$MAX_SITE_MB" ]; then
+            echo "::error::site is ${mb} MB — over GitHub Pages' 1 GB limit; refusing to deploy"
+            exit 1
+          fi
+          if [ ! -f site/index.html ]; then
+            echo "::error::no site/index.html — the site root would 404 (CLI older than beta.110?)"
+            exit 1
+          fi
+          # A no-op for an Actions deploy (the artefact is served as-is, Jekyll
+          # never runs); protects a branch-based deploy of this output.
+          touch site/.nojekyll
+
+      - name: Show the build errors
+        if: failure() && steps.mkdocs.conclusion == 'failure'
+        run: grep -n -E 'ERROR|Traceback|Error' "$RUNNER_TEMP/mkdocs-build.log" | head -80 || cat "$RUNNER_TEMP/mkdocs-build.log" | tail -80
+
+      # Before the commit, so a push race cannot lose a finished deploy: here
+      # the artefact is the deliverable and the committed project is the
+      # record (the Astro sibling made the opposite call for the opposite
+      # reason).
+      - name: Upload Pages artefact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ runner.temp }}/out/site
+          retention-days: 1
+
+      - name: Commit the exported project to the content branch
+        env:
+          SHA: ${{ steps.src.outputs.sha }}
+          SHORT: ${{ steps.src.outputs.short }}
+          PAGES: ${{ steps.count.outputs.pages }}
+          CLI: ${{ steps.tools.outputs.cli }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Belt and braces with the validation step above.
+          if [ "$BRANCH" = main ]; then
+            echo "::error::refusing to write content onto main"; exit 1
+          fi
+
+          if git ls-remote --exit-code --heads origin "$BRANCH" >/dev/null 2>&1; then
+            git fetch --depth 1 origin "$BRANCH"
+            git checkout -B "$BRANCH" "origin/$BRANCH"
+          else
+            # First run: an orphan, so content history stays apart from
+            # main's. main's README.md and .github/ are left UNTRACKED in the
+            # tree by `rm --cached`; the explicit `git add` below never
+            # picks them up, so the workflow does not leak onto the branch.
+            git checkout --orphan "$BRANCH"
+            git rm -rfq --cached . || true
+          fi
+
+          # Replace wholesale so deletions propagate; the built site/ stays
+          # out (it is the Pages artefact, not a deliverable here).
+          rm -rf docs mkdocs.yml
+          cp -r "$RUNNER_TEMP/out/docs" docs
+          cp "$RUNNER_TEMP/out/mkdocs.yml" mkdocs.yml
+
+          cat > .gitignore <<'GITIGNORE'
+          site/
+          # Left behind by the workflow's checkout and preprocessor; never content.
+          source/
+          .dogsbay/
+          GITIGNORE
+
+          cat > README.md <<EOF
+          # OpenShift docs — \`$BRANCH\` as an MkDocs project
+
+          Generated. Do not edit by hand; the next build overwrites everything.
+
+          | | |
+          |---|---|
+          | Source | [dogsbay/openshift-docs-markdown@\`$SHORT\`](https://github.com/$SOURCE_REPO/commit/$SHA) (branch \`$BRANCH\`) |
+          | Pages | $PAGES |
+          | Exported by | dogsbay $CLI (\`site build --export mkdocs\`) |
+
+          \`pip install mkdocs-material && mkdocs build\` here reproduces the
+          published site. Regenerate from the [\`main\`](../../tree/main) branch:
+          Actions → **Build MkDocs site**.
+          EOF
+
+          git add docs mkdocs.yml README.md .gitignore
+          if git diff --cached --quiet; then
+            echo "no change since the last build — nothing to commit"
+          else
+            git commit -m "export($BRANCH): openshift-docs-markdown@$SHORT — $PAGES pages" \
+                       -m "Source: $SOURCE_REPO@$SHA / dogsbay $CLI"
+            git push origin "$BRANCH"
+          fi
+
+      - name: Summary
+        if: always()
+        env:
+          PAGES: ${{ steps.count.outputs.pages }}
+          HTML: ${{ steps.mkdocs.outputs.html }}
+          MB: ${{ steps.mkdocs.outputs.mb }}
+          WARN: ${{ steps.mkdocs.outputs.warnings }}
+          SHORT: ${{ steps.src.outputs.short }}
+        run: |
+          {
+            echo "### MkDocs build \`$BRANCH\`"
+            echo ""
+            echo "- source: \`$SOURCE_REPO@${SHORT:-?}\`"
+            echo "- pages: ${PAGES:-?}"
+            echo "- built HTML: ${HTML:-?} (${MB:-?} MB, limit $MAX_SITE_MB)"
+            echo "- mkdocs warnings: ${WARN:-?}"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  # Separate job so it can be gated. Pages on this plan are PUBLIC whatever
+  # the repo's visibility.
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      pages: write
+      id-token: write
+      actions: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      # The artefact is only needed between the two jobs; left alone it
+      # counts against Actions storage on every run.
+      - name: Free the Pages artefact
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          gh api --paginate "repos/$REPO/actions/runs/$RUN_ID/artifacts" \
+            --jq '.artifacts[].id' | while read -r id; do
+            gh api -X DELETE "repos/$REPO/actions/artifacts/$id" || true
+          done
