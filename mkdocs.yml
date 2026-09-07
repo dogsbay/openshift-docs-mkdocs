@@ -1,5 +1,6 @@
 site_name: OpenShift Container Platform
 site_url: "https://dogsbay.github.io/openshift-docs-mkdocs"
+copyright: "Powered by <a href='https://dogsbay.ai'>DogsBay</a>"
 use_directory_urls: true
 
 theme:
