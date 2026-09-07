@@ -255,6 +255,8 @@ kubernetes_nmstate_features_applied{name="dhcpv4-custom-hostname"} 1
 
     You can still enable the **Developer** perspective. On the **Getting Started** pane in the web console, you can take a tour of the console, find information on setting up your cluster, view a quick start for enabling the **Developer** perspective, and follow links to explore new features and capabilities.
 
+    See also, "Enabling the **Developer** perspective in the web console".
+
 **Procedure**
 
 1. If you want to view the metrics from the **Developer** perspective in the OpenShift Container Platform web console, complete the following tasks:

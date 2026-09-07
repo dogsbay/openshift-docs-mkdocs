@@ -316,7 +316,7 @@ If needed, you can disable node auto-scaling.
 
 **Additional resources**
 
-- [Scaling down the data plane to zero](../hcp-troubleshooting.md#scale-down-data-plane_hcp-troubleshooting)
+- [Scaling down the data plane to zero](../hcp-machine-config.md#scale-down-data-plane_hcp-machine-config)
 - [Scaling up and down workloads in a hosted cluster](../hcp-machine-config.md#scale-up-down-autoscaler-hcp_hcp-machine-config)
 
 ## Handling ingress in a hosted cluster on bare metal { #hcp-bm-ingress_hcp-manage-bm }

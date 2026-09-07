@@ -44,7 +44,7 @@ You must have internet access to perform the following actions:
 
 ## Deploying the cluster { #installation-launching-installer_installing-vsphere-installer-provisioned }
 
-To deploy your OpenShift Container Platform cluster, you can initialize installation by running the `openshift-install create cluster` command from the directory that contains the installation program. The installation program provisions infrastructure and completes cluster setup.
+To deploy your OpenShift Container Platform cluster, you initialize installation by running the `openshift-install create cluster` command from the directory that contains the installation program. The installation program provisions the required infrastructure and completes the cluster setup.
 
 !!! warning
 
@@ -71,63 +71,65 @@ $ ./openshift-install create cluster --dir <installation_directory> \
     --log-level=info
 ```
 
-- For `<installation_directory>`, specify the directory name to store the files that the installation program creates.
+where:
 
-- To view different installation details, specify `warn`, `debug`, or `error` instead of `info`.
+- `<installation_directory>`: Specifies the directory name to store the files that the installation program creates.
+- `--log-level`: Specifies the log level. To view different installation details, specify `warn`, `debug`, or `error` instead of `info`.
 
-    When specifying the directory:
+When specifying the directory:
 
-    - Verify that the directory has the `execute` permission. This permission is required to run Terraform binaries under the installation directory.
+- Verify that the directory has the `execute` permission. This permission is required to run Terraform binaries under the installation directory.
+- Use an empty directory. Some installation assets, such as bootstrap X.509 certificates, have short expiration intervals, therefore you must not reuse an installation directory. If you want to reuse individual files from another cluster installation, you can copy them into your directory. However, the file names for the installation assets might change between releases. Use caution when copying installation files from an earlier OpenShift Container Platform version.
 
-    - Use an empty directory. Some installation assets, such as bootstrap X.509 certificates, have short expiration intervals, therefore you must not reuse an installation directory. If you want to reuse individual files from another cluster installation, you can copy them into your directory. However, the file names for the installation assets might change between releases. Use caution when copying installation files from an earlier OpenShift Container Platform version.
+<!-- -->
 
-        1. Provide values at the prompts:
+1. Provide values at the prompts:
 
-            1. Optional: Select an SSH key to use to access your cluster machines.
+    1. Optional: Select an SSH key to use to access your cluster machines.
 
-                !!! note
+        !!! note
 
-                    For production OpenShift Container Platform clusters on which you want to perform installation debugging or disaster recovery, specify an SSH key that your `ssh-agent` process uses.
+            For production OpenShift Container Platform clusters on which you want to perform installation debugging or disaster recovery, specify an SSH key that your `ssh-agent` process uses.
 
-            2. Select **vsphere** as the platform to target.
+    2. Select **vsphere** as the platform to target.
 
-            3. Specify the name of your vCenter instance.
+    3. Specify the name of your vCenter instance.
 
-            4. Specify the user name and password for the vCenter account that has the required permissions to create the cluster.
+    4. Specify the user name and password for the vCenter account that has the required permissions to create the cluster.
 
-                The installation program connects to your vCenter instance.
+        The installation program connects to your vCenter instance.
 
-                !!! warning
+        !!! warning
 
-                    Some VMware vCenter Single Sign-On (SSO) environments with Active Directory (AD) integration might primarily require you to use the traditional login method, which requires the `<domain>\` construct.
+            Some VMware vCenter Single Sign-On (SSO) environments with Active Directory (AD) integration might primarily require you to use the traditional login method, which requires the `<domain>\` construct.
 
-                    To ensure that vCenter account permission checks complete properly, consider using the User Principal Name (UPN) login method, such as `<username>@<fully_qualified_domainname>`.
+            To ensure that vCenter account permission checks complete properly, consider using the User Principal Name (UPN) login method, such as `<username>@<fully_qualified_domainname>`.
 
-            5. Select the data center in your vCenter instance to connect to.
+    5. Select the data center in your vCenter instance to connect to.
 
-            6. Select the default vCenter datastore to use.
+    6. Select the default vCenter datastore to use.
 
-                !!! note
+        !!! note
 
-                    Datastore and cluster names cannot exceed 60 characters; therefore, ensure the combined string length does not exceed the 60 character limit.
+            Datastore and cluster names cannot exceed 60 characters; therefore, ensure the combined string length does not exceed the 60 character limit.
 
-            7. Select the vCenter cluster to install the OpenShift Container Platform cluster in. The installation program uses the root resource pool of the vSphere cluster as the default resource pool.
+    7. Select the vCenter cluster to install the OpenShift Container Platform cluster in. The installation program uses the root resource pool of the vSphere cluster as the default resource pool.
 
-            8. Select the network in the vCenter instance that contains the virtual IP addresses and DNS records that you configured.
+    8. Select the network in the vCenter instance that contains the virtual IP addresses and DNS records that you configured.
 
-            9. Enter the virtual IP address that you configured for control plane API access.
+    9. Enter the virtual IP address that you configured for control plane API access.
 
-            10. Enter the virtual IP address that you configured for cluster ingress.
+    10. Enter the virtual IP address that you configured for cluster ingress.
 
-            11. Enter the base domain. This base domain must be the same one that you used in the DNS records that you configured.
+    11. Enter the base domain. This base domain must be the same one that you used in the DNS records that you configured.
 
-            12. Enter a descriptive name for your cluster. The cluster name must be the same one that you used in the DNS records that you configured.
+    12. Enter a descriptive name for your cluster. The cluster name must be the same one that you used in the DNS records that you configured.
 
-                !!! note
+        !!! note
 
-                    Datastore and cluster names cannot exceed 60 characters; therefore, ensure the combined string length does not exceed the 60 character limit.
+            Datastore and cluster names cannot exceed 60 characters; therefore, ensure the combined string length does not exceed the 60 character limit.
 
-            13. Paste the [pull secret from Red Hat OpenShift Cluster Manager](https://console.redhat.com/openshift/install/pull-secret).
+    13. Paste the [pull secret from Red Hat OpenShift Cluster Manager](https://console.redhat.com/openshift/install/pull-secret).
 
 **Verification**
 
@@ -141,7 +143,9 @@ When the cluster deployment completes successfully:
 
         Do not delete the installation program or the files that the installation program creates. Both are required to delete the cluster.
 
-    ```terminal title="Example output"
+    The following example shows the expected output:
+
+    ```terminal
     ...
     INFO Install complete!
     INFO To access the cluster as the system:admin user when using 'oc', run 'export KUBECONFIG=/home/myuser/install_dir/auth/kubeconfig'

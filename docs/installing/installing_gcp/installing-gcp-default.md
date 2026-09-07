@@ -8,11 +8,20 @@ In OpenShift Container Platform version 4.22, you can install a cluster on Googl
 
 ## Prerequisites { #_prerequisites }
 
-- You reviewed details about the [OpenShift Container Platform installation and update](../../architecture/architecture-installation.md#architecture-installation) processes.
-- You read the documentation on [selecting a cluster installation method and preparing it for users](../overview/installing-preparing.md#installing-preparing).
-- You [configured a Google Cloud project](installing-gcp-account.md#installing-gcp-account) to host the cluster.
-- If you use a firewall, you [configured it to allow the sites](../install_config/configuring-firewall.md#configuring-firewall-module_configuring-firewall) that your cluster requires access to.
-- If you are installing using a [Private Service Connect (PSC) endpoint](https://cloud.google.com/vpc/docs/private-service-connect), you must configure the endpoint in the same Virtual Private Cloud (VPC) where you install the cluster, specified in the `install-config.yaml` file, as described in [Installing a cluster on Google Cloud into an existing VPC](installing-gcp-vpc.md#installing-gcp-vpc).
+- You reviewed details about the OpenShift Container Platform installation and update processes. For more information, see "Installation and update".
+- You read the documentation on selecting a cluster installation method and preparing it for users. For more information, see "Selecting a cluster installation method and preparing it for users".
+- You configured a Google Cloud project to host the cluster. For more information, see "Configuring a Google Cloud project".
+- If you use a firewall, you configured it to allow the sites that your cluster requires access to. For more information, see "Configuring your firewall for OpenShift Container Platform".
+- If you are installing by using a Private Service Connect (PSC) endpoint, you must configure the endpoint in the same VPC where you install the cluster, as specified in the `install-config.yaml` file. For more information, see "Installing a cluster on Google Cloud into an existing VPC".
+
+**Additional resources**
+
+- [Installation and update](../../architecture/architecture-installation.md#architecture-installation)
+- [Selecting a cluster installation method and preparing it for users](../overview/installing-preparing.md#installing-preparing)
+- [Configuring a Google Cloud project](installing-gcp-account.md#installing-gcp-account)
+- [Configuring your firewall for OpenShift Container Platform](../install_config/configuring-firewall.md#configuring-firewall-module_configuring-firewall)
+- [Private Service Connect](https://cloud.google.com/vpc/docs/private-service-connect)
+- [Installing a cluster on Google Cloud into an existing VPC](installing-gcp-vpc.md#installing-gcp-vpc)
 
 ## Internet access for OpenShift Container Platform { #cluster-entitlements_installing-gcp-default }
 
@@ -96,7 +105,7 @@ If you want to SSH in to your cluster nodes to perform installation debugging or
     $ ssh-add <path>/<file_name>
     ```
 
-    Specifies the path and file name for your SSH private key, such as `~/.ssh/id_ed25519`
+    Specify the path and file name for your SSH private key, such as `~/.ssh/id_ed25519`.
 
     ```terminal title="Example output"
     Identity added: /home/<you>/<path>/<file_name> (<computer_name>)
@@ -108,9 +117,7 @@ If you want to SSH in to your cluster nodes to perform installation debugging or
 
 ## Obtaining the installation program { #installation-obtaining-installer_installing-gcp-default }
 
-Before you install OpenShift Container Platform, download the installation file on
-
-the host you are using for installation.
+Before you install OpenShift Container Platform, download the installation file on the host you are using for installation, so that installation assets exist for deployment in your environment.
 
 **Prerequisites**
 
@@ -149,7 +156,7 @@ the host you are using for installation.
 
 ## Deploying the cluster { #installation-launching-installer_installing-gcp-default }
 
-To deploy your OpenShift Container Platform cluster, you can initialize installation by running the `openshift-install create cluster` command from the directory that contains the installation program. The installation program provisions infrastructure and completes cluster setup.
+To deploy your OpenShift Container Platform cluster, you initialize installation by running the `openshift-install create cluster` command from the directory that contains the installation program. The installation program provisions the required infrastructure and completes the cluster setup.
 
 !!! warning
 
@@ -176,47 +183,46 @@ $ ./openshift-install create cluster --dir <installation_directory> \
     --log-level=info
 ```
 
-- For `<installation_directory>`, specify the directory name to store the files that the installation program creates.
+where:
 
-- To view different installation details, specify `warn`, `debug`, or `error` instead of `info`.
+- `<installation_directory>`: Specifies the directory name to store the files that the installation program creates.
+- `--log-level`: Specifies the log level. To view different installation details, specify `warn`, `debug`, or `error` instead of `info`.
 
-    When specifying the directory:
+When specifying the directory:
 
-    - Verify that the directory has the `execute` permission. This permission is required to run Terraform binaries under the installation directory.
+- Verify that the directory has the `execute` permission. This permission is required to run Terraform binaries under the installation directory.
+- Use an empty directory. Some installation assets, such as bootstrap X.509 certificates, have short expiration intervals, therefore you must not reuse an installation directory. If you want to reuse individual files from another cluster installation, you can copy them into your directory. However, the file names for the installation assets might change between releases. Use caution when copying installation files from an earlier OpenShift Container Platform version.
 
-    - Use an empty directory. Some installation assets, such as bootstrap X.509 certificates, have short expiration intervals, therefore you must not reuse an installation directory. If you want to reuse individual files from another cluster installation, you can copy them into your directory. However, the file names for the installation assets might change between releases. Use caution when copying installation files from an earlier OpenShift Container Platform version.
+<!-- -->
 
-        1. Provide values at the prompts:
+1. Provide values at the prompts:
 
-            1. Optional: Select an SSH key to use to access your cluster machines.
+    1. Optional: Select an SSH key to use to access your cluster machines.
 
-                !!! note
+        !!! note
 
-                    For production OpenShift Container Platform clusters on which you want to perform installation debugging or disaster recovery, specify an SSH key that your `ssh-agent` process uses.
+            For production OpenShift Container Platform clusters on which you want to perform installation debugging or disaster recovery, specify an SSH key that your `ssh-agent` process uses.
 
-            2. Select **gcp** as the platform to target.
+    2. Select **gcp** as the platform to target.
 
-            3. If you have not configured the service account key for your Google Cloud account on your host, you must obtain it from Google Cloud and paste the contents of the file or enter the absolute path to the file.
+    3. If you have not configured the service account key for your Google Cloud account on your host, you must obtain it from Google Cloud and paste the contents of the file or enter the absolute path to the file.
 
-            4. Select the project ID to provision the cluster in. The default value is specified by the service account that you configured.
+    4. Select the project ID to provision the cluster in. The default value is specified by the service account that you configured.
 
-            5. Select the region to deploy the cluster to.
+    5. Select the region to deploy the cluster to.
 
-            6. Select the base domain to deploy the cluster to. The base domain corresponds to the public DNS zone that you created for your cluster.
+    6. Select the base domain to deploy the cluster to. The base domain corresponds to the public DNS zone that you created for your cluster.
 
-            7. Enter a descriptive name for your cluster.
+    7. Enter a descriptive name for your cluster.
 
-                If you provide a name that is longer than 6 characters, only the first 6 characters will be used in the infrastructure ID that is generated from the cluster name.
+        If you provide a name that is longer than 6 characters, only the first 6 characters will be used in the infrastructure ID that is generated from the cluster name.
 
-            8. Paste the [pull secret from Red Hat OpenShift Cluster Manager](https://console.redhat.com/openshift/install/pull-secret).
+    8. Paste the [pull secret from Red Hat OpenShift Cluster Manager](https://console.redhat.com/openshift/install/pull-secret).
 
-    <!-- -->
+2. Optional: You can reduce the number of permissions for the service account that you used to install the cluster.
 
-    1. Optional: You can reduce the number of permissions for the service account that you used to install the cluster.
-
-- If you assigned the `Owner` role to your service account, you can remove that role and replace it with the `Viewer` role.
-
-- If you included the `Service Account Key Admin` role, you can remove it.
+    - If you assigned the `Owner` role to your service account, you can remove that role and replace it with the `Viewer` role.
+    - If you included the `Service Account Key Admin` role, you can remove it.
 
 **Verification**
 
@@ -230,7 +236,9 @@ When the cluster deployment completes successfully:
 
         Do not delete the installation program or the files that the installation program creates. Both are required to delete the cluster.
 
-    ```terminal title="Example output"
+    The following example shows the expected output:
+
+    ```terminal
     ...
     INFO Install complete!
     INFO To access the cluster as the system:admin user when using 'oc', run 'export KUBECONFIG=/home/myuser/install_dir/auth/kubeconfig'
@@ -272,7 +280,7 @@ To manage your cluster and deploy applications from the command line on Linux, i
 
 6. Place the `oc` binary in a directory that is on your `PATH`.
 
-    To check your `PATH`, execute the following command:
+    To check your `PATH`, run the following command:
 
     ```terminal
     $ echo $PATH
@@ -308,7 +316,7 @@ To manage your cluster and deploy applications from the command line on Windows,
 
 5. Move the `oc` binary to a directory that is on your `PATH` variable.
 
-    To check your `PATH` variable, open the command prompt and execute the following command:
+    To check your `PATH` variable, open the Command Prompt and run the following command:
 
     ```terminal
     C:\> path
@@ -346,11 +354,11 @@ To manage your cluster and deploy applications from the command line on macOS, i
 
         For macOS arm64, choose the **OpenShift v4.22 macOS arm64 Client** entry.
 
-5. Unpack and unzip the archive.
+5. Extract the archive.
 
 6. Move the `oc` binary to a directory on your `PATH` variable.
 
-    To check your `PATH` variable, open a terminal and execute the following command:
+    To check your `PATH` variable, open a terminal and run the following command:
 
     ```terminal
     $ echo $PATH
@@ -405,7 +413,7 @@ The `kubeconfig` file is specific to a cluster and OpenShift Container Platform 
 
 **Additional resources**
 
-- See [Accessing the web console](../../web_console/web-console.md#web-console) for more details about accessing and understanding the OpenShift Container Platform web console.
+- [Accessing the web console](../../web_console/web-console.md#web-console)
 
 ## Telemetry access for OpenShift Container Platform { #cluster-telemetry_installing-gcp-default }
 
@@ -415,9 +423,6 @@ After you confirm that your [OpenShift Cluster Manager](https://console.redhat.c
 
 **Additional resources**
 
-- See [About remote health monitoring](../../support/remote_health_monitoring/about-remote-health-monitoring.md#about-remote-health-monitoring) for more information about the Telemetry service
-
-**Next steps**
-
-- [Customize your cluster](../../post_installation_configuration/cluster-tasks.md#available_cluster_customizations).
-- If necessary, you can [Remote health reporting](../../support/remote_health_monitoring/remote-health-reporting.md#remote-health-reporting).
+- [About remote health monitoring](../../support/remote_health_monitoring/about-remote-health-monitoring.md#about-remote-health-monitoring)
+- [Customizing your cluster](../../post_installation_configuration/cluster-tasks.md#available_cluster_customizations)
+- [Remote health reporting](../../support/remote_health_monitoring/remote-health-reporting.md#remote-health-reporting)

@@ -64,7 +64,7 @@ To install OpenShift Container Platform, you must create a project in your Googl
 
 ### Enabling API services in Google Cloud { #installation-gcp-enabling-api-services_installing-gcp-user-infra }
 
-Your Google Cloud project requires access to several API services to complete OpenShift Container Platform installation.
+You must enable several API services in your Google Cloud project to complete OpenShift Container Platform installation.
 
 **Prerequisites**
 
@@ -72,7 +72,7 @@ Your Google Cloud project requires access to several API services to complete Op
 
 **Procedure**
 
-- Enable the following required API services in the project that hosts your cluster. You may also enable optional API services which are not required for installation. See [Enabling services](https://cloud.google.com/service-usage/docs/enable-disable#enabling) in the Google Cloud documentation.
+- Enable the following required API services in the project that hosts your cluster. You can also enable optional API services which are not required for installation. See [Enabling services](https://cloud.google.com/service-usage/docs/enable-disable#enabling) in the Google Cloud documentation.
 
     **Required API services**
 
@@ -150,6 +150,8 @@ Your Google Cloud project requires access to several API services to complete Op
 
 ### Configuring DNS for Google Cloud { #installation-gcp-dns_installing-gcp-user-infra }
 
+Configure a public hosted zone in your Google Cloud account to provide DNS resolution and name lookup for your OpenShift Container Platform cluster.
+
 To install OpenShift Container Platform, the Google Cloud account you use must have a dedicated public hosted zone in the same project that you host the OpenShift Container Platform cluster. This zone must be authoritative for the domain. The DNS service provides cluster DNS resolution and name lookup for external connections to the cluster.
 
 **Procedure**
@@ -176,7 +178,7 @@ To install OpenShift Container Platform, the Google Cloud account you use must h
 
 ### Google Cloud account limits { #installation-gcp-limits_installing-gcp-user-infra }
 
-The OpenShift Container Platform cluster uses a number of Google Cloud components, but the default [Quotas](https://cloud.google.com/docs/quota) do not affect your ability to install a default OpenShift Container Platform cluster.
+A default OpenShift Container Platform cluster consumes specific Google Cloud resource quotas that you might need to increase before installation, depending on your region and cluster size.
 
 A default cluster, which contains three compute and three control plane machines, uses the following resources. Note that some resources are required only during the bootstrap process and are removed after the cluster deploys.
 
@@ -287,7 +289,12 @@ If you plan to deploy your cluster in one of the following regions, you will exc
 - `southamerica-east1`
 - `us-west2`
 
-You can increase resource quotas from the [Google Cloud console](https://console.cloud.google.com/iam-admin/quotas), but you might need to file a support ticket. Be sure to plan your cluster size early so that you can allow time to resolve the support ticket before you install your OpenShift Container Platform cluster.
+You can increase resource quotas from the Google Cloud console, but you might need to file a support ticket. Be sure to plan your cluster size early so that you can allow time to resolve the support ticket before you install your OpenShift Container Platform cluster.
+
+**Additional resources**
+
+- [Manage your quotas using the console (Google Cloud documentation)](https://cloud.google.com/docs/quota)
+- [Google Cloud console](https://console.cloud.google.com/iam-admin/quotas)
 
 ### Creating a service account in Google Cloud { #installation-gcp-service-account_installing-gcp-user-infra }
 
@@ -319,9 +326,11 @@ OpenShift Container Platform requires a Google Cloud service account that provid
 
 ### Required Google Cloud roles { #installation-gcp-permissions_installing-gcp-user-infra }
 
+Your Google Cloud service account requires specific roles to install and manage an OpenShift Container Platform cluster, which you can scope based on your organization’s security requirements.
+
 When you attach the `Owner` role to the service account that you create, you grant that service account all permissions, including those that are required to install OpenShift Container Platform. If your organization’s security policies require a more restrictive set of permissions, you can create a service account with the following permissions. If you deploy your cluster into an existing virtual private cloud (VPC), the service account does not require certain networking permissions, which are noted in the following lists:
 
-**Required roles for the installation program**
+The installation program requires the following roles:
 
 - Compute Admin
 - Role Administrator
@@ -331,16 +340,16 @@ When you attach the `Owner` role to the service account that you create, you gra
 - Service Account User
 - Storage Admin
 
-**Required roles for creating network resources during installation**
+Creating network resources during installation requires the following role:
 
 - DNS Administrator
 
-**Required roles for using the Cloud Credential Operator in passthrough mode**
+Using the Cloud Credential Operator in passthrough mode requires the following roles:
 
 - Compute Load Balancer Admin
 - Tag User
 
-**Required roles for user-provisioned Google Cloud infrastructure**
+User-provisioned Google Cloud infrastructure requires the following role:
 
 - Cloud Infrastructure Manager Admin
 
@@ -388,283 +397,283 @@ The following roles are applied to the service accounts that the control plane a
 
 ### Required Google Cloud permissions for user-provisioned infrastructure { #minimum-required-permissions-upi-gcp_installing-gcp-user-infra }
 
-When you attach the `Owner` role to the service account that you create, you grant that service account all permissions, including those that are required to install OpenShift Container Platform.
+Your Google Cloud service account requires permissions to create and manage user-provisioned OpenShift Container Platform infrastructure. You can attach the `Owner` role to grant all permissions, or create a custom role with only the minimum permissions your organization’s security policies require.
 
 If your organization’s security policies require a more restrictive set of permissions, you can create [custom roles](https://cloud.google.com/iam/docs/creating-custom-roles) with the necessary permissions. The following permissions are required for the user-provisioned infrastructure for creating and deleting the OpenShift Container Platform cluster.
 
-??? note "Required permissions for creating network resources"
+The following permissions are required for creating network resources:
 
-    - `compute.addresses.create`
-    - `compute.addresses.createInternal`
-    - `compute.addresses.delete`
-    - `compute.addresses.get`
-    - `compute.addresses.list`
-    - `compute.addresses.use`
-    - `compute.addresses.useInternal`
-    - `compute.firewalls.create`
-    - `compute.firewalls.delete`
-    - `compute.firewalls.get`
-    - `compute.firewalls.list`
-    - `compute.forwardingRules.create`
-    - `compute.forwardingRules.get`
-    - `compute.forwardingRules.list`
-    - `compute.forwardingRules.setLabels`
-    - `compute.globalAddresses.create`
-    - `compute.globalAddresses.get`
-    - `compute.globalAddresses.use`
-    - `compute.globalForwardingRules.create`
-    - `compute.globalForwardingRules.get`
-    - `compute.globalForwardingRules.setLabels`
-    - `compute.networks.create`
-    - `compute.networks.get`
-    - `compute.networks.list`
-    - `compute.networks.updatePolicy`
-    - `compute.networks.use`
-    - `compute.routers.create`
-    - `compute.routers.get`
-    - `compute.routers.list`
-    - `compute.routers.update`
-    - `compute.routes.list`
-    - `compute.subnetworks.create`
-    - `compute.subnetworks.get`
-    - `compute.subnetworks.list`
-    - `compute.subnetworks.use`
-    - `compute.subnetworks.useExternalIp`
+- `compute.addresses.create`
+- `compute.addresses.createInternal`
+- `compute.addresses.delete`
+- `compute.addresses.get`
+- `compute.addresses.list`
+- `compute.addresses.use`
+- `compute.addresses.useInternal`
+- `compute.firewalls.create`
+- `compute.firewalls.delete`
+- `compute.firewalls.get`
+- `compute.firewalls.list`
+- `compute.forwardingRules.create`
+- `compute.forwardingRules.get`
+- `compute.forwardingRules.list`
+- `compute.forwardingRules.setLabels`
+- `compute.globalAddresses.create`
+- `compute.globalAddresses.get`
+- `compute.globalAddresses.use`
+- `compute.globalForwardingRules.create`
+- `compute.globalForwardingRules.get`
+- `compute.globalForwardingRules.setLabels`
+- `compute.networks.create`
+- `compute.networks.get`
+- `compute.networks.list`
+- `compute.networks.updatePolicy`
+- `compute.networks.use`
+- `compute.routers.create`
+- `compute.routers.get`
+- `compute.routers.list`
+- `compute.routers.update`
+- `compute.routes.list`
+- `compute.subnetworks.create`
+- `compute.subnetworks.get`
+- `compute.subnetworks.list`
+- `compute.subnetworks.use`
+- `compute.subnetworks.useExternalIp`
 
-??? note "Required permissions for creating load balancer resources"
+The following permissions are required for creating load balancer resources:
 
-    - `compute.backendServices.create`
-    - `compute.backendServices.get`
-    - `compute.backendServices.list`
-    - `compute.backendServices.update`
-    - `compute.backendServices.use`
-    - `compute.regionBackendServices.create`
-    - `compute.regionBackendServices.get`
-    - `compute.regionBackendServices.list`
-    - `compute.regionBackendServices.update`
-    - `compute.regionBackendServices.use`
-    - `compute.targetPools.addInstance`
-    - `compute.targetPools.create`
-    - `compute.targetPools.get`
-    - `compute.targetPools.list`
-    - `compute.targetPools.removeInstance`
-    - `compute.targetPools.use`
-    - `compute.targetTcpProxies.create`
-    - `compute.targetTcpProxies.get`
-    - `compute.targetTcpProxies.use`
+- `compute.backendServices.create`
+- `compute.backendServices.get`
+- `compute.backendServices.list`
+- `compute.backendServices.update`
+- `compute.backendServices.use`
+- `compute.regionBackendServices.create`
+- `compute.regionBackendServices.get`
+- `compute.regionBackendServices.list`
+- `compute.regionBackendServices.update`
+- `compute.regionBackendServices.use`
+- `compute.targetPools.addInstance`
+- `compute.targetPools.create`
+- `compute.targetPools.get`
+- `compute.targetPools.list`
+- `compute.targetPools.removeInstance`
+- `compute.targetPools.use`
+- `compute.targetTcpProxies.create`
+- `compute.targetTcpProxies.get`
+- `compute.targetTcpProxies.use`
 
-??? note "Required permissions for creating DNS resources"
+The following permissions are required for creating DNS resources:
 
-    - `dns.changes.create`
-    - `dns.changes.get`
-    - `dns.managedZones.create`
-    - `dns.managedZones.get`
-    - `dns.managedZones.list`
-    - `dns.networks.bindPrivateDNSZone`
-    - `dns.resourceRecordSets.create`
-    - `dns.resourceRecordSets.list`
-    - `dns.resourceRecordSets.update`
+- `dns.changes.create`
+- `dns.changes.get`
+- `dns.managedZones.create`
+- `dns.managedZones.get`
+- `dns.managedZones.list`
+- `dns.networks.bindPrivateDNSZone`
+- `dns.resourceRecordSets.create`
+- `dns.resourceRecordSets.list`
+- `dns.resourceRecordSets.update`
 
-??? note "Required permissions for creating Service Account resources"
+The following permissions are required for creating Service Account resources:
 
-    - `iam.serviceAccountKeys.create`
-    - `iam.serviceAccountKeys.delete`
-    - `iam.serviceAccountKeys.get`
-    - `iam.serviceAccountKeys.list`
-    - `iam.serviceAccounts.actAs`
-    - `iam.serviceAccounts.create`
-    - `iam.serviceAccounts.delete`
-    - `iam.serviceAccounts.get`
-    - `iam.serviceAccounts.list`
-    - `resourcemanager.projects.get`
-    - `resourcemanager.projects.getIamPolicy`
-    - `resourcemanager.projects.setIamPolicy`
+- `iam.serviceAccountKeys.create`
+- `iam.serviceAccountKeys.delete`
+- `iam.serviceAccountKeys.get`
+- `iam.serviceAccountKeys.list`
+- `iam.serviceAccounts.actAs`
+- `iam.serviceAccounts.create`
+- `iam.serviceAccounts.delete`
+- `iam.serviceAccounts.get`
+- `iam.serviceAccounts.list`
+- `resourcemanager.projects.get`
+- `resourcemanager.projects.getIamPolicy`
+- `resourcemanager.projects.setIamPolicy`
 
-??? note "Required permissions for creating compute resources"
+The following permissions are required for creating compute resources:
 
-    - `compute.disks.create`
-    - `compute.disks.get`
-    - `compute.disks.list`
-    - `compute.instanceGroups.create`
-    - `compute.instanceGroups.delete`
-    - `compute.instanceGroups.get`
-    - `compute.instanceGroups.list`
-    - `compute.instanceGroups.update`
-    - `compute.instanceGroups.use`
-    - `compute.instances.create`
-    - `compute.instances.delete`
-    - `compute.instances.get`
-    - `compute.instances.list`
-    - `compute.instances.setLabels`
-    - `compute.instances.setMetadata`
-    - `compute.instances.setServiceAccount`
-    - `compute.instances.setTags`
-    - `compute.instances.use`
-    - `compute.machineTypes.get`
-    - `compute.machineTypes.list`
+- `compute.disks.create`
+- `compute.disks.get`
+- `compute.disks.list`
+- `compute.instanceGroups.create`
+- `compute.instanceGroups.delete`
+- `compute.instanceGroups.get`
+- `compute.instanceGroups.list`
+- `compute.instanceGroups.update`
+- `compute.instanceGroups.use`
+- `compute.instances.create`
+- `compute.instances.delete`
+- `compute.instances.get`
+- `compute.instances.list`
+- `compute.instances.setLabels`
+- `compute.instances.setMetadata`
+- `compute.instances.setServiceAccount`
+- `compute.instances.setTags`
+- `compute.instances.use`
+- `compute.machineTypes.get`
+- `compute.machineTypes.list`
 
-??? note "Required for creating storage resources"
+The following permissions are required for creating storage resources:
 
-    - `storage.buckets.create`
-    - `storage.buckets.delete`
-    - `storage.buckets.get`
-    - `storage.buckets.list`
-    - `storage.objects.create`
-    - `storage.objects.delete`
-    - `storage.objects.get`
-    - `storage.objects.list`
+- `storage.buckets.create`
+- `storage.buckets.delete`
+- `storage.buckets.get`
+- `storage.buckets.list`
+- `storage.objects.create`
+- `storage.objects.delete`
+- `storage.objects.get`
+- `storage.objects.list`
 
-??? note "Required permissions for creating health check resources"
+The following permissions are required for creating health check resources:
 
-    - `compute.healthChecks.create`
-    - `compute.healthChecks.get`
-    - `compute.healthChecks.list`
-    - `compute.healthChecks.useReadOnly`
-    - `compute.httpHealthChecks.create`
-    - `compute.httpHealthChecks.get`
-    - `compute.httpHealthChecks.list`
-    - `compute.httpHealthChecks.useReadOnly`
-    - `compute.regionHealthChecks.create`
-    - `compute.regionHealthChecks.get`
-    - `compute.regionHealthChecks.useReadOnly`
+- `compute.healthChecks.create`
+- `compute.healthChecks.get`
+- `compute.healthChecks.list`
+- `compute.healthChecks.useReadOnly`
+- `compute.httpHealthChecks.create`
+- `compute.httpHealthChecks.get`
+- `compute.httpHealthChecks.list`
+- `compute.httpHealthChecks.useReadOnly`
+- `compute.regionHealthChecks.create`
+- `compute.regionHealthChecks.get`
+- `compute.regionHealthChecks.useReadOnly`
 
-??? note "Required permissions to get Google Cloud zone and region related information"
+The following permissions are required to get Google Cloud zone and region related information:
 
-    - `compute.globalOperations.get`
-    - `compute.regionOperations.get`
-    - `compute.regions.get`
-    - `compute.regions.list`
-    - `compute.zoneOperations.get`
-    - `compute.zones.get`
-    - `compute.zones.list`
+- `compute.globalOperations.get`
+- `compute.regionOperations.get`
+- `compute.regions.get`
+- `compute.regions.list`
+- `compute.zoneOperations.get`
+- `compute.zones.get`
+- `compute.zones.list`
 
-??? note "Required permissions for checking services and quotas"
+The following permissions are required for checking services and quotas:
 
-    - `monitoring.timeSeries.list`
-    - `serviceusage.quotas.get`
-    - `serviceusage.services.list`
+- `monitoring.timeSeries.list`
+- `serviceusage.quotas.get`
+- `serviceusage.services.list`
 
-??? note "Required IAM permissions for installation"
+The following IAM permission is required for installation:
 
-    - `iam.roles.get`
+- `iam.roles.get`
 
-??? note "Required permissions when authenticating without a service account key"
+The following permission is required when authenticating without a service account key:
 
-    - `iam.serviceAccounts.signBlob`
+- `iam.serviceAccounts.signBlob`
 
-??? note "Required permissions when providing Key Management Service (KMS) key rings"
+The following permission is required when providing Key Management Service (KMS) key rings:
 
-    - `cloudkms.keyRings.list`
+- `cloudkms.keyRings.list`
 
-??? note "Required Images permissions for installation"
+The following Images permissions are required for installation:
 
-    - `compute.images.create`
-    - `compute.images.delete`
-    - `compute.images.get`
-    - `compute.images.list`
+- `compute.images.create`
+- `compute.images.delete`
+- `compute.images.get`
+- `compute.images.list`
 
-??? note "Optional permission for running gather bootstrap"
+The following permission is optional for running gather bootstrap:
 
-    - `compute.instances.getSerialPortOutput`
+- `compute.instances.getSerialPortOutput`
 
-??? note "Required permissions for deleting network resources"
+The following permissions are required for deleting network resources:
 
-    - `compute.addresses.delete`
-    - `compute.addresses.deleteInternal`
-    - `compute.addresses.list`
-    - `compute.addresses.setLabels`
-    - `compute.firewalls.delete`
-    - `compute.firewalls.list`
-    - `compute.forwardingRules.delete`
-    - `compute.forwardingRules.list`
-    - `compute.globalAddresses.delete`
-    - `compute.globalAddresses.list`
-    - `compute.globalForwardingRules.delete`
-    - `compute.globalForwardingRules.list`
-    - `compute.networks.delete`
-    - `compute.networks.list`
-    - `compute.networks.updatePolicy`
-    - `compute.routers.delete`
-    - `compute.routers.list`
-    - `compute.routes.list`
-    - `compute.subnetworks.delete`
-    - `compute.subnetworks.list`
+- `compute.addresses.delete`
+- `compute.addresses.deleteInternal`
+- `compute.addresses.list`
+- `compute.addresses.setLabels`
+- `compute.firewalls.delete`
+- `compute.firewalls.list`
+- `compute.forwardingRules.delete`
+- `compute.forwardingRules.list`
+- `compute.globalAddresses.delete`
+- `compute.globalAddresses.list`
+- `compute.globalForwardingRules.delete`
+- `compute.globalForwardingRules.list`
+- `compute.networks.delete`
+- `compute.networks.list`
+- `compute.networks.updatePolicy`
+- `compute.routers.delete`
+- `compute.routers.list`
+- `compute.routes.list`
+- `compute.subnetworks.delete`
+- `compute.subnetworks.list`
 
-??? note "Required permissions for deleting load balancer resources"
+The following permissions are required for deleting load balancer resources:
 
-    - `compute.backendServices.delete`
-    - `compute.backendServices.list`
-    - `compute.regionBackendServices.delete`
-    - `compute.regionBackendServices.list`
-    - `compute.targetPools.delete`
-    - `compute.targetPools.list`
-    - `compute.targetTcpProxies.delete`
-    - `compute.targetTcpProxies.list`
+- `compute.backendServices.delete`
+- `compute.backendServices.list`
+- `compute.regionBackendServices.delete`
+- `compute.regionBackendServices.list`
+- `compute.targetPools.delete`
+- `compute.targetPools.list`
+- `compute.targetTcpProxies.delete`
+- `compute.targetTcpProxies.list`
 
-??? note "Required permissions for deleting DNS resources"
+The following permissions are required for deleting DNS resources:
 
-    - `dns.changes.create`
-    - `dns.managedZones.delete`
-    - `dns.managedZones.get`
-    - `dns.managedZones.list`
-    - `dns.resourceRecordSets.delete`
-    - `dns.resourceRecordSets.list`
+- `dns.changes.create`
+- `dns.managedZones.delete`
+- `dns.managedZones.get`
+- `dns.managedZones.list`
+- `dns.resourceRecordSets.delete`
+- `dns.resourceRecordSets.list`
 
-??? note "Required permissions for deleting Service Account resources"
+The following permissions are required for deleting Service Account resources:
 
-    - `iam.serviceAccounts.delete`
-    - `iam.serviceAccounts.get`
-    - `iam.serviceAccounts.list`
-    - `resourcemanager.projects.getIamPolicy`
-    - `resourcemanager.projects.setIamPolicy`
+- `iam.serviceAccounts.delete`
+- `iam.serviceAccounts.get`
+- `iam.serviceAccounts.list`
+- `resourcemanager.projects.getIamPolicy`
+- `resourcemanager.projects.setIamPolicy`
 
-??? note "Required permissions for deleting compute resources"
+The following permissions are required for deleting compute resources:
 
-    - `compute.disks.delete`
-    - `compute.disks.list`
-    - `compute.instanceGroups.delete`
-    - `compute.instanceGroups.list`
-    - `compute.instances.delete`
-    - `compute.instances.list`
-    - `compute.instances.stop`
-    - `compute.machineTypes.list`
+- `compute.disks.delete`
+- `compute.disks.list`
+- `compute.instanceGroups.delete`
+- `compute.instanceGroups.list`
+- `compute.instances.delete`
+- `compute.instances.list`
+- `compute.instances.stop`
+- `compute.machineTypes.list`
 
-??? note "Required for deleting storage resources"
+The following permissions are required for deleting storage resources:
 
-    - `storage.buckets.delete`
-    - `storage.buckets.getIamPolicy`
-    - `storage.buckets.list`
-    - `storage.objects.delete`
-    - `storage.objects.list`
+- `storage.buckets.delete`
+- `storage.buckets.getIamPolicy`
+- `storage.buckets.list`
+- `storage.objects.delete`
+- `storage.objects.list`
 
-??? note "Required permissions for deleting health check resources"
+The following permissions are required for deleting health check resources:
 
-    - `compute.healthChecks.delete`
-    - `compute.healthChecks.list`
-    - `compute.httpHealthChecks.delete`
-    - `compute.httpHealthChecks.list`
-    - `compute.regionHealthChecks.delete`
-    - `compute.regionHealthChecks.list`
+- `compute.healthChecks.delete`
+- `compute.healthChecks.list`
+- `compute.httpHealthChecks.delete`
+- `compute.httpHealthChecks.list`
+- `compute.regionHealthChecks.delete`
+- `compute.regionHealthChecks.list`
 
-??? note "Required Images permissions for deletion"
+The following Images permissions are required for deletion:
 
-    - `compute.images.delete`
-    - `compute.images.list`
+- `compute.images.delete`
+- `compute.images.list`
 
-??? note "Required permissions to get Region related information"
+The following permission is required to get Region related information:
 
-    - `compute.regions.get`
+- `compute.regions.get`
 
-??? note "Required Deployment Manager permissions"
+The following Deployment Manager permissions are required:
 
-    - config.deployments.create
-    - config.deployments.delete
-    - config.deployments.get
-    - config.deployments.list
-    - config.operations.get
-    - config.resources.list
-    - cloudbuild.builds.create
-    - cloudbuild.builds.get
+- config.deployments.create
+- config.deployments.delete
+- config.deployments.get
+- config.deployments.list
+- config.operations.get
+- config.resources.list
+- cloudbuild.builds.create
+- cloudbuild.builds.get
 
 **Additional resources**
 
@@ -672,7 +681,9 @@ If your organization’s security policies require a more restrictive set of per
 
 ### Supported Google Cloud regions { #installation-gcp-regions_installing-gcp-user-infra }
 
-You can deploy an OpenShift Container Platform cluster to the following Google Cloud regions:
+You can deploy an OpenShift Container Platform cluster to specific Google Cloud regions, which determine the physical location and available machine types for your cluster infrastructure.
+
+You can deploy to the following Google Cloud regions:
 
 - `africa-south1` (Johannesburg, South Africa)
 - `asia-east1` (Changhua County, Taiwan)
@@ -841,7 +852,7 @@ If an instance type for your platform meets the minimum requirements for cluster
 
 ### Tested instance types for Google Cloud { #installation-gcp-tested-machine-types_installing-gcp-user-infra }
 
-The following Google Cloud instance types have been tested with OpenShift Container Platform.
+OpenShift Container Platform supports specific Google Cloud instance types that have been validated for cluster deployment.
 
 !!! note
 
@@ -868,7 +879,7 @@ See the following machine series:
 
 ### Tested instance types for Google Cloud on 64-bit ARM infrastructures { #installation-gcp-tested-machine-types-arm_installing-gcp-user-infra }
 
-The following Google Cloud 64-bit ARM instance types have been tested with OpenShift Container Platform.
+OpenShift Container Platform supports specific Google Cloud 64-bit ARM instance types that have been validated for cluster deployment.
 
 See the following machine series for 64-bit ARM machines:
 
@@ -878,7 +889,7 @@ See the following machine series for 64-bit ARM machines:
 
 ### Using custom machine types { #installation-custom-machine-types_installing-gcp-user-infra }
 
-Using a custom machine type to install a OpenShift Container Platform cluster is supported.
+If the predefined Google Cloud machine types do not meet your workload requirements, you can configure a custom machine type in the `install-config.yaml` file during OpenShift Container Platform installation.
 
 Consider the following when using a custom machine type:
 
@@ -894,7 +905,7 @@ To install OpenShift Container Platform on Google Cloud by using user-provisione
 
 You generate and customize the `install-config.yaml` file, Kubernetes manifests, and Ignition config files. You also have the option to first set up a separate `var` partition during the preparation phases of installation.
 
-### Optional: Creating a separate `/var` partition { #installation-disk-partitioning-upi-templates_installing-gcp-user-infra }
+### Creating a separate `/var` partition { #installation-disk-partitioning-upi-templates_installing-gcp-user-infra }
 
 To isolate growing storage for containers, etcd, or logs, you can optionally create a separate `/var` partition on worker nodes before you generate Ignition configs.
 
@@ -1076,7 +1087,9 @@ You can customize the OpenShift Container Platform cluster you install on Google
 
 ### Enabling Shielded VMs { #installation-gcp-enabling-shielded-vms_installing-gcp-user-infra }
 
-You can use Shielded VMs when installing your cluster. Shielded VMs have extra security features including secure boot, firmware and integrity monitoring, and rootkit detection. For more information, see Google’s documentation on [Shielded VMs](https://cloud.google.com/shielded-vm).
+You can use Shielded VMs when installing your OpenShift Container Platform cluster. Shielded VMs have extra security features including secure boot, firmware and integrity monitoring, and rootkit detection.
+
+For more information, see Google’s documentation on [Shielded VMs](https://cloud.google.com/shielded-vm).
 
 !!! note
 
@@ -1084,7 +1097,7 @@ You can use Shielded VMs when installing your cluster. Shielded VMs have extra s
 
 **Procedure**
 
-- Use a text editor to edit the `install-config.yaml` file prior to deploying your cluster and add one of the following stanzas:
+- Use a text editor to edit the `install-config.yaml` file before deploying your cluster and add one of the following stanzas:
 
     1. To use shielded VMs for only control plane machines:
 
@@ -1115,7 +1128,9 @@ You can use Shielded VMs when installing your cluster. Shielded VMs have extra s
 
 ### Enabling Confidential VMs { #installation-gcp-enabling-confidential-vms_installing-gcp-user-infra }
 
-You can use Confidential VMs when installing your cluster. Confidential VMs encrypt data while it is being processed. For more information, see Google’s documentation on [Confidential Computing](https://cloud.google.com/confidential-computing). You can enable Confidential VMs and Shielded VMs at the same time, although they are not dependent on each other.
+You can use Confidential VMs when installing your OpenShift Container Platform cluster. Confidential VMs encrypt data during processing.
+
+For more information, see Google’s documentation on [Confidential Computing](https://cloud.google.com/confidential-computing). You can enable Confidential VMs and Shielded VMs at the same time, although they are not dependent on each other.
 
 !!! note
 
@@ -1123,7 +1138,7 @@ You can use Confidential VMs when installing your cluster. Confidential VMs encr
 
 **Procedure**
 
-- Use a text editor to edit the `install-config.yaml` file prior to deploying your cluster and add one of the following stanzas:
+- Use a text editor to edit the `install-config.yaml` file before deploying your cluster and add one of the following stanzas:
 
     1. To use confidential VMs for only control plane machines:
 
@@ -1131,14 +1146,21 @@ You can use Confidential VMs when installing your cluster. Confidential VMs encr
         controlPlane:
           platform:
             gcp:
-               confidentialCompute: AMDEncryptedVirtualizationNestedPaging (1)
-               type: n2d-standard-8 (2)
-               onHostMaintenance: Terminate (3)
+               confidentialCompute: AMDEncryptedVirtualizationNestedPaging
+               type: n2d-standard-8
+               onHostMaintenance: Terminate
         ```
 
-        1. Enable confidential VMs with AMD Secure Encrypted Virtualization Secure Nested Paging (AMD SEV-SNP). For more information about available options, see "Additional Google Cloud configuration parameters".
-        2. Specify a machine type that supports Confidential VMs. Confidential VMs require the N2D, C2D, C3D, or C3 series of machine types. For more information on supported machine types, see [Supported operating systems and machine types](https://cloud.google.com/compute/confidential-vm/docs/os-and-machine-type#machine-type).
-        3. Specify the behavior of the VM during a host maintenance event, such as a hardware or software update. For a machine that uses Confidential VM, this value must be set to `Terminate`, which stops the VM. Confidential VMs do not support live VM migration.
+        where:
+
+        `confidentialCompute`
+        :   Enables confidential VMs with AMD Secure Encrypted Virtualization Secure Nested Paging (AMD SEV-SNP). For more information about available options, see "Additional Google Cloud configuration parameters".
+
+        `type`
+        :   Specifies a machine type that supports Confidential VMs. Confidential VMs require the N2D, C2D, C3D, or C3 series of machine types. For more information on supported machine types, see [Supported operating systems and machine types](https://cloud.google.com/compute/confidential-vm/docs/os-and-machine-type#machine-type).
+
+        `onHostMaintenance`
+        :   Specifies the behavior of the VM during a host maintenance event, such as a hardware or software update. For a machine that uses Confidential VM, this value must be set to `Terminate`, which stops the VM. Confidential VMs do not support live VM migration.
 
     2. To use confidential VMs for only compute machines:
 
@@ -1353,11 +1375,11 @@ The installation program converts the installation configuration into Kubernetes
 
 To identify your cluster resources in Google Cloud, extract the unique infrastructure name from the Ignition config files.
 
-The infrastructure name is also used to locate the appropriate Google Cloud resources during an OpenShift Container Platform installation. The provided Infrastructure Manager templates contain references to this infrastructure name, so you must extract it.
+The Ignition config files contain a unique cluster identifier that you can use to uniquely identify your cluster in Google Cloud. The infrastructure name is also used to locate the appropriate Google Cloud resources during an OpenShift Container Platform installation. The provided Infrastructure Manager templates contain references to this infrastructure name, so you must extract it.
 
 !!! warning
 
-    Do not run the `openshift-install create manifests` command again after creating any Google Cloud resources. Running the command again generates a new cluster identifier, which will cause errors in existing resources. If you need to regenerate the manifests because you modified the `install-config.yaml` file, delete any Google Cloud resources you created and recreate them with the new cluster identifier.
+    Do not run the `openshift-install create manifests` command again after creating any Google Cloud resources. Running the command again generates a new cluster identifier, which will cause errors in existing resources. If you need to regenerate the manifests because you modified the `install-config.yaml` file, delete any Google Cloud resources you created and re-create them with the new cluster identifier.
 
 **Prerequisites**
 
@@ -1586,129 +1608,127 @@ You must create a VPC in Google Cloud for your OpenShift Container Platform clus
 
 ### Infrastructure Manager template for the VPC { #installation-infrastructure-manager-vpc_installing-gcp-user-infra }
 
-You can use the following Infrastructure Manager template to deploy the VPC that you need for your OpenShift Container Platform cluster:
+You can use the following `01_vpc.tf` Infrastructure Manager template to deploy the VPC that you need for your OpenShift Container Platform cluster:
 
-??? note "`01_vpc.tf` Infrastructure Manager template"
-
-    ```terraform
-    terraform {
-      # Infra manager supports specific Terraform versions; ensure compatibility
-      required_version = ">=1.2.3"
-      required_providers {
-        google = {
-          source = "hashicorp/google"
-          version = ">= 4.0.0"
-        }
-        google-beta = {
-            source = "hashicorp/google-beta",
-            version = ">= 4.0.0"
-        }
-      }
+```terraform
+terraform {
+  # Infra manager supports specific Terraform versions; ensure compatibility
+  required_version = ">=1.2.3"
+  required_providers {
+    google = {
+      source = "hashicorp/google"
+      version = ">= 4.0.0"
     }
-
-    provider "google-beta" {
-      project = "${var.project}"
-      region = "${var.region}"
+    google-beta = {
+        source = "hashicorp/google-beta",
+        version = ">= 4.0.0"
     }
+  }
+}
 
-    variable "infra_id" {
-      type        = string
-      description = "OpenShift Installer Infrastructure ID"
-    }
+provider "google-beta" {
+  project = "${var.project}"
+  region = "${var.region}"
+}
 
-    variable "project" {
-      type        = string
-      description = "Project ID"
-    }
+variable "infra_id" {
+  type        = string
+  description = "OpenShift Installer Infrastructure ID"
+}
 
-    variable "region" {
-      type        = string
-      description = "GCP Region where the resources will be created."
-      default     = "us-central1"
-    }
+variable "project" {
+  type        = string
+  description = "Project ID"
+}
 
-    variable "master_subnet_cidr" {
-      type        = string
-      description = "CIDR for the control plane subnet."
-    }
+variable "region" {
+  type        = string
+  description = "GCP Region where the resources will be created."
+  default     = "us-central1"
+}
 
-    variable "worker_subnet_cidr" {
-      type        = string
-      description = "CIDR for the compute subnet."
-    }
+variable "master_subnet_cidr" {
+  type        = string
+  description = "CIDR for the control plane subnet."
+}
 
-    resource "google_compute_network" "cluster_network" {
-      provider = google-beta
+variable "worker_subnet_cidr" {
+  type        = string
+  description = "CIDR for the compute subnet."
+}
 
-      name = "${var.infra_id}-network"
-      auto_create_subnetworks = false
-    }
+resource "google_compute_network" "cluster_network" {
+  provider = google-beta
 
-    resource "google_compute_subnetwork" "master_subnet" {
-      provider = google-beta
+  name = "${var.infra_id}-network"
+  auto_create_subnetworks = false
+}
 
-      name = "${var.infra_id}-master-subnet"
-      ip_cidr_range = "${var.master_subnet_cidr}"
-      region = "${var.region}"
-      network = google_compute_network.cluster_network.self_link
-    }
+resource "google_compute_subnetwork" "master_subnet" {
+  provider = google-beta
 
-    resource "google_compute_subnetwork" "worker_subnet" {
-      provider = google-beta
+  name = "${var.infra_id}-master-subnet"
+  ip_cidr_range = "${var.master_subnet_cidr}"
+  region = "${var.region}"
+  network = google_compute_network.cluster_network.self_link
+}
 
-      name = "${var.infra_id}-worker-subnet"
-      ip_cidr_range = "${var.worker_subnet_cidr}"
-      region = "${var.region}"
-      network = google_compute_network.cluster_network.self_link
-    }
+resource "google_compute_subnetwork" "worker_subnet" {
+  provider = google-beta
 
-    #tfimport-terraform import google_compute_router._router  __project__//-router
-    resource "google_compute_router" "router" {
-      provider = google-beta
+  name = "${var.infra_id}-worker-subnet"
+  ip_cidr_range = "${var.worker_subnet_cidr}"
+  region = "${var.region}"
+  network = google_compute_network.cluster_network.self_link
+}
 
-      name = "${var.infra_id}-router"
-      network = google_compute_network.cluster_network.self_link
-      region = "${var.region}"
-    }
-    resource "google_compute_router_nat" "master_nat" {
-      provider = google-beta
+#tfimport-terraform import google_compute_router._router  __project__//-router
+resource "google_compute_router" "router" {
+  provider = google-beta
 
-      name = "${var.infra_id}-nat-master"
-      source_subnetwork_ip_ranges_to_nat = "LIST_OF_SUBNETWORKS"
-      nat_ip_allocate_option = "AUTO_ONLY"
-      min_ports_per_vm = 7168
-      subnetwork {
-        name = google_compute_subnetwork.master_subnet.self_link
-        source_ip_ranges_to_nat = ["ALL_IP_RANGES"]
-      }
+  name = "${var.infra_id}-router"
+  network = google_compute_network.cluster_network.self_link
+  region = "${var.region}"
+}
+resource "google_compute_router_nat" "master_nat" {
+  provider = google-beta
 
-      router = google_compute_router.router.name
-      region = "${var.region}"
+  name = "${var.infra_id}-nat-master"
+  source_subnetwork_ip_ranges_to_nat = "LIST_OF_SUBNETWORKS"
+  nat_ip_allocate_option = "AUTO_ONLY"
+  min_ports_per_vm = 7168
+  subnetwork {
+    name = google_compute_subnetwork.master_subnet.self_link
+    source_ip_ranges_to_nat = ["ALL_IP_RANGES"]
+  }
 
-      depends_on = [
-        google_compute_router.router
-      ]
-    }
-    resource "google_compute_router_nat" "worker_nat" {
-      provider = google-beta
+  router = google_compute_router.router.name
+  region = "${var.region}"
 
-      name = "${var.infra_id}-nat-worker"
-      source_subnetwork_ip_ranges_to_nat = "LIST_OF_SUBNETWORKS"
-      nat_ip_allocate_option = "AUTO_ONLY"
-      min_ports_per_vm = 512
-      subnetwork {
-        name = google_compute_subnetwork.worker_subnet.self_link
-        source_ip_ranges_to_nat = ["ALL_IP_RANGES"]
-      }
+  depends_on = [
+    google_compute_router.router
+  ]
+}
+resource "google_compute_router_nat" "worker_nat" {
+  provider = google-beta
 
-      router = google_compute_router.router.name
-      region = "${var.region}"
+  name = "${var.infra_id}-nat-worker"
+  source_subnetwork_ip_ranges_to_nat = "LIST_OF_SUBNETWORKS"
+  nat_ip_allocate_option = "AUTO_ONLY"
+  min_ports_per_vm = 512
+  subnetwork {
+    name = google_compute_subnetwork.worker_subnet.self_link
+    source_ip_ranges_to_nat = ["ALL_IP_RANGES"]
+  }
 
-      depends_on = [
-        google_compute_router.router
-      ]
-    }
-    ```
+  router = google_compute_router.router.name
+  region = "${var.region}"
+
+  depends_on = [
+    google_compute_router.router
+  ]
+}
+```
 
 ## Networking requirements for user-provisioned infrastructure { #installation-network-user-infra_installing-gcp-user-infra }
 
@@ -1943,225 +1963,221 @@ You must configure load balancers in Google Cloud for your OpenShift Container P
 
 ### Infrastructure Manager template for the external load balancer { #installation-infrastructure-manager-ext-lb_installing-gcp-user-infra }
 
-You can use the following Infrastructure Manager template to deploy the external load balancer that you need for your OpenShift Container Platform cluster:
+You can use the following `02_lb_ext.tf` Infrastructure Manager template to deploy the external load balancer that you need for your OpenShift Container Platform cluster:
 
-??? note "`02_lb_ext.tf` Infrastructure Manager template"
-
-    ```terraform
-    terraform {
-      # Infra manager supports specific Terraform versions; ensure compatibility
-      required_version = ">=1.2.3"
-      required_providers {
-        google = {
-          source = "hashicorp/google"
-          version = ">= 4.0.0"
-        }
-        google-beta = {
-            source = "hashicorp/google-beta",
-            version = ">= 4.0.0"
-        }
-      }
+```terraform
+terraform {
+  # Infra manager supports specific Terraform versions; ensure compatibility
+  required_version = ">=1.2.3"
+  required_providers {
+    google = {
+      source = "hashicorp/google"
+      version = ">= 4.0.0"
     }
-
-    provider "google-beta" {
-      project = "${var.project}"
-      region = "${var.region}"
+    google-beta = {
+        source = "hashicorp/google-beta",
+        version = ">= 4.0.0"
     }
-    variable "infra_id" {
-      type        = string
-      description = "OpenShift Installer Infrastructure ID"
-    }
-    variable "project" {
-      type        = string
-      description = "Project ID"
-    }
-    variable "region" {
-      type        = string
-      description = "GCP Region where the resources will be created."
-      default     = "us-central1"
-    }
+  }
+}
 
-    resource "google_compute_address" "cluster_public_ip" {
-      provider = google-beta
+provider "google-beta" {
+  project = "${var.project}"
+  region = "${var.region}"
+}
+variable "infra_id" {
+  type        = string
+  description = "OpenShift Installer Infrastructure ID"
+}
+variable "project" {
+  type        = string
+  description = "Project ID"
+}
+variable "region" {
+  type        = string
+  description = "GCP Region where the resources will be created."
+  default     = "us-central1"
+}
 
-      name = "${var.infra_id}-cluster-public-ip"
-      region = "${var.region}"
-    }
+resource "google_compute_address" "cluster_public_ip" {
+  provider = google-beta
 
-    resource "google_compute_http_health_check" "api_http_health_check" {
-      provider = google-beta
+  name = "${var.infra_id}-cluster-public-ip"
+  region = "${var.region}"
+}
 
-      name = "${var.infra_id}-api-http-health-check"
-      port = 6080
-      request_path = "/readyz"
-    }
+resource "google_compute_http_health_check" "api_http_health_check" {
+  provider = google-beta
 
-    resource "google_compute_target_pool" "api_target_pool" {
-      provider = google-beta
+  name = "${var.infra_id}-api-http-health-check"
+  port = 6080
+  request_path = "/readyz"
+}
 
-      name = "${var.infra_id}-api-target-pool"
-      region = "${var.region}"
-      health_checks = [
-        google_compute_http_health_check.api_http_health_check.id
-      ]
-    }
+resource "google_compute_target_pool" "api_target_pool" {
+  provider = google-beta
 
-    resource "google_compute_forwarding_rule" "api_forwarding_rule" {
-      provider = google-beta
+  name = "${var.infra_id}-api-target-pool"
+  region = "${var.region}"
+  health_checks = [
+    google_compute_http_health_check.api_http_health_check.id
+  ]
+}
 
-      name = "${var.infra_id}-api-forwarding-rule"
-      ip_address = google_compute_address.cluster_public_ip.address
-      port_range = "6443"
-      region = "${var.region}"
-      target = google_compute_target_pool.api_target_pool.id
-    }
-    ```
+resource "google_compute_forwarding_rule" "api_forwarding_rule" {
+  provider = google-beta
+
+  name = "${var.infra_id}-api-forwarding-rule"
+  ip_address = google_compute_address.cluster_public_ip.address
+  port_range = "6443"
+  region = "${var.region}"
+  target = google_compute_target_pool.api_target_pool.id
+}
+```
 
 ### Infrastructure Manager template for the internal load balancer { #installation-infrastructure-manager-int-lb_installing-gcp-user-infra }
 
-You can use the following Infrastructure Manager template to deploy the internal load balancer that you need for your OpenShift Container Platform cluster:
+You can use the following `02_lb_int.tf` Infrastructure Manager template to deploy the internal load balancer that you need for your OpenShift Container Platform cluster:
 
-??? note "`02_lb_int.tf` Infrastructure Manager template"
-
-    ```terraform
-    terraform {
-      # Infra manager supports specific Terraform versions; ensure compatibility
-      required_version = ">=1.2.3"
-      required_providers {
-        google = {
-          source = "hashicorp/google"
-          version = ">= 4.0.0"
-        }
-        google-beta = {
-            source = "hashicorp/google-beta",
-            version = ">= 4.0.0"
-        }
-      }
+```terraform
+terraform {
+  # Infra manager supports specific Terraform versions; ensure compatibility
+  required_version = ">=1.2.3"
+  required_providers {
+    google = {
+      source = "hashicorp/google"
+      version = ">= 4.0.0"
     }
-
-    provider "google-beta" {
-      project = "${var.project}"
-      region = "${var.region}"
+    google-beta = {
+        source = "hashicorp/google-beta",
+        version = ">= 4.0.0"
     }
-    variable "infra_id" {
-      type        = string
-      description = "OpenShift Installer Infrastructure ID"
+  }
+}
+
+provider "google-beta" {
+  project = "${var.project}"
+  region = "${var.region}"
+}
+variable "infra_id" {
+  type        = string
+  description = "OpenShift Installer Infrastructure ID"
+}
+variable "project" {
+  type        = string
+  description = "Project ID"
+}
+variable "region" {
+  type        = string
+  description = "GCP Region where the resources will be created."
+  default     = "us-central1"
+}
+variable "control_subnet" {
+  type        = string
+  description = "Subnet for the control plane instances."
+}
+variable "cluster_network" {
+  type        = string
+  description = "Full link to the cluster network."
+}
+
+# Terraform handles lists but the infra-manager --input-values only
+# supports scalar types.
+# If you require more or less zones, you must manually add them below
+# as a single variable for each. You must add the zones to the
+# locals `zones` list below.
+variable "zone_0" {
+  type        = string
+  description = "Zone 1 for the instance types."
+}
+
+variable "zone_1" {
+  type        = string
+  description = "Zone 2 for the instance types."
+}
+
+variable "zone_2" {
+  type        = string
+  description = "Zone 3 for the instance types."
+}
+
+locals {
+  zones = ["${var.zone_0}", "${var.zone_1}", "${var.zone_2}"]
+}
+
+resource "google_compute_address" "cluster_ip" {
+  provider = google-beta
+
+  name = "${var.infra_id}-cluster-ip"
+  address_type = "INTERNAL"
+  region = "${var.region}"
+  subnetwork = "${var.control_subnet}"
+}
+
+resource "google_compute_health_check" "api_internal_health_check" {
+  provider = google-beta
+
+  name = "${var.infra_id}-api-internal-health-check"
+  https_health_check {
+    port = 6443
+  }
+}
+
+resource "google_compute_region_backend_service" "api_internal" {
+  provider = google-beta
+
+  name = "${var.infra_id}-api-internal"
+  timeout_sec = 120
+  protocol = "TCP"
+  region = "${var.region}"
+  load_balancing_scheme = "INTERNAL"
+  health_checks = [
+    google_compute_health_check.api_internal_health_check.id
+  ]
+
+  dynamic "backend" {
+    for_each = google_compute_instance_group.master_ig
+
+    content {
+      balancing_mode = "CONNECTION"
+      group = backend.value.self_link
     }
-    variable "project" {
-      type        = string
-      description = "Project ID"
-    }
-    variable "region" {
-      type        = string
-      description = "GCP Region where the resources will be created."
-      default     = "us-central1"
-    }
-    variable "control_subnet" {
-      type        = string
-      description = "Subnet for the control plane instances."
-    }
-    variable "cluster_network" {
-      type        = string
-      description = "Full link to the cluster network."
-    }
+  }
+}
 
-    # Terraform handles lists but the infra-manager --input-values only
-    # supports scalar types.
-    # If you require more or less zones, you must manually add them below
-    # as a single variable for each. You must add the zones to the
-    # locals `zones` list below.
-    variable "zone_0" {
-      type        = string
-      description = "Zone 1 for the instance types."
-    }
+resource "google_compute_forwarding_rule" "api_internal_forwarding_rule" {
+  provider = google-beta
 
-    variable "zone_1" {
-      type        = string
-      description = "Zone 2 for the instance types."
-    }
+  name = "${var.infra_id}-api-internal-forwarding-rule"
+  ip_address = google_compute_address.cluster_ip.address
+  backend_service = google_compute_region_backend_service.api_internal.id
+  load_balancing_scheme = "INTERNAL"
+  ports = [
+    "6443",
+    "22623"
+  ]
+  region = "${var.region}"
+  subnetwork = "${var.control_subnet}"
+}
 
-    variable "zone_2" {
-      type        = string
-      description = "Zone 3 for the instance types."
-    }
+resource "google_compute_instance_group" "master_ig" {
+  provider = google-beta
 
-    locals {
-      zones = ["${var.zone_0}", "${var.zone_1}", "${var.zone_2}"]
-    }
+  for_each = toset(local.zones)
 
-    resource "google_compute_address" "cluster_ip" {
-      provider = google-beta
-
-      name = "${var.infra_id}-cluster-ip"
-      address_type = "INTERNAL"
-      region = "${var.region}"
-      subnetwork = "${var.control_subnet}"
-    }
-
-    resource "google_compute_health_check" "api_internal_health_check" {
-      provider = google-beta
-
-      name = "${var.infra_id}-api-internal-health-check"
-      https_health_check {
-        port = 6443
-      }
-    }
-
-    resource "google_compute_region_backend_service" "api_internal" {
-      provider = google-beta
-
-      name = "${var.infra_id}-api-internal"
-      timeout_sec = 120
-      protocol = "TCP"
-      region = "${var.region}"
-      load_balancing_scheme = "INTERNAL"
-      health_checks = [
-        google_compute_health_check.api_internal_health_check.id
-      ]
-
-      dynamic "backend" {
-        for_each = google_compute_instance_group.master_ig
-
-        content {
-          balancing_mode = "CONNECTION"
-          group = backend.value.self_link
-        }
-      }
-    }
-
-    resource "google_compute_forwarding_rule" "api_internal_forwarding_rule" {
-      provider = google-beta
-
-      name = "${var.infra_id}-api-internal-forwarding-rule"
-      ip_address = google_compute_address.cluster_ip.address
-      backend_service = google_compute_region_backend_service.api_internal.id
-      load_balancing_scheme = "INTERNAL"
-      ports = [
-        "6443",
-        "22623"
-      ]
-      region = "${var.region}"
-      subnetwork = "${var.control_subnet}"
-    }
-
-    resource "google_compute_instance_group" "master_ig" {
-      provider = google-beta
-
-      for_each = toset(local.zones)
-
-      name = "${var.infra_id}-master-${each.key}-ig"
-      network = "${var.cluster_network}"
-      zone = "${each.key}"
-      named_port {
-        name = "ignition"
-        port = 22623
-      }
-      named_port {
-        name = "https"
-        port = 6443
-      }
-    }
-    ```
+  name = "${var.infra_id}-master-${each.key}-ig"
+  network = "${var.cluster_network}"
+  zone = "${each.key}"
+  named_port {
+    name = "ignition"
+    port = 22623
+  }
+  named_port {
+    name = "https"
+    port = 6443
+  }
+}
+```
 
 ## Creating a private DNS zone in Google Cloud { #installation-creating-gcp-private-dns_installing-gcp-user-infra }
 
@@ -2250,73 +2266,71 @@ You must configure a private DNS zone in Google Cloud for your OpenShift Contain
 
 ### Infrastructure Manager template for the private DNS { #installation-infrastructure-manager-private-dns_installing-gcp-user-infra }
 
-You can use the following Infrastructure Manager template to deploy the private DNS that you need for your OpenShift Container Platform cluster:
+You can use the following `02_dns.tf` Infrastructure Manager template to deploy the private DNS that you need for your OpenShift Container Platform cluster:
 
-??? note "`02_dns.tf` Infrastructure Manager template"
-
-    ```terraform
-    terraform {
-      # Infra manager supports specific Terraform versions; ensure compatibility
-      required_version = ">=1.2.3"
-      required_providers {
-        google = {
-          source = "hashicorp/google"
-          version = ">= 4.0.0"
-        }
-        google-beta = {
-            source = "hashicorp/google-beta",
-            version = ">= 4.0.0"
-        }
-      }
+```terraform
+terraform {
+  # Infra manager supports specific Terraform versions; ensure compatibility
+  required_version = ">=1.2.3"
+  required_providers {
+    google = {
+      source = "hashicorp/google"
+      version = ">= 4.0.0"
     }
-
-    provider "google-beta" {
-      project = "${var.project}"
-      region = "${var.region}"
+    google-beta = {
+        source = "hashicorp/google-beta",
+        version = ">= 4.0.0"
     }
+  }
+}
 
-    variable "infra_id" {
-      type        = string
-      description = "OpenShift Installer Infrastructure ID"
+provider "google-beta" {
+  project = "${var.project}"
+  region = "${var.region}"
+}
+
+variable "infra_id" {
+  type        = string
+  description = "OpenShift Installer Infrastructure ID"
+}
+
+variable "project" {
+  type        = string
+  description = "Project ID"
+}
+
+variable "region" {
+  type        = string
+  description = "GCP Region where the resources will be created."
+  default     = "us-central1"
+}
+
+variable "cluster_domain" {
+  type        = string
+  description = "ClusterName.BaseDomain"
+}
+
+variable "cluster_network" {
+  type        = string
+  description = "Full link to the cluster network."
+}
+
+resource "google_dns_managed_zone" "private_zone" {
+  provider = google-beta
+
+  name = "${var.infra_id}-private-zone"
+  dns_name = "${var.cluster_domain}."
+  description = "OpenShift Installer UPI create private DNS zone."
+  visibility = "private"
+  private_visibility_config {
+    networks {
+      network_url = "${var.cluster_network}"
     }
+  }
 
-    variable "project" {
-      type        = string
-      description = "Project ID"
-    }
-
-    variable "region" {
-      type        = string
-      description = "GCP Region where the resources will be created."
-      default     = "us-central1"
-    }
-
-    variable "cluster_domain" {
-      type        = string
-      description = "ClusterName.BaseDomain"
-    }
-
-    variable "cluster_network" {
-      type        = string
-      description = "Full link to the cluster network."
-    }
-
-    resource "google_dns_managed_zone" "private_zone" {
-      provider = google-beta
-
-      name = "${var.infra_id}-private-zone"
-      dns_name = "${var.cluster_domain}."
-      description = "OpenShift Installer UPI create private DNS zone."
-      visibility = "private"
-      private_visibility_config {
-        networks {
-          network_url = "${var.cluster_network}"
-        }
-      }
-
-      force_destroy = false
-    }
-    ```
+  force_destroy = false
+}
+```
 
 ## Creating firewall rules and IAM roles in Google Cloud { #installation-creating-gcp-firewall-rules-vpc_installing-gcp-user-infra }
 
@@ -2373,241 +2387,239 @@ You must create firewall rules and IAM roles in Google Cloud for your OpenShift 
 
 ### Infrastructure Manager template for firewall rules and IAM roles { #installation-infrastructure-manager-firewall-rules_installing-gcp-user-infra }
 
-You can use the following Infrastructure Manager template to deploy the firewall rules and IAM roles that you need for your OpenShift Container Platform cluster:
+You can use the following `03_security.tf` Infrastructure Manager template to deploy the firewall rules and IAM roles that you need for your OpenShift Container Platform cluster:
 
-??? note "`03_security.tf` Infrastructure Manager template"
-
-    ```terraform
-    terraform {
-      # Infra manager supports specific Terraform versions; ensure compatibility
-      required_version = ">=1.2.3"
-      required_providers {
-        google = {
-          source = "hashicorp/google"
-          version = ">= 4.0.0"
-        }
-        google-beta = {
-            source = "hashicorp/google-beta",
-            version = ">= 4.0.0"
-        }
-      }
+```terraform
+terraform {
+  # Infra manager supports specific Terraform versions; ensure compatibility
+  required_version = ">=1.2.3"
+  required_providers {
+    google = {
+      source = "hashicorp/google"
+      version = ">= 4.0.0"
     }
-
-    provider "google-beta" {
-      project = "${var.project}"
-      region = "${var.region}"
+    google-beta = {
+        source = "hashicorp/google-beta",
+        version = ">= 4.0.0"
     }
+  }
+}
 
-    variable "infra_id" {
-      type        = string
-      description = "OpenShift Installer Infrastructure ID"
-    }
+provider "google-beta" {
+  project = "${var.project}"
+  region = "${var.region}"
+}
 
-    variable "project" {
-      type        = string
-      description = "Project ID"
-    }
+variable "infra_id" {
+  type        = string
+  description = "OpenShift Installer Infrastructure ID"
+}
 
-    variable "region" {
-      type        = string
-      description = "GCP Region where the resources will be created."
-      default     = "us-central1"
-    }
+variable "project" {
+  type        = string
+  description = "Project ID"
+}
 
-    variable "cluster_network" {
-      type        = string
-      description = "Full link to the cluster network."
-    }
+variable "region" {
+  type        = string
+  description = "GCP Region where the resources will be created."
+  default     = "us-central1"
+}
 
-    variable "network_cidr" {
-      type        = string
-      description = "CIDR for network of the cluster."
-    }
+variable "cluster_network" {
+  type        = string
+  description = "Full link to the cluster network."
+}
 
-    variable "allowed_external_cidr" {
-      type        = string
-      description = "Allowed external CIDR for firewall rule."
-      default     = "0.0.0.0/0"
-    }
+variable "network_cidr" {
+  type        = string
+  description = "CIDR for network of the cluster."
+}
 
-    resource "google_compute_firewall" "bootstrap_in_ssh" {
-      provider = google-beta
+variable "allowed_external_cidr" {
+  type        = string
+  description = "Allowed external CIDR for firewall rule."
+  default     = "0.0.0.0/0"
+}
 
-      name = "${var.infra_id}-bootstrap-in-ssh"
-      source_ranges = [
-        "${var.allowed_external_cidr}"
-      ]
-      target_tags = [
-        "${var.infra_id}-bootstrap"
-      ]
-      network = "${var.cluster_network}"
-      allow {
-        protocol = "tcp"
-        ports = ["22"]
-      }
-    }
+resource "google_compute_firewall" "bootstrap_in_ssh" {
+  provider = google-beta
 
-    resource "google_compute_firewall" "api" {
-      provider = google-beta
+  name = "${var.infra_id}-bootstrap-in-ssh"
+  source_ranges = [
+    "${var.allowed_external_cidr}"
+  ]
+  target_tags = [
+    "${var.infra_id}-bootstrap"
+  ]
+  network = "${var.cluster_network}"
+  allow {
+    protocol = "tcp"
+    ports = ["22"]
+  }
+}
 
-      name = "${var.infra_id}-api"
-      source_ranges = [
-       "${var.allowed_external_cidr}"
-      ]
-      target_tags = [
-        "${var.infra_id}-master"
-      ]
-      network = "${var.cluster_network}"
-      allow {
-        protocol = "tcp"
-        ports = ["6443"]
-      }
-    }
+resource "google_compute_firewall" "api" {
+  provider = google-beta
 
-    resource "google_compute_firewall" "health_checks" {
-      provider = google-beta
+  name = "${var.infra_id}-api"
+  source_ranges = [
+   "${var.allowed_external_cidr}"
+  ]
+  target_tags = [
+    "${var.infra_id}-master"
+  ]
+  network = "${var.cluster_network}"
+  allow {
+    protocol = "tcp"
+    ports = ["6443"]
+  }
+}
 
-      name = "${var.infra_id}-health-checks"
-      source_ranges = [
-        "35.191.0.0/16",
-        "130.211.0.0/22",
-        "209.85.152.0/22",
-        "209.85.204.0/22"
-      ]
-      target_tags = [
-        "${var.infra_id}-master"
-      ]
-      network = "${var.cluster_network}"
-      allow {
-        protocol = "tcp"
-        ports = ["6080", "6443", "22624"]
-      }
-    }
+resource "google_compute_firewall" "health_checks" {
+  provider = google-beta
 
-    resource "google_compute_firewall" "etcd" {
-      provider = google-beta
+  name = "${var.infra_id}-health-checks"
+  source_ranges = [
+    "35.191.0.0/16",
+    "130.211.0.0/22",
+    "209.85.152.0/22",
+    "209.85.204.0/22"
+  ]
+  target_tags = [
+    "${var.infra_id}-master"
+  ]
+  network = "${var.cluster_network}"
+  allow {
+    protocol = "tcp"
+    ports = ["6080", "6443", "22624"]
+  }
+}
 
-      name = "${var.infra_id}-etcd"
-      source_tags = [
-        "${var.infra_id}-master"
-      ]
-      target_tags = [
-        "${var.infra_id}-master"
-      ]
-      network = "${var.cluster_network}"
-      allow {
-        protocol = "tcp"
-        ports = ["2379-2380"]
-      }
-    }
+resource "google_compute_firewall" "etcd" {
+  provider = google-beta
 
-    resource "google_compute_firewall" "control_plane" {
-      provider = google-beta
+  name = "${var.infra_id}-etcd"
+  source_tags = [
+    "${var.infra_id}-master"
+  ]
+  target_tags = [
+    "${var.infra_id}-master"
+  ]
+  network = "${var.cluster_network}"
+  allow {
+    protocol = "tcp"
+    ports = ["2379-2380"]
+  }
+}
 
-      name = "${var.infra_id}-control-plane"
-      source_tags = [
-        "${var.infra_id}-master",
-        "${var.infra_id}-worker"
-      ]
-      target_tags = [
-        "${var.infra_id}-master"
-      ]
-      network = "${var.cluster_network}"
-      allow {
-        protocol = "tcp"
-        ports = ["10257"]
-      }
-      allow {
-        protocol = "tcp"
-        ports = ["10259"]
-      }
-      allow {
-        protocol = "tcp"
-        ports = ["22623"]
-      }
-    }
+resource "google_compute_firewall" "control_plane" {
+  provider = google-beta
 
-    resource "google_compute_firewall" "internal_network" {
-      provider = google-beta
+  name = "${var.infra_id}-control-plane"
+  source_tags = [
+    "${var.infra_id}-master",
+    "${var.infra_id}-worker"
+  ]
+  target_tags = [
+    "${var.infra_id}-master"
+  ]
+  network = "${var.cluster_network}"
+  allow {
+    protocol = "tcp"
+    ports = ["10257"]
+  }
+  allow {
+    protocol = "tcp"
+    ports = ["10259"]
+  }
+  allow {
+    protocol = "tcp"
+    ports = ["22623"]
+  }
+}
 
-      name = "${var.infra_id}-internal-network"
-      source_ranges = [
-        "${var.network_cidr}"
-      ]
-      target_tags = [
-        "${var.infra_id}-master",
-        "${var.infra_id}-worker"
-      ]
-      network = "${var.cluster_network}"
-      allow {
-        protocol = "icmp"
-      }
-      allow {
-        protocol = "tcp"
-        ports = ["22"]
-      }
-    }
+resource "google_compute_firewall" "internal_network" {
+  provider = google-beta
 
-    resource "google_compute_firewall" "internal_cluster" {
-      provider = google-beta
+  name = "${var.infra_id}-internal-network"
+  source_ranges = [
+    "${var.network_cidr}"
+  ]
+  target_tags = [
+    "${var.infra_id}-master",
+    "${var.infra_id}-worker"
+  ]
+  network = "${var.cluster_network}"
+  allow {
+    protocol = "icmp"
+  }
+  allow {
+    protocol = "tcp"
+    ports = ["22"]
+  }
+}
 
-      name = "${var.infra_id}-internal-cluster"
-      source_tags = [
-        "${var.infra_id}-master",
-        "${var.infra_id}-worker"
-      ]
-      target_tags = [
-        "${var.infra_id}-master",
-        "${var.infra_id}-worker"
-      ]
-      network = "${var.cluster_network}"
-      allow {
-        protocol = "udp"
-        ports = ["4789", "6081"]
-      }
-      allow {
-        protocol = "udp"
-        ports = ["500", "4500"]
-      }
-      allow {
-        protocol = "esp"
-      }
-      allow {
-        protocol = "tcp"
-        ports = ["9000-9999"]
-      }
-      allow {
-        protocol = "udp"
-        ports = ["9000-9999"]
-      }
-      allow {
-        protocol = "tcp"
-        ports = ["10250"]
-      }
-      allow {
-        protocol = "tcp"
-        ports = ["30000-32767"]
-      }
-      allow {
-        protocol = "udp"
-        ports = ["30000-32767"]
-      }
-    }
+resource "google_compute_firewall" "internal_cluster" {
+  provider = google-beta
 
-    resource "google_service_account" "master_node_sa" {
-      provider = google-beta
+  name = "${var.infra_id}-internal-cluster"
+  source_tags = [
+    "${var.infra_id}-master",
+    "${var.infra_id}-worker"
+  ]
+  target_tags = [
+    "${var.infra_id}-master",
+    "${var.infra_id}-worker"
+  ]
+  network = "${var.cluster_network}"
+  allow {
+    protocol = "udp"
+    ports = ["4789", "6081"]
+  }
+  allow {
+    protocol = "udp"
+    ports = ["500", "4500"]
+  }
+  allow {
+    protocol = "esp"
+  }
+  allow {
+    protocol = "tcp"
+    ports = ["9000-9999"]
+  }
+  allow {
+    protocol = "udp"
+    ports = ["9000-9999"]
+  }
+  allow {
+    protocol = "tcp"
+    ports = ["10250"]
+  }
+  allow {
+    protocol = "tcp"
+    ports = ["30000-32767"]
+  }
+  allow {
+    protocol = "udp"
+    ports = ["30000-32767"]
+  }
+}
 
-      account_id = "${var.infra_id}-m"
-      display_name = "${var.infra_id}-master-node"
-    }
+resource "google_service_account" "master_node_sa" {
+  provider = google-beta
 
-    resource "google_service_account" "worker_node_sa" {
-      provider = google-beta
+  account_id = "${var.infra_id}-m"
+  display_name = "${var.infra_id}-master-node"
+}
 
-      account_id = "${var.infra_id}-w"
-      display_name = "${var.infra_id}-worker-node"
-    }
-    ```
+resource "google_service_account" "worker_node_sa" {
+  provider = google-beta
+
+  account_id = "${var.infra_id}-w"
+  display_name = "${var.infra_id}-worker-node"
+}
+```
 
 ## Creating IAM policy bindings in Google Cloud { #installation-creating-gcp-iam-shared-vpc_installing-gcp-user-infra }
 
@@ -2797,147 +2809,145 @@ You must create the bootstrap machine in Google Cloud to use during OpenShift Co
 
 ### Infrastructure Manager template for the bootstrap machine { #installation-infrastructure-manager-bootstrap_installing-gcp-user-infra }
 
-You can use the following Infrastructure Manager template to deploy the bootstrap machine that you need for your OpenShift Container Platform cluster:
+You can use the following `04_bootstrap.tf` Infrastructure Manager template to deploy the bootstrap machine that you need for your OpenShift Container Platform cluster:
 
-??? note "`04_bootstrap.tf` Infrastructure Manager template"
+```terraform
+terraform {
+  # Infra manager supports specific Terraform versions; ensure compatibility
+  required_version = ">=1.2.3"
+  required_providers {
+    google = {
+      source = "hashicorp/google"
+      version = ">= 4.0.0"
+    }
+    google-beta = {
+        source = "hashicorp/google-beta",
+        version = ">= 4.0.0"
+    }
+  }
+}
 
-    ```terraform
-    terraform {
-      # Infra manager supports specific Terraform versions; ensure compatibility
-      required_version = ">=1.2.3"
-      required_providers {
-        google = {
-          source = "hashicorp/google"
-          version = ">= 4.0.0"
-        }
-        google-beta = {
-            source = "hashicorp/google-beta",
-            version = ">= 4.0.0"
-        }
+provider "google-beta" {
+  project = "${var.project}"
+  region = "${var.region}"
+}
+
+variable "infra_id" {
+  type        = string
+  description = "OpenShift Installer Infrastructure ID"
+}
+
+variable "project" {
+  type        = string
+  description = "Project ID"
+}
+
+variable "region" {
+  type        = string
+  description = "GCP Region where the resources will be created."
+  default     = "us-central1"
+}
+
+variable "zone" {
+  type        = string
+  description = "Zone inside of the region where the bootstrap node is created."
+}
+
+variable "cluster_network" {
+  type        = string
+  description = "Full link to the cluster network."
+}
+
+variable "subnet" {
+  type        = string
+  description = "Control plane subnet."
+}
+
+variable "image" {
+  type        = string
+  description = "Cluster Image."
+}
+
+variable "machine_type" {
+  type        = string
+  description = "Machine type for the bootstrap machine."
+  default     = "n1-standard-4"
+}
+
+variable "root_volume_size" {
+  type        = string
+  description = "Size in GB for the root volume."
+  default     = "128"
+}
+
+variable "bootstrap_ign" {
+  type        = string
+  description = "Bootstrap ignition data."
+}
+
+variable "is_public_cluster" {
+  type        = bool
+  default     = true
+  description = "Whether the publish policy is the default External"
+}
+
+resource "google_compute_address" "bootstrap_public_ip" {
+  provider = google-beta
+  count = var.is_public_cluster ? 1 : 0
+
+  name = "${var.infra_id}-bootstrap-public-ip"
+  region = "${var.region}"
+}
+
+resource "google_compute_instance" "bootstrap" {
+  provider = google-beta
+
+  name = "${var.infra_id}-bootstrap"
+  zone = "${var.zone}"
+  machine_type = "${var.machine_type}"
+  tags = [
+    "${var.infra_id}-master",
+    "${var.infra_id}-bootstrap"
+  ]
+  boot_disk {
+    auto_delete = true
+    initialize_params {
+      size = "${var.root_volume_size}"
+      image = "${var.image}"
+    }
+  }
+  network_interface {
+    subnetwork = "${var.subnet}"
+
+    # Dynamic block to conditionally create access_config
+    dynamic "access_config" {
+      for_each = var.is_public_cluster ? [1] : []
+      content {
+        nat_ip = google_compute_address.bootstrap_public_ip[0].address
       }
     }
+  }
+  metadata = {
+    user-data = "{\"ignition\":{\"config\":{\"replace\":{\"source\":\"${var.bootstrap_ign}\"}},\"version\":\"3.2.0\"}}"
+  }
+}
 
-    provider "google-beta" {
-      project = "${var.project}"
-      region = "${var.region}"
-    }
+resource "google_compute_instance_group" "bootstrap_ig" {
+  provider = google-beta
 
-    variable "infra_id" {
-      type        = string
-      description = "OpenShift Installer Infrastructure ID"
-    }
-
-    variable "project" {
-      type        = string
-      description = "Project ID"
-    }
-
-    variable "region" {
-      type        = string
-      description = "GCP Region where the resources will be created."
-      default     = "us-central1"
-    }
-
-    variable "zone" {
-      type        = string
-      description = "Zone inside of the region where the bootstrap node is created."
-    }
-
-    variable "cluster_network" {
-      type        = string
-      description = "Full link to the cluster network."
-    }
-
-    variable "subnet" {
-      type        = string
-      description = "Control plane subnet."
-    }
-
-    variable "image" {
-      type        = string
-      description = "Cluster Image."
-    }
-
-    variable "machine_type" {
-      type        = string
-      description = "Machine type for the bootstrap machine."
-      default     = "n1-standard-4"
-    }
-
-    variable "root_volume_size" {
-      type        = string
-      description = "Size in GB for the root volume."
-      default     = "128"
-    }
-
-    variable "bootstrap_ign" {
-      type        = string
-      description = "Bootstrap ignition data."
-    }
-
-    variable "is_public_cluster" {
-      type        = bool
-      default     = true
-      description = "Whether the publish policy is the default External"
-    }
-
-    resource "google_compute_address" "bootstrap_public_ip" {
-      provider = google-beta
-      count = var.is_public_cluster ? 1 : 0
-
-      name = "${var.infra_id}-bootstrap-public-ip"
-      region = "${var.region}"
-    }
-
-    resource "google_compute_instance" "bootstrap" {
-      provider = google-beta
-
-      name = "${var.infra_id}-bootstrap"
-      zone = "${var.zone}"
-      machine_type = "${var.machine_type}"
-      tags = [
-        "${var.infra_id}-master",
-        "${var.infra_id}-bootstrap"
-      ]
-      boot_disk {
-        auto_delete = true
-        initialize_params {
-          size = "${var.root_volume_size}"
-          image = "${var.image}"
-        }
-      }
-      network_interface {
-        subnetwork = "${var.subnet}"
-
-        # Dynamic block to conditionally create access_config
-        dynamic "access_config" {
-          for_each = var.is_public_cluster ? [1] : []
-          content {
-            nat_ip = google_compute_address.bootstrap_public_ip[0].address
-          }
-        }
-      }
-      metadata = {
-        user-data = "{\"ignition\":{\"config\":{\"replace\":{\"source\":\"${var.bootstrap_ign}\"}},\"version\":\"3.2.0\"}}"
-      }
-    }
-
-    resource "google_compute_instance_group" "bootstrap_ig" {
-      provider = google-beta
-
-      name = "${var.infra_id}-bootstrap-ig"
-      network = "${var.cluster_network}"
-      zone = "${var.zone}"
-      named_port {
-        name = "ignition"
-        port = 22623
-      }
-      named_port {
-        name = "https"
-        port = 6443
-      }
-    }
-    ```
+  name = "${var.infra_id}-bootstrap-ig"
+  network = "${var.cluster_network}"
+  zone = "${var.zone}"
+  named_port {
+    name = "ignition"
+    port = 22623
+  }
+  named_port {
+    name = "https"
+    port = 6443
+  }
+}
+```
 
 ## Creating the control plane machines in Google Cloud { #installation-creating-gcp-control-plane_installing-gcp-user-infra }
 
@@ -3053,195 +3063,193 @@ You must create the control plane machines in Google Cloud for your cluster to u
 
 ### Infrastructure Manager template for control plane machines { #installation-infrastructure-manager-control-plane_installing-gcp-user-infra }
 
-You can use the following Infrastructure Manager template to deploy the control plane machines that you need for your OpenShift Container Platform cluster:
+You can use the following `05_control_plane.tf` Infrastructure Manager template to deploy the control plane machines that you need for your OpenShift Container Platform cluster:
 
-??? note "`05_control_plane.tf` Infrastructure Manager template"
-
-    ```terraform
-    terraform {
-      # Infra manager supports specific Terraform versions; ensure compatibility
-      required_version = ">=1.2.3"
-      required_providers {
-        google = {
-          source = "hashicorp/google"
-          version = ">= 4.0.0"
-        }
-        google-beta = {
-            source = "hashicorp/google-beta",
-            version = ">= 4.0.0"
-        }
-        local = {
-            source = "hashicorp/local",
-            version = ">= 2.0.0"
-        }
-      }
+```terraform
+terraform {
+  # Infra manager supports specific Terraform versions; ensure compatibility
+  required_version = ">=1.2.3"
+  required_providers {
+    google = {
+      source = "hashicorp/google"
+      version = ">= 4.0.0"
     }
-
-    provider "google-beta" {
-      project = "${var.project}"
-      region = "${var.region}"
+    google-beta = {
+        source = "hashicorp/google-beta",
+        version = ">= 4.0.0"
     }
-
-    variable "infra_id" {
-      type        = string
-      description = "OpenShift Installer Infrastructure ID"
+    local = {
+        source = "hashicorp/local",
+        version = ">= 2.0.0"
     }
+  }
+}
 
-    variable "project" {
-      type        = string
-      description = "Project ID"
+provider "google-beta" {
+  project = "${var.project}"
+  region = "${var.region}"
+}
+
+variable "infra_id" {
+  type        = string
+  description = "OpenShift Installer Infrastructure ID"
+}
+
+variable "project" {
+  type        = string
+  description = "Project ID"
+}
+
+variable "region" {
+  type        = string
+  description = "GCP Region where the resources will be created."
+  default     = "us-central1"
+}
+
+# Terraform handles lists but the infra-manager --input-values only
+# supports scalar types.
+# If you require more or less zones, you must manually add them below
+# as a single variable for each. You must add the zones to the
+# locals `zones` list below.
+variable "zone_0" {
+  type        = string
+  description = "Zone 1 for the instance types."
+}
+
+variable "zone_1" {
+  type        = string
+  description = "Zone 2 for the instance types."
+}
+
+variable "zone_2" {
+  type        = string
+  description = "Zone 3 for the instance types."
+}
+
+variable "subnet" {
+  type        = string
+  description = "Control plane subnet."
+}
+
+variable "image" {
+  type        = string
+  description = "Cluster Image."
+}
+
+variable "machine_type" {
+  type        = string
+  description = "Machine type for the control plane machine."
+  default     = "n1-standard-4"
+}
+
+variable "disk_size" {
+  type        = string
+  description = "Size in GB for the root volume."
+  default     = "128"
+}
+
+variable "disk_type" {
+  type        = string
+  description = "Type of storage disk for the vm."
+  default     = "pd-ssd"
+}
+
+variable "service_account_email" {
+  type        = string
+  description = "Email for the service account attached to the control planes."
+}
+
+data "local_file" "ignition_file" {
+  filename = "${path.module}/master.ign"
+}
+
+resource "google_compute_instance" "master_0" {
+  provider = google-beta
+
+  name = "${var.infra_id}-master-0"
+  zone = "${var.zone_0}"
+  machine_type = "${var.machine_type}"
+  tags = [
+    "${var.infra_id}-master"
+  ]
+  boot_disk {
+    auto_delete = true
+    initialize_params {
+      size = "${var.disk_size}"
+      image = "${var.image}"
+      type = "${var.disk_type}"
     }
+  }
+  network_interface {
+    subnetwork = "${var.subnet}"
+  }
+  metadata = {
+    user-data = data.local_file.ignition_file.content
+  }
+  service_account {
+    email = "${var.service_account_email}"
+    scopes = ["https://www.googleapis.com/auth/cloud-platform"]
+  }
+}
 
-    variable "region" {
-      type        = string
-      description = "GCP Region where the resources will be created."
-      default     = "us-central1"
+resource "google_compute_instance" "master_1" {
+  provider = google-beta
+
+  name = "${var.infra_id}-master-1"
+  zone = "${var.zone_1}"
+  machine_type = "${var.machine_type}"
+  tags = [
+    "${var.infra_id}-master"
+  ]
+  boot_disk {
+    auto_delete = true
+    initialize_params {
+      size = "${var.disk_size}"
+      image = "${var.image}"
+      type = "${var.disk_type}"
     }
+  }
+  network_interface {
+    subnetwork = "${var.subnet}"
+  }
+  metadata = {
+    user-data = data.local_file.ignition_file.content
+  }
+  service_account {
+    email = "${var.service_account_email}"
+    scopes = ["https://www.googleapis.com/auth/cloud-platform"]
+  }
+}
 
-    # Terraform handles lists but the infra-manager --input-values only
-    # supports scalar types.
-    # If you require more or less zones, you must manually add them below
-    # as a single variable for each. You must add the zones to the
-    # locals `zones` list below.
-    variable "zone_0" {
-      type        = string
-      description = "Zone 1 for the instance types."
+resource "google_compute_instance" "master_2" {
+  provider = google-beta
+
+  name = "${var.infra_id}-master-2"
+  zone = "${var.zone_2}"
+  machine_type = "${var.machine_type}"
+  tags = [
+    "${var.infra_id}-master"
+  ]
+  boot_disk {
+    auto_delete = true
+    initialize_params {
+      size = "${var.disk_size}"
+      image = "${var.image}"
+      type = "${var.disk_type}"
     }
-
-    variable "zone_1" {
-      type        = string
-      description = "Zone 2 for the instance types."
-    }
-
-    variable "zone_2" {
-      type        = string
-      description = "Zone 3 for the instance types."
-    }
-
-    variable "subnet" {
-      type        = string
-      description = "Control plane subnet."
-    }
-
-    variable "image" {
-      type        = string
-      description = "Cluster Image."
-    }
-
-    variable "machine_type" {
-      type        = string
-      description = "Machine type for the control plane machine."
-      default     = "n1-standard-4"
-    }
-
-    variable "disk_size" {
-      type        = string
-      description = "Size in GB for the root volume."
-      default     = "128"
-    }
-
-    variable "disk_type" {
-      type        = string
-      description = "Type of storage disk for the vm."
-      default     = "pd-ssd"
-    }
-
-    variable "service_account_email" {
-      type        = string
-      description = "Email for the service account attached to the control planes."
-    }
-
-    data "local_file" "ignition_file" {
-      filename = "${path.module}/master.ign"
-    }
-
-    resource "google_compute_instance" "master_0" {
-      provider = google-beta
-
-      name = "${var.infra_id}-master-0"
-      zone = "${var.zone_0}"
-      machine_type = "${var.machine_type}"
-      tags = [
-        "${var.infra_id}-master"
-      ]
-      boot_disk {
-        auto_delete = true
-        initialize_params {
-          size = "${var.disk_size}"
-          image = "${var.image}"
-          type = "${var.disk_type}"
-        }
-      }
-      network_interface {
-        subnetwork = "${var.subnet}"
-      }
-      metadata = {
-        user-data = data.local_file.ignition_file.content
-      }
-      service_account {
-        email = "${var.service_account_email}"
-        scopes = ["https://www.googleapis.com/auth/cloud-platform"]
-      }
-    }
-
-    resource "google_compute_instance" "master_1" {
-      provider = google-beta
-
-      name = "${var.infra_id}-master-1"
-      zone = "${var.zone_1}"
-      machine_type = "${var.machine_type}"
-      tags = [
-        "${var.infra_id}-master"
-      ]
-      boot_disk {
-        auto_delete = true
-        initialize_params {
-          size = "${var.disk_size}"
-          image = "${var.image}"
-          type = "${var.disk_type}"
-        }
-      }
-      network_interface {
-        subnetwork = "${var.subnet}"
-      }
-      metadata = {
-        user-data = data.local_file.ignition_file.content
-      }
-      service_account {
-        email = "${var.service_account_email}"
-        scopes = ["https://www.googleapis.com/auth/cloud-platform"]
-      }
-    }
-
-    resource "google_compute_instance" "master_2" {
-      provider = google-beta
-
-      name = "${var.infra_id}-master-2"
-      zone = "${var.zone_2}"
-      machine_type = "${var.machine_type}"
-      tags = [
-        "${var.infra_id}-master"
-      ]
-      boot_disk {
-        auto_delete = true
-        initialize_params {
-          size = "${var.disk_size}"
-          image = "${var.image}"
-          type = "${var.disk_type}"
-        }
-      }
-      network_interface {
-        subnetwork = "${var.subnet}"
-      }
-      metadata = {
-        user-data = data.local_file.ignition_file.content
-      }
-      service_account {
-        email = "${var.service_account_email}"
-        scopes = ["https://www.googleapis.com/auth/cloud-platform"]
-      }
-    }
-    ```
+  }
+  network_interface {
+    subnetwork = "${var.subnet}"
+  }
+  metadata = {
+    user-data = data.local_file.ignition_file.content
+  }
+  service_account {
+    email = "${var.service_account_email}"
+    scopes = ["https://www.googleapis.com/auth/cloud-platform"]
+  }
+}
+```
 
 ## Creating additional worker machines in Google Cloud { #installation-creating-gcp-worker_installing-gcp-user-infra }
 
@@ -3319,154 +3327,152 @@ You can create worker machines in Google Cloud for your cluster by using the Inf
 
 ### Infrastructure Manager template for worker machines { #installation-infrastructure-manager-worker_installing-gcp-user-infra }
 
-You can use the following Infrastructure Manager template to deploy the worker machines that you need for your OpenShift Container Platform cluster:
+You can use the following `06_worker.tf` Infrastructure Manager template to deploy the worker machines that you need for your OpenShift Container Platform cluster:
 
-??? note "`06_worker.tf` Infrastructure Manager template"
-
-    ```terraform
-    terraform {
-      # Infra manager supports specific Terraform versions; ensure compatibility
-      required_version = ">=1.2.3"
-      required_providers {
-        google = {
-          source = "hashicorp/google"
-          version = ">= 4.0.0"
-        }
-      }
+```terraform
+terraform {
+  # Infra manager supports specific Terraform versions; ensure compatibility
+  required_version = ">=1.2.3"
+  required_providers {
+    google = {
+      source = "hashicorp/google"
+      version = ">= 4.0.0"
     }
+  }
+}
 
-    provider "google-beta" {
-      project = "${var.project}"
-      region = "${var.region}"
+provider "google-beta" {
+  project = "${var.project}"
+  region = "${var.region}"
+}
+
+variable "infra_id" {
+  type        = string
+  description = "OpenShift Installer Infrastructure ID"
+}
+
+variable "project" {
+  type        = string
+  description = "Project ID"
+}
+
+variable "region" {
+  type        = string
+  description = "GCP Region where the resources will be created."
+  default     = "us-central1"
+}
+
+# Terraform handles lists but the infra-manager --input-values only
+# supports scalar types.
+# If you require more or less zones, you must manually add them below
+# as a single variable for each. You must add the zones to the
+# locals `zones` list below.
+variable "zone_0" {
+  type        = string
+  description = "Zone 1 for the instance types."
+}
+
+variable "zone_1" {
+  type        = string
+  description = "Zone 2 for the instance types."
+}
+
+variable "subnet" {
+  type        = string
+  description = "Compute subnet."
+}
+
+variable "image" {
+  type        = string
+  description = "Cluster Image."
+}
+
+variable "machine_type" {
+  type        = string
+  description = "Machine type for the compute machine."
+  default     = "n1-standard-4"
+}
+
+variable "disk_size" {
+  type        = string
+  description = "Size in GB for the root volume."
+  default     = "128"
+}
+
+variable "disk_type" {
+  type        = string
+  description = "Type of storage disk for the vm."
+  default     = "pd-ssd"
+}
+
+variable "service_account_email" {
+  type        = string
+  description = "Email for the service account attached to the compute nodes."
+}
+
+data "local_file" "ignition_file" {
+  filename = "${path.module}/worker.ign"
+}
+
+
+resource "google_compute_instance" "worker_0" {
+  provider = google-beta
+
+  name = "${var.infra_id}-worker-0"
+  zone = "${var.zone_0}"
+  machine_type = "${var.machine_type}"
+  tags = [
+    "${var.infra_id}-worker"
+  ]
+  boot_disk {
+    auto_delete = true
+    initialize_params {
+      size = "${var.disk_size}"
+      image = "${var.image}"
+      type = "${var.disk_type}"
     }
+  }
+  network_interface {
+    subnetwork = "${var.subnet}"
+  }
+  metadata = {
+    user-data = data.local_file.ignition_file.content
+  }
+  service_account {
+    email = "${var.service_account_email}"
+    scopes = ["https://www.googleapis.com/auth/cloud-platform"]
+  }
+}
 
-    variable "infra_id" {
-      type        = string
-      description = "OpenShift Installer Infrastructure ID"
+resource "google_compute_instance" "worker_1" {
+  provider = google-beta
+
+  name = "${var.infra_id}-worker-1"
+  zone = "${var.zone_1}"
+  machine_type = "${var.machine_type}"
+  tags = [
+    "${var.infra_id}-worker"
+  ]
+  boot_disk {
+    auto_delete = true
+    initialize_params {
+      size = "${var.disk_size}"
+      image = "${var.image}"
+      type = "${var.disk_type}"
     }
-
-    variable "project" {
-      type        = string
-      description = "Project ID"
-    }
-
-    variable "region" {
-      type        = string
-      description = "GCP Region where the resources will be created."
-      default     = "us-central1"
-    }
-
-    # Terraform handles lists but the infra-manager --input-values only
-    # supports scalar types.
-    # If you require more or less zones, you must manually add them below
-    # as a single variable for each. You must add the zones to the
-    # locals `zones` list below.
-    variable "zone_0" {
-      type        = string
-      description = "Zone 1 for the instance types."
-    }
-
-    variable "zone_1" {
-      type        = string
-      description = "Zone 2 for the instance types."
-    }
-
-    variable "subnet" {
-      type        = string
-      description = "Compute subnet."
-    }
-
-    variable "image" {
-      type        = string
-      description = "Cluster Image."
-    }
-
-    variable "machine_type" {
-      type        = string
-      description = "Machine type for the compute machine."
-      default     = "n1-standard-4"
-    }
-
-    variable "disk_size" {
-      type        = string
-      description = "Size in GB for the root volume."
-      default     = "128"
-    }
-
-    variable "disk_type" {
-      type        = string
-      description = "Type of storage disk for the vm."
-      default     = "pd-ssd"
-    }
-
-    variable "service_account_email" {
-      type        = string
-      description = "Email for the service account attached to the compute nodes."
-    }
-
-    data "local_file" "ignition_file" {
-      filename = "${path.module}/worker.ign"
-    }
-
-
-    resource "google_compute_instance" "worker_0" {
-      provider = google-beta
-
-      name = "${var.infra_id}-worker-0"
-      zone = "${var.zone_0}"
-      machine_type = "${var.machine_type}"
-      tags = [
-        "${var.infra_id}-worker"
-      ]
-      boot_disk {
-        auto_delete = true
-        initialize_params {
-          size = "${var.disk_size}"
-          image = "${var.image}"
-          type = "${var.disk_type}"
-        }
-      }
-      network_interface {
-        subnetwork = "${var.subnet}"
-      }
-      metadata = {
-        user-data = data.local_file.ignition_file.content
-      }
-      service_account {
-        email = "${var.service_account_email}"
-        scopes = ["https://www.googleapis.com/auth/cloud-platform"]
-      }
-    }
-
-    resource "google_compute_instance" "worker_1" {
-      provider = google-beta
-
-      name = "${var.infra_id}-worker-1"
-      zone = "${var.zone_1}"
-      machine_type = "${var.machine_type}"
-      tags = [
-        "${var.infra_id}-worker"
-      ]
-      boot_disk {
-        auto_delete = true
-        initialize_params {
-          size = "${var.disk_size}"
-          image = "${var.image}"
-          type = "${var.disk_type}"
-        }
-      }
-      network_interface {
-        subnetwork = "${var.subnet}"
-      }
-      metadata = {
-        user-data = data.local_file.ignition_file.content
-      }
-      service_account {
-        email = "${var.service_account_email}"
-        scopes = ["https://www.googleapis.com/auth/cloud-platform"]
-      }
-    }
-    ```
+  }
+  network_interface {
+    subnetwork = "${var.subnet}"
+  }
+  metadata = {
+    user-data = data.local_file.ignition_file.content
+  }
+  service_account {
+    email = "${var.service_account_email}"
+    scopes = ["https://www.googleapis.com/auth/cloud-platform"]
+  }
+}
+```
 
 ## Removing bootstrap resources in Google Cloud { #installation-gcp-user-infra-wait-for-bootstrap_installing-gcp-user-infra }
 
@@ -3560,7 +3566,7 @@ To manage your cluster and deploy applications from the command line on Linux, i
 
 6. Place the `oc` binary in a directory that is on your `PATH`.
 
-    To check your `PATH`, execute the following command:
+    To check your `PATH`, run the following command:
 
     ```terminal
     $ echo $PATH
@@ -3596,7 +3602,7 @@ To manage your cluster and deploy applications from the command line on Windows,
 
 5. Move the `oc` binary to a directory that is on your `PATH` variable.
 
-    To check your `PATH` variable, open the command prompt and execute the following command:
+    To check your `PATH` variable, open the Command Prompt and run the following command:
 
     ```terminal
     C:\> path
@@ -3634,11 +3640,11 @@ To manage your cluster and deploy applications from the command line on macOS, i
 
         For macOS arm64, choose the **OpenShift v4.22 macOS arm64 Client** entry.
 
-5. Unpack and unzip the archive.
+5. Extract the archive.
 
 6. Move the `oc` binary to a directory on your `PATH` variable.
 
-    To check your `PATH` variable, open a terminal and execute the following command:
+    To check your `PATH` variable, open a terminal and run the following command:
 
     ```terminal
     $ echo $PATH

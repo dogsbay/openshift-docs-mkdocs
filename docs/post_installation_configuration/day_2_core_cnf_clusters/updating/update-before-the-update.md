@@ -46,7 +46,7 @@ You must backup the etcd database before you proceed with the update.
 
 ### Backing up etcd data { #backing-up-etcd-data_update-before-the-update }
 
-Follow these steps to back up etcd data by creating an etcd snapshot and backing up the resources for the static pods. This backup can be saved and used at a later time if you need to restore etcd.
+You can back up etcd data by creating an etcd snapshot and saving the static pod resources on a control plane host. This backup preserves the cluster state and provides the resources required to restore etcd at a later time.
 
 !!! warning
 
@@ -58,7 +58,7 @@ For a Two-Node with Fencing (TNF) setup, follow the steps to back up etcd data o
 
 - You have access to the cluster as a user with the `cluster-admin` role.
 
-- You have checked whether the cluster-wide proxy is enabled.
+- You have verified whether the cluster-wide proxy is enabled.
 
     !!! tip
 
@@ -92,7 +92,7 @@ For a Two-Node with Fencing (TNF) setup, follow the steps to back up etcd data o
     $ export NO_PROXY=<example.com>
     ```
 
-4. Run the `cluster-backup.sh` script in the debug shell and pass in the location to save the backup to.
+4. Run the `cluster-backup.sh` script with the path to the directory where you want to save the backup:
 
     !!! tip
 
@@ -123,7 +123,7 @@ For a Two-Node with Fencing (TNF) setup, follow the steps to back up etcd data o
 
     In this example, two files are created in the `/home/core/assets/backup/` directory on the control plane host:
 
-    - `snapshot_<datetimestamp>.db`: This file is the etcd snapshot. The `cluster-backup.sh` script confirms its validity.
+    - `snapshot_<datetimestamp>.db`: This file is the etcd snapshot. The `cluster-backup.sh` script confirms the validity of the snapshot.
 
     - `static_kuberesources_<datetimestamp>.tar.gz`: This file contains the resources for the static pods. If etcd encryption is enabled, it also contains the encryption keys for the etcd snapshot.
 
@@ -135,7 +135,7 @@ For a Two-Node with Fencing (TNF) setup, follow the steps to back up etcd data o
 
 ### Creating a single automated etcd backup { #creating-single-etcd-backup_update-before-the-update }
 
-Follow these steps to create a single etcd backup by creating and applying a custom resource (CR).
+You can create a single automated etcd backup by applying an `EtcdBackup` custom resource (CR). Backup data is stored on either dynamically-provisioned or local storage.
 
 **Prerequisites**
 
@@ -144,7 +144,7 @@ Follow these steps to create a single etcd backup by creating and applying a cus
 
 **Procedure**
 
-- If dynamically-provisioned storage is available, complete the following steps to create a single automated etcd backup:
+1. If dynamically-provisioned storage is available, complete the following steps to create a single automated etcd backup:
 
     1. Create a persistent volume claim (PVC) named `etcd-backup-pvc.yaml` with contents such as the following example:
 
@@ -174,7 +174,7 @@ Follow these steps to create a single etcd backup by creating and applying a cus
         $ oc apply -f etcd-backup-pvc.yaml
         ```
 
-    3. Verify the creation of the PVC by running the following command:
+    3. Verify that the PVC was created by running the following command:
 
         ```terminal
         $ oc get pvc
@@ -206,13 +206,13 @@ Follow these steps to create a single etcd backup by creating and applying a cus
         `<pvc_name>`
         :   Specifies the name of the PVC to save the backup to. Adjust this value according to your environment, such as `etcd-backup-pvc`.
 
-    5. Apply the CR to start a single backup:
+    5. Apply the CR to start a single backup by running the following command:
 
         ```terminal
         $ oc apply -f etcd-single-backup.yaml
         ```
 
-- If dynamically-provisioned storage is not available, complete the following steps to create a single automated etcd backup:
+2. If dynamically-provisioned storage is not available, complete the following steps to create a single automated etcd backup:
 
     1. Create a `StorageClass` CR file named `etcd-backup-local-storage.yaml` with the following contents:
 
@@ -264,9 +264,9 @@ Follow these steps to create a single etcd backup by creating and applying a cus
         :   Specifies the amount of storage available to the PV. Adjust this value for your requirements, such as `100Gi`.
 
         `<node_name>`
-        :   Specifies the node to attach this PV to. Replace with the actual node name, such as `master-0`.
+        :   Specifies the control plane node to attach this PV to. Replace with the actual node name.
 
-    4. Verify the creation of the PV by running the following command:
+    4. Verify that the PV was created by running the following command:
 
         ```terminal
         $ oc get pv
@@ -320,9 +320,9 @@ Follow these steps to create a single etcd backup by creating and applying a cus
         where:
 
         `<pvc_name>`
-        :   Specifies the name of the persistent volume claim (PVC) to save the backup to. Adjust this value according to your environment, such as `etcd-backup-pvc`.
+        :   Specifies the name of the PVC to save the backup to. Adjust this value according to your environment, such as `etcd-backup-pvc`.
 
-    8. Apply the CR to start a single backup:
+    8. Apply the CR to start a single backup by running the following command:
 
         ```terminal
         $ oc apply -f etcd-single-backup.yaml

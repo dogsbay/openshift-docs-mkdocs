@@ -1267,7 +1267,7 @@ The default setting that deploys compute nodes in private subnets might not meet
 
 ## Deploying the cluster { #installation-launching-installer_installing-aws-localzone }
 
-To deploy your OpenShift Container Platform cluster, you can initialize installation by running the `openshift-install create cluster` command from the directory that contains the installation program. The installation program provisions infrastructure and completes cluster setup.
+To deploy your OpenShift Container Platform cluster, you initialize installation by running the `openshift-install create cluster` command from the directory that contains the installation program. The installation program provisions the required infrastructure and completes the cluster setup.
 
 !!! warning
 
@@ -1288,15 +1288,18 @@ $ ./openshift-install create cluster --dir <installation_directory> \
     --log-level=info
 ```
 
-- For `<installation_directory>`, specify the location of your customized `./install-config.yaml` file.
+where:
 
-- To view different installation details, specify `warn`, `debug`, or `error` instead of `info`.
+- `<installation_directory>`: Specifies the location of your customized `./install-config.yaml` file.
+- `--log-level`: Specifies the log level. To view different installation details, specify `warn`, `debug`, or `error` instead of `info`.
 
-    1. Optional: Remove or disable the `AdministratorAccess` policy from the IAM account that you used to install the cluster.
+<!-- -->
 
-        !!! note
+1. Optional: Remove or disable the `AdministratorAccess` policy from the IAM account that you used to install the cluster.
 
-            The elevated permissions provided by the `AdministratorAccess` policy are required only during installation.
+    !!! note
+
+        The elevated permissions provided by the `AdministratorAccess` policy are required only during installation.
 
 **Verification**
 
@@ -1310,7 +1313,9 @@ When the cluster deployment completes successfully:
 
         Do not delete the installation program or the files that the installation program creates. Both are required to delete the cluster.
 
-    ```terminal title="Example output"
+    The following example shows the expected output:
+
+    ```terminal
     ...
     INFO Install complete!
     INFO To access the cluster as the system:admin user when using 'oc', run 'export KUBECONFIG=/home/myuser/install_dir/auth/kubeconfig'

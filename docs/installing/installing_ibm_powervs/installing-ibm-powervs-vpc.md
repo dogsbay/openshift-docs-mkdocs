@@ -151,7 +151,7 @@ If you want to SSH in to your cluster nodes to perform installation debugging or
     $ ssh-add <path>/<file_name>
     ```
 
-    Specifies the path and file name for your SSH private key, such as `~/.ssh/id_ed25519`
+    Specify the path and file name for your SSH private key, such as `~/.ssh/id_ed25519`.
 
     ```terminal title="Example output"
     Identity added: /home/<you>/<path>/<file_name> (<computer_name>)
@@ -163,9 +163,7 @@ If you want to SSH in to your cluster nodes to perform installation debugging or
 
 ## Obtaining the installation program { #installation-obtaining-installer_installing-ibm-powervs-vpc }
 
-Before you install OpenShift Container Platform, download the installation file on
-
-the host you are using for installation.
+Before you install OpenShift Container Platform, download the installation file on the host you are using for installation, so that installation assets exist for deployment in your environment.
 
 **Prerequisites**
 
@@ -663,7 +661,7 @@ You can use the Cloud Credential Operator (CCO) utility (`ccoctl`) to create the
 
 ## Deploying the cluster { #installation-launching-installer_installing-ibm-powervs-vpc }
 
-To deploy your OpenShift Container Platform cluster, you can initialize installation by running the `openshift-install create cluster` command from the directory that contains the installation program. The installation program provisions infrastructure and completes cluster setup.
+To deploy your OpenShift Container Platform cluster, you initialize installation by running the `openshift-install create cluster` command from the directory that contains the installation program. The installation program provisions the required infrastructure and completes the cluster setup.
 
 !!! warning
 
@@ -684,8 +682,10 @@ $ ./openshift-install create cluster --dir <installation_directory> \
     --log-level=info
 ```
 
-- For `<installation_directory>`, specify the location of your customized `./install-config.yaml` file.
-- To view different installation details, specify `warn`, `debug`, or `error` instead of `info`.
+where:
+
+- `<installation_directory>`: Specifies the location of your customized `./install-config.yaml` file.
+- `--log-level`: Specifies the log level. To view different installation details, specify `warn`, `debug`, or `error` instead of `info`.
 
 **Verification**
 
@@ -699,7 +699,9 @@ When the cluster deployment completes successfully:
 
         Do not delete the installation program or the files that the installation program creates. Both are required to delete the cluster.
 
-    ```terminal title="Example output"
+    The following example shows the expected output:
+
+    ```terminal
     ...
     INFO Install complete!
     INFO To access the cluster as the system:admin user when using 'oc', run 'export KUBECONFIG=/home/myuser/install_dir/auth/kubeconfig'
@@ -741,7 +743,7 @@ To manage your cluster and deploy applications from the command line on Linux, i
 
 6. Place the `oc` binary in a directory that is on your `PATH`.
 
-    To check your `PATH`, execute the following command:
+    To check your `PATH`, run the following command:
 
     ```terminal
     $ echo $PATH
@@ -777,7 +779,7 @@ To manage your cluster and deploy applications from the command line on Windows,
 
 5. Move the `oc` binary to a directory that is on your `PATH` variable.
 
-    To check your `PATH` variable, open the command prompt and execute the following command:
+    To check your `PATH` variable, open the Command Prompt and run the following command:
 
     ```terminal
     C:\> path
@@ -815,11 +817,11 @@ To manage your cluster and deploy applications from the command line on macOS, i
 
         For macOS arm64, choose the **OpenShift v4.22 macOS arm64 Client** entry.
 
-5. Unpack and unzip the archive.
+5. Extract the archive.
 
 6. Move the `oc` binary to a directory on your `PATH` variable.
 
-    To check your `PATH` variable, open a terminal and execute the following command:
+    To check your `PATH` variable, open a terminal and run the following command:
 
     ```terminal
     $ echo $PATH

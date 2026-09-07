@@ -4,7 +4,7 @@ title: Dynamic plugin example
 
 # Dynamic plugin example { #dynamic-plugin-example_{context} }
 
-Before working through the example, verify that the plugin is working by following the steps in [Dynamic plugin development](dynamic-plugins-get-started.md#dynamic-plugin-development_dynamic-plugins-get-started)
+Before working through the example, verify that the plugin is working by following the steps in the Dynamic plugin development documentation.
 
 ## Adding a tab to the pods page { #adding-tab-to-pods-page_dynamic-plugin-example }
 
@@ -113,3 +113,7 @@ There are different customizations you can make to the OpenShift Container Platf
 **Verification**
 
 - Visit a **Pod** page to view the added tab.
+
+**Additional resources**
+
+- [Dynamic plugin development](dynamic-plugins-get-started.md#dynamic-plugin-development_dynamic-plugins-get-started)

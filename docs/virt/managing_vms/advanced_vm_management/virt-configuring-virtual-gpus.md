@@ -158,9 +158,6 @@ The NVIDIA GPU Operator manages NVIDIA GPU resources in an OpenShift Container P
       vfioManager:
         enabled: true
       vgpuDeviceManager:
-        config:
-          default: default
-          name: vgpu-devices-config
         enabled: true
       vgpuManager:
         enabled: true

@@ -12,11 +12,13 @@ title: Managing deployment processes
 
     Instead, use `Deployment` objects or another alternative to provide declarative updates for pods.
 
-`DeploymentConfig` objects can be managed from the OpenShift Container Platform web console’s **Workloads** page or using the `oc` CLI. The following procedures show CLI usage unless otherwise stated.
+You can manage `DeploymentConfig` objects from the OpenShift Container Platform web console’s **Workloads** page or by using the `oc` CLI, depending on your preference. 
+
+The following procedures show CLI usage unless otherwise stated.
 
 ### Starting a deployment { #deployments-starting-a-deployment_deployment-operations }
 
-You can start a rollout to begin the deployment process of your application.
+To begin a new rollout of your application in OpenShift Container Platform, you can start a deployment from an existing `DeploymentConfig` object. Use the `oc rollout latest` command to create a new replication controller and run the deployment process.
 
 **Procedure**
 
@@ -32,7 +34,7 @@ You can start a rollout to begin the deployment process of your application.
 
 ### Viewing a deployment { #deployments-viewing-a-deployment_deployment-operations }
 
-You can view a deployment to get basic information about all the available revisions of your application.
+To review the rollout history of your application in OpenShift Container Platform, you can view a deployment. Use the `oc rollout history` and `oc describe` commands to inspect revisions of a `DeploymentConfig` object.
 
 **Procedure**
 
@@ -56,7 +58,7 @@ You can view a deployment to get basic information about all the available revis
 
 ### Retrying a deployment { #deployments-retrying-deployment_deployment-operations }
 
-If the current revision of your `DeploymentConfig` object failed to deploy, you can restart the deployment process.
+To restart a failed rollout of a `DeploymentConfig` object in OpenShift Container Platform, you can retry the deployment. Use the `oc rollout retry` command to restart the same revision without creating a new deployment revision.
 
 **Procedure**
 
@@ -74,7 +76,7 @@ If the current revision of your `DeploymentConfig` object failed to deploy, you 
 
 ### Rolling back a deployment { #deployments-rolling-back_deployment-operations }
 
-Rollbacks revert an application back to a previous revision and can be performed using the REST API, the CLI, or the web console.
+To revert an application to a previous revision, you can perform a roll back by using the REST API, the CLI, or the web console.
 
 **Procedure**
 
@@ -100,7 +102,7 @@ Rollbacks revert an application back to a previous revision and can be performed
 
 ### Executing commands inside a container { #deployments-exe-cmd-in-container_deployment-operations }
 
-You can add a command to a container, which modifies the container’s startup behavior by overruling the image’s `ENTRYPOINT`. This is different from a lifecycle hook, which instead can be run once per deployment at a specified time.
+To change how a container starts in a `DeploymentConfig` object in OpenShift Container Platform, you can set a `command` and optional `args` in the pod template. These values override the image `ENTRYPOINT` and differ from lifecycle hooks, which run once per deployment at a specified time.
 
 **Procedure**
 
@@ -152,6 +154,8 @@ You can add a command to a container, which modifies the container’s startup b
 
 ### Viewing deployment logs { #deployments-viewing-logs_deployment-operations }
 
+To troubleshoot a rollout in OpenShift Container Platform, you can view deployment logs for a `DeploymentConfig` object. Use the `oc logs` command to stream logs from the latest revision or from an older failed deployment process.
+
 **Procedure**
 
 1. To stream the logs of the latest revision for a given `DeploymentConfig` object:
@@ -170,7 +174,7 @@ You can add a command to a container, which modifies the container’s startup b
 
 ### Deployment triggers { #deployments-triggers_deployment-operations }
 
-A `DeploymentConfig` object can contain triggers, which drive the creation of new deployment processes in response to events inside the cluster.
+A deployment trigger on a `DeploymentConfig` object in OpenShift Container Platform starts a new deployment process when cluster events occur. Use config change or image change triggers to roll out automatically, or leave triggers empty if you want to start deployments manually.
 
 !!! warning
 
@@ -211,7 +215,7 @@ spec:
   triggers:
     - type: "ImageChange"
       imageChangeParams:
-        automatic: true (1)
+        automatic: true
         from:
           kind: "ImageStreamTag"
           name: "origin-ruby-sample:latest"
@@ -220,7 +224,7 @@ spec:
           - "helloworld"
 ```
 
-1. If the `imageChangeParams.automatic` field is set to `false`, the trigger is disabled.
+If the `spec.triggers.imageChangeParams.automatic` field is set to `true`, the trigger is enabled. If `false`, the trigger is disabled.
 
 With the above example, when the `latest` tag value of the `origin-ruby-sample` image stream changes and the new image value differs from the current image specified in the `DeploymentConfig` object’s `helloworld` container, a new replication controller is created using the new image for the `helloworld` container.
 
@@ -229,6 +233,8 @@ With the above example, when the `latest` tag value of the `origin-ruby-sample` 
     If an image change trigger is defined on a `DeploymentConfig` object (with a config change trigger and `automatic=false`, or with `automatic=true`) and the image stream tag pointed by the image change trigger does not exist yet, the initial deployment process will automatically start as soon as an image is imported or pushed by a build to the image stream tag.
 
 #### Setting deployment triggers { #deployments-setting-triggers_deployment-operations }
+
+To automatically start a new rollout when an image changes in OpenShift Container Platform, you can set deployment triggers on a `DeploymentConfig` object. Use the `oc set triggers` command to configure an image change trigger for a container.
 
 **Procedure**
 
@@ -240,6 +246,8 @@ With the above example, when the `latest` tag value of the `origin-ruby-sample` 
     ```
 
 ### Setting deployment resources { #deployments-setting-resources_deployment-operations }
+
+To limit CPU, memory, and ephemeral storage used by a deployment in OpenShift Container Platform, you can set resource limits on the deployment strategy. Define limits in the `resources` section so deployer pods do not consume unbounded node capacity.
 
 A deployment is completed by a pod that consumes resources (memory, CPU, and ephemeral storage) on a node. By default, pods consume unbounded node resources. However, if a project specifies default container limits, then pods consume resources up to those limits.
 
@@ -264,16 +272,16 @@ You can also limit resource use by specifying resource limits as part of the dep
       type: "Recreate"
       resources:
         limits:
-          cpu: "100m" (1)
-          memory: "256Mi" (2)
-          ephemeral-storage: "1Gi" (3)
+          cpu: "100m"
+          memory: "256Mi"
+          ephemeral-storage: "1Gi"
     ```
 
-    1. `cpu` is in CPU units: `100m` represents 0.1 CPU units (100 \* 1e-3).
+    - `spec.resources.limits.cpu` specifies the CPU units: `100m` represents 0.1 CPU units (100 \* 1e-3).
 
-    2. `memory` is in bytes: `256Mi` represents 268435456 bytes (256 \* 2 ^ 20).
+    - `spec.resources.limits.memory` specifies the bytes for memory: `256Mi` represents 268435456 bytes (256 \* 2 ^ 20).
 
-    3. `ephemeral-storage` is in bytes: `1Gi` represents 1073741824 bytes (2 ^ 30).
+    - `spec.resources.limits.ephemeral-storage` specifies the bytes for ephemeral-storage: `1Gi` represents 1073741824 bytes (2 ^ 30).
 
         However, if a quota has been defined for your project, one of the following two items is required:
 
@@ -289,13 +297,13 @@ You can also limit resource use by specifying resource limits as part of the dep
             # ...
               type: "Recreate"
               resources:
-                requests: (1)
+                requests:
                   cpu: "100m"
                   memory: "256Mi"
                   ephemeral-storage: "1Gi"
             ```
 
-            1. The `requests` object contains the list of resources that correspond to the list of resources in the quota.
+            The `spec.resources.requests` object contains the list of resources that correspond to the list of resources in the quota.
 
         - A limit range defined in your project, where the defaults from the `LimitRange` object apply to pods created during the deployment process.
 
@@ -303,11 +311,11 @@ You can also limit resource use by specifying resource limits as part of the dep
 
 **Additional resources**
 
-- For more information about resource limits and requests, see [Understanding managing application memory](../../nodes/clusters/nodes-cluster-resource-configure.md#nodes-cluster-resource-configure-about_nodes-cluster-resource-configure).
+- [Understanding managing application memory](../../nodes/clusters/nodes-cluster-resource-configure.md#nodes-cluster-resource-configure-about_nodes-cluster-resource-configure)
 
 ### Scaling manually { #deployments-scaling-manually_deployment-operations }
 
-In addition to rollbacks, you can exercise fine-grained control over the number of replicas by manually scaling them.
+To control how many pod replicas run for a `DeploymentConfig` object in OpenShift Container Platform, you can scale manually. Use the `oc scale` command to set the desired number of replicas.
 
 !!! note
 
@@ -325,7 +333,7 @@ In addition to rollbacks, you can exercise fine-grained control over the number 
 
 ### Accessing private repositories from DeploymentConfig objects { #deployments-accessing-private-repos_deployment-operations }
 
-You can add a secret to your `DeploymentConfig` object so that it can access images from a private repository. This procedure shows the OpenShift Container Platform web console method.
+To pull container images from a private repository into a `DeploymentConfig` object in OpenShift Container Platform, you can add a pull secret to the object. Create the secret in the web console, then set it as the pull secret in the `DeploymentConfig` object.
 
 **Procedure**
 
@@ -338,7 +346,7 @@ You can add a secret to your `DeploymentConfig` object so that it can access ima
 
 ### Assigning pods to specific nodes { #deployments-assigning-pods-to-nodes_deployment-operations }
 
-You can use node selectors in conjunction with labeled nodes to control pod placement.
+To control which nodes run your application pods in OpenShift Container Platform, you can set a node selector on a `Pod` configuration or pod template. Combine your selector with labels on nodes, including any default project selectors set by a cluster administrator.
 
 Cluster administrators can set the default node selector for a project in order to restrict pod placement to specific nodes. As a developer, you can set a node selector on a `Pod` configuration to restrict nodes even further.
 
@@ -368,7 +376,7 @@ Cluster administrators can set the default node selector for a project in order 
 
 ### Running a pod with a different service account { #deployments-running-pod-svc-acct_deployment-operations }
 
-You can run a pod with a service account other than the default.
+To run pods under a non-default identity in OpenShift Container Platform, you can assign a different service account to a `DeploymentConfig` object. Edit the object and set the `serviceAccount` and `serviceAccountName` fields to the account you want to use.
 
 **Procedure**
 

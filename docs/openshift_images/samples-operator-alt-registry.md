@@ -56,7 +56,7 @@ To manage your cluster and deploy applications from the command line on Linux, i
 
 6. Place the `oc` binary in a directory that is on your `PATH`.
 
-    To check your `PATH`, execute the following command:
+    To check your `PATH`, run the following command:
 
     ```terminal
     $ echo $PATH
@@ -92,7 +92,7 @@ To manage your cluster and deploy applications from the command line on Windows,
 
 5. Move the `oc` binary to a directory that is on your `PATH` variable.
 
-    To check your `PATH` variable, open the command prompt and execute the following command:
+    To check your `PATH` variable, open the Command Prompt and run the following command:
 
     ```terminal
     C:\> path
@@ -130,11 +130,11 @@ To manage your cluster and deploy applications from the command line on macOS, i
 
         For macOS arm64, choose the **OpenShift v4.22 macOS arm64 Client** entry.
 
-5. Unpack and unzip the archive.
+5. Extract the archive.
 
 6. Move the `oc` binary to a directory on your `PATH` variable.
 
-    To check your `PATH` variable, open a terminal and execute the following command:
+    To check your `PATH` variable, open a terminal and run the following command:
 
     ```terminal
     $ echo $PATH
