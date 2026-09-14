@@ -28,7 +28,7 @@ The smallest OpenShift Container Platform clusters require the following hosts:
 
 !!! warning
 
-    To keep high availability of your cluster, use separate physical hosts for these cluster machines.
+    To maintain high availability of your cluster, use separate physical hosts for these cluster machines.
 
 The bootstrap and control plane machines must use Red Hat Enterprise Linux CoreOS (RHCOS) as the operating system. However, the compute machines can use Red Hat Enterprise Linux CoreOS (RHCOS), Red Hat Enterprise Linux (RHEL) 8.6 and later.
 

@@ -396,7 +396,7 @@ You can examine the multi-network policies in a namespace.
 
 ### Delete a multi-network policy using the CLI { #nw-networkpolicy-delete-cli_configuring-multi-network-policy }
 
-You can delete a multi-network policy in a namespace.
+You can delete a multi-network policy in a namespace by using the CLI.
 
 !!! note
 

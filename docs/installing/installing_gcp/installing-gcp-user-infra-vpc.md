@@ -431,7 +431,7 @@ You can deploy to the following Google Cloud regions:
 
 ### Installing and configuring CLI tools for Google Cloud { #installation-gcp-install-cli_installing-gcp-user-infra-vpc }
 
-To install OpenShift Container Platform on Google Cloud using user-provisioned infrastructure, you must install and configure the CLI tools for Google Cloud.
+Before you deploy OpenShift Container Platform on Google Cloud with user-provisioned infrastructure, you must set up the required CLI tools to create and manage your cloud resources.
 
 **Prerequisites**
 
@@ -475,7 +475,7 @@ The smallest OpenShift Container Platform clusters require the following hosts:
 
 !!! warning
 
-    To keep high availability of your cluster, use separate physical hosts for these cluster machines.
+    To maintain high availability of your cluster, use separate physical hosts for these cluster machines.
 
 The bootstrap and control plane machines must use Red Hat Enterprise Linux CoreOS (RHCOS) as the operating system. However, the compute machines can use Red Hat Enterprise Linux CoreOS (RHCOS), Red Hat Enterprise Linux (RHEL) 8.6 and later.
 
@@ -1141,7 +1141,7 @@ The Ignition config files contain a unique cluster identifier that you can use t
 
 ## Exporting common variables for Infrastructure Manager templates { #installation-user-infra-exporting-common-variables_installing-gcp-user-infra-vpc }
 
-You must export a common set of variables that are used with the provided Infrastructure Manager templates used to assist in installing a cluster with user-provisioned infrastructure on Google Cloud.
+You must export a common set of variables that the Infrastructure Manager templates reference to provision the resources for a cluster that uses user-provisioned infrastructure on Google Cloud.
 
 !!! note
 
@@ -1287,7 +1287,7 @@ You must configure networking for all the Red Hat Enterprise Linux CoreOS (RHCO
 
 ### Setting the cluster node hostnames through DHCP { #installation-host-names-dhcp-user-infra_installing-gcp-user-infra-vpc }
 
-On Red Hat Enterprise Linux CoreOS (RHCOS) machines, the hostname is set through NetworkManager. By default, the machines obtain their hostname through DHCP. If the hostname is not provided by DHCP, set statically through kernel arguments, or another method, it is obtained through a reverse DNS lookup. Reverse DNS lookup occurs after the network has been initialized on a node and can take time to resolve. Other system services can start prior to this and detect the hostname as `localhost` or similar. You can avoid this by using DHCP to provide the hostname for each cluster node.
+On Red Hat Enterprise Linux CoreOS (RHCOS) machines, the hostname is set through NetworkManager. By default, the machines obtain their hostname through DHCP. If the hostname is not provided by DHCP, set statically through kernel arguments, or another method, it is obtained through a reverse DNS lookup. Reverse DNS lookup occurs after the network has been initialized on a node and can take time to resolve. Other system services can start before this and detect the hostname as `localhost` or similar. You can avoid this by using DHCP to provide the hostname for each cluster node.
 
 Additionally, setting the hostnames through DHCP can bypass any manual DNS record name configuration errors in environments that have a DNS split-horizon implementation.
 
@@ -2252,7 +2252,7 @@ You must create IAM policy bindings in Google Cloud for your OpenShift Container
 
 ## Creating the RHCOS cluster image for the Google Cloud infrastructure { #installation-gcp-user-infra-rhcos_installing-gcp-user-infra-vpc }
 
-You must use a valid Red Hat Enterprise Linux CoreOS (RHCOS) image for Google Cloud for your OpenShift Container Platform nodes.
+To deploy OpenShift Container Platform nodes on Google Cloud, you must create a valid Red Hat Enterprise Linux CoreOS (RHCOS) image in your Google Cloud project because RHCOS images are not pre-published on Google Cloud.
 
 **Prerequisites**
 
@@ -3053,7 +3053,7 @@ resource "google_compute_instance" "worker_1" {
 
 ## Removing bootstrap resources in Google Cloud { #installation-gcp-user-infra-wait-for-bootstrap_installing-gcp-user-infra-vpc }
 
-After you create all of the required infrastructure in Google Cloud, wait for the bootstrap process to complete on the machines that you provisioned by using the Ignition config files. The installation program created the Ignition config files.
+After the bootstrap process completes on your Google Cloud infrastructure, you can remove the bootstrap resources to reclaim the capacity that they consume, because the cluster no longer requires them.
 
 **Prerequisites**
 
@@ -3066,15 +3066,19 @@ After you create all of the required infrastructure in Google Cloud, wait for th
 1. Change to the directory that includes the installation program and run the following command:
 
     ```terminal
-    $ ./openshift-install wait-for bootstrap-complete --dir <installation_directory> \ (1)
-        --log-level info (2)
+    $ ./openshift-install wait-for bootstrap-complete --dir <installation_directory> \
+        --log-level info
     ```
 
-    1. For `<installation_directory>`, specify the path to the directory where you stored the installation files.
+    where:
 
-    2. To view different installation details, specify `warn`, `debug`, or `error` instead of `info`.
+    `<installation_directory>`
+    :   Specifies the path to the directory where you stored the installation files.
 
-        If the command exits without a `FATAL` warning, your production control plane has initialized.
+    `--log-level`
+    :   Specifies the log level. To view different installation details, specify `warn`, `debug`, or `error` instead of `info`.
+
+    If the command exits without a `FATAL` warning, your production control plane has initialized.
 
 2. To remove the bootstrap instance group from the backend services' backends, run the following commands:
 
@@ -3398,11 +3402,13 @@ To allow newly added machines to join your OpenShift Container Platform cluster,
 
     !!! note
 
-        You might need to wait a few minutes after approval of the server CSRs for the machines to change to the `Ready` status.
+        You might need to wait a few minutes after approval of the server CSRs for the machines to reach the `Ready` status.
 
-## Adding the ingress DNS records { #_adding_the_ingress_dns_records }
+## Adding the ingress DNS records { #installation-gcp-user-infra-adding-ingress_installing-gcp-user-infra-vpc }
 
-DNS zone configuration is removed when creating Kubernetes manifests and generating Ignition configs. You must manually create DNS records that point at the ingress load balancer. You can create either a wildcard `*.apps.{baseDomain}.` or specific records. You can use A, CNAME, and other records per your requirements.
+DNS zone configuration is removed when creating Kubernetes manifests and generating Ignition configs. You must manually create DNS records that point at the ingress load balancer so that external clients can reach the applications that run on your cluster.
+
+You can create either a wildcard `*.apps.{baseDomain}.` or specific records. You can use A, CNAME, and other records per your requirements.
 
 **Prerequisites**
 
@@ -3540,7 +3546,7 @@ You can create cluster-wide firewall rules to allow the access that the OpenShif
 
 ## Completing a Google Cloud installation on user-provisioned infrastructure { #installation-gcp-user-infra-installation_installing-gcp-user-infra-vpc }
 
-After you start the OpenShift Container Platform installation on Google Cloud user-provisioned infrastructure, you can monitor the cluster events until the cluster is ready.
+After you start the OpenShift Container Platform installation on Google Cloud user-provisioned infrastructure, you can monitor the cluster events to confirm that the installation completes successfully and the cluster is ready for use.
 
 **Prerequisites**
 
@@ -3551,14 +3557,14 @@ After you start the OpenShift Container Platform installation on Google Cloud us
 1. Complete the cluster installation:
 
     ```terminal
-    $ ./openshift-install --dir <installation_directory> wait-for install-complete (1)
+    $ ./openshift-install --dir <installation_directory> wait-for install-complete
     ```
+
+    where `<installation_directory>` specifies the path to the directory that you stored the installation files in.
 
     ```terminal title="Example output"
     INFO Waiting up to 30m0s for the cluster to initialize...
     ```
-
-    1. For `<installation_directory>`, specify the path to the directory that you stored the installation files in.
 
     !!! warning
 

@@ -250,7 +250,7 @@ Use the `additionalArtifactStores`, `additionalImageStores`, and `additionalLaye
                additionallayerstores = ["/var/lib/stargz-store:ref"]
             ```
 
-## Additional resources { #_additional_resources }
+**Additional resources**
 
 - [Stargz Store plugin](https://github.com/containerd/stargz-snapshotter)
 - [Install Stargz Snapshotter and Stargz Store](https://github.com/containerd/stargz-snapshotter/blob/main/docs/INSTALL.md)

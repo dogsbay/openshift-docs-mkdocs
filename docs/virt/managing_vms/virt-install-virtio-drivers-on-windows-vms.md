@@ -12,11 +12,12 @@ After the drivers are installed, the `container-native-virtualization/virtio-win
 
 **Supported drivers**
 
-| Driver name | Hardware ID                                  | Description                                                                                                                                       |
-| ----------- | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **viostor** | VEN_1AF4&amp;DEV_1001, VEN_1AF4&amp;DEV_1042 | The block driver. Sometimes labeled as an **SCSI Controller** in the **Other devices** group.                                                     |
-| **viorng**  | VEN_1AF4&amp;DEV_1005, VEN_1AF4&amp;DEV_1044 | The entropy source driver. Sometimes labeled as a **PCI Device** in the **Other devices** group.                                                  |
-| **NetKVM**  | VEN_1AF4&amp;DEV_1000, VEN_1AF4&amp;DEV_1041 | The network driver. Sometimes labeled as an **Ethernet Controller** in the **Other devices** group. Available only if a VirtIO NIC is configured. |
+| Driver name | Hardware ID                                  | Description                                                                                                                                               |
+| ----------- | -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **viostor** | VEN_1AF4&amp;DEV_1001, VEN_1AF4&amp;DEV_1042 | The block driver. Sometimes labeled as an **SCSI Controller** in the **Other devices** group. Required for virtual machines using `bus: virtio`.          |
+| **vioscsi** | VEN_1AF4&amp;DEV_1004, VEN_1AF4&amp;DEV_1048 | The SCSI pass-through driver. Sometimes labeled as a **SCSI Controller** in the **Other devices** group. Required for virtual machines using `bus: scsi`. |
+| **viorng**  | VEN_1AF4&amp;DEV_1005, VEN_1AF4&amp;DEV_1044 | The entropy source driver. Sometimes labeled as a **PCI Device** in the **Other devices** group.                                                          |
+| **NetKVM**  | VEN_1AF4&amp;DEV_1000, VEN_1AF4&amp;DEV_1041 | The network driver. Sometimes labeled as an **Ethernet Controller** in the **Other devices** group. Available only if a VirtIO NIC is configured.         |
 
 ## Downloading the VirtIO drivers ISO from the web console { #virt-downloading-virtio-win-iso_virt-install-virtio-drivers-on-windows-vms }
 

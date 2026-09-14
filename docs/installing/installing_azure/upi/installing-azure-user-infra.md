@@ -679,7 +679,7 @@ The smallest OpenShift Container Platform clusters require the following hosts:
 
 !!! warning
 
-    To keep high availability of your cluster, use separate physical hosts for these cluster machines.
+    To maintain high availability of your cluster, use separate physical hosts for these cluster machines.
 
 The bootstrap and control plane machines must use Red Hat Enterprise Linux CoreOS (RHCOS) as the operating system. However, the compute machines can use Red Hat Enterprise Linux CoreOS (RHCOS), Red Hat Enterprise Linux (RHEL) 8.6 and later.
 
@@ -3683,7 +3683,7 @@ To allow newly added machines to join your OpenShift Container Platform cluster,
 
     !!! note
 
-        You might need to wait a few minutes after approval of the server CSRs for the machines to change to the `Ready` status.
+        You might need to wait a few minutes after approval of the server CSRs for the machines to reach the `Ready` status.
 
 ## Adding the Ingress DNS records { #installation-azure-create-ingress-dns-records_installing-azure-user-infra }
 
