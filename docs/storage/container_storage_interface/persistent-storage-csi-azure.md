@@ -138,7 +138,7 @@ To provision Azure disks with enhanced IOPS and throughput, create a storage cla
 
 1. Create a storage class using the following example YAML file:
 
-    ```resource title="Example storage class YAML file"
+    ```yaml title="Example storage class YAML file"
     apiVersion: storage.k8s.io/v1
     kind: StorageClass
     metadata:

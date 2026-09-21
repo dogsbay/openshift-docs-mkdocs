@@ -931,7 +931,7 @@ where:
         get machineset/<infrastructure_id>-<role>-<zone>
     ```
 
-#### Creating a compute machine set { #machineset-creating_aws-compute-edge-zone-tasks }
+#### Create a compute machine set { #machineset-creating_aws-compute-edge-zone-tasks }
 
 To dynamically manage machine compute resources, you can create your own compute machine sets in addition to the compute machine sets created by the installation program. Use the OpenShift Container Platform CLI to automate node provisioning.
 

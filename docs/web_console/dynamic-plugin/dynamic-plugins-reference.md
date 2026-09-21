@@ -2383,7 +2383,7 @@ const AppPage: React.FC = () => {
 }
 ```
 
-## Troubleshooting your dynamic plugin { #troubleshooting-dynamic-plugin_dynamic-plugins-reference }
+## Troubleshoot your dynamic plugin { #troubleshooting-dynamic-plugin_dynamic-plugins-reference }
 
 Refer to this list of troubleshooting tips if you run into issues loading your plugin.
 

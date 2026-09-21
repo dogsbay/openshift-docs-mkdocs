@@ -100,7 +100,7 @@ where:
 
 - [Manually updating the boot image](../../machine_configuration/mco-update-boot-images-manual.md#mco-update-boot-images-manual)
 
-## Creating a compute machine set { #machineset-creating_creating-machineset-ibm-power-vs }
+## Create a compute machine set { #machineset-creating_creating-machineset-ibm-power-vs }
 
 To dynamically manage machine compute resources, you can create your own compute machine sets in addition to the compute machine sets created by the installation program. Use the OpenShift Container Platform CLI to automate node provisioning.
 

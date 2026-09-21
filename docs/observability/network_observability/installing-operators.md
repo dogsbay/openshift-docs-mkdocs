@@ -250,7 +250,7 @@ For more information about these settings, see "LokiStack API reference".
 - [Flow Collector API Reference](flowcollector-api.md#network-observability-flowcollector-api-specifications_network_observability)
 - [Flow Collector sample resource](configuring-operator.md#network-observability-flowcollector-view_network_observability)
 
-## Installing the Network Observability Operator { #network-observability-operator-installation_network_observability }
+## Install the Network Observability Operator { #network-observability-operator-installation_network_observability }
 
 Install the Network Observability Operator and use the setup wizard to create the `FlowCollector` custom resource definition (CRD) to complete the initial configuration.
 
@@ -380,7 +380,7 @@ There are two options to remove stored versions:
 
     The list of results should no longer show `v1alpha1` and only show the latest version, `v1beta1`.
 
-## Enabling multi-tenancy in network observability { #network-observability-multi-tenancy_network_observability }
+## Enable multi-tenancy in network observability { #network-observability-multi-tenancy_network_observability }
 
 Enable multi-tenancy in network observability by configuring cluster roles and namespace roles to grant project administrators and developers granular, restricted access to flows and metrics in Loki and Prometheus.
 

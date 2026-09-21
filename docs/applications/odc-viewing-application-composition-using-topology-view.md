@@ -14,7 +14,7 @@ To view your applications in the **Topology** view and interact with them, ensur
 - You have the appropriate [roles and permissions](../authentication/using-rbac.md#default-roles_using-rbac) in a project to create applications and other workloads in OpenShift Container Platform.
 - You are in [the **Developer** perspective](../web_console/web-console-overview.md#about-developer-perspective_web-console-overview).
 
-## Viewing the topology of your application { #odc-viewing-application-topology_viewing-application-composition-using-topology-view }
+## View the topology of your application { #odc-viewing-application-topology_viewing-application-composition-using-topology-view }
 
 You can navigate to the **Topology** view using the left navigation panel in the **Developer** perspective. After you deploy an application, you are directed automatically to the **Graph view** where you can see the status of the application pods, quickly access the application on a public URL, access the source code to modify it, and see the status of your last build. You can zoom in and out to see more details for a particular application.
 
@@ -39,7 +39,7 @@ You can customize the views as required using the following:
         - Pod Count: Select to show the number of pods of a component in the component icon.
         - Labels: Toggle to show or hide the component labels. The **Topology** view also provides you the **Export application** option to download your application in the ZIP file format. You can then import the downloaded application to another project or cluster. For more details, see *Exporting an application to another project or cluster* in the *Additional resources* section.
 
-## Interacting with applications and components { #odc-interacting-with-applications-and-components_viewing-application-composition-using-topology-view }
+## Interact with applications and components { #odc-interacting-with-applications-and-components_viewing-application-composition-using-topology-view }
 
 In the **Topology** view in the **Developer** perspective of the web console, the **Graph view** provides the following options to interact with applications and components:
 
@@ -92,7 +92,7 @@ In the **Topology** view in the **Developer** perspective of the web console, th
 
             Serverless applications take some time to load and display on the **Graph view**. When you deploy a serverless application, it first creates a service resource and then a revision. After that, it is deployed and displayed on the **Graph view**. If it is the only workload, you might be redirected to the **Add** page. After the revision is deployed, the serverless application is displayed on the **Graph view**.
 
-## Scaling application pods and checking builds and routes { #odc-scaling-application-pods-and-checking-builds-and-routes_viewing-application-composition-using-topology-view }
+## Scale application pods and check builds and routes { #odc-scaling-application-pods-and-checking-builds-and-routes_viewing-application-composition-using-topology-view }
 
 The **Topology** view provides the details of the deployed components in the **Overview** panel. You can use the **Overview** and **Details** tabs to scale the application pods, check build status, services, and routes as follows:
 

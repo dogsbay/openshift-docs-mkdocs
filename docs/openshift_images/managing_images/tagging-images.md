@@ -6,7 +6,7 @@ title: Tagging images
 
 Image tags identify specific versions of container images in image streams. You can use image tags to organize images and control which versions your builds and deployments use.
 
-## Understanding image tags in image streams { #images-tag_tagging-images }
+## Understand image tags in image streams { #images-tag_tagging-images }
 
 Image tags in OpenShift Container Platform help you organize, identify, and reference specific versions of container images in image streams. Tags are human-readable labels that act as pointers to particular image layers and digests.
 

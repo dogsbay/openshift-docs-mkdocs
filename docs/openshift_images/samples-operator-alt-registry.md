@@ -415,7 +415,7 @@ Mirror the OpenShift Container Platform image repository to your registry to use
     $ openshift-install
     ```
 
-## Using Cluster Samples Operator image streams with alternate or mirrored registries { #installation-restricted-network-samples_samples-operator-alt-registry }
+## Use Cluster Samples Operator image streams with alternate or mirrored registries { #installation-restricted-network-samples_samples-operator-alt-registry }
 
 You can use an alternate or mirror registry to host your images streams instead of using the Red Hat registry.
 

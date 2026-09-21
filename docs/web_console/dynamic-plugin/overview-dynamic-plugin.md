@@ -58,7 +58,7 @@ When creating your plugin, follow these guidelines for using PatternFly:
 
 - The console application is responsible for loading base styles for all supported PatternFly versions.
 
-### Translating messages with react-i18next { #dynamic-plugin-api_overview-dynamic-plugin }
+### Translate messages with react-i18next { #dynamic-plugin-localization_overview-dynamic-plugin }
 
 The `console-plugin-template` plugin template demonstrates how you can translate messages with react-i18next.
 

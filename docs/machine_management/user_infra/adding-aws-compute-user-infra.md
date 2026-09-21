@@ -52,7 +52,7 @@ To scale your OpenShift Container Platform cluster on Amazon Web Services (AWS),
 
 2. Continue to create compute stacks until you have created enough compute machines for your cluster.
 
-## Approving the certificate signing requests for your machines { #installation-approve-csrs_adding-aws-compute-user-infra }
+## Approve the certificate signing requests for your machines { #installation-approve-csrs_adding-aws-compute-user-infra }
 
 To allow newly added machines to join your OpenShift Container Platform cluster, confirm that the cluster approves pending certificate signing requests (CSRs), or approve them yourself. Approve client requests first, then server requests.
 

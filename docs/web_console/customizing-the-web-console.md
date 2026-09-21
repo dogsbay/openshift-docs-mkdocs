@@ -6,7 +6,7 @@ title: Customizing the web console in OpenShift Container Platform
 
 You can customize the OpenShift Container Platform web console to set a custom logo, product name, links, notifications, and command-line downloads. This is especially helpful if you need to tailor the web console to meet specific corporate or government requirements.
 
-## Adding a custom logo and product name { #adding-a-custom-logo_customizing-web-console }
+## Add a custom logo and product name { #adding-a-custom-logo_customizing-web-console }
 
 You can create custom branding by adding a custom logo or custom product name. You can set both or one without the other, as these settings are independent of each other.
 
@@ -74,7 +74,7 @@ You can create custom branding by adding a custom logo or custom product name. Y
     $ oc get consoles.operator.openshift.io -o yaml
     ```
 
-## Creating custom links in the web console { #creating-custom-links_customizing-web-console }
+## Create custom links in the web console { #creating-custom-links_customizing-web-console }
 
 You can create a `ConsoleLink` custom resource to add a link to the help menu, user menu, application menu, or namespace dashboard in the web console.
 
@@ -161,7 +161,7 @@ You can customize the `console` and `downloads` routes by using the `ingress` co
 
 If the `console` custom route is configured in both the `ingress` config and the `console-operator` config, the `ingress` config custom route configuration takes precedence. Configuring custom routes through the `console-operator` config is deprecated.
 
-## Customizing the console route { #customizing-the-console-route_customizing-web-console }
+## Customize the console route { #customizing-the-console-route_customizing-web-console }
 
 You can customize the console route by setting the custom hostname and TLS certificate in the `spec.componentRoutes` field of the cluster `Ingress` configuration.
 
@@ -207,7 +207,7 @@ You can customize the console route by setting the custom hostname and TLS certi
 
         Add a DNS record for the custom console route that points to the application ingress load balancer.
 
-## Customizing the download route { #customizing-the-download-route_customizing-web-console }
+## Customize the download route { #customizing-the-download-route_customizing-web-console }
 
 You can customize the download route by setting the custom hostname and TLS certificate in the `spec.componentRoutes` field of the cluster `Ingress` configuration.
 
@@ -253,7 +253,7 @@ You can customize the download route by setting the custom hostname and TLS cert
 
         Add a DNS record for the custom downloads route that points to the application ingress load balancer.
 
-## Customizing the login page { #customizing-the-login-page_customizing-web-console }
+## Customize the login page { #customizing-the-login-page_customizing-web-console }
 
 You can customize the login page to display Terms of Service information or apply custom branding for third-party login providers.
 
@@ -323,7 +323,7 @@ Custom login pages can also be helpful if you use a third-party login provider, 
 
     Run `oc explain oauths.spec.templates` to understand the options.
 
-## Defining a template for an external log link { #defining-template-for-external-log-links_customizing-web-console }
+## Define a template for an external log link { #defining-template-for-external-log-links_customizing-web-console }
 
 If you are connected to a service that helps you browse your logs, but you need to generate URLs in a particular way, then you can define a template for your link.
 
@@ -350,7 +350,7 @@ If you are connected to a service that helps you browse your logs, but you need 
       text: Example Logs
     ```
 
-## Creating custom notification banners { #creating-custom-notification-banners_customizing-web-console }
+## Create custom notification banners { #creating-custom-notification-banners_customizing-web-console }
 
 You can create a `ConsoleNotification` custom resource to display a banner at the top or bottom of every page in the web console.
 
@@ -385,7 +385,7 @@ You can create a `ConsoleNotification` custom resource to display a banner at th
 
 4. Click **Create** to apply your changes.
 
-## Customizing CLI downloads { #creating-custom-CLI-downloads_customizing-web-console }
+## Customize CLI downloads { #creating-custom-CLI-downloads_customizing-web-console }
 
 You can configure links for downloading the CLI with custom link text and URLs, which can point directly to file packages or to an external page that provides the packages.
 
@@ -421,7 +421,7 @@ You can configure links for downloading the CLI with custom link text and URLs, 
 
 4. Click the **Save** button.
 
-## Adding YAML examples to Kubernetes resources { #adding-yaml-examples-to-kube-resources_customizing-web-console }
+## Add YAML examples to Kubernetes resources { #adding-yaml-examples-to-kube-resources_customizing-web-console }
 
 You can dynamically add YAML examples to any Kubernetes resources at any time.
 
@@ -470,7 +470,7 @@ You can dynamically add YAML examples to any Kubernetes resources at any time.
 
 3. Click **Save**.
 
-## Customizing user perspectives { #odc-customizing-user-perspectives_customizing-web-console }
+## Customize user perspectives { #odc-customizing-user-perspectives_customizing-web-console }
 
 As a cluster administrator, you can show or hide web console perspectives for all users or for a specific user role, ensuring users see only the perspectives relevant to their role and tasks. For example, you can hide the **Administrator** perspective from users without administrative access.
 
@@ -486,7 +486,7 @@ Each perspective includes the following mandatory parameters, which you can edit
 
     By default, all perspectives are enabled. When you customize the user perspective, your changes are applicable to the entire cluster.
 
-### Customizing a perspective using YAML view { #odc-customizing-a-perspective-using-YAML-view_customizing-web-console }
+### Customize a perspective using YAML view { #odc-customizing-a-perspective-using-YAML-view_customizing-web-console }
 
 You can customize a perspective by editing the console resource YAML content.
 
@@ -566,7 +566,7 @@ You can customize a perspective by editing the console resource YAML content.
 
 4. Click **Save**.
 
-### Customizing a perspective using form view { #odc-customizing-a-perspective-using-form-view_customizing-web-console }
+### Customize a perspective using form view { #odc-customizing-a-perspective-using-form-view_customizing-web-console }
 
 You can customize a perspective by using the form view of the console resource.
 
@@ -619,7 +619,7 @@ You can enable or disable the following developer catalog types (sub-catalogs) u
 - `Event Sinks`
 - `Operator Backed`
 
-### Customizing a developer catalog or its sub-catalogs using the YAML view { #odc_customizing-a-developer-catalog-or-its-sub-catalogs-using-the-yaml-view_customizing-web-console }
+### Customize a developer catalog or its sub-catalogs using the YAML view { #odc_customizing-a-developer-catalog-or-its-sub-catalogs-using-the-yaml-view_customizing-web-console }
 
 You can customize a developer catalog by editing the YAML content in the YAML view.
 
@@ -719,7 +719,7 @@ spec:
           - ...
 ```
 
-### Customizing a developer catalog or its sub-catalogs using the form view { #odc_customizing-a-developer-catalog-or-its-sub-catalogs-using-the-form-view_customizing-web-console }
+### Customize a developer catalog or its sub-catalogs using the form view { #odc_customizing-a-developer-catalog-or-its-sub-catalogs-using-the-form-view_customizing-web-console }
 
 You can customize a developer catalog by using the form view in the Web Console.
 

@@ -147,7 +147,7 @@ You can create more Red Hat Enterprise Linux CoreOS (RHCOS) compute machines ru
 
 8. Boot the machine.
 
-## Approving the certificate signing requests for your machines { #installation-approve-csrs_creating-multi-arch-compute-nodes-ibm-z-lpar }
+## Approve the certificate signing requests for your machines { #installation-approve-csrs_creating-multi-arch-compute-nodes-ibm-z-lpar }
 
 To allow newly added machines to join your OpenShift Container Platform cluster, confirm that the cluster approves pending certificate signing requests (CSRs), or approve them yourself. Approve client requests first, then server requests.
 

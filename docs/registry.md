@@ -164,7 +164,7 @@ You set the schedule, suspension, and retention options on the pruning custom re
     `status.conditions`
     :   The standard condition objects with the following types: \*   `Available`: Indicates if the pruning job has been created. Reasons can be `Ready` or `Error`. \*   `Scheduled`: Indicates if the next pruning job has been scheduled. Reasons can be `Scheduled`, `Suspended`, or `Error`. \*   `Failed`: Indicates if the most recent pruning job failed.
 
-## Creating containers by using images from third-party registries { #registry-third-party-registries_registry-overview }
+## Create containers by using images from third-party registries { #registry-third-party-registries_registry-overview }
 
 Some container image registries require access authorization. Podman is an open source tool for managing containers and container images and interacting with image registries. You can use Podman to authenticate your credentials, pull the registry image, and store local images in a local file system. The procedure provides a generic example of authenticating the registry with Podman.
 

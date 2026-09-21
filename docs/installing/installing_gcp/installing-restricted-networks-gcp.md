@@ -3630,7 +3630,7 @@ To use only trusted or locally available Operator catalogs, disable the default 
 
         Or, you can use the web console to manage catalog sources. From the **Administration** → **Cluster Settings** → **Configuration** → **OperatorHub** page, click the **Sources** tab, where you can create, update, delete, disable, and enable individual sources.
 
-## Approving the certificate signing requests for your machines { #installation-approve-csrs_installing-restricted-networks-gcp }
+## Approve the certificate signing requests for your machines { #installation-approve-csrs_installing-restricted-networks-gcp }
 
 To allow newly added machines to join your OpenShift Container Platform cluster, confirm that the cluster approves pending certificate signing requests (CSRs), or approve them yourself. Approve client requests first, then server requests.
 

@@ -180,6 +180,7 @@ The following tables list the firmware versions tested and verified to work for 
 
 | Model           | Management | Firmware versions |
 | --------------- | ---------- | ----------------- |
+| 12th Generation | iLO7       | 1.23 or later     |
 | 11th Generation | iLO6       | 1.57 or later     |
 | 10th Generation | iLO5       | 2.63 or later     |
 

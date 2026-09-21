@@ -793,7 +793,7 @@ To install OpenShift Container Platform on user-provisioned infrastructure on VM
 
         You must create the bootstrap and control plane machines at this time. Because some pods are deployed on compute machines by default, also create at least two compute machines before you install the cluster.
 
-## Adding more compute machines to a cluster in vSphere { #machine-vsphere-machines_installing-restricted-networks-vsphere }
+## Add more compute machines to a cluster in vSphere { #machine-vsphere-machines_installing-restricted-networks-vsphere }
 
 To scale a user-provisioned OpenShift Container Platform cluster on VMware vSphere, you can add more compute machines by cloning the vSphere template into a virtual machine (VM).
 
@@ -1038,7 +1038,7 @@ The `kubeconfig` file is specific to a cluster and OpenShift Container Platform 
 - "Customize your cluster"
 - "Remote health reporting"
 
-## Approving the certificate signing requests for your machines { #installation-approve-csrs_installing-restricted-networks-vsphere }
+## Approve the certificate signing requests for your machines { #installation-approve-csrs_installing-restricted-networks-vsphere }
 
 To allow newly added machines to join your OpenShift Container Platform cluster, confirm that the cluster approves pending certificate signing requests (CSRs), or approve them yourself. Approve client requests first, then server requests.
 
@@ -1242,7 +1242,7 @@ Configure a persistent volume, which is required for production clusters. Where 
 
 You can also allow the image registry to use block storage types by using the `Recreate` rollout strategy during upgrades.
 
-#### Configuring registry storage for VMware vSphere { #registry-configuring-storage-vsphere_installing-restricted-networks-vsphere }
+#### Configure registry storage for VMware vSphere { #registry-configuring-storage-vsphere_installing-restricted-networks-vsphere }
 
 As a cluster administrator, following installation you must configure your registry to use storage.
 
@@ -1313,7 +1313,7 @@ As a cluster administrator, following installation you must configure your regis
     image-registry   4.7       True        False         False      6h50m
     ```
 
-#### Configuring storage for the image registry in non-production clusters { #installation-registry-storage-non-production_installing-restricted-networks-vsphere }
+#### Configure storage for the image registry in non-production clusters { #installation-registry-storage-non-production_installing-restricted-networks-vsphere }
 
 You must configure storage for the Image Registry Operator. For non-production clusters, you can set the image registry to an empty directory, but you lose all images if you restart the registry.
 
@@ -1337,7 +1337,7 @@ You must configure storage for the Image Registry Operator. For non-production c
 
     Wait a few minutes and run the command again.
 
-#### Configuring block registry storage for VMware vSphere { #installation-registry-storage-block-recreate-rollout_installing-restricted-networks-vsphere }
+#### Configure block registry storage for VMware vSphere { #installation-registry-storage-block-recreate-rollout_installing-restricted-networks-vsphere }
 
 To allow the image registry to use block storage types such as vSphere Virtual Machine Disk (VMDK) during upgrades as a cluster administrator, you can use the `Recreate` rollout strategy.
 

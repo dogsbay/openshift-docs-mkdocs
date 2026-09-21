@@ -23,7 +23,7 @@ The following prerequisites must be met:
 
     If you do not have access to the Red Hat Enterprise Linux CoreOS (RHCOS) images that were used to create your cluster, you can add more compute machines to your OpenShift Container Platform cluster with newer versions of Red Hat Enterprise Linux CoreOS (RHCOS) images. For instructions, see [Adding new nodes to UPI cluster fails after upgrading to OpenShift 4.6+](https://access.redhat.com/solutions/5514051).
 
-## Adding more compute machines to a cluster in vSphere { #machine-vsphere-machines_adding-vsphere-compute-user-infra }
+## Add more compute machines to a cluster in vSphere { #machine-vsphere-machines_adding-vsphere-compute-user-infra }
 
 To scale a user-provisioned OpenShift Container Platform cluster on VMware vSphere, you can add more compute machines by cloning the vSphere template into a virtual machine (VM).
 
@@ -68,7 +68,7 @@ To scale a user-provisioned OpenShift Container Platform cluster on VMware vSphe
 
 - Continue to create more compute machines for your cluster.
 
-## Approving the certificate signing requests for your machines { #installation-approve-csrs_adding-vsphere-compute-user-infra }
+## Approve the certificate signing requests for your machines { #installation-approve-csrs_adding-vsphere-compute-user-infra }
 
 To allow newly added machines to join your OpenShift Container Platform cluster, confirm that the cluster approves pending certificate signing requests (CSRs), or approve them yourself. Approve client requests first, then server requests.
 

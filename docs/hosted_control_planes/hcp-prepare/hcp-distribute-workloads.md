@@ -32,7 +32,7 @@ For more information about dedicating a node to a single hosted cluster, see "La
 - [Labeling management cluster nodes](hcp-distribute-workloads.md#hcp-labels-taints_hcp-distribute-workloads)
 - [Network isolation for hosted clusters](../hcp-networking.md#hcp-isolation-overview_hcp-networking)
 
-## Labeling management cluster nodes { #hcp-labels-taints_hcp-distribute-workloads }
+## Label management cluster nodes { #hcp-labels-taints_hcp-distribute-workloads }
 
 Proper node labeling is a prerequisite to deploying hosted control planes.
 

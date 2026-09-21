@@ -49,7 +49,7 @@ The Network observability metrics dashboards in **Observe** → **Dashboards** a
 
 **Additional resources**
 
-- [Enabling multi-tenancy in network observability](installing-operators.md#network-observability-multi-tenancy_network_observability)
+- [Enable multi-tenancy in network observability](installing-operators.md#network-observability-multi-tenancy_network_observability)
 
 ### Network observability metrics dashboards { #network-observability-dashboards_network-observability-overview }
 

@@ -199,7 +199,7 @@ OpenShift Container Platform allows you to enable and disable an SELinux boolean
 
         Applying any changes to the `MachineConfig` object causes all affected nodes to gracefully reboot after the change is applied.
 
-## Adding kernel arguments to nodes { #nodes-nodes-kernel-arguments_nodes-nodes-managing }
+## Add kernel arguments to nodes { #nodes-nodes-kernel-arguments_nodes-nodes-managing }
 
 In some special cases, you can add kernel arguments to a set of nodes in your cluster to customize the kernel behavior to meet specific needs you might have. 
 
