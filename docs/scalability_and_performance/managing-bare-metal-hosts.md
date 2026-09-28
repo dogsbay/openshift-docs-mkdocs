@@ -20,7 +20,7 @@ You can maintain the details of the bare metal hosts in your cluster from the Op
 
 **Procedure**
 
-1. From the web console, comlete the following steps:
+1. From the web console, complete the following steps:
 
     1. Navigate to **Compute** → **Bare Metal Hosts**.
     2. Select a task from the **Actions** drop-down menu.

@@ -6,7 +6,7 @@ title: Configuring the AWS Load Balancer Operator
 
 To automate the provisioning of AWS Load Balancers for your applications, configure the AWS Load Balancer Operator. This setup ensures that the Operator correctly manages ingress resources and external access to your cluster.
 
-## Trusting the certificate authority of the cluster-wide proxy { #nw-configuring-cluster-wide-proxy_aws-load-balancer-operator }
+## Trust the certificate authority of the cluster-wide proxy { #nw-configuring-cluster-wide-proxy_aws-load-balancer-operator }
 
 You can configure the cluster-wide proxy in the AWS Load Balancer Operator. After configuring the cluster-wide proxy, Operator Lifecycle Manager (OLM) automatically updates all the deployments of the Operators with the environment variables.
 
@@ -53,7 +53,7 @@ Environment variables include `HTTP_PROXY`, `HTTPS_PROXY`, and `NO_PROXY`. These
 
 - [Certificate injection using Operators](../../configuring_network_settings/configuring-a-custom-pki.md#certificate-injection-using-operators_configuring-a-custom-pki)
 
-## Adding TLS termination on the AWS Load Balancer { #nw-adding-tls-termination_aws-load-balancer-operator }
+## Add TLS termination on the AWS Load Balancer { #nw-adding-tls-termination_aws-load-balancer-operator }
 
 You can route the traffic for the domain to pods of a service and add TLS termination on the AWS Load Balancer.
 
@@ -127,7 +127,7 @@ You can route the traffic for the domain to pods of a service and add TLS termin
     `backend.service`
     :   Specifies the service for traffic routing.
 
-## Creating multiple ingress resources through a single AWS Load Balancer { #nw-creating-multiple-ingress-through-single-alb_aws-load-balancer-operator }
+## Create multiple ingress resources through a single AWS Load Balancer { #nw-creating-multiple-ingress-through-single-alb_aws-load-balancer-operator }
 
 To route traffic to different services within a single domain, configure multiple ingress resources on a single AWS Load Balancer. This setup allows each resource to provide different endpoints while sharing the same load balancing infrastructure.
 

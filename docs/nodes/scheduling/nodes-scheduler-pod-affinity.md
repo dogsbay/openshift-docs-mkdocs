@@ -140,7 +140,7 @@ where:
 
     If labels on a node change at runtime such that the affinity rules on a pod are no longer met, the pod continues to run on the node.
 
-## Configuring a pod affinity rule { #nodes-scheduler-pod-affinity-configuring_nodes-scheduler-pod-affinity }
+## Configure a pod affinity rule { #nodes-scheduler-pod-affinity-configuring_nodes-scheduler-pod-affinity }
 
 You can use the following example pod specifications to create a pod with a label and a pod that uses affinity to allow scheduling with that pod.
 
@@ -231,7 +231,7 @@ You can use the following example pod specifications to create a pod with a labe
         $ oc create -f <pod-spec>.yaml
         ```
 
-## Configuring a pod anti-affinity rule { #nodes-scheduler-pod-anti-affinity-configuring_nodes-scheduler-pod-affinity }
+## Configure a pod anti-affinity rule { #nodes-scheduler-pod-anti-affinity-configuring_nodes-scheduler-pod-affinity }
 
 To specify a preference to prevent a pod from being scheduling with another pod, you can create a pod with a label and a pod that uses an anti-affinity preferred rule.
 

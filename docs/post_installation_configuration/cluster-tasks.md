@@ -267,7 +267,7 @@ The `MachineConfigPool` object allows users to configure how upgrades are rolled
 
 The `NodeSelector` object can be replaced with a reference to the `MachineSet` object.
 
-### Scaling a compute machine set manually { #machineset-manually-scaling_post-install-cluster-tasks }
+### Scale a compute machine set manually { #machineset-manually-scaling_post-install-cluster-tasks }
 
 To add or remove an instance of a machine in a compute machine set, you can manually scale the compute machine set.
 
@@ -364,7 +364,7 @@ Specific machines can also be prioritized for deletion by adding the annotation 
 
     Custom compute machine sets can be used for use cases requiring that services run on specific nodes and that those services are ignored by the controller when the worker compute machine sets are scaling down. This prevents service disruption.
 
-### Creating default cluster-wide node selectors { #nodes-scheduler-node-selectors-cluster_post-install-cluster-tasks }
+### Create default cluster-wide node selectors { #nodes-scheduler-node-selectors-cluster_post-install-cluster-tasks }
 
 You can use default cluster-wide node selectors on pods together with labels on nodes to constrain all pods created in a cluster to specific nodes.
 
@@ -718,7 +718,7 @@ Low worker latency profile
 
     The latency profiles do not support custom machine config pools, only the default worker machine config pools.
 
-### Using and changing worker latency profiles { #nodes-cluster-worker-latency-profiles-using_post-install-cluster-tasks }
+### Use and change worker latency profiles { #nodes-cluster-worker-latency-profiles-using_post-install-cluster-tasks }
 
 You can change a worker latency profile to deal with network latency at any time by editing the `node.config` object. With this configuration, you can ensure that your cluster runs properly if network latency between the control plane and the compute nodes fluctuates.
 
@@ -2499,7 +2499,7 @@ AES-GCM
 
 The etcd encryption keys are rotated every 7 days. Up to 10 historical encryption keys are preserved after rotation to help decrypt older backups and provide an extra layer of data recovery safety.
 
-### Enabling etcd encryption { #enabling-etcd-encryption_post-install-cluster-tasks }
+### Enable etcd encryption { #enabling-etcd-encryption_post-install-cluster-tasks }
 
 Enable etcd encryption to protect sensitive cluster resources such as secrets, config maps, routes, and OAuth tokens at rest.
 
@@ -2592,7 +2592,7 @@ You can encrypt the etcd database in either AES-GCM or AES-CBC encryption.
 
     If the output shows `EncryptionInProgress`, encryption is still in progress. Wait a few minutes and try again.
 
-### Disabling etcd encryption { #disabling-etcd-encryption_post-install-cluster-tasks }
+### Disable etcd encryption { #disabling-etcd-encryption_post-install-cluster-tasks }
 
 Disable etcd encryption when you no longer need to encrypt sensitive cluster resources at rest.
 

@@ -6,7 +6,7 @@ title: Authentication and authorization for hosted control planes
 
 The OpenShift Container Platform control plane includes a built-in OAuth server. You can obtain OAuth access tokens to authenticate to the OpenShift Container Platform API. After you create your hosted cluster, you can configure OAuth by specifying an identity provider.
 
-## Configuring the OAuth server for a hosted cluster by using the CLI { #hcp-configuring-oauth_hcp-authentication-authorization }
+## Configure the OAuth server for a hosted cluster by using the CLI { #hcp-configuring-oauth_hcp-authentication-authorization }
 
 You can configure the internal OAuth server for your hosted cluster by using the command-line interface (CLI).
 
@@ -82,7 +82,7 @@ Adding any identity provider in the OAuth configuration removes the default `kub
 
 3. Save the file to apply the changes.
 
-## Configuring the OAuth server for a hosted cluster by using the web console { #hcp-configuring-oauth-console_hcp-authentication-authorization }
+## Configure the OAuth server for a hosted cluster by using the web console { #hcp-configuring-oauth-console_hcp-authentication-authorization }
 
 You can configure the internal OAuth server for your hosted cluster by using the OpenShift Container Platform web console.
 
@@ -170,7 +170,7 @@ By default, the CCO runs in a hosted control plane.
 
     The CCO supports a manual mode only for hosted clusters on AWS. By default, hosted clusters are configured in a manual mode. The management cluster might use modes other than manual.
 
-### Enabling Operators to support CCO-based workflows with AWS STS { #osdk-cco-aws-sts-enabling_hcp-authentication-authorization }
+### Enable Operators to support CCO-based workflows with AWS STS { #osdk-cco-aws-sts-enabling_hcp-authentication-authorization }
 
 As an Operator author designing your project to run on Operator Lifecycle Manager (OLM), you can enable your Operator to authenticate against AWS on STS-enabled OpenShift Container Platform clusters by customizing your project to support the Cloud Credential Operator (CCO).
 
@@ -447,7 +447,7 @@ With this method, the Operator is responsible for and requires RBAC permissions 
         }
         ```
 
-### Verifying the CCO installation in a hosted cluster on AWS { #hcp-cco-verify-aws-sts_hcp-authentication-authorization }
+### Verify the CCO installation in a hosted cluster on AWS { #hcp-cco-verify-aws-sts_hcp-authentication-authorization }
 
 You can verify that the Cloud Credential Operator (CCO) is running correctly in your hosted control plane.
 

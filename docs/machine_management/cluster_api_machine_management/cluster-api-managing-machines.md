@@ -87,7 +87,7 @@ You can update the machine template resource for your cluster by modifying the Y
 - [Sample YAML for a Cluster API machine template resource on VMware vSphere](cluster_api_provider_configurations/cluster-api-config-options-vsphere.md#capi-yaml-machine-template-vsphere_cluster-api-config-options-vsphere)
 - [Modifying a compute machine set by using the CLI](cluster-api-managing-machines.md#machineset-modifying_cluster-api-managing-machines)
 
-## Modifying a compute machine set by using the CLI { #machineset-modifying_cluster-api-managing-machines }
+## Modify a compute machine set by using the CLI { #machineset-modifying_cluster-api-managing-machines }
 
 To enable features or change the properties of machines, you can modify the configuration of a compute machine set using the CLI. You can then propagate the changes to the machines in your cluster.
 

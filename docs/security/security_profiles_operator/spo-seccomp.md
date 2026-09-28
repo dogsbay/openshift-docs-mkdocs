@@ -10,7 +10,7 @@ Create and manage seccomp profiles and bind them to workloads.
 
     The Security Profiles Operator supports only Red Hat Enterprise Linux CoreOS (RHCOS) worker nodes. Red Hat Enterprise Linux (RHEL) nodes are not supported.
 
-## Creating seccomp profiles { #spo-create-seccomp-profile_spo-seccomp }
+## Create seccomp profiles { #spo-create-seccomp-profile_spo-seccomp }
 
 Use the `SeccompProfile` object to create seccomp profiles.
 
@@ -127,7 +127,7 @@ To enforce a recorded or custom seccomp profile on a workload, create a pod that
     }
     ```
 
-### Binding workloads to profiles with ProfileBindings { #spo-binding-workloads_spo-seccomp }
+### Bind workloads to profiles with ProfileBindings { #spo-binding-workloads_spo-seccomp }
 
 You can use the `ProfileBinding` resource to bind a security profile to the `SecurityContext` of a container.
 

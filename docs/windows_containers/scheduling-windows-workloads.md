@@ -194,7 +194,7 @@ To use persistent storage with Windows workloads, you must deploy a specific Win
 
     Red Hat does not provide support for the third-party production drivers listed in the Kubernetes CSI Developer Documentation.
 
-## Scaling a compute machine set manually { #machineset-manually-scaling_scheduling-windows-workloads }
+## Scale a compute machine set manually { #machineset-manually-scaling_scheduling-windows-workloads }
 
 To add or remove an instance of a machine in a compute machine set, you can manually scale the compute machine set.
 

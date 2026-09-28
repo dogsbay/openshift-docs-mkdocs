@@ -91,7 +91,7 @@ Ensure that the following conditions are met before you begin:
 - If your nodes are physical machines, ensure that the cluster network and the connected network switches support jumbo frames.
 - If your nodes are virtual machines (VMs), ensure that the hypervisor and the connected network switches support jumbo frames.
 
-### Checking the current cluster MTU value { #nw-cluster-mtu-checking_changing-cluster-network-mtu }
+### Check the current cluster MTU value { #nw-cluster-mtu-checking_changing-cluster-network-mtu }
 
 To ensure network stability and performance in a hybrid environment where part of your cluster is in the cloud and part is an on-premise environment, you can obtain the current maximum transmission unit (MTU) for the cluster network.
 
@@ -116,7 +116,7 @@ To ensure network stability and performance in a hybrid environment where part o
     ...
     ```
 
-### Preparing your hardware MTU configuration { #nw-cluster-mtu-preparing_changing-cluster-network-mtu }
+### Prepare your hardware MTU configuration { #nw-cluster-mtu-preparing_changing-cluster-network-mtu }
 
 To maintain network stability during an MTU change, you must prepare the configuration for your underlying hardware using a method such as DHCP, PXE, or NetworkManager. This preparation ensures that all cluster nodes are ready to accept the new MTU value before you apply the changes to the cluster network.
 
@@ -175,7 +175,7 @@ To maintain network stability during an MTU change, you must prepare the configu
 
         If you used Kubernetes NMState to configure the `br-ex` bridge, use the Kubernetes NMState Operator to update the MTU for the `br-ex` bridge. Changing the MTU for this bridge in a `.nmconnection` file could lead to persistence issues as the Machine Config Operator (MCO) might overwrite the file.
 
-### Creating MachineConfig objects { #nw-cluster-mtu-creating-mc-objects_changing-cluster-network-mtu }
+### Create MachineConfig objects { #nw-cluster-mtu-creating-mc-objects_changing-cluster-network-mtu }
 
 To prepare your nodes for a hardware MTU change, you must create `MachineConfig` objects for both control plane and compute nodes. Creating these objects ensures that the updated network interface settings are ready for deployment without causing immediate cluster instability.
 
@@ -253,7 +253,7 @@ To prepare your nodes for a hardware MTU change, you must create `MachineConfig`
 
         Do not apply these machine configs until explicitly instructed later in this procedure. Applying these machine configs now causes a loss of stability for the cluster.
 
-### Beginning the MTU migration { #nw-cluster-mtu-migration_changing-cluster-network-mtu }
+### Begin the MTU migration { #nw-cluster-mtu-migration_changing-cluster-network-mtu }
 
 Start the maximum transmission unit (MTU) migration by specifying the migration configuration for the cluster network and machine interfaces. The Machine Config Operator performs a rolling reboot of the nodes to prepare the cluster for the MTU change.
 
@@ -294,7 +294,7 @@ Start the maximum transmission unit (MTU) migration by specifying the migration 
 
         By default, the Machine Config Operator updates one machine per pool at a time, causing the total time the migration takes to increase with the size of the cluster.
 
-### Verifying the machine configuration { #nw-cluster-mtu-verifying-configuration_changing-cluster-network-mtu }
+### Verify the machine configuration { #nw-cluster-mtu-verifying-configuration_changing-cluster-network-mtu }
 
 Verify the machine configuration on your hosts to confirm that the maximum transmission unit (MTU) migration applied successfully. Checking the configuration state and system settings help ensures that the nodes use the correct migration script.
 
@@ -338,7 +338,7 @@ Verify the machine configuration on your hosts to confirm that the maximum trans
         ExecStart=/usr/local/bin/mtu-migration.sh
         ```
 
-### Applying the new hardware MTU value { #nw-cluster-mtu-applying-mtu-value_changing-cluster-network-mtu }
+### Apply the new hardware MTU value { #nw-cluster-mtu-applying-mtu-value_changing-cluster-network-mtu }
 
 To ensure consistent network communication across your cluster, you must apply the new hardware maximum transmission unit (MTU) value to your nodes. This process involves updating the underlying network interfaces and verifying that the Machine Config Operator successfully reboots and updates each node.
 
@@ -402,7 +402,7 @@ To ensure consistent network communication across your cluster, you must apply t
 
         If the machine config is successfully deployed, the previous output contains the `/etc/NetworkManager/conf.d/99-<interface>-mtu.conf` file path and the `ExecStart=/usr/local/bin/mtu-migration.sh` line.
 
-### Finalizing the MTU migration { #nw-cluster-mtu-finalizing-migration_changing-cluster-network-mtu }
+### Finalize the MTU migration { #nw-cluster-mtu-finalizing-migration_changing-cluster-network-mtu }
 
 Finalize the MTU migration to apply the new maximum transmission unit (MTU) settings to the OVN-Kubernetes network plugin. This updates the cluster configuration and triggers a rolling reboot of the nodes to complete the process.
 

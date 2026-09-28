@@ -10,7 +10,7 @@ The File Integrity Operator is an OpenShift Container Platform Operator that con
 
     Currently, only Red Hat Enterprise Linux CoreOS (RHCOS) nodes are supported.
 
-## Creating the FileIntegrity custom resource { #understanding-file-integrity-custom-resource_file-integrity-operator }
+## Create the FileIntegrity custom resource { #understanding-file-integrity-custom-resource_file-integrity-operator }
 
 An instance of a `FileIntegrity` custom resource (CR) represents a set of continuous file integrity scans for one or more nodes.
 
@@ -98,7 +98,7 @@ Each `FileIntegrity` CR is backed by a daemon set running AIDE on the nodes matc
     worker-fileintegrity   14s
     ```
 
-## Checking the FileIntegrity custom resource status { #checking-the-file-integrity-CR-status_file-integrity-operator }
+## Check the FileIntegrity custom resource status { #checking-the-file-integrity-CR-status_file-integrity-operator }
 
 The `FileIntegrity` custom resource (CR) reports its status through the `.status.phase` subresource.
 
@@ -122,7 +122,7 @@ The `FileIntegrity` CR reports one of the following phases during its lifecycle.
 - `Active` -  The phase when the backing daemon set is up and running.
 - `Initializing` - The phase when the AIDE database is being reinitialized.
 
-## Understanding the FileIntegrityNodeStatuses object { #understanding-file-integrity-node-statuses-object_file-integrity-operator }
+## Understand the FileIntegrityNodeStatuses object { #understanding-file-integrity-node-statuses-object_file-integrity-operator }
 
 The scan results of the `FileIntegrity` CR are reported in another object called `FileIntegrityNodeStatuses`.
 
@@ -309,7 +309,7 @@ $ oc get cm <failure-cm-name> -o json | jq -r '.data.integritylog' | base64 -d |
 
     Compressed logs are indicated by the presence of a `file-integrity.openshift.io/compressed` annotation key in the config map.
 
-## Understanding events { #file-integrity-events_file-integrity-operator }
+## Understand events { #file-integrity-events_file-integrity-operator }
 
 Transitions in the status of the `FileIntegrity` and `FileIntegrityNodeStatus` objects are logged by *events*. The creation time of the event reflects the latest transition, such as `Initializing` to `Active`, and not necessarily the latest scan result. However, the newest event always reflects the most recent status.
 

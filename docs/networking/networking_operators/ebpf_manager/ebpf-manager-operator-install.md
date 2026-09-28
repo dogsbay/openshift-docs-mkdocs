@@ -12,7 +12,7 @@ To manage eBPF programs across your cluster nodes, you can install the eBPF Mana
 
     For more information about the support scope of Red Hat Technology Preview features, see [Technology Preview Features Support Scope](https://access.redhat.com/support/offerings/techpreview/).
 
-## Installing the eBPF Manager Operator using the CLI { #nw-bpfman-operator-installing-cli_bpfman-operator-install }
+## Install the eBPF Manager Operator using the CLI { #nw-bpfman-operator-installing-cli_bpfman-operator-install }
 
 To manage eBPF programs across your cluster nodes, you can install the eBPF Manager Operator by using the OpenShift Container Platform CLI. This process involves creating a dedicated namespace and subscribing to the Operator to enable node-level networking and observability tools.
 
@@ -90,7 +90,7 @@ To manage eBPF programs across your cluster nodes, you can install the eBPF Mana
     bpfman-operator.v0.5.0              eBPF Manager Operator              0.5.0     bpfman-operator.v0.4.2              Succeeded
     ```
 
-## Installing the eBPF Manager Operator using the web console { #nw-bpfman-operator-installing-console_bpfman-operator-install }
+## Install the eBPF Manager Operator using the web console { #nw-bpfman-operator-installing-console_bpfman-operator-install }
 
 To manage eBPF programs across your cluster nodes, you can install the eBPF Manager Operator by using the OpenShift Container Platform web console. You can use the eBPF Manager Operator to enable node-level networking and observability tools through the OperatorHub interface.
 

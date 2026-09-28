@@ -8,7 +8,7 @@ Although the Compliance Operator includes ready-to-use profiles, you must modify
 
 The Compliance Operator provides the `TailoredProfile` object to help tailor profiles.
 
-## Creating a new tailored profile { #compliance-new-tailored-profiles_compliance-tailor }
+## Create a new tailored profile { #compliance-new-tailored-profiles_compliance-tailor }
 
 You can write a tailored profile from scratch by using the `TailoredProfile` object. Set an appropriate `title` and `description` and leave the `extends` field empty. 
 
@@ -58,7 +58,7 @@ Indicate to the Compliance Operator what type of scan this custom profile will g
 
     Adding the `-node` suffix to the `name` field of the `TailoredProfile` object is similar to adding the `Node` product type annotation and generates an operating system scan.
 
-## Using tailored profiles to extend existing ProfileBundles { #compliance-tailored-profiles_compliance-tailor }
+## Use tailored profiles to extend existing ProfileBundles { #compliance-tailored-profiles_compliance-tailor }
 
 Although the `TailoredProfile` CR enables the most common tailoring operations, you can use the XCCDF (Extensible Configuration Checklist Description Format) standard for even more flexibility in tailoring OpenSCAP profiles.
 

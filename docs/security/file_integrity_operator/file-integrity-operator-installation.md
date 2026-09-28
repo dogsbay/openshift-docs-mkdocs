@@ -10,7 +10,7 @@ Install the File Integrity Operator on your cluster by using the OpenShift Conta
 
     All cluster nodes must have the same release version in order for this Operator to function properly. As an example, for nodes running RHCOS, all nodes must have the same RHCOS version.
 
-## Installing the File Integrity Operator using the web console { #installing-file-integrity-operator-using-web-console_file-integrity-operator-installation }
+## Install the File Integrity Operator using the web console { #installing-file-integrity-operator-using-web-console_file-integrity-operator-installation }
 
 Install the File Integrity Operator from the OpenShift Container Platform web console by using the Software Catalog.
 
@@ -37,7 +37,7 @@ If the Operator is not installed successfully:
 1. Navigate to the **Ecosystem** → **Installed Operators** page and inspect the `Status` column for any errors or failures.
 2. Navigate to the **Workloads** → **Pods** page and check the logs in any pods in the `openshift-file-integrity` project that are reporting issues.
 
-## Installing the File Integrity Operator using the CLI { #installing-file-integrity-operator-using-cli_file-integrity-operator-installation }
+## Install the File Integrity Operator using the CLI { #installing-file-integrity-operator-using-cli_file-integrity-operator-installation }
 
 Install the File Integrity Operator from the OpenShift CLI (`oc`) by creating `Namespace`, `OperatorGroup`, and `Subscription` objects.
 

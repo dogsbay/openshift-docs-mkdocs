@@ -39,7 +39,7 @@ Before you add bare-metal compute machines to your VMware vSphere cluster, you m
 
 - [Disabling and enabling storage on vSphere](../../storage/container_storage_interface/persistent-storage-csi-vsphere.md#persistent-storage-csi-vsphere-disable-storage-procedure_persistent-storage-csi-vsphere)
 
-## Creating RHCOS machines using an ISO image { #bare-metal-vsphere-iso_adding-bare-metal-compute-vsphere-user-infra }
+## Create RHCOS machines using an ISO image { #bare-metal-vsphere-iso_adding-bare-metal-compute-vsphere-user-infra }
 
 To add bare-metal compute machines to your VMware vSphere cluster, you must manually provision them using an RHCOS ISO image and the `coreos-installer` utility.
 

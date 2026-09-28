@@ -40,7 +40,7 @@ The Cluster Network Operator is deployed during installation as a Kubernetes `De
 
     The following fields provide information about the status of the operator: `AVAILABLE`, `PROGRESSING`, and `DEGRADED`. The `AVAILABLE` field is `True` when the Cluster Network Operator reports an available status condition.
 
-## Viewing the cluster network configuration { #nw-cno-view_cluster-network-operator }
+## View the cluster network configuration { #nw-cno-view_cluster-network-operator }
 
 You can view your OpenShift Container Platform cluster network configuration by using the `oc describe` command for the `network.config/cluster` resource.
 
@@ -103,7 +103,7 @@ You can view your OpenShift Container Platform cluster network configuration by 
     `Status`
     :   Displays the current state of the cluster network configuration.
 
-## Viewing Cluster Network Operator status { #nw-cno-status_cluster-network-operator }
+## View Cluster Network Operator status { #nw-cno-status_cluster-network-operator }
 
 You can inspect the status and view the details of the Cluster Network Operator by using the `oc describe` command.
 
@@ -115,7 +115,7 @@ You can inspect the status and view the details of the Cluster Network Operator 
     $ oc describe clusteroperators/network
     ```
 
-## Enabling IP forwarding globally { #nw-cno-enable-ip-forwarding_cluster-network-operator }
+## Enable IP forwarding globally { #nw-cno-enable-ip-forwarding_cluster-network-operator }
 
 From OpenShift Container Platform 4.14 onward, OVN-Kubernetes disables global IP forwarding by default. By setting the Cluster Network Operator `gatewayConfig.ipForwarding` spec to `Global`, you can enable cluster-wide forwarding.
 
@@ -170,7 +170,7 @@ From OpenShift Container Platform 4.14 onward, OVN-Kubernetes disables global IP
 
         The other valid option for this parameter is `Restricted` in case you want to revert this change. `Restricted` is the default and with that setting global IP address forwarding is disabled.
 
-## Viewing Cluster Network Operator logs { #nw-cno-logs_cluster-network-operator }
+## View Cluster Network Operator logs { #nw-cno-logs_cluster-network-operator }
 
 You can view Cluster Network Operator logs by using the `oc logs` command.
 
@@ -184,7 +184,9 @@ You can view Cluster Network Operator logs by using the `oc logs` command.
 
 ## Cluster Network Operator configuration { #nw-operator-cr_cluster-network-operator }
 
-To manage cluster networking, configure the Cluster Network Operator (CNO) `Network` custom resource (CR) named `cluster` so the cluster uses the correct IP ranges and network plugin settings for reliable pod and service connectivity. Some settings and fields are inherited at the time of install or by the `default.Network.type` plugin, OVN-Kubernetes.
+To manage cluster networking, configure the Cluster Network Operator (CNO) `Network` custom resource (CR) named `cluster` so the cluster uses the correct IP ranges and network plugin settings for reliable pod and service connectivity.
+
+Some settings and fields are inherited at the time of install or by the `default.Network.type` plugin, OVN-Kubernetes.
 
 The CNO configuration inherits the following fields during cluster installation from the `Network` API in the `Network.config.openshift.io` API group:
 

@@ -18,7 +18,7 @@ or
 $ oc explain scansettingbindings
 ```
 
-## Running compliance scans { #running-compliance-scans_compliance-operator-scans }
+## Run compliance scans { #running-compliance-scans_compliance-operator-scans }
 
 You can run a scan using the Center for Internet Security (CIS) profiles to evaluate cluster compliance against CIS benchmarks. For convenience, the Compliance Operator creates a `ScanSetting` object with reasonable defaults on startup. This `ScanSetting` object is named `default`.
 
@@ -226,7 +226,7 @@ For more information about inconsistent scan results, see Compliance Operator sh
 
     The scans progress through the scanning phases and eventually reach the `DONE` phase when complete. In most cases, the result of the scan is `NON-COMPLIANT`. You can review the scan results and start applying remediations to make the cluster compliant.
 
-## Setting custom storage size for results { #compliance-custom-storage_compliance-operator-scans }
+## Set custom storage size for results { #compliance-custom-storage_compliance-operator-scans }
 
 Although `ComplianceCheckResult` custom resources summarize one check across all scanned nodes, raw scanner results in ARF format are too large to store in etcd-backed Kubernetes resources. You can store them on a per-scan persistent volume and increase the default 1 GiB size by setting the `rawResultStorage.size` value in a `ScanSetting` or `ComplianceScan` resource.
 
@@ -260,7 +260,7 @@ Because OpenShift Container Platform can be deployed in a variety of public clou
     schedule: '0 1 * * *'
     ```
 
-## Scheduling the result server pod on a worker node { #running-compliance-scans-worker-node_compliance-operator-scans }
+## Schedule the result server pod on a worker node { #running-compliance-scans-worker-node_compliance-operator-scans }
 
 The result server pod mounts the persistent volume (PV) that stores the raw Asset Reporting Format (ARF) scan results. You can use the `nodeSelector` and `tolerations` attributes to configure the location of the result server pod to meet your organization’s requirements.
 
@@ -355,7 +355,7 @@ The Compliance Operator uses defaults of 500Mi memory and 100m CPU for the scann
 
     Increasing the memory limit for the Compliance Operator or the scanner pods is needed if the default limits are not sufficient and the Operator or scanner pods are ended by the Out Of Memory (OOM) process. For more information, see Increasing Compliance Operator resource limits.
 
-## Configuring the hosted control planes management cluster { #co-hcp-mgmt-config_compliance-operator-scans }
+## Configure the hosted control planes management cluster { #co-hcp-mgmt-config_compliance-operator-scans }
 
 If you are hosting your own Hosted control planes or Hypershift environment and want to scan a Hosted Cluster from the management cluster, you will need to set the name and prefix namespace for the target Hosted Cluster. You can achieve this by creating a `TailoredProfile`.
 
@@ -422,7 +422,7 @@ If you are hosting your own Hosted control planes or Hypershift environment and 
     $ oc create -n openshift-compliance -f mgmt-tp.yaml
     ```
 
-## Applying resource requests and limits { #compliance-applying-resource-requests-and-limits_compliance-operator-scans }
+## Apply resource requests and limits { #compliance-applying-resource-requests-and-limits_compliance-operator-scans }
 
 You can configure a container’s requests and limits for memory and CPU to define how much CPU time and memory that the container can use.
 
@@ -440,7 +440,7 @@ The kubelet tracks `tmpfs` `emptyDir` volumes as container memory is used, rathe
 
     A container might not exceed its CPU limit for extended periods. Container run times do not stop Pods or containers for excessive CPU usage. To determine whether a container cannot be scheduled or is being killed due to resource limits, see *Troubleshooting the Compliance Operator*.
 
-## Scheduling Pods with container resource requests { #compliance-scheduling-pods-with-resource-requests_compliance-operator-scans }
+## Schedule Pods with container resource requests { #compliance-scheduling-pods-with-resource-requests_compliance-operator-scans }
 
 You can specify CPU and memory resource requests and limits for containers to ensure that pods are placed on nodes with sufficient capacity, preventing resource shortages.
 

@@ -28,7 +28,7 @@ The Node Tuning Operator is part of a standard OpenShift Container Platform inst
 
     In earlier versions of OpenShift Container Platform, the Performance Addon Operator was used to implement automatic tuning to achieve low latency performance for OpenShift applications. In OpenShift Container Platform 4.11 and later, this functionality is part of the Node Tuning Operator.
 
-## Accessing an example Node Tuning Operator specification { #accessing-an-example-node-tuning-operator-specification_nodes-node-tuning-operator }
+## Access an example Node Tuning Operator specification { #accessing-an-example-node-tuning-operator-specification_nodes-node-tuning-operator }
 
 Use this process to access an example Node Tuning Operator specification.
 

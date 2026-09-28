@@ -21,7 +21,7 @@ Ensure these settings account for the Amazon Web Services Classic Load Balancer 
 
 If the timeout period of the CLB is shorter than the route timeout or Ingress Controller timeout, the load balancer can prematurely terminate the connection. You can prevent this problem by increasing both the timeout period of the route and CLB.
 
-### Configuring route timeouts { #nw-configuring-route-timeouts_configuring-ingress-cluster-traffic-aws }
+### Configure route timeouts { #nw-configuring-route-timeouts_configuring-ingress-cluster-traffic-aws }
 
 You can configure the default timeouts for an existing route when you have services in need of a low timeout, which is required for Service Level Availability (SLA) purposes, or a high timeout, for cases with a slow back end.
 
@@ -50,7 +50,7 @@ You can configure the default timeouts for an existing route when you have servi
     $ oc annotate route myroute --overwrite haproxy.router.openshift.io/timeout=2s
     ```
 
-### Configuring Classic Load Balancer timeouts { #nw-configuring-clb-timeouts_configuring-ingress-cluster-traffic-aws }
+### Configure Classic Load Balancer timeouts { #nw-configuring-clb-timeouts_configuring-ingress-cluster-traffic-aws }
 
 You can configure the default timeouts for a Classic Load Balancer (CLB) to extend idle connections.
 

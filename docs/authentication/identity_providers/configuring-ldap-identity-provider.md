@@ -88,7 +88,7 @@ When a client attempts to connect using username `bob`, the resulting search fil
 
 If the LDAP directory requires authentication to search, specify a `bindDN` and `bindPassword` to use to perform the entry search.
 
-## Creating the LDAP secret { #identity-provider-creating-ldap-secret_configuring-ldap-identity-provider }
+## Create the LDAP secret { #identity-provider-creating-ldap-secret_configuring-ldap-identity-provider }
 
 Create a secret that contains the LDAP bind password in the `openshift-config` namespace so the identity provider can authenticate to the directory.
 
@@ -118,7 +118,7 @@ Create a secret that contains the LDAP bind password in the `openshift-config` n
       bindPassword: <base64_encoded_bind_password>
     ```
 
-## Creating a ConfigMap { #identity-provider-creating-configmap_configuring-ldap-identity-provider }
+## Create a ConfigMap { #identity-provider-creating-configmap_configuring-ldap-identity-provider }
 
 Create a `ConfigMap` object in the `openshift-config` namespace that contains the certificate authority bundle for the identity provider. OpenShift Container Platform uses this bundle to validate Transport Layer Security (TLS) connections to the identity provider.
 
@@ -221,7 +221,7 @@ where:
 
 - [Identity provider parameters](../understanding-identity-provider.md#identity-provider-parameters_understanding-identity-provider)
 
-## Adding an identity provider to your cluster { #add-identity-provider_configuring-ldap-identity-provider }
+## Add an identity provider to your cluster { #add-identity-provider_configuring-ldap-identity-provider }
 
 Apply the identity provider custom resource (CR) to your cluster after you define it. With this configuration, you can authenticate with the configured identity provider.
 

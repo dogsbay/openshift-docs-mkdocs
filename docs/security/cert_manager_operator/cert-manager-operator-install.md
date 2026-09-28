@@ -12,7 +12,7 @@ The cert-manager Operator for Red Hat OpenShift sets the `features.operators.ope
 
     The cert-manager Operator for Red Hat OpenShift version 1.15 or later supports the `AllNamespaces`, `SingleNamespace`, and `OwnNamespace` installation modes. Earlier versions, such as 1.14, support only the `SingleNamespace` and `OwnNamespace` installation modes.
 
-## Installing the cert-manager Operator for Red Hat OpenShift by using the web console { #cert-manager-install-console_cert-manager-operator-install }
+## Install the cert-manager Operator for Red Hat OpenShift by using the web console { #cert-manager-install-console_cert-manager-operator-install }
 
 You can use the web console to install the cert-manager Operator for Red Hat OpenShift.
 
@@ -77,7 +77,7 @@ You can use the web console to install the cert-manager Operator for Red Hat Ope
 
     You can use the cert-manager Operator for Red Hat OpenShift only after cert-manager pods are up and running.
 
-## Installing the cert-manager Operator for Red Hat OpenShift by using the CLI { #cert-manager-install-cli_cert-manager-operator-install }
+## Install the cert-manager Operator for Red Hat OpenShift by using the CLI { #cert-manager-install-cli_cert-manager-operator-install }
 
 You can install the cert-manager Operator for Red Hat OpenShift by using the command-line interface (CLI).
 
@@ -207,7 +207,7 @@ You can install the cert-manager Operator for Red Hat OpenShift by using the com
 
 - [Supported cert-manager Operator for Red Hat OpenShift versions](../cert_manager_operator.md#cert-manager-operator-supported-versions_cert-manager-operator-about)
 
-## Understanding update channels of the cert-manager Operator for Red Hat OpenShift { #cert-manager-operator-update-channels_cert-manager-operator-install }
+## Understand update channels of the cert-manager Operator for Red Hat OpenShift { #cert-manager-operator-update-channels_cert-manager-operator-install }
 
 Update channels are the mechanism by which you can declare the version of your cert-manager Operator for Red Hat OpenShift in your cluster. The cert-manager Operator for Red Hat OpenShift offers the following update channels:
 

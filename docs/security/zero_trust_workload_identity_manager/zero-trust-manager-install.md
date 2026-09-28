@@ -12,7 +12,7 @@ If you install the Operator into a custom namespace (for example, `my-custom-nam
 
     The Operator installation is not supported in the `openshift-*` namespaces and the `default` namespace.
 
-## Installing the Zero Trust Workload Identity Manager by using the web console { #zero-trust-manager-install-console_zero-trust-manager-install }
+## Install the Zero Trust Workload Identity Manager by using the web console { #zero-trust-manager-install-console_zero-trust-manager-install }
 
 Use the Software Catalog in the OpenShift Container Platform web console to install the Zero Trust Workload Identity Manager. This process streamlines deployment and helps ensure the Operator is installed in the correct namespace with the appropriate installation mode.
 
@@ -75,7 +75,7 @@ Use the Software Catalog in the OpenShift Container Platform web console to inst
     $ oc logs -f deployment/zero-trust-workload-identity-manager-controller-manager -n zero-trust-workload-identity-manager
     ```
 
-## Installing the Zero Trust Workload Identity Manager by using the CLI { #zero-trust-manager-install-cli_zero-trust-manager-install }
+## Install the Zero Trust Workload Identity Manager by using the CLI { #zero-trust-manager-install-cli_zero-trust-manager-install }
 
 Install the Zero Trust Workload Identity Manager by using the command-line interface (CLI) to create the required project, `OperatorGroup`, and `Subscription` objects. You can then deploy the Operator components necessary for managing workload identities on your OpenShift Container Platform cluster.
 

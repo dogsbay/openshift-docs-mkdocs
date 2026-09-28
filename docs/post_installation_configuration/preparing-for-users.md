@@ -311,7 +311,7 @@ OpenShift Container Platform includes several default projects, and projects sta
 
 - [Guaranteed Scheduling For Critical Add-On Pods (Kubernetes documentation)](https://kubernetes.io/docs/tasks/administer-cluster/guaranteed-scheduling-critical-addon-pods/#rescheduler-guaranteed-scheduling-of-critical-add-ons)
 
-### Viewing cluster roles and bindings { #viewing-cluster-roles_post-install-preparing-for-users }
+### View cluster roles and bindings { #viewing-cluster-roles_post-install-preparing-for-users }
 
 You can view cluster roles and bindings by using the `oc` CLI to determine the permissions associated with roles and identify the users, groups, and service accounts assigned to them.
 
@@ -602,7 +602,7 @@ Users with the `cluster-admin` default cluster role bound cluster-wide can perfo
     ...
     ```
 
-### Viewing local roles and bindings { #viewing-local-roles_post-install-preparing-for-users }
+### View local roles and bindings { #viewing-local-roles_post-install-preparing-for-users }
 
 You can view local role bindings by using the `oc` CLI to identify the users, groups, and service accounts that have roles within the current project or another project.
 
@@ -689,7 +689,7 @@ You can use the `oc` CLI to view local roles and bindings by using the `oc descr
       Group  system:serviceaccounts:joe-project
     ```
 
-### Adding roles to users { #adding-roles_post-install-preparing-for-users }
+### Add roles to users { #adding-roles_post-install-preparing-for-users }
 
 To grant a user access within a project, you can bind an appropriate role to the user and verify the resulting role binding.
 
@@ -818,7 +818,7 @@ You can bind any of the default cluster roles to local users or groups in your p
 
     The `alice` user has been added to the `admins` `RoleBinding`.
 
-### Creating a local role { #creating-local-role_post-install-preparing-for-users }
+### Create a local role { #creating-local-role_post-install-preparing-for-users }
 
 You can create a local role and bind it to a user to define custom permissions within a project.
 
@@ -849,7 +849,7 @@ You can create a local role and bind it to a user to define custom permissions w
     $ oc adm policy add-role-to-user podview user2 --role-namespace=blue -n blue
     ```
 
-### Creating a cluster role { #creating-cluster-role_post-install-preparing-for-users }
+### Create a cluster role { #creating-cluster-role_post-install-preparing-for-users }
 
 To define custom cluster-wide permissions, you can create a cluster role that specifies the verbs and resources users can access.
 
@@ -908,7 +908,7 @@ You can also manage cluster role bindings using the following operations. The `-
 | `$ oc adm policy add-cluster-role-to-group _<role>_ _<groupname>_`      | Binds a given role to specified groups for all projects in the cluster.     |
 | `$ oc adm policy remove-cluster-role-from-group _<role>_ _<groupname>_` | Removes a given role from specified groups for all projects in the cluster. |
 
-### Creating a cluster admin { #creating-cluster-admin_post-install-preparing-for-users }
+### Create a cluster admin { #creating-cluster-admin_post-install-preparing-for-users }
 
 To grant a user full administrative access to the cluster, you can bind the `cluster-admin` cluster role to that user.
 
@@ -949,7 +949,7 @@ Cluster administrators can add unauthenticated users to the following cluster ro
 
     Always verify compliance with your organization’s security standards when modifying unauthenticated access.
 
-### Adding unauthenticated groups to cluster roles { #unauthenticated-users-cluster-role-bindings_post-install-preparing-for-users }
+### Add unauthenticated groups to cluster roles { #unauthenticated-users-cluster-role-bindings_post-install-preparing-for-users }
 
 Grant unauthenticated users access to specific cluster roles to enable features that require cluster access without authentication, such as external webhooks or automated token management.
 
@@ -1010,7 +1010,7 @@ INFO Access the OpenShift web-console here: https://console-openshift-console.ap
 INFO Login to the console with user: kubeadmin, password: <provided>
 ```
 
-### Removing the kubeadmin user { #removing-kubeadmin_post-install-preparing-for-users }
+### Remove the kubeadmin user { #removing-kubeadmin_post-install-preparing-for-users }
 
 After you define an identity provider and create a new `cluster-admin` user, you can remove the `kubeadmin` to improve cluster security.
 

@@ -20,7 +20,7 @@ Second, it creates a daemon set which runs a user space program that reads the e
 
     For more information about the support scope of Red Hat Technology Preview features, see [Technology Preview Features Support Scope](https://access.redhat.com/support/offerings/techpreview/).
 
-## Deploying a containerized eBPF program { #nw-bpfman-operator-deploy_bpfman-operator-deploy }
+## Deploy a containerized eBPF program { #nw-bpfman-operator-deploy_bpfman-operator-deploy }
 
 To run custom networking or security logic on your cluster nodes, you can deploy containerized eBPF programs. You can use containerized eBPF programs to monitor kernel events and manage network traffic efficiently at the node level.
 

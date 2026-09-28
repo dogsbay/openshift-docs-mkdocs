@@ -72,7 +72,7 @@ The following table describes parameters for the BFD profile CR:
 </table>
 
 
-## Configuring a BFD profile { #nw-metallb-configure-bfdprofile_configure-metallb-bfd-profiles }
+## Configure a BFD profile { #nw-metallb-configure-bfdprofile_configure-metallb-bfd-profiles }
 
 To achieve faster path failure detection for BGP sessions, configure a MetalLB BFD profile and associate it with a BGP peer. Establishing these profiles ensures that your network routing remains highly available and responsive by identifying connectivity issues more rapidly than standard protocols.
 

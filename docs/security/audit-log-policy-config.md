@@ -46,7 +46,7 @@ OpenShift Container Platform provides the following predefined audit policy prof
 
 By default, OpenShift Container Platform uses the `Default` audit log profile. You can use another audit policy profile that also logs request bodies, but be aware of the increased resource usage such as CPU, memory, and I/O.
 
-## Configuring the audit log policy { #configuring-audit-policy_audit-log-policy-config }
+## Configure the audit log policy { #configuring-audit-policy_audit-log-policy-config }
 
 You can configure the audit log policy to use when logging requests that come to the API servers.
 
@@ -107,7 +107,7 @@ You can configure the audit log policy to use when logging requests that come to
     - `3 nodes are at revision 11; 0 nodes have achieved new revision 12`
     - `2 nodes are at revision 11; 1 nodes are at revision 12`
 
-## Configuring the audit log policy with custom rules { #configuring-audit-policy-custom_audit-log-policy-config }
+## Configure the audit log policy with custom rules { #configuring-audit-policy-custom_audit-log-policy-config }
 
 You can configure an audit log policy that defines custom rules. You can specify multiple groups and define which profile to use for that group.
 
@@ -178,7 +178,7 @@ These custom rules take precedence over the top-level profile field. The custom 
     - `3 nodes are at revision 11; 0 nodes have achieved new revision 12`
     - `2 nodes are at revision 11; 1 nodes are at revision 12`
 
-## Disabling audit logging { #configuring-audit-policy-disable_audit-log-policy-config }
+## Disable audit logging { #configuring-audit-policy-disable_audit-log-policy-config }
 
 You can disable audit logging for OpenShift Container Platform. When you disable audit logging, even OAuth access token requests and OAuth authorize token requests are not logged.
 

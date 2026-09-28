@@ -169,7 +169,7 @@ To perform a single scan, annotate the scan with the `compliance.openshift.io/re
 
         When the scan setting `default-auto-apply` label is applied, remediations are applied automatically and outdated remediations automatically update. If there are remediations that were not applied due to dependencies, or remediations that had been outdated, rescanning applies the remediations and might trigger a reboot. Only remediations that use `MachineConfig` objects trigger reboots. If there are no updates or dependencies to be applied, no reboot occurs.
 
-## Setting custom storage size for results { #compliance-custom-storage_compliance-advanced }
+## Set custom storage size for results { #compliance-custom-storage_compliance-advanced }
 
 Although `ComplianceCheckResult` custom resources summarize one check across all scanned nodes, raw scanner results in ARF format are too large to store in etcd-backed Kubernetes resources. You can store them on a per-scan persistent volume and increase the default 1 GiB size by setting the `rawResultStorage.size` value in a `ScanSetting` or `ComplianceScan` resource.
 

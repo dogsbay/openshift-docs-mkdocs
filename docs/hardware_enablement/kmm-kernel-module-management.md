@@ -917,7 +917,7 @@ To build kernel module loader images in OpenShift Container Platform, you can us
 
 - [Driver Toolkit](psap-driver-toolkit.md#driver-toolkit)
 
-## Using signing with Kernel Module Management (KMM) { #kmm-using-signing-with-kmm_kernel-module-management-operator }
+## Use signing with Kernel Module Management (KMM) { #kmm-using-signing-with-kmm_kernel-module-management-operator }
 
 On Secure Boot-enabled OpenShift Container Platform systems, out-of-tree kernel modules must be signed with keys enrolled in the Machine Owner’s Key (MOK) database. For kernel modules built out of tree, KMM supports signing kmods through the `sign` section of the kernel mapping in a `Module` custom resource.
 
@@ -933,7 +933,7 @@ For more details on using Secure Boot, see "Generating a public and private key 
 
 - [Generating a public and private key pair](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_monitoring_and_updating_the_kernel/signing-a-kernel-and-modules-for-secure-boot_managing-monitoring-and-updating-the-kernel#generating-a-public-and-private-key-pair_signing-a-kernel-and-modules-for-secure-boot)
 
-## Adding the keys for secureboot { #kmm-adding-the-keys-for-secureboot_kernel-module-management-operator }
+## Add the keys for secureboot { #kmm-adding-the-keys-for-secureboot_kernel-module-management-operator }
 
 To sign kernel modules with Kernel Module Management (KMM) on OpenShift Container Platform, you can add Secure Boot certificate and private key files as Kubernetes secrets.
 
@@ -1002,7 +1002,7 @@ For details on how to extract the public and private key pair, see [Signing kern
     $ oc apply -f <yaml_filename>
     ```
 
-### Checking the keys { #kmm-checking-the-keys_kernel-module-management-operator }
+### Check the keys { #kmm-checking-the-keys_kernel-module-management-operator }
 
 To verify that your secure boot signing keys are configured correctly in OpenShift Container Platform, you can inspect the public certificate and private key secrets with the OpenShift CLI.
 
@@ -1024,7 +1024,7 @@ To verify that your secure boot signing keys are configured correctly in OpenShi
 
     This should display the key enclosed in the `-----BEGIN PRIVATE KEY-----` and `-----END PRIVATE KEY-----` lines.
 
-## Signing kmods in a pre-built image { #kmm-signing-kmods-in-a-prebuilt-image_kernel-module-management-operator }
+## Sign kmods in a pre-built image { #kmm-signing-kmods-in-a-prebuilt-image_kernel-module-management-operator }
 
 To sign kernel modules in a vendor-supplied or externally built image on OpenShift Container Platform, you can configure a `Module` custom resource with unsigned and signed container image references and key secrets.
 
@@ -1084,7 +1084,7 @@ KMM then loads the signed kmods onto all the nodes with that match the selector.
     `<unsigned_image_name>`
     :   Specifies the name of the unsigned image. For example, `quay.io/myuser/my-driver:<kernelversion`.
 
-## Specifying files to sign { #kmm-specifying-files-to-sign_kernel-module-management-operator }
+## Specify files to sign { #kmm-specifying-files-to-sign_kernel-module-management-operator }
 
 You can specify full paths or wildcard and glob patterns to sign kernel module (`.ko`) files in specific directories. 
 
@@ -1166,7 +1166,7 @@ You can use wildcard and any glob expression supported by the Ash shell in the `
         - /opt/lib/modules/${KERNEL_FULL_VERSION}/mod-[0-9].ko 
     ```
 
-## Building and signing a kmod image { #kmm-building-and-signing-a-kmod-image_kernel-module-management-operator }
+## Build and sign a kmod image { #kmm-building-and-signing-a-kmod-image_kernel-module-management-operator }
 
 To build and sign a kmod image from source code on OpenShift Container Platform, you can apply a `Module` custom resource that builds an unsigned image and then signs it with your key and certificate secrets.
 

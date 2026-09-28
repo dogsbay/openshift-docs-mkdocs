@@ -28,7 +28,7 @@ The Node Tuning Operator is part of a standard OpenShift Container Platform inst
 
     In earlier versions of OpenShift Container Platform, the Performance Addon Operator was used to implement automatic tuning to achieve low latency performance for OpenShift applications. In OpenShift Container Platform 4.11 and later, this functionality is part of the Node Tuning Operator.
 
-## Accessing an example Node Tuning Operator specification { #accessing-an-example-node-tuning-operator-specification_node-tuning-operator }
+## Access an example Node Tuning Operator specification { #accessing-an-example-node-tuning-operator-specification_node-tuning-operator }
 
 Use this process to access an example Node Tuning Operator specification.
 
@@ -79,7 +79,7 @@ Starting with OpenShift Container Platform 4.9, all OpenShift TuneD profiles are
 $ oc exec $tuned_pod -n openshift-cluster-node-tuning-operator -- find /usr/lib/tuned/openshift{,-control-plane,-node} -name tuned.conf -exec grep -H ^ {} \;
 ```
 
-## Verifying that the TuneD profiles are applied { #verifying-tuned-profiles-are-applied_node-tuning-operator }
+## Verify that the TuneD profiles are applied { #verifying-tuned-profiles-are-applied_node-tuning-operator }
 
 Verify the TuneD profiles that are applied to your cluster node.
 
@@ -488,7 +488,7 @@ where:
 
 - [Coordinating reboots for configuration changes](../edge_computing/policygenerator_for_ztp/ztp-configuring-managed-clusters-policygenerator.md#ztp-coordinating-reboots-for-config-changes_ztp-configuring-managed-clusters-policygenerator)
 
-### Deferring application of tuning changes: An example { #defer-application-of-tuning-changes-example_node-tuning-operator }
+### Defer application of tuning changes: An example { #defer-application-of-tuning-changes-example_node-tuning-operator }
 
 The following worked example describes how to defer the application of tuning changes by using the Node Tuning Operator.
 
@@ -710,7 +710,7 @@ There is some dynamic tuning functionality provided by some of these plugins tha
 - [Available TuneD Plugins](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/monitoring_and_managing_system_status_and_performance/customizing-tuned-profiles_monitoring-and-managing-system-status-and-performance#available-tuned-plug-ins_customizing-tuned-profiles)
 - [Getting Started with TuneD](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/monitoring_and_managing_system_status_and_performance/getting-started-with-tuned_monitoring-and-managing-system-status-and-performance)
 
-## Configuring node tuning in a hosted cluster { #node-tuning-hosted-cluster_node-tuning-operator }
+## Configure node tuning in a hosted cluster { #node-tuning-hosted-cluster_node-tuning-operator }
 
 To set node-level tuning on the nodes in your hosted cluster, you can use the Node Tuning Operator. In hosted control planes, you can configure node tuning by creating config maps that contain `Tuned` objects and referencing those config maps in your node pools.
 

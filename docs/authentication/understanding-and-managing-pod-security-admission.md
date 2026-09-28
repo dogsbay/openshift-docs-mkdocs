@@ -166,7 +166,7 @@ By default, all namespaces that have an `openshift-` prefix have pod security ad
 
 If an Operator is installed in a user-created `openshift-*` namespace, synchronization is enabled automatically after a cluster service version (CSV) is created in the namespace. The synchronized label is derived from the permissions of the service accounts in the namespace.
 
-## Controlling pod security admission synchronization { #security-context-constraints-psa-opting_understanding-and-managing-pod-security-admission }
+## Control pod security admission synchronization { #security-context-constraints-psa-opting_understanding-and-managing-pod-security-admission }
 
 To customize which namespaces have their pod security admission labels automatically updated, you can enable or disable synchronization for most namespaces.
 
@@ -202,7 +202,7 @@ To customize which namespaces have their pod security admission labels automatic
 
 - [Pod security admission synchronization namespace exclusions](understanding-and-managing-pod-security-admission.md#security-context-constraints-psa-sync-exclusions_understanding-and-managing-pod-security-admission)
 
-## Configuring pod security admission for a namespace { #security-context-constraints-psa-label_understanding-and-managing-pod-security-admission }
+## Configure pod security admission for a namespace { #security-context-constraints-psa-label_understanding-and-managing-pod-security-admission }
 
 You can configure pod security admission modes and profiles at the namespace level to control the security standards that pods must meet in a specific namespace.
 
@@ -235,7 +235,7 @@ You can view the Kubernetes API server audit logs to investigate alerts that wer
 
 To identify pod security admission violation audit events, see "Audit annotations" in the Kubernetes documentation.
 
-### Identifying pod security violations { #security-context-constraints-psa-alert-eval_understanding-and-managing-pod-security-admission }
+### Identify pod security violations { #security-context-constraints-psa-alert-eval_understanding-and-managing-pod-security-admission }
 
 To identify which workloads are causing pod security violations, you can review the Kubernetes API server audit logs by using the `must-gather` tool.
 

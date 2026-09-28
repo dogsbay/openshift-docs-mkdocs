@@ -35,7 +35,7 @@ As an Operator author preparing an Operator for use alongside the updated CCO in
 - [Installing from OperatorHub using the web console](../../admin/olm-adding-operators-to-cluster.md#olm-installing-from-software-catalog-using-web-console_olm-adding-operators-to-a-cluster)
 - [Installing from OperatorHub using the CLI](../../admin/olm-adding-operators-to-cluster.md#olm-installing-operator-from-software-catalog-using-cli_olm-adding-operators-to-a-cluster)
 
-## Enabling Operators to support CCO-based workflows with AWS STS { #osdk-cco-aws-sts-enabling_osdk-cco-aws-sts }
+## Enable Operators to support CCO-based workflows with AWS STS { #osdk-cco-aws-sts-enabling_osdk-cco-aws-sts }
 
 As an Operator author designing your project to run on Operator Lifecycle Manager (OLM), you can enable your Operator to authenticate against AWS on STS-enabled OpenShift Container Platform clusters by customizing your project to support the Cloud Credential Operator (CCO).
 

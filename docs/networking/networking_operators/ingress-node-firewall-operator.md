@@ -22,7 +22,7 @@ You configure `rules` of the `IngressNodeFirewall` CR and apply them to clusters
 
     For OpenShift Container Platform 4.14 or later, you must run Ingress Node Firewall Operator on RHEL 9.0 or later.
 
-## Installing the Ingress Node Firewall Operator { #installing-infw-operator_ingress-node-firewall-operator }
+## Install the Ingress Node Firewall Operator { #installing-infw-operator_ingress-node-firewall-operator }
 
 As a cluster administrator, you can install the Ingress Node Firewall Operator to enable node-level ingress firewalling by using the OpenShift Container Platform CLI.
 
@@ -100,7 +100,7 @@ As a cluster administrator, you can install the Ingress Node Firewall Operator t
     ingress-node-firewall.4.22.0-202211122336   Ingress Node Firewall Operator   4.22.0-202211122336   ingress-node-firewall.4.22.0-202211102047   Succeeded
     ```
 
-## Installing the Ingress Node Firewall Operator using the web console { #install-operator-web-console_ingress-node-firewall-operator }
+## Install the Ingress Node Firewall Operator using the web console { #install-operator-web-console_ingress-node-firewall-operator }
 
 As a cluster administrator, you can install the Ingress Node Firewall Operator to enable node-level ingress firewalling by using the web console.
 
@@ -144,7 +144,7 @@ As a cluster administrator, you can install the Ingress Node Firewall Operator t
 
                 For single-node OpenShift clusters, the `openshift-ingress-node-firewall` namespace requires the `workload.openshift.io/allowed=management` annotation.
 
-## Deploying Ingress Node Firewall Operator { #nw-infw-operator-deploying_ingress-node-firewall-operator }
+## Deploy Ingress Node Firewall Operator { #nw-infw-operator-deploying_ingress-node-firewall-operator }
 
 To deploy the Ingress Node Firewall Operator, create a `IngressNodeFirewallConfig` custom resource that will deploy the Operator’s daemon set. You can deploy one or multiple `IngressNodeFirewall` CRDs to nodes by applying firewall rules.
 
@@ -395,7 +395,7 @@ When this integration is enabled, the following limitations apply:
 - The Ingress Node Firewall Operator daemon set pods remain in the `ContainerCreating` state until the firewall rules are applied.
 - The Ingress Node Firewall Operator daemon set pods run as privileged.
 
-## Configuring Ingress Node Firewall Operator to use the eBPF Manager Operator { #bpfman-infw-configure_ingress-node-firewall-operator }
+## Configure Ingress Node Firewall Operator to use the eBPF Manager Operator { #bpfman-infw-configure_ingress-node-firewall-operator }
 
 Configure the Ingress Node Firewall to use eBPF Manager for program lifecycle control.
 
@@ -438,7 +438,7 @@ As a cluster administrator, you can configure the Ingress Node Firewall Operator
 
     `<ebpf_mode>`: Specifies whether or not the Ingress Node Firewall Operator uses the eBPF Manager Operator to manage eBPF programs. Must be either `true` or `false`. If unset, eBPF Manager is not used.
 
-## Viewing Ingress Node Firewall Operator rules { #nw-infw-operator-viewing_ingress-node-firewall-operator }
+## View Ingress Node Firewall Operator rules { #nw-infw-operator-viewing_ingress-node-firewall-operator }
 
 Inspect existing rules and configs to confirm the firewall is applied as intended.
 
@@ -456,7 +456,7 @@ Inspect existing rules and configs to confirm the firewall is applied as intende
     $ oc get <resource> <name> -o yaml
     ```
 
-## Troubleshooting the Ingress Node Firewall Operator { #nw-infw-operator-troubleshooting_ingress-node-firewall-operator }
+## Troubleshoot the Ingress Node Firewall Operator { #nw-infw-operator-troubleshooting_ingress-node-firewall-operator }
 
 You can verify the status and view the logs to diagnose ingress firewall deployment or rule issues.
 

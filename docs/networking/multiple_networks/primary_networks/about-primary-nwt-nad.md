@@ -26,7 +26,7 @@ Each approach is mutually exclusive and you can only use one approach for managi
     $ openstack subnet set --dns-nameserver 0.0.0.0 <subnet_id>
     ```
 
-## Creating a primary network attachment with the Cluster Network Operator { #nw-multus-create-network_understanding-multiple-networks }
+## Create a primary network attachment with the Cluster Network Operator { #nw-multus-create-network_understanding-multiple-networks }
 
 When you specify a primary network to create by using the Cluster Network Operator (CNO), the (CNO) creates the `NetworkAttachmentDefinition` custom resource definition (CRD) automatically and manages it.
 
@@ -113,7 +113,7 @@ The configuration for the API is described in the following table:
 | `metadata.namespace` | `string` | The namespace that the object is associated with. |
 | `spec.config`        | `string` | The CNI plugin configuration in JSON format.      |
 
-## Creating a primary network attachment by applying a YAML manifest { #nw-multus-create-network-apply_understanding-multiple-networks }
+## Create a primary network attachment by applying a YAML manifest { #nw-multus-create-network-apply_understanding-multiple-networks }
 
 Create a primary network attachment by directly applying a `NetworkAttachmentDefinition` YAML manifest. This gives you full control over the network configuration without relying on the Cluster Network Operator to manage the resource automatically.
 

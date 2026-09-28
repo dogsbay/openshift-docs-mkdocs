@@ -764,7 +764,7 @@ For more information about the sizes of virtual machines that support the truste
                   virtualizedTrustedPlatformModule: Enabled
         ```
 
-### Enabling confidential VMs { #installation-azure-confidential-vms_installing-restricted-networks-azure-installer-provisioned }
+### Enable confidential VMs { #installation-azure-confidential-vms_installing-restricted-networks-azure-installer-provisioned }
 
 To enable confidential VMs on Azure for your OpenShift Container Platform cluster, you can configure the `install-config.yaml` file before deployment. Apply the settings to control plane nodes, compute nodes, or all nodes as needed.
 

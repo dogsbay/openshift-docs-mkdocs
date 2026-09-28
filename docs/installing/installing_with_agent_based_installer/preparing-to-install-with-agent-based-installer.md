@@ -184,10 +184,6 @@ For a two-node OpenShift Container Platform cluster with fencing (TNF), only the
 
         - You must set the `disk.EnableUUID` parameter to `TRUE` on all OpenShift Container Platform nodes. If this parameter is not enabled, the Agent-based Installer validation fails.
 
-    !!! note
-
-        For installations on IBM Z(R) (`s390x`) architecture, the minimum memory requirement is 24 GB RAM per host instead of 16 GB.
-
 **Additional resources**
 
 - [Cluster capabilities](../overview/cluster-capabilities.md#cluster-capabilities)

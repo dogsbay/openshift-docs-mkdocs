@@ -132,7 +132,7 @@ where:
     - If you specify multiple `nodeSelectorTerms` associated with `nodeAffinity` types, then the pod can be scheduled onto a node if one of the `nodeSelectorTerms` is satisfied.
     - If you specify multiple `matchExpressions` associated with `nodeSelectorTerms`, then the pod can be scheduled onto a node only if all `matchExpressions` are satisfied.
 
-## Configuring a required node affinity rule { #nodes-scheduler-node-affinity-configuring-required_nodes-scheduler-node-affinity }
+## Configure a required node affinity rule { #nodes-scheduler-node-affinity-configuring-required_nodes-scheduler-node-affinity }
 
 You can use a *required* rule to instruct the scheduler that the rules **must** be met before a pod can be scheduled on a node.
 
@@ -210,7 +210,7 @@ The following steps demonstrate a simple configuration that creates a node and a
         $ oc create -f <file-name>.yaml
         ```
 
-## Configuring a preferred node affinity rule { #nodes-scheduler-node-affinity-configuring-preferred_nodes-scheduler-node-affinity }
+## Configure a preferred node affinity rule { #nodes-scheduler-node-affinity-configuring-preferred_nodes-scheduler-node-affinity }
 
 You can use a *preferred* rule to instruct the scheduler that if a matching node is not available, schedule the pod on a different node to ensure the workload application runs.
 

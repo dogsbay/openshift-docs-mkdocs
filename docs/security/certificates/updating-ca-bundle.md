@@ -6,7 +6,7 @@ title: Updating the CA bundle
 
 To trust custom certificate authorities for egress connections in OpenShift Container Platform, you can update the CA bundle by specifying custom CA certificates in the cluster-wide proxy configuration.
 
-## Understanding the CA Bundle certificate { #ca-bundle-understanding_updating-ca-bundle }
+## Understand the CA Bundle certificate { #ca-bundle-understanding_updating-ca-bundle }
 
 Proxy certificates allow users to specify one or more custom certificate authority (CA) used by platform components when making egress connections.
 
@@ -27,7 +27,7 @@ data:
     -----END CERTIFICATE-----
 ```
 
-## Replacing the CA Bundle certificate { #ca-bundle-replacing_updating-ca-bundle }
+## Replace the CA Bundle certificate { #ca-bundle-replacing_updating-ca-bundle }
 
 To trust a custom certificate authority for egress connections in OpenShift Container Platform, you can replace the CA bundle by creating a config map with your root CA certificate and updating the cluster proxy configuration.
 

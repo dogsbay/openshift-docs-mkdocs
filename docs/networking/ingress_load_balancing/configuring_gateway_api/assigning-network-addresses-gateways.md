@@ -1,8 +1,8 @@
 ---
-title: Assign network addresses to gateways
+title: Assigning network addresses to gateways
 ---
 
-# Assign network addresses to gateways { #assigning-network-addresses-gateways }
+# Assigning network addresses to gateways { #assigning-network-addresses-gateways }
 
 You can configure network addresses for your gateway to provide a predictable entry point for external and internal traffic. This ensures that clients can reliably resolve and route requests to your load balancers.
 
@@ -17,7 +17,7 @@ To successfully assign network addresses to your gateway, complete the following
 - Review cloud provider annotations to ensure your internal load balancer provisions correctly on your specific infrastructure.
 - Configure DNS for on-premise gateways to ensure clients can reliably resolve your gateway.
 
-## Understand gateway address assignment and types { #understand-gateway-address-assignment_assigning-network-addresses-gateways }
+## Understanding gateway address assignment and types { #understand-gateway-address-assignment_assigning-network-addresses-gateways }
 
 OpenShift Container Platform automatically handles address assignment by provisioning a `LoadBalancer` service when you create a `Gateway` resource. The network address assigned to your gateway corresponds to the IP address or hostname of this underlying load balancer.
 
@@ -52,7 +52,7 @@ Additionally, be aware of the following topology and load balancer limitations f
 - Third-party load balancers: Red Hat does not currently test Gateway API with third-party load balancers such as F5 or Avi Kubernetes Operator (AKO). If you use an untested load balancer, the cluster administrator is responsible for ensuring it is configured and working properly.
 - Unsupported topologies: Environments without a load balancer controller are not supported. For example, you cannot use annotations to enforce a `NodePort` service type in place of a load balancer.
 
-## Configure automatic address assignment for a gateway { #configuring-automatic-address-assignment-gateway_assigning-network-addresses-gateways }
+## Configuring automatic address assignment for a gateway { #configuring-automatic-address-assignment-gateway_assigning-network-addresses-gateways }
 
 When you create a gateway resource, you must configure it for automatic address provisioning to successfully deploy the gateway without violating OpenShift Container Platform manual address constraints. By intentionally omitting the addresses field, you allow the controller to seamlessly provision and bind the necessary external network addresses to your gateway.
 
@@ -111,7 +111,7 @@ When you create a gateway resource, you must configure it for automatic address 
 
     The `ADDRESS` column in the output displays the dynamically provisioned network address for your gateway.
 
-## Configure an internal load balancer for a gateway { #configuring-internal-lb-gateway_assigning-network-addresses-gateways }
+## Configuring an internal load balancer for a gateway { #configuring-internal-lb-gateway_assigning-network-addresses-gateways }
 
 By default, Gateway API provisions an external load balancer. To restrict your gateway traffic to your private network, you can configure Gateway API to provision an internal load balancer by adding a cloud-specific annotation to your `Gateway` custom resource (CR).
 
@@ -167,7 +167,7 @@ By default, Gateway API provisions an external load balancer. To restrict your g
 
 ### Cloud provider annotations for internal load balancers { #internal-lb-annotations-reference_assigning-network-addresses-gateways }
 
-To provision an internal load balancer for clusters deployed in private environments, you must add specific annotations to the `spec.infrastructure.annotations` field of your `Gateway` custom resource (CR). 
+To provision an internal load balancer for clusters deployed in private environments, you must add specific annotations to the `spec.infrastructure.annotations` field of your `Gateway` custom resource (CR).
 
 This configuration is supported on Amazon Web Services (AWS), Microsoft Azure, Google Cloud, Red Hat OpenStack Platform (RHOSP), and IBM Cloud. The following table details the required cloud-specific annotations and their corresponding values.
 

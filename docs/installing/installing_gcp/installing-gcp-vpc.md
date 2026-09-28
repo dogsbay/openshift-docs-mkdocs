@@ -445,7 +445,7 @@ For more information, see Google’s documentation on [Shielded VMs](https://clo
                secureBoot: Enabled
         ```
 
-### Enabling Confidential VMs { #installation-gcp-enabling-confidential-vms_installing-gcp-vpc }
+### Enable Confidential VMs { #installation-gcp-enabling-confidential-vms_installing-gcp-vpc }
 
 You can use Confidential VMs when installing your OpenShift Container Platform cluster. Confidential VMs encrypt data during processing.
 

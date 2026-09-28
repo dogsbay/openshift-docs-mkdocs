@@ -12,7 +12,7 @@ By enabling the run-once duration override on a namespace, all future run-once p
 
     If both the run-once pod and the Run Once Duration Override Operator have their `activeDeadlineSeconds` value set, the lower of the two values is used.
 
-## Installing the Run Once Duration Override Operator { #rodoo-install-operator_run-once-duration-override-install }
+## Install the Run Once Duration Override Operator { #rodoo-install-operator_run-once-duration-override-install }
 
 Install the Run Once Duration Override Operator by using the web console to create the required namespace, install the Operator from the software catalog, and create a `RunOnceDurationOverride` instance.
 
@@ -83,7 +83,7 @@ Install the Run Once Duration Override Operator by using the web console to crea
     runoncedurationoverride-tdsqk                          1/1     Running   0          41s
     ```
 
-## Enabling the run-once duration override on a namespace { #rodoo-enable-override_run-once-duration-override-install }
+## Enable the run-once duration override on a namespace { #rodoo-enable-override_run-once-duration-override-install }
 
 Enable the run-once duration override on a namespace by adding the `runoncedurationoverrides.admission.runoncedurationoverride.openshift.io/enabled=true` label to the namespace.
 
@@ -154,7 +154,7 @@ Enable the run-once duration override on a namespace by adding the `runoncedurat
         activeDeadlineSeconds: 3600
     ```
 
-## Updating the run-once active deadline override value { #rodoo-update-active-deadline-seconds_run-once-duration-override-install }
+## Update the run-once active deadline override value { #rodoo-update-active-deadline-seconds_run-once-duration-override-install }
 
 Update the `activeDeadlineSeconds` field in the `RunOnceDurationOverride` resource to customize the override value that the operator applies to run-once pods.
 

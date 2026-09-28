@@ -67,7 +67,7 @@ Some platforms support multiple huge page sizes. To allocate huge pages of a spe
 - `EmptyDir` volumes backed by huge pages must not consume more huge page memory than the pod request.
 - Applications that consume huge pages via `shmget()` with `SHM_HUGETLB` must run with a supplemental group that matches ***proc/sys/vm/hugetlb_shm_group***.
 
-## Consuming huge pages resources using the Downward API { #consuming-huge-pages-resource-using-the-downward-api_huge-pages }
+## Consume huge pages resources using the Downward API { #consuming-huge-pages-resource-using-the-downward-api_huge-pages }
 
 To inject information about the huge pages resources consumed by a container, use the Downward API.
 
@@ -168,7 +168,7 @@ You can inject the resource allocation as environment variables, a volume plugin
 
 - [Allowing containers to consume Downward API objects](../nodes/containers/nodes-containers-downward-api.md#nodes-containers-downward-api)
 
-## Configuring huge pages at boot time { #configuring-huge-pages_huge-pages }
+## Configure huge pages at boot time { #configuring-huge-pages_huge-pages }
 
 To ensure nodes in your OpenShift Container Platform cluster pre-allocate memory for specific workloads, reserve huge pages at boot time.
 
@@ -265,7 +265,7 @@ There are two ways of reserving huge pages: at boot time and at run time. Reserv
     100Mi
     ```
 
-## Disabling transparent huge pages { #disable-thp_huge-pages }
+## Disable transparent huge pages { #disable-thp_huge-pages }
 
 If your application can handle huge pages on its own, you can disable transparent huge pages (THP) to optimally handle huge pages for all types of workloads and avoid the performance regressions that THP can cause.
 

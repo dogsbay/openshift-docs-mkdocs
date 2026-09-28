@@ -10,7 +10,7 @@ To control what namespaced workloads can access on RHCOS nodes, use the Security
 
     The Security Profiles Operator supports only Red Hat Enterprise Linux CoreOS (RHCOS) worker nodes. Red Hat Enterprise Linux (RHEL) nodes are not supported.
 
-## Creating SELinux profiles { #spo-create-selinux-profile_spo-selinux }
+## Create SELinux profiles { #spo-create-selinux-profile_spo-selinux }
 
 Use the `SelinuxProfile` object to create SELinux profiles.
 
@@ -177,7 +177,7 @@ To log policy violations or AVC denials, set the `SElinuxProfile` profile to `pe
       permissive: true
     ```
 
-### Binding workloads to profiles with ProfileBindings { #spo-binding-workloads_spo-selinux }
+### Bind workloads to profiles with ProfileBindings { #spo-binding-workloads_spo-selinux }
 
 You can use the `ProfileBinding` resource to bind a security profile to the `SecurityContext` of a container.
 

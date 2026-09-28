@@ -56,7 +56,7 @@ spec:
 # ...
 ```
 
-## Configuring the FRRConfiguration CR { #nw-metallb-frrconfiguration-crd_configure-metallb-frr-k8s }
+## Configure the FRRConfiguration CR { #nw-metallb-frrconfiguration-crd_configure-metallb-frr-k8s }
 
 To customize routing behavior beyond standard MetalLB capabilities, configure the `FRRConfiguration` custom resource (CR).
 

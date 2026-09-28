@@ -41,7 +41,7 @@ The following table describes the parameters for the BGP peer CR:
 
     The `passwordSecret` parameter is mutually exclusive with the `password` parameter, and contains a reference to a secret containing the password to use. Setting both parameters results in a failure of the parsing.
 
-## Configuring a BGP peer { #nw-metallb-configure-bgppeer_configure-metallb-bgp-peers }
+## Configure a BGP peer { #nw-metallb-configure-bgppeer_configure-metallb-bgp-peers }
 
 To exchange routing information and advertise IP addresses for load balancer services, configure MetalLB BGP peer CRs. Establishing these peers ensures that your network infrastructure can reach and correctly route traffic to cluster application workloads.
 
@@ -246,7 +246,7 @@ This procedure demonstrates the following tasks:
         $ oc apply -f bgpadvertisement2.yaml
         ```
 
-## Exposing a service through a network VRF { #nw-metallb-bgp-peer-vrf_configure-metallb-bgp-peers }
+## Expose a service through a network VRF { #nw-metallb-bgp-peer-vrf_configure-metallb-bgp-peers }
 
 To isolate network traffic and manage multiple routing tables, expose a service through a virtual routing and forwarding (VRF) instance. Associating a VRF with a MetalLB BGP peer ensures that external traffic is segmented and correctly routed to the intended application workloads.
 

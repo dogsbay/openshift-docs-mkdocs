@@ -6,7 +6,7 @@ title: Viewing an egress firewall for a project
 
 As a cluster administrator, you can list the names of any existing egress firewalls and view the traffic rules for a specific egress firewall.
 
-## Viewing an EgressFirewall custom resource (CR) { #nw-egress-firewall-view_viewing-egress-firewall-ovn }
+## View an EgressFirewall custom resource (CR) { #nw-egress-firewall-view_viewing-egress-firewall-ovn }
 
 You can view an `EgressFirewall` CR in your cluster.
 

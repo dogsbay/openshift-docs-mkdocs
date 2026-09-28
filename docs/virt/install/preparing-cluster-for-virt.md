@@ -172,7 +172,7 @@ OpenShift Virtualization
 - [Configure CPU models](../managing_vms/cpu_models/virt-configuring-default-cpu-model.md#virt-configuring-default-cpu-model)
 - [Deleting a virtual machine by using the web console](../managing_vms/virt-delete-vms.md#virt-delete-vm-web_virt-delete-vms)
 - [Configuring a downward metrics device](../monitoring/virt-exposing-downward-metrics.md#virt-configuring-downward-metrics_virt-exposing-downward-metrics)
-- [Creating virtual machines from instance types](../creating_vm/virt-creating-vms-from-instance-types.md#virt-creating-vms-from-instance-types)
+- [Instance types](../creating_vm/virt-creating-vms-from-instance-types.md#virt-creating-vms-from-instance-types)
 - [Networking overview](../vm_networking/virt-networking-overview.md#virt-networking)
 - [Connecting a virtual machine to an OVN-Kubernetes secondary network](../vm_networking/virt-connecting-vm-to-ovn-secondary-network.md#virt-connecting-vm-to-ovn-secondary-network)
 - [Exposing a virtual machine by using a service](../vm_networking/virt-exposing-vm-with-service.md#virt-exposing-vm-with-service)

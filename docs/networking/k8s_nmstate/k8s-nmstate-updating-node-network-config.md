@@ -14,7 +14,7 @@ For more information about how to install the NMState Operator, see [Kubernetes 
 
     For more information, see "Creating a manifest object that includes a customized br-ex bridge" in the *Deploying installer-provisioned clusters on bare metal* document or the *Installing a user-provisioned cluster on bare metal* document.
 
-## Viewing the network state of a node by using the CLI { #virt-viewing-network-state-of-node_k8s-nmstate-updating-node-network-config }
+## View the network state of a node by using the CLI { #virt-viewing-network-state-of-node_k8s-nmstate-updating-node-network-config }
 
 Node network state is the network configuration for all nodes in the cluster. A `NodeNetworkState` object exists on every node in the cluster. This object is periodically updated and captures the state of the network for that node.
 
@@ -65,7 +65,7 @@ Node network state is the network configuration for all nodes in the cluster. A 
     `status.lastSuccessfulUpdateTime`
     :   Timestamp of the last successful update. This is updated periodically if the node is reachable and can be used to evaluate the freshness of the report.
 
-## Viewing a graphical representation of the network state of a node (NNS) topology from the web console { #virt-viewing-graphical-representation-of-network-state-of-node-console_k8s-nmstate-updating-node-network-config }
+## View a graphical representation of the network state of a node (NNS) topology from the web console { #virt-viewing-graphical-representation-of-network-state-of-node-console_k8s-nmstate-updating-node-network-config }
 
 To make the configuration of the node network in the cluster easier to understand, you can view it in the form of a diagram.
 
@@ -81,7 +81,7 @@ The NNS topology diagram displays all node components (network interface control
     - To display the features or the YAML file of a specific component (for example, an interface or a bridge), click the icon of the component.
     - The icons of active components have green borders; the icons of disconnected components have red borders.
 
-## Viewing the list of NodeNetworkState resources { #virt-viewing-list-of-nodenetworkstate-resources-console_k8s-nmstate-updating-node-network-config }
+## View the list of NodeNetworkState resources { #virt-viewing-list-of-nodenetworkstate-resources-console_k8s-nmstate-updating-node-network-config }
 
 As an administrator, you can use the OpenShift Container Platform web console to view the list of `NodeNetworkState` resources and network interfaces, and access network details.
 
@@ -154,13 +154,13 @@ To effectively delete the NNCP, the node network policy, and any interfaces woul
 - [Example policy configurations for different interfaces](k8s-nmstate-updating-node-network-config.md#virt-nmstate-example-policy-configurations_k8s-nmstate-updating-node-network-config)
 - [Removing an interface from nodes](k8s-nmstate-updating-node-network-config.md#virt-removing-interface-from-nodes_k8s-nmstate-updating-node-network-config)
 
-## Managing policy from the web console { #virt-node-network-config-console_k8s-nmstate-updating-node-network-config }
+## Manage policy from the web console { #virt-node-network-config-console_k8s-nmstate-updating-node-network-config }
 
 You can update the node network configuration, such as adding or removing interfaces from nodes, by applying `NodeNetworkConfigurationPolicy` manifests to the cluster.
 
 Manage the policy from the web console by accessing the list of created policies in the **NodeNetworkConfigurationPolicy** page under the **Networking** menu. This page enables you to create, update, monitor, and delete the policies.
 
-### Monitoring the policy status { #virt-monitor-node-network-config-console_k8s-nmstate-updating-node-network-config }
+### Monitor the policy status { #virt-monitor-node-network-config-console_k8s-nmstate-updating-node-network-config }
 
 You can monitor the policy status from the **NodeNetworkConfigurationPolicy** page. This page displays all the policies created in the cluster in a tabular format, with the following columns:
 
@@ -175,7 +175,7 @@ Node network state
 
 To find the desired policy, you can filter the list either based on enactment state by using the **Filter** option, or by using the search option.
 
-### Creating a policy { #virt-create-node-network-config-console_k8s-nmstate-updating-node-network-config }
+### Create a policy { #virt-create-node-network-config-console_k8s-nmstate-updating-node-network-config }
 
 You can create a policy by using either a form or YAML in the web console. When creating a policy using a form, you can see how the new policy changes the topology of the nodes in your cluster in real time.
 
@@ -233,11 +233,11 @@ You can create a policy by using either a form or YAML in the web console. When 
 
 9. Verify the settings and click **Create** to create the policy.
 
-## Updating the NodeNetworkConfigurationPolicy manifest file { #virt-updating-policy-k8s-nmstate_k8s-nmstate-updating-node-network-config }
+## Update the NodeNetworkConfigurationPolicy manifest file { #virt-updating-policy-k8s-nmstate_k8s-nmstate-updating-node-network-config }
 
 To modify the network configuration for nodes in your OpenShift Container Platform cluster, you can update the `NodeNetworkConfigurationPolicy` manifest file.
 
-### Updating the policy by using form { #virt-update-node-network-config-form_k8s-nmstate-updating-node-network-config }
+### Update the policy by using form { #virt-update-node-network-config-form_k8s-nmstate-updating-node-network-config }
 
 You can update a `NodeNetworkConfigurationPolicy` object by using the form view in the web console.
 
@@ -252,7 +252,7 @@ You can update a `NodeNetworkConfigurationPolicy` object by using the form view 
 3. Edit the fields that you want to update.
 4. Click **Save**.
 
-### Updating the policy by using YAML { #virt-update-node-network-config-yaml_k8s-nmstate-updating-node-network-config }
+### Update the policy by using YAML { #virt-update-node-network-config-yaml_k8s-nmstate-updating-node-network-config }
 
 You can update a `NodeNetworkConfigurationPolicy` object by editing the YAML in the web console.
 
@@ -263,7 +263,7 @@ You can update a `NodeNetworkConfigurationPolicy` object by editing the YAML in 
 3. Click the **YAML** tab, and edit the YAML.
 4. Click **Save**.
 
-### Deleting the policy { #virt-delete-node-network-config_k8s-nmstate-updating-node-network-config }
+### Delete the policy { #virt-delete-node-network-config_k8s-nmstate-updating-node-network-config }
 
 You can delete a `NodeNetworkConfigurationPolicy` object when it is no longer needed.
 
@@ -273,11 +273,11 @@ You can delete a `NodeNetworkConfigurationPolicy` object when it is no longer ne
 2. In the **NodeNetworkConfigurationPolicy** page, click the ![](../../images/kebab.png "Options menu") icon placed next to the policy you want to delete, and click **Delete**.
 3. In the pop-up window, enter the policy name to confirm deletion, and click **Delete**.
 
-## Managing the NodeNetworkConfigurationPolicy manifest file { #virt-manage-nncp-cli_k8s-nmstate-updating-node-network-config }
+## Manage the NodeNetworkConfigurationPolicy manifest file { #virt-manage-nncp-cli_k8s-nmstate-updating-node-network-config }
 
 To configure network interfaces on nodes in your OpenShift Container Platform cluster, you can manage the `NodeNetworkConfigurationPolicy` manifest file by using the CLI.
 
-### Creating an interface on nodes { #virt-creating-interface-on-nodes_k8s-nmstate-updating-node-network-config }
+### Create an interface on nodes { #virt-creating-interface-on-nodes_k8s-nmstate-updating-node-network-config }
 
 You can create an interface on nodes in the cluster by applying a `NodeNetworkConfigurationPolicy` (NNCP) manifest to the cluster. The manifest details the requested configuration for the interface.
 
@@ -354,7 +354,7 @@ You can configure multiple nmstate-enabled nodes concurrently. The configuration
 - [Example for creating multiple interfaces in the same policy](k8s-nmstate-updating-node-network-config.md#virt-example-nmstate-multiple-interfaces_k8s-nmstate-updating-node-network-config)
 - [Examples of different IP management methods in policies](k8s-nmstate-updating-node-network-config.md#virt-example-nmstate-IP-management_k8s-nmstate-updating-node-network-config)
 
-### Confirming node network policy updates on nodes { #virt-confirming-policy-updates-on-nodes_k8s-nmstate-updating-node-network-config }
+### Confirm node network policy updates on nodes { #virt-confirming-policy-updates-on-nodes_k8s-nmstate-updating-node-network-config }
 
 When you apply a node network policy, a `NodeNetworkConfigurationEnactment` object is created for every node in the cluster. The node network configuration enactment is a read-only object that represents the status of execution of the policy on that node.
 
@@ -390,7 +390,7 @@ If the policy fails to be applied on the node, the enactment for that node inclu
     $ oc get nnce <node>.<policy> -o yaml
     ```
 
-### Removing an interface from nodes { #virt-removing-interface-from-nodes_k8s-nmstate-updating-node-network-config }
+### Remove an interface from nodes { #virt-removing-interface-from-nodes_k8s-nmstate-updating-node-network-config }
 
 You can remove an interface from one or more nodes in the cluster by editing the `NodeNetworkConfigurationPolicy` object and setting the `state` of the interface to `absent`.
 
@@ -1296,7 +1296,7 @@ where:
 - [About virtual routing and forwarding](../multiple_networks/about-virtual-routing-and-forwarding.md#cnf-about-virtual-routing-and-forwarding_about-virtual-routing-and-forwarding)
 - [Exposing a service through a network VRF](../ingress_load_balancing/metallb/metallb-configure-bgp-peers.md#nw-metallb-bgp-peer-vrf_configure-metallb-bgp-peers)
 
-## Creating an IP over InfiniBand interface on nodes { #virt-creating-infiniband-interface-on-nodes_k8s-nmstate-updating-node-network-config }
+## Create an IP over InfiniBand interface on nodes { #virt-creating-infiniband-interface-on-nodes_k8s-nmstate-updating-node-network-config }
 
 On the OpenShift Container Platform web console, you can install a Red Hat certified third-party Operator, such as the NVIDIA Network Operator, that supports IP over InfiniBand (IPoIB) mode. Typically, you would use the third-party Operator with other vendor infrastructure to manage resources in an OpenShift Container Platform cluster.
 

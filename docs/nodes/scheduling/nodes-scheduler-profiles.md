@@ -25,7 +25,7 @@ The following scheduler profiles are available:
 `NoScoring`
 :   This is a low-latency profile that strives for the quickest scheduling cycle by disabling all score plugins. This might sacrifice better scheduling decisions for faster ones.
 
-## Configuring a scheduler profile { #nodes-scheduler-profiles-configuring_nodes-scheduler-profiles }
+## Configure a scheduler profile { #nodes-scheduler-profiles-configuring_nodes-scheduler-profiles }
 
 To customize how the cluster distributes pods across your nodes based on resource use, you can configure a specific scheduler profile.
 

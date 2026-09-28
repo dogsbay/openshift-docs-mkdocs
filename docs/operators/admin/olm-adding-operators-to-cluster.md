@@ -610,7 +610,7 @@ For Operand pods
 - [Creating project-wide node selectors](../../nodes/scheduling/nodes-scheduler-node-selectors.md#nodes-scheduler-node-selectors-project_nodes-scheduler-node-selectors)
 - [Creating a project with a node selector and toleration](../../nodes/scheduling/nodes-scheduler-taints-tolerations.md#nodes-scheduler-taints-tolerations-projects_nodes-scheduler-taints-tolerations)
 
-## Controlling where an Operator is installed { #olm-overriding-operator-pod-affinity_olm-adding-operators-to-a-cluster }
+## Control where an Operator is installed { #olm-overriding-operator-pod-affinity_olm-adding-operators-to-a-cluster }
 
 You can use affinities to schedule an Operator pod on a specific node or set of nodes.
 

@@ -102,7 +102,7 @@ You can create multiple policies for a cluster or namespace. This allows you to 
 
 You can remove a policy by deleting the `ClusterImagePolicy` and `ImagePolicy` objects.
 
-## Creating a cluster image policy CR { #nodes-sigstore-configure-cluster-policy_nodes-sigstore-using }
+## Create a cluster image policy CR { #nodes-sigstore-configure-cluster-policy_nodes-sigstore-using }
 
 A cluster administrator can use a `ClusterImagePolicy` custom resource (CR) to configure a sigstore signature verification policy for the entire cluster. 
 
@@ -414,7 +414,7 @@ The following example shows general guidelines on how to configure a `ClusterIma
         `docker.example.com.use-sigstore-attachments`
         :   When `true`, specifies that sigstore signatures are going to be read along with the image.
 
-## Creating an image policy CR { #nodes-sigstore-configure-image-policy_nodes-sigstore-using }
+## Create an image policy CR { #nodes-sigstore-configure-image-policy_nodes-sigstore-using }
 
 A cluster administrator or application developer can use an `ImagePolicy` custom resource (CR) to configure a sigstore signature verification policy for a specific namespace. 
 

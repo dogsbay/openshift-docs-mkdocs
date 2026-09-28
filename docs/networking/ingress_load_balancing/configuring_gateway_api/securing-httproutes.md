@@ -22,7 +22,7 @@ Re-encrypt termination
 
 ## Securing client connections with edge TLS termination { #securing-client-connections-edge-tls_securing-httproutes }
 
-To secure traffic from clients to your gateway, configure a listener with the `Terminate` TLS mode and a `certificateRef` to an OpenShift Container Platform secret. 
+To secure traffic from clients to your gateway, configure a listener with the `Terminate` TLS mode and a `certificateRef` to an OpenShift Container Platform secret.
 
 This configuration terminates encryption at the gateway for `HTTPRoute` custom resource (CR) traffic that targets the listener, and forwards unencrypted traffic to the destination service. You must have both an `HTTPRoute` CR and a gateway listener configured with intersecting hostnames for edge termination to successfully connect.
 
