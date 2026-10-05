@@ -16,7 +16,9 @@ Passthrough mode is supported for Amazon Web Services (AWS), Microsoft Azure, Go
 
 ## Passthrough mode permissions requirements { #cco-passthrough-mode-permissions_cco-mode-passthrough }
 
-When using the CCO in passthrough mode, ensure that the credential you provide meets the requirements of the cloud on which you are running or installing OpenShift Container Platform. If the provided credentials the CCO passes to a component that creates a `CredentialsRequest` CR are not sufficient, that component will report an error when it tries to call an API that it does not have permissions for.
+When using the CCO in passthrough mode, ensure that the credential you provide meets the requirements of the cloud on which you are running or installing OpenShift Container Platform.
+
+If the provided credentials the CCO passes to a component that creates a `CredentialsRequest` CR are not sufficient, that component will report an error when it tries to call an API that it does not have permissions for.
 
 Amazon Web Services (AWS) permissions
 :   The credential you provide for passthrough mode in AWS must have all the requested permissions for all `CredentialsRequest` CRs that are required by the version of OpenShift Container Platform you are running or installing.

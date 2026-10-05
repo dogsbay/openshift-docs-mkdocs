@@ -26,7 +26,7 @@ Before beginning your cluster installation, you must complete prerequisite tasks
 - [Configuring your firewall](../install_config/configuring-firewall.md#configuring-firewall-module_configuring-firewall)
 - [Port requirements for the rendezvous host](preparing-to-install-with-agent-based-installer.md#agent-install-networking-ports_preparing-to-install-with-agent-based-installer)
 
-## Downloading the Agent-based Installer { #installing-ocp-agent-retrieve_installing-with-agent-basic }
+## Download the Agent-based Installer { #installing-ocp-agent-retrieve_installing-with-agent-basic }
 
 Begin the installation process by downloading the Agent-based Installer and the CLI needed for your installation.
 
@@ -154,7 +154,7 @@ Create the configuration files that are used by the installation program to gene
     `rendezvousIP`
     :   Specifies the IP address used to determine which node performs the bootstrapping process as well as running the `assisted-service` component. You must provide the rendezvous IP address when you do not specify at least one host IP address in the `networkConfig` parameter. If this address is not provided, one IP address is selected from the provided host `networkConfig` parameter.
 
-## Creating and booting the agent image { #installing-ocp-agent-boot_installing-with-agent-basic }
+## Create and boot the agent image { #installing-ocp-agent-boot_installing-with-agent-basic }
 
 After you have prepared the configuration inputs for your installation, create the ISO image and boot it on your machines.
 
@@ -224,7 +224,7 @@ If there are host network configuration issues that might cause an installation 
     10. Wait at least five seconds for the continuous network checks to restart using the new network configuration.
     11. If the `Release image URL` pull check succeeds and displays a green icon beside the URL, select **Quit** to exit the agent console application and continue with the installation.
 
-## Tracking and verifying installation progress { #installing-ocp-agent-verify_installing-with-agent-basic }
+## Track and verify installation progress { #installing-ocp-agent-verify_installing-with-agent-basic }
 
 After the installation has started, you can track installation progress and verify a successful installation.
 
@@ -276,7 +276,7 @@ After the installation has started, you can track installation progress and veri
     INFO Access the OpenShift web-console here: https://console-openshift-console.apps.sno-cluster.test.example.com
     ```
 
-## Gathering log data from a failed Agent-based installation { #installing-ocp-agent-gather-log_installing-with-agent-basic }
+## Gather log data from a failed Agent-based installation { #installing-ocp-agent-gather-log_installing-with-agent-basic }
 
 If you encounter a failed Agent-based installation, you can gather log data to provide for a support case.
 

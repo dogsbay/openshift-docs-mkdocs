@@ -58,7 +58,7 @@ With the NBDE Tang Server Operator, you also can rotate your Tang server keys. T
     …	
     ```
 
-2. Create a YAML file for moving your active keys to hidden keys, for example, `minimal-keyretrieve-rotate-tangserver.yaml`:
+2. Create a YAML file for moving your active keys to hidden keys, for example, `minimal-keyretrieve-rotate-tangserver.yaml`. Specify the SHA-1 thumbprint of your active key in the `hiddenKeys` entry:
 
     ```yaml title="Example key-rotation YAML for tang-operator"
     apiVersion: daemons.redhat.com/v1alpha1
@@ -71,10 +71,8 @@ With the NBDE Tang Server Operator, you also can rotate your Tang server keys. T
     spec:
       replicas: 1
       hiddenKeys:
-        - sha1: "PvYQKtrTuYsMV2AomUeHrUWkCGg" (1)
+        - sha1: "PvYQKtrTuYsMV2AomUeHrUWkCGg"
     ```
-
-    1. Specify the SHA-1 thumbprint of your active key to rotate it.
 
 3. Apply the YAML file:
 
@@ -143,7 +141,7 @@ WARNING
     …
     ```
 
-2. Create a YAML file for removing all hidden keys, for example, `hidden-keys-deletion-tangserver.yaml`:
+2. Create a YAML file for removing all hidden keys, for example, `hidden-keys-deletion-tangserver.yaml`. Set the `hiddenKeys` entry to an empty array to preserve no hidden keys on your Tang server:
 
     ```yaml title="Example hidden-keys-deletion YAML for tang-operator"
     apiVersion: daemons.redhat.com/v1alpha1
@@ -155,10 +153,8 @@ WARNING
         - finalizer.daemons.tangserver.redhat.com
     spec:
       replicas: 1
-      hiddenKeys: [] (1)
+      hiddenKeys: []
     ```
-
-    1. The empty array as the value of the `hiddenKeys` entry indicates you want to preserve no hidden keys on your Tang server.
 
 3. Apply the YAML file:
 

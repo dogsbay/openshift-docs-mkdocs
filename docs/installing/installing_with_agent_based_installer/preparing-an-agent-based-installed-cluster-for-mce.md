@@ -36,7 +36,7 @@ The following prerequisites must be completed:
 - [Preparing to install with the Agent-based Installer](preparing-to-install-with-agent-based-installer.md#preparing-to-install-with-agent-based-installer)
 - [About disconnected installation mirroring](../../disconnected.md#installing-mirroring-disconnected-about)
 
-## Preparing an Agent-based cluster deployment for the multicluster engine for Kubernetes Operator while disconnected { #preparing-an-initial-cluster-deployment-for-mce-disconnected_preparing-an-agent-based-installed-cluster-for-mce }
+## Prepare an Agent-based cluster deployment for the multicluster engine for Kubernetes Operator while disconnected { #preparing-an-initial-cluster-deployment-for-mce-disconnected_preparing-an-agent-based-installed-cluster-for-mce }
 
 You can mirror the required OpenShift Container Platform container images, the multicluster engine Operator, and the Local Storage Operator (LSO) into your local mirror registry in a disconnected environment. Ensure that you note the local DNS hostname and port of your mirror registry.
 

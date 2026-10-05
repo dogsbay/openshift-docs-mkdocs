@@ -128,8 +128,6 @@ You can implement FlexVolumes by using a list of operations to call and the inst
 
 **Procedure**
 
-To install the FlexVolume driver:
-
 1. Ensure that the executable file exists on all nodes in the cluster.
 
 2. Place the executable file at the volume plugin path: `/etc/kubernetes/kubelet-plugins/volume/exec/<vendor>~<driver>/<driver>`.
@@ -189,6 +187,6 @@ Each `PersistentVolume` object in OpenShift Container Platform represents one st
     `spec.flexVolume.options`
     :   Specifies the additional options for the FlexVolume driver. In addition to the flags specified by the user in the `options` field, the following flags are also passed to the executable: "fsType":"&lt;FS type>", "readwrite":"&lt;rw>", "secret/key1":"&lt;secret1>" "secret/keyN":"&lt;secretN>"
 
-!!! note
+    !!! note
 
-    Secrets are passed only to mount or unmount call-outs.
+        Secrets are passed only to mount or unmount call-outs.

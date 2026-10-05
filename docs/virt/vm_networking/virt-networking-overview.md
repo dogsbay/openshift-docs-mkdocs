@@ -42,10 +42,9 @@ The following figure illustrates the typical network setup of OpenShift Virtuali
 
 !!! warning
 
-    The following features are not supported on Red Hat OpenShift Service on AWS, Microsoft Azure, Red Hat OpenShift Dedicated, Google Cloud, and Oracle(R) Cloud Infrastructure (OCI):
+    The following features are not supported on public clouds:
 
     - Connecting VMs directly to the underlay network
-    - Using Border Gateway Protocol (BGP) to allow direct routing to VMs
     - Using Ethernet Virtual Private Network (EVPN) with BGP to extend layer 2 connectivity for primary cluster-scoped UDNs
 
 <img src="../../images/darkcircle-8.png" alt="20" width="20"> Secondary VM networks can be defined on dedicated set of NICs, as shown in figure 1, or they can use the machine network.

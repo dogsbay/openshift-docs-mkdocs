@@ -36,7 +36,7 @@ The preceding graphic shows the following concepts pertaining to OpenShift Conta
 
     By default, ports are allocated automatically and you can access the port allocations for integrations. However, sometimes static port allocations are necessary to integrate with existing infrastructure which may not be easily reconfigured in response to dynamic ports. To achieve integrations with static node ports, you can update the managed service resource directly.
 
-For more information, see the [Kubernetes Services documentation on `NodePort`](https://kubernetes.io/docs/concepts/services-networking/service/#nodeport).
+For more information, see the "Kubernetes Services documentation on `NodePort`".
 
 `HostNetwork` endpoint publishing strategy\*
 :   The `HostNetwork` endpoint publishing strategy publishes the Ingress Controller on node ports where the Ingress Controller is deployed.
@@ -60,6 +60,10 @@ spec:
       httpsPort: 443
       statsPort: 1936
 ```
+
+### Additional resources { #additional-resources }
+
+- [Kubernetes Services documentation on `NodePort`](https://kubernetes.io/docs/concepts/services-networking/service/#nodeport)
 
 ### Configure the Ingress Controller endpoint publishing scope to Internal { #nw-ingresscontroller-change-internal_nw-configuring-ingress-controller-endpoint-publishing-strategy }
 

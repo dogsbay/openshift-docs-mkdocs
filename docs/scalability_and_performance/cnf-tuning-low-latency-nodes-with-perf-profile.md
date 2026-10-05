@@ -380,7 +380,9 @@ For more information about the PPC arguments, see the section "Performance Profi
 
 ### Run the Performance Profile Creator wrapper script { #running-the-performance-profile-creator-wrapper-script_cnf-tuning-low-latency-nodes-with-perf-profile }
 
-The wrapper script simplifies the process of creating a performance profile with the Performance Profile Creator (PPC) tool. The script handles tasks such as pulling and running the required container image, mounting directories into the container, and providing parameters directly to the container through Podman.
+The wrapper script simplifies the process of creating a performance profile with the Performance Profile Creator (PPC) tool.
+
+The script handles tasks such as pulling and running the required container image, mounting directories into the container, and providing parameters directly to the container through Podman.
 
 For more information about the Performance Profile Creator arguments, see the section "Performance Profile Creator arguments".
 
@@ -1030,7 +1032,9 @@ You can enable power savings for a node that has low priority workloads that are
 
 ### How ExecCPUAffinity prevents latency spikes from exec operations { #cnf-protecting-low-latency-workloads_cnf-tuning-low-latency-nodes-with-perf-profile }
 
-When you run exec operations such as `oc exec` or shell access on a container with isolated CPUs, those processes can interrupt your time-sensitive workloads. The `ExecCPUAffinity` feature automatically pins these secondary processes to a specific CPU within the container’s isolated set. This ensures that your primary low-latency applications, such as Telco RAN DU or 5G Core, maintain deterministic performance without resource contention.
+When you run exec operations such as `oc exec` or shell access on a container with isolated CPUs, those processes can interrupt your time-sensitive workloads. The `ExecCPUAffinity` feature automatically pins these secondary processes to a specific CPU within the container’s isolated set.
+
+This ensures that your primary low-latency applications, such as Telco RAN DU or 5G Core, maintain deterministic performance without resource contention.
 
 `ExecCPUAffinity` is enabled by default whenever you apply a `PerformanceProfile` to a node. The feature operates at the container level and requires the following conditions:
 
@@ -1060,7 +1064,9 @@ metadata:
 
 ### Isolate exec processes from latency-sensitive workloads { #cnf-enabling-cpu-isolation-for-executed-processes_cnf-tuning-low-latency-nodes-with-perf-profile }
 
-You can prevent `oc exec` and shell processes from interrupting latency-sensitive workloads by applying a `PerformanceProfile` to a node. The Node Tuning Operator (NTO) automatically enables the `ExecCPUAffinity` feature, which pins exec processes to a designated CPU so that your primary workload CPUs remain undisturbed.
+You can prevent `oc exec` and shell processes from interrupting latency-sensitive workloads by applying a `PerformanceProfile` to a node.
+
+The Node Tuning Operator (NTO) automatically enables the `ExecCPUAffinity` feature, which pins exec processes to a designated CPU so that your primary workload CPUs remain undisturbed.
 
 **Prerequisites**
 
@@ -1375,7 +1381,7 @@ The following table describes common issues and resolutions for `ExecCPUAffinity
 
 ## CPUs for infra and application containers { #cnf-cpu-infra-container_cnf-tuning-low-latency-nodes-with-perf-profile }
 
-Generic housekeeping and workload tasks use CPUs in a way that might impact latency-sensitive processes. By default, the container runtime uses all online CPUs to run all containers together, which can result in context switches and spikes in latency. 
+Generic housekeeping and workload tasks use CPUs in a way that might impact latency-sensitive processes. By default, the container runtime uses all online CPUs to run all containers together, which can result in context switches and spikes in latency.
 
 Partitioning the CPUs prevents noisy processes from interfering with latency-sensitive processes by separating them from each other. The following table describes how processes run on a CPU after you have tuned the node using the Node Tuning Operator:
 
@@ -1561,7 +1567,9 @@ To disable Hyper-Threading, perform the following steps:
 
 ## Managing device interrupt processing for guaranteed pod isolated CPUs { #managing-device-interrupt-processing-for-guaranteed-pod-isolated-cpus_cnf-tuning-low-latency-nodes-with-perf-profile }
 
-The Node Tuning Operator can manage host CPUs by dividing them into reserved CPUs for cluster and operating system housekeeping duties, including pod infra containers, and isolated CPUs for application containers to run the workloads. By completing these tasks, you can set CPUs for low-latency workloads as isolated workloads.
+The Node Tuning Operator can manage host CPUs by dividing them into reserved CPUs for cluster and operating system housekeeping duties, including pod infra containers, and isolated CPUs for application containers to run the workloads.
+
+By completing these tasks, you can set CPUs for low-latency workloads as isolated workloads.
 
 Device interrupts are load balanced between all isolated and reserved CPUs to avoid CPUs being overloaded, with the exception of CPUs where there is a guaranteed pod running. Guaranteed pod CPUs are prevented from processing device interrupts when the relevant annotations are set for the pod.
 

@@ -47,7 +47,7 @@ The cluster contains several default security context constraints (SCCs) as desc
 
     Instead of modifying the default SCCs, create and modify your own SCCs as needed. For detailed steps, see *Creating security context constraints*.
 
-**Default security context constraints**
+The following table describes the default SCCs that are available in OpenShift Container Platform.
 
 <table>
 <thead>
@@ -161,7 +161,7 @@ The containers use the capabilities from this default list, but pod manifest aut
 
 ### Security context constraints strategies { #authorization-SCC-strategies_configuring-internal-oauth }
 
-**RunAsUser**
+The following example shows the strategies that are available for the `RunAsUser` field.
 
 - `MustRunAs` - Requires a `runAsUser` to be configured. Uses the configured `runAsUser` as the default. Validates against the configured `runAsUser`.
 
@@ -202,17 +202,17 @@ The containers use the capabilities from this default list, but pod manifest aut
     ...
     ```
 
-**SELinuxContext**
+The following example shows the strategies that are available for the `seLinuxOptions` field.
 
 - `MustRunAs` - Requires `seLinuxOptions` to be configured if not using pre-allocated values. Uses `seLinuxOptions` as the default. Validates against `seLinuxOptions`.
 - `RunAsAny` - No default provided. Allows any `seLinuxOptions` to be specified.
 
-**SupplementalGroups**
+The following example shows the strategies that are available for the `supplementalGroups` field.
 
 - `MustRunAs` - Requires at least one range to be specified if not using pre-allocated values. Uses the minimum value of the first range as the default. Validates against all ranges.
 - `RunAsAny` - No default provided. Allows any `supplementalGroups` to be specified.
 
-**FSGroup**
+The following example shows the strategies that are available for the `fsGroup` field.
 
 - `MustRunAs` - Requires at least one range to be specified if not using pre-allocated values. Uses the minimum value of the first range as the default. Validates against the first ID in the first range.
 - `RunAsAny` - No default provided. Allows any `fsGroup` ID to be specified.

@@ -12,7 +12,7 @@ You can remove the custom metrics autoscaler from your OpenShift Container Platf
 
 ## Uninstall the Custom Metrics Autoscaler Operator { #nodes-cma-autoscaling-custom-uninstalling_nodes-cma-autoscaling-custom-removing }
 
-Use the following procedure to remove the custom metrics autoscaler from your OpenShift Container Platform cluster.
+You can remove the custom metrics autoscaler from your OpenShift Container Platform cluster.
 
 **Prerequisites**
 

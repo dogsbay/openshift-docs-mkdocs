@@ -540,7 +540,9 @@ If the installation program fails the retrieve the URL for the console, use the 
 
 ## Troubleshooting a failure to add the ingress certificate to kubeconfig { #troubleshooting-failure-to-add-the-ingress-certificate-to-kubeconfig_ipi-install-troubleshooting }
 
-The installation program adds the default ingress certificate to the list of trusted client certificate authorities in `${INSTALL_DIR}/auth/kubeconfig`. If the installation program fails to add the ingress certificate to the `kubeconfig` file, you can retrieve the certificate from the cluster and add it.
+If the installation program fails to add the default ingress certificate to `${INSTALL_DIR}/auth/kubeconfig`, retrieve the certificate from the cluster and add it.
+
+The installation program normally adds the default ingress certificate to the list of trusted client certificate authorities in `${INSTALL_DIR}/auth/kubeconfig`.
 
 **Procedure**
 
@@ -649,7 +651,9 @@ If worker nodes are not created after 15 to 20 minutes, depending on the speed o
 
 ## Troubleshooting the Cluster Network Operator { #troubleshooting-the-cluster-network-operator_ipi-install-troubleshooting }
 
-The Cluster Network Operator is responsible for deploying the networking components. It runs early in the installation process, after the control plane nodes have come up but before the installation program removes the bootstrap control plane. Issues with this Operator might indicate installation program issues.
+To troubleshoot Cluster Network Operator issues during installation, verify that the network configuration exists and is running.
+
+The Cluster Network Operator deploys networking components early in the installation process, after the control plane nodes have come up but before the installation program removes the bootstrap control plane. Issues with this Operator might indicate installation program issues.
 
 **Procedure**
 
@@ -710,7 +714,9 @@ In this situation, if you are using virtual media with an unknown certificate au
 
 ## Troubleshooting worker nodes that cannot join the cluster { #worker-nodes-cannot-join-the-cluster_ipi-install-troubleshooting }
 
-Installer-provisioned clusters deploy with a DNS server that includes a DNS entry for the `api-int.<cluster_name>.<base_domain>` URL. If the nodes within the cluster use an external or upstream DNS server to resolve the `api-int.<cluster_name>.<base_domain>` URL and there is no such entry, worker nodes might fail to join the cluster. 
+If worker nodes cannot join the cluster, ensure that all nodes can resolve the `api-int.<cluster_name>.<base_domain>` domain name.
+
+Installer-provisioned clusters deploy with a DNS server that includes a DNS entry for the `api-int.<cluster_name>.<base_domain>` URL. If the nodes within the cluster use an external or upstream DNS server to resolve the URL and there is no such entry, worker nodes might fail to join the cluster.
 
 Ensure that all nodes in the cluster can resolve the domain name.
 

@@ -20,7 +20,7 @@ The control plane includes the following components:
 
 ## Understand TLS security profiles { #tls-profiles-understanding_tls-security-profiles }
 
-You can use a TLS (Transport Layer Security) security profile, as described in this section, to define which TLS ciphers are required by various OpenShift Container Platform components. 
+You can use a TLS (Transport Layer Security) security profile, as described in this section, to define which TLS ciphers are required by various OpenShift Container Platform components.
 
 The OpenShift Container Platform TLS security profiles are based on [Mozilla recommended configurations](https://wiki.mozilla.org/Security/Server_Side_TLS).
 
@@ -401,7 +401,9 @@ To configure TLS ciphers and minimum versions for the kubelet HTTP server in Ope
 
 - The kubelet uses its HTTP/GRPC server to communicate with the Kubernetes API server, which sends commands to pods, gathers logs, and run exec commands on pods through the kubelet.
 
-```yaml title="Sample KubeletConfig CR that configures the Old TLS security profile on worker nodes"
+The following example is a `KubeletConfig` CR that configures the `Old` TLS security profile on worker nodes:
+
+```yaml
 apiVersion: machineconfiguration.openshift.io/v1
 kind: KubeletConfig
 # ...

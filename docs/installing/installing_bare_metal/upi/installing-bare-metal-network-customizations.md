@@ -687,6 +687,10 @@ where:
 
 By default, OpenShift Container Platform automatically configures the Open vSwitch (OVS) `br-ex` bridge on bare-metal nodes. For advanced networking requirements, you can override this default behavior on bare-metal platforms. To do this, create a `MachineConfig` object that includes an NMState configuration file.
 
+!!! note
+
+    You can use Butane to create machine configs. For more information, see "Creating a MachineConfig object by using Butane".
+
 Consider using the customized `br-ex` bridge configuration for any of the following tasks:
 
 - You need to modify the `br-ex` bridge after you installed the cluster.
@@ -860,6 +864,7 @@ After you install Red Hat Enterprise Linux CoreOS (RHCOS) and the system reboot
 
 **Additional resources**
 
+- [Creating a MachineConfig object by using Butane](../../install_config/installing-customizing.md#installation-special-config-butane-create_installing-customizing)
 - [Converting to a dual-stack cluster network](../../../networking/ovn_kubernetes_network_provider/converting-to-dual-stack.md#nw-dual-stack-convert_converting-to-dual-stack)
 - [Expanding the cluster](../bare-metal-expanding-the-cluster.md#bare-metal-expanding-the-cluster)
 
@@ -2592,7 +2597,9 @@ For PXE or ISO boots, you can create the Ignition config and `APPEND` the `ignit
 
 #### Default console configuration { #installation-user-infra-machines-advanced-console-configuration_installing-bare-metal-network-customizations }
 
-Red Hat Enterprise Linux CoreOS (RHCOS) nodes installed from an OpenShift Container Platform 4.22 boot image use a default console that is meant to accommodate most virtualized and bare metal setups. Different cloud and virtualization platforms may use different default settings depending on the chosen architecture.
+Red Hat Enterprise Linux CoreOS (RHCOS) nodes installed from an OpenShift Container Platform 4.22 boot image use a default console that is meant to accommodate most virtualized and bare metal setups.
+
+Different cloud and virtualization platforms may use different default settings depending on the chosen architecture.
 
 Bare-metal installations use the kernel default settings which typically means the graphical console is the primary console and the serial console is disabled.
 
@@ -4070,7 +4077,9 @@ On a completely diskless machine, the iSCSI target and initiator values can be p
 
 ## Waiting for the bootstrap process to complete { #installation-installing-bare-metal_installing-bare-metal-network-customizations }
 
-The OpenShift Container Platform bootstrap process begins after the cluster nodes first boot into the persistent RHCOS environment that has been installed to disk. The configuration information provided through the Ignition config files is used to initialize the bootstrap process and install OpenShift Container Platform on the machines. You must wait for the bootstrap process to complete.
+After your cluster nodes first boot into the persistent RHCOS environment installed to disk, wait for the OpenShift Container Platform bootstrap process to complete.
+
+The configuration information provided through the Ignition config files is used to initialize the bootstrap process and install OpenShift Container Platform on the machines.
 
 **Prerequisites**
 

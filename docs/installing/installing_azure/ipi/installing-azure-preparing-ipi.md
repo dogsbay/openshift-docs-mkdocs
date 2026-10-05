@@ -281,7 +281,7 @@ After you confirm that your [OpenShift Cluster Manager](https://console.redhat.c
 
 ## Preparing an Azure Disk Encryption Set for Day2 Operator { #installation-azure-day2-operations-diskencryptionsets.adoc_installing-azure-preparing-ipi }
 
-The OpenShift Container Platform installation program can use an existing Disk Encryption Set with a user-managed key. To enable this feature, create a `DiskEncryptionSet` object in Azure and provide the key to the installation program.
+The OpenShift Container Platform installation program can use an existing Disk Encryption Set with a user-managed key. To enable this feature, create a `DiskEncryptionSet` object in Azure and provide the key to the installation program. 
 
 **Prerequisite**
 
@@ -337,13 +337,13 @@ The OpenShift Container Platform installation program can use an existing Disk E
 
     8. Repeat the above steps on all the nodes that run `encryptionAtHost`.
 
-    !!! note
+        !!! note
 
-        If you want to enable encryption for your host during cluster installation, specify the following parameters in the `install-config.yaml` file:
+            If you want to enable encryption for your host during cluster installation, specify the following parameters in the `install-config.yaml` file:
 
-        - `compute.platform.azure.encryptionAtHost`
-        - `controlPlane.platform.azure.encryptionAtHost`
-        - `platform.azure.defaultMachinePlatform.encryptionAtHost`
+            - `compute.platform.azure.encryptionAtHost`
+            - `controlPlane.platform.azure.encryptionAtHost`
+            - `platform.azure.defaultMachinePlatform.encryptionAtHost`
 
 ## Preparing an Azure Disk Encryption Set { #preparing-disk-encryption-sets_installing-azure-preparing-ipi }
 

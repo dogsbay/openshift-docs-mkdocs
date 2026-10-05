@@ -32,7 +32,7 @@ Collecting the network flows data and sending the records to collectors affects 
 
 ## Network object configuration for tracking network flows { #nw-network-flows-object_tracking-network-flows }
 
-The fields for configuring network flows collectors in the Cluster Network Operator (CNO) are shown in the following table:
+Review the fields for configuring network flows collectors in the Cluster Network Operator (CNO).
 
 **Network flows configuration**
 

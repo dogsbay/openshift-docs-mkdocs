@@ -1095,17 +1095,15 @@ For more information, including limitations and suggested use cases for this Mic
 
 **Procedure**
 
-tag:controlplane[]\[\] . Edit your control plane machine set custom resource (CR) by running the following command:
+1. Edit your control plane machine set custom resource (CR) by running the following command:
 
-```terminal
-$ oc edit controlplanemachineset.machine.openshift.io cluster --namespace openshift-machine-api
-```
+    ```terminal
+    $ oc edit controlplanemachineset.machine.openshift.io cluster --namespace openshift-machine-api
+    ```
 
-end:controlplane[]\[\]
+2. In a text editor, open an existing machine set custom resource (CR) or create a new one.
 
-tag:compute[]\[\] . In a text editor, open an existing machine set custom resource (CR) or create a new one. end:compute[]\[\]
-
-1. Update the CR to implement your configuration changes:
+3. Update the CR to implement your configuration changes:
 
     ```yaml title="Sample configuration"
     tag::compute[]
@@ -1139,7 +1137,7 @@ tag:compute[]\[\] . In a text editor, open an existing machine set custom resour
     `<capacity_reservation_group>`
     :   Specifies the ID of the Capacity Reservation group that you want the machine set to deploy machines on.
 
-2. Save your changes and exit the object specification. tag:controlplane[]\[\]
+4. Save your changes and exit the object specification. tag:controlplane[]\[\]
 
     When you save an update to the control plane machine set, the Control Plane Machine Set Operator updates the control plane machines according to your configured update strategy.
 

@@ -20,7 +20,9 @@ Create compute machine sets in your OpenShift Container Platform cluster on IBM 
 
 ## Sample YAML for a compute machine set custom resource on IBM Power Virtual Server { #machineset-yaml-ibm-power-vs_creating-machineset-ibm-power-vs }
 
-You can use the sample YAML file to help automate provisioning and to ensure scaling and scheduling work, as required. The sample YAML file defines a compute machine set that runs in a specified IBM Power(R) Virtual Server zone in a region and creates nodes that are labeled with `node-role.kubernetes.io/<role>: ""`.
+You can use the sample YAML file to help automate provisioning and to ensure scaling and scheduling work, as required.
+
+The sample YAML file defines a compute machine set that runs in a specified IBM Power(R) Virtual Server zone in a region and creates nodes that are labeled with `node-role.kubernetes.io/<role>: ""`.
 
 In the sample, `<infrastructure_id>` is the infrastructure ID label that is based on the cluster ID that you set when you provisioned the cluster, and `<role>` is the node label to add.
 

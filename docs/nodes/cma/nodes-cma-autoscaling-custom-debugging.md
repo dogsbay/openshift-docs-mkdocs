@@ -19,17 +19,11 @@ You can use the `must-gather` tool to collect data about the Custom Metrics Auto
 
 ## Gather debugging data { #nodes-cma-autoscaling-custom-debugging-gather_nodes-cma-autoscaling-custom-debugging }
 
-The following command runs the `must-gather` tool for the Custom Metrics Autoscaler Operator:
-
-```terminal
-$ oc adm must-gather --image="$(oc get packagemanifests openshift-custom-metrics-autoscaler-operator \
--n openshift-marketplace \
--o jsonpath='{.status.channels[?(@.name=="stable")].currentCSVDesc.annotations.containerImage}')"
-```
+When troubleshooting issues with the Custom Metrics Autoscaler Operator, you can use the `must-gather` tool to collect diagnostic information. The tool gathers resource definitions, pod logs, and configuration details that help identify problems or can be shared with Red Hat Support for assistance.
 
 !!! note
 
-    The standard OpenShift Container Platform `must-gather` command, `oc adm must-gather`, does not collect Custom Metrics Autoscaler Operator data.
+    The standard OpenShift Container Platform `must-gather` command, `oc adm must-gather`, does not collect Custom Metrics Autoscaler Operator data. You must use the custom command in this procedure.
 
 **Prerequisites**
 
@@ -78,94 +72,92 @@ $ oc adm must-gather --image="$(oc get packagemanifests openshift-custom-metrics
 
     **Example must-gather output for the Custom Metric Autoscaler**
 
-    ??? note "Details"
-
-        ```terminal
-        └── openshift-keda
-            ├── apps
-            │   ├── daemonsets.yaml
-            │   ├── deployments.yaml
-            │   ├── replicasets.yaml
-            │   └── statefulsets.yaml
-            ├── apps.openshift.io
-            │   └── deploymentconfigs.yaml
-            ├── autoscaling
-            │   └── horizontalpodautoscalers.yaml
-            ├── batch
-            │   ├── cronjobs.yaml
-            │   └── jobs.yaml
-            ├── build.openshift.io
-            │   ├── buildconfigs.yaml
-            │   └── builds.yaml
-            ├── core
-            │   ├── configmaps.yaml
-            │   ├── endpoints.yaml
-            │   ├── events.yaml
-            │   ├── persistentvolumeclaims.yaml
-            │   ├── pods.yaml
-            │   ├── replicationcontrollers.yaml
-            │   ├── secrets.yaml
-            │   └── services.yaml
-            ├── discovery.k8s.io
-            │   └── endpointslices.yaml
-            ├── image.openshift.io
-            │   └── imagestreams.yaml
-            ├── k8s.ovn.org
-            │   ├── egressfirewalls.yaml
-            │   └── egressqoses.yaml
-            ├── keda.sh
-            │   ├── kedacontrollers
-            │   │   └── keda.yaml
-            │   ├── scaledobjects
-            │   │   └── example-scaledobject.yaml
-            │   └── triggerauthentications
-            │       └── example-triggerauthentication.yaml
-            ├── monitoring.coreos.com
-            │   └── servicemonitors.yaml
-            ├── networking.k8s.io
-            │   └── networkpolicies.yaml
-            ├── openshift-keda.yaml
-            ├── pods
-            │   ├── custom-metrics-autoscaler-operator-58bd9f458-ptgwx
-            │   │   ├── custom-metrics-autoscaler-operator
-            │   │   │   └── custom-metrics-autoscaler-operator
-            │   │   │       └── logs
-            │   │   │           ├── current.log
-            │   │   │           ├── previous.insecure.log
-            │   │   │           └── previous.log
-            │   │   └── custom-metrics-autoscaler-operator-58bd9f458-ptgwx.yaml
-            │   ├── custom-metrics-autoscaler-operator-58bd9f458-thbsh
-            │   │   └── custom-metrics-autoscaler-operator
-            │   │       └── custom-metrics-autoscaler-operator
-            │   │           └── logs
-            │   ├── keda-metrics-apiserver-65c7cc44fd-6wq4g
-            │   │   ├── keda-metrics-apiserver
-            │   │   │   └── keda-metrics-apiserver
-            │   │   │       └── logs
-            │   │   │           ├── current.log
-            │   │   │           ├── previous.insecure.log
-            │   │   │           └── previous.log
-            │   │   └── keda-metrics-apiserver-65c7cc44fd-6wq4g.yaml
-            │   └── keda-operator-776cbb6768-fb6m5
-            │       ├── keda-operator
-            │       │   └── keda-operator
-            │       │       └── logs
-            │       │           ├── current.log
-            │       │           ├── previous.insecure.log
-            │       │           └── previous.log
-            │       └── keda-operator-776cbb6768-fb6m5.yaml
-            ├── policy
-            │   └── poddisruptionbudgets.yaml
-            └── route.openshift.io
-                └── routes.yaml
-        ```
+    ```terminal
+    └── openshift-keda
+        ├── apps
+        │   ├── daemonsets.yaml
+        │   ├── deployments.yaml
+        │   ├── replicasets.yaml
+        │   └── statefulsets.yaml
+        ├── apps.openshift.io
+        │   └── deploymentconfigs.yaml
+        ├── autoscaling
+        │   └── horizontalpodautoscalers.yaml
+        ├── batch
+        │   ├── cronjobs.yaml
+        │   └── jobs.yaml
+        ├── build.openshift.io
+        │   ├── buildconfigs.yaml
+        │   └── builds.yaml
+        ├── core
+        │   ├── configmaps.yaml
+        │   ├── endpoints.yaml
+        │   ├── events.yaml
+        │   ├── persistentvolumeclaims.yaml
+        │   ├── pods.yaml
+        │   ├── replicationcontrollers.yaml
+        │   ├── secrets.yaml
+        │   └── services.yaml
+        ├── discovery.k8s.io
+        │   └── endpointslices.yaml
+        ├── image.openshift.io
+        │   └── imagestreams.yaml
+        ├── k8s.ovn.org
+        │   ├── egressfirewalls.yaml
+        │   └── egressqoses.yaml
+        ├── keda.sh
+        │   ├── kedacontrollers
+        │   │   └── keda.yaml
+        │   ├── scaledobjects
+        │   │   └── example-scaledobject.yaml
+        │   └── triggerauthentications
+        │       └── example-triggerauthentication.yaml
+        ├── monitoring.coreos.com
+        │   └── servicemonitors.yaml
+        ├── networking.k8s.io
+        │   └── networkpolicies.yaml
+        ├── openshift-keda.yaml
+        ├── pods
+        │   ├── custom-metrics-autoscaler-operator-58bd9f458-ptgwx
+        │   │   ├── custom-metrics-autoscaler-operator
+        │   │   │   └── custom-metrics-autoscaler-operator
+        │   │   │       └── logs
+        │   │   │           ├── current.log
+        │   │   │           ├── previous.insecure.log
+        │   │   │           └── previous.log
+        │   │   └── custom-metrics-autoscaler-operator-58bd9f458-ptgwx.yaml
+        │   ├── custom-metrics-autoscaler-operator-58bd9f458-thbsh
+        │   │   └── custom-metrics-autoscaler-operator
+        │   │       └── custom-metrics-autoscaler-operator
+        │   │           └── logs
+        │   ├── keda-metrics-apiserver-65c7cc44fd-6wq4g
+        │   │   ├── keda-metrics-apiserver
+        │   │   │   └── keda-metrics-apiserver
+        │   │   │       └── logs
+        │   │   │           ├── current.log
+        │   │   │           ├── previous.insecure.log
+        │   │   │           └── previous.log
+        │   │   └── keda-metrics-apiserver-65c7cc44fd-6wq4g.yaml
+        │   └── keda-operator-776cbb6768-fb6m5
+        │       ├── keda-operator
+        │       │   └── keda-operator
+        │       │       └── logs
+        │       │           ├── current.log
+        │       │           ├── previous.insecure.log
+        │       │           └── previous.log
+        │       └── keda-operator-776cbb6768-fb6m5.yaml
+        ├── policy
+        │   └── poddisruptionbudgets.yaml
+        └── route.openshift.io
+            └── routes.yaml
+    ```
 
 3. Create a compressed file from the `must-gather` directory that was created in your working directory. For example, on a computer that uses a Linux operating system, run the following command:
 
     ```terminal
-    $ tar cvaf must-gather.tar.gz must-gather.local.5421342344627712289/ (1)
+    $ tar cvaf must-gather.tar.gz must-gather.local.5421342344627712289/
     ```
 
-    1. Replace `must-gather-local.5421342344627712289/` with the actual directory name.
+    Replace `must-gather-local.5421342344627712289/` with the actual directory name.
 
 4. Attach the compressed file to your support case on the [Red Hat Customer Portal](https://access.redhat.com).

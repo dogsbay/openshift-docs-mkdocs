@@ -424,7 +424,7 @@ Verification of signatures can also be done manually using the `skopeo` command-
 
 ### Use skopeo to verify signatures of Red Hat container images { #containers-signature-verify-skopeo_security-container-signature }
 
-You can verify the signatures for container images included in an OpenShift Container Platform release image by pulling those signatures from the OpenShift Container Platform release mirror site. 
+You can verify the signatures for container images included in an OpenShift Container Platform release image by pulling those signatures from the OpenShift Container Platform release mirror site.
 
 Because the signatures on the mirror site are not in a format readily understood by Podman or CRI-O, you can use the `skopeo standalone-verify` command to verify that your release images are signed by Red Hat.
 

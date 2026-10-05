@@ -41,7 +41,7 @@ Before beginning your cluster installation, you must complete prerequisite tasks
 - [Configuring your firewall](../install_config/configuring-firewall.md#configuring-firewall-module_configuring-firewall)
 - [Port requirements for the rendezvous host](preparing-to-install-with-agent-based-installer.md#agent-install-networking-ports_preparing-to-install-with-agent-based-installer)
 
-## Downloading the Agent-based Installer { #installing-ocp-agent-retrieve_installing-using-iscsi }
+## Download the Agent-based Installer { #installing-ocp-agent-retrieve_installing-using-iscsi }
 
 Begin the installation process by downloading the Agent-based Installer and the CLI needed for your installation.
 
@@ -55,7 +55,7 @@ Begin the installation process by downloading the Agent-based Installer and the 
 6. Download or copy the pull secret by clicking on **Download pull secret** or **Copy pull secret**.
 7. Click **Download command-line tools** and place the `openshift-install` binary in a directory that is on your `PATH`.
 
-## Creating the preferred configuration inputs { #installing-ocp-agent-inputs_installing-using-iscsi }
+## Create the preferred configuration inputs { #installing-ocp-agent-inputs_installing-using-iscsi }
 
 Create the preferred configuration inputs used to create the agent image.
 

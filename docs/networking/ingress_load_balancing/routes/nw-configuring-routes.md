@@ -505,13 +505,13 @@ The Ingress Controller automatically serves services that have both IPv4 and IPv
       uid: <uid_number>
     spec:
       clusterIP: 172.30.0.0/16
-      clusterIPs: (1)
+      clusterIPs:
       - 172.30.0.0/16
       - <second_IP_address>
-      ipFamilies: (2)
+      ipFamilies:
       - IPv4
       - IPv6
-      ipFamilyPolicy: RequireDualStack (3)
+      ipFamilyPolicy: RequireDualStack
       ports:
       - port: 8080
         protocol: TCP
@@ -524,21 +524,24 @@ The Ingress Controller automatically serves services that have both IPv4 and IPv
       loadbalancer: {}
     ```
 
-    1. In a dual-stack instance, there are two different `clusterIPs` provided.
+    where:
 
-    2. For a single-stack instance, enter `IPv4` or `IPv6`. For a dual-stack instance, enter both `IPv4` and `IPv6`.
+    `spec.clusterIPs`
+    :   Specifies the cluster IP addresses assigned to the service. In a dual-stack instance, there are two different `clusterIPs` provided.
 
-    3. For a single-stack instance, enter `SingleStack`. For a dual-stack instance, enter `RequireDualStack`.
+`spec.ipFamilies`
+:   Specifies the IP family. For a single-stack instance, enter `IPv4` or `IPv6`. For a dual-stack instance, enter both `IPv4` and `IPv6`.
 
-        These resources generate corresponding `endpoints`. The Ingress Controller now watches `endpointslices`.
+`spec.ipFamilyPolicy`
+:   Specifies the IP family policy. For a single-stack instance, enter `SingleStack`. For a dual-stack instance, enter `RequireDualStack`. These resources generate corresponding `endpoints`. The Ingress Controller now watches `endpointslices`.
 
-2. To view `endpoints`, enter the following command:
+1. To view `endpoints`, enter the following command:
 
     ```terminal
     $ oc get endpoints
     ```
 
-3. To view `endpointslices`, enter the following command:
+2. To view `endpointslices`, enter the following command:
 
     ```terminal
     $ oc get endpointslices

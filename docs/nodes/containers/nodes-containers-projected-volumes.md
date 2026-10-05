@@ -238,7 +238,9 @@ The following example shows `admin` in base64:
 $ echo -n "admin" | base64
 ```
 
-```terminal title="Example output"
+The following is the base64 output:
+
+```terminal
 YWRtaW4=
 ```
 
@@ -248,7 +250,9 @@ The following example shows the password `1f2d1e2e67df` in base64:
 $ echo -n "1f2d1e2e67df" | base64
 ```
 
-```terminal title="Example output"
+The following is the base64 output:
+
+```terminal
 MWYyZDFlMmU2N2Rm
 ```
 

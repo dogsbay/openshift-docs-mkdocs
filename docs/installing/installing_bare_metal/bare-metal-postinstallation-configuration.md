@@ -185,7 +185,9 @@ OpenShift Container Platform nodes must agree on a date and time to run properly
 
 ## Configuring a local or self-signed Baseboard Management Controller CA certificate { #bare-metal-self-signed-cert-post-install_bare-metal-postinstallation-configuration }
 
-You can configure a local or self-signed Baseboard Management Controller (BMC) CA certificate on a cluster that already has a CA certificate, or add one to a cluster that was installed without a CA certificate. Providing a local or self-signed CA certificate gives you more control over secure communication with bare metal BMC’s.
+You can configure a local or self-signed Baseboard Management Controller (BMC) CA certificate on a cluster that already has a CA certificate, or add one to a cluster that was installed without a CA certificate.
+
+Providing a local or self-signed CA certificate gives you more control over secure communication with bare metal BMC’s.
 
 ### Replacing an existing BMC CA certificate { #bare-metal-replace-existing-bmc-ca_bare-metal-postinstallation-configuration }
 
@@ -499,7 +501,9 @@ Consider using the customized `br-ex` bridge configuration for any of the follow
 
 ## Making disruptive changes to a customized br-ex bridge { #making-disruptive-changes-br-ex-bridge.adoc_bare-metal-postinstallation-configuration }
 
-For certain situations, you might need to make disruptive changes to a `br-ex` bridge for planned maintenance or network configuration updates. A `br-ex` bridge is a gateway for all external network traffic from your workloads, so any change to the bridge might temporarily disconnect pods and virtual machines (VMs) from an external network.
+For certain situations, you might need to make disruptive changes to a `br-ex` bridge for planned maintenance or network configuration updates.
+
+A `br-ex` bridge is a gateway for all external network traffic from your workloads, so any change to the bridge might temporarily disconnect pods and virtual machines (VMs) from an external network.
 
 The following procedure shows how to make disruptive changes to a `br-ex` bridge while minimizing the impact to running cluster workloads.
 
@@ -643,41 +647,41 @@ After you migrate your configured `br-ex` bridge to NMState, you cannot reverse 
 
         To ensure network stability and performance, you must explicitly declare the MTU in the manifest for every interface. Do not rely on automatic MTU configuration. The MTU configured on a bridge port or VLAN-tagged interface must not exceed the maximum frame size supported by the attached physical medium. A mismatch causes packet fragmentation or connectivity loss.
 
-        The following example sets the MTU to `9000` for both the physical device and the bridge interface in the NMState configuration file. You must base64-encode the file and then embed the output in a `MachineConfig` manifest file. The `MachineConfig` manifest file writes to `/etc/nmstate/openshift/cluster.yml` or a per-node path under `/etc/nmstate/openshift/`.
+    You can use NMState to apply various network settings across cluster nodes. As an example, the following configuration sets the MTU to `9000` for both a physical device and a bridge interface. You must encode the file in base64 format and then embed the output in a `MachineConfig` manifest file. The `MachineConfig` manifest file writes to `/etc/nmstate/openshift/cluster.yml` or a per-node path under `/etc/nmstate/openshift/`.
 
-        ```yaml title="NMState file before encoding"
-        # ...
-        interfaces:
-        # ...
-        - name: enp2s0
-          type: ethernet
-          state: up
-          mtu: 9000
-        # ...
-        - name: br-ex
-          type: ovs-interface
-          state: up
-          copy-mac-from: enp2s0
-          mtu: 9000
-        # ...
-        ```
+    ```yaml title="NMState file before encoding"
+    # ...
+    interfaces:
+    # ...
+    - name: enp2s0
+      type: ethernet
+      state: up
+      mtu: 9000
+    # ...
+    - name: br-ex
+      type: ovs-interface
+      state: up
+      copy-mac-from: enp2s0
+      mtu: 9000
+    # ...
+    ```
 
-        ```yaml title="MachineConfig embeds the encoded file"
-        # ...
-          kind: MachineConfig
-          metadata:
-        # ...
-        spec:
-          config:
-        # ...
-            storage:
-              files:
-              - contents:
-                  source: data:text/plain;charset=utf-8;base64,<base64_encoded_nmstate_configuration>
-        # ...
-                path: /etc/nmstate/openshift/cluster.yml
-        # ...
-        ```
+    ```yaml title="MachineConfig embeds the encoded file"
+    # ...
+      kind: MachineConfig
+      metadata:
+    # ...
+    spec:
+      config:
+    # ...
+        storage:
+          files:
+          - contents:
+              source: data:text/plain;charset=utf-8;base64,<base64_encoded_nmstate_configuration>
+    # ...
+            path: /etc/nmstate/openshift/cluster.yml
+    # ...
+    ```
 
 4. Apply the updates from the `MachineConfig` object to your cluster by entering the following command:
 
@@ -1277,7 +1281,9 @@ To access hardware metrics for your bare-metal nodes in the web console, enable 
 
 ## Configuration using the Bare Metal Operator { #bmo-config-using-bare-metal-operator_bare-metal-postinstallation-configuration }
 
-When deploying OpenShift Container Platform on bare-metal hosts, there are times when you need to make changes to the host either before or after provisioning. This can include inspecting the host’s hardware, firmware, and firmware details. It can also include formatting disks or changing modifiable firmware settings.
+When deploying OpenShift Container Platform on bare-metal hosts, there are times when you need to make changes to the host either before or after provisioning.
+
+This can include inspecting the host’s hardware, firmware, and firmware details. It can also include formatting disks or changing modifiable firmware settings.
 
 You can use the Bare Metal Operator (BMO) to provision, manage, and inspect bare-metal hosts in your cluster. The BMO can complete the following operations:
 
@@ -1710,7 +1716,9 @@ When the Bare Metal Operator (BMO) deletes a `BareMetalHost` resource, Ironic de
 
 ### Attaching a non-bootable ISO to a bare-metal node { #bmo-attaching-a-non-bootable-iso-to-a-bare-metal-node_bare-metal-postinstallation-configuration }
 
-You can attach a generic, non-bootable ISO virtual media image to a provisioned node by using the `DataImage` resource. After you apply the resource, the ISO image becomes accessible to the operating system after it has booted. This is useful for configuring a node after provisioning the operating system and before the node boots for the first time.
+You can attach a generic, non-bootable ISO virtual media image to a provisioned node by using the `DataImage` resource. After you apply the resource, the ISO image becomes accessible to the operating system after it has booted.
+
+This is useful for configuring a node after provisioning the operating system and before the node boots for the first time.
 
 **Prerequisites**
 
@@ -1803,7 +1811,9 @@ You can attach a generic, non-bootable ISO virtual media image to a provisioned 
 
 ### Configuring NC-SI and DisablePowerOff for shared NICs { #bmo-configuring-ncsi-disable-poweroff_bare-metal-postinstallation-configuration }
 
-The Network Controller Sideband Interface (NC-SI) enables the Baseboard Management Controller (BMC) to share a system network interface card (NIC) with the host for management traffic, using protocols like Redfish, IPMI, or vendor-specific interfaces. The `DisablePowerOff` feature prevents hard power-offs, ensuring soft reboots to maintain BMC connectivity.
+The Network Controller Sideband Interface (NC-SI) enables the Baseboard Management Controller (BMC) to share a system network interface card (NIC) with the host for management traffic, using protocols like Redfish, IPMI, or vendor-specific interfaces.
+
+The `DisablePowerOff` feature prevents hard power-offs, ensuring soft reboots to maintain BMC connectivity.
 
 **Prerequisites**
 

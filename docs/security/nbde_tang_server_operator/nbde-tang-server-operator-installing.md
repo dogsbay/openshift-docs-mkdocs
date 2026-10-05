@@ -59,17 +59,26 @@ You can install the NBDE Tang Server Operator from the software catalog using th
       name: tang-operator
       namespace: openshift-operators
     spec:
-      channel: stable (1)
+      channel: stable
       installPlanApproval: Automatic
-      name: tang-operator (2)
-      source: redhat-operators (3)
-      sourceNamespace: openshift-marketplace <4> 
+      name: tang-operator
+      source: redhat-operators
+      sourceNamespace: openshift-marketplace
     ```
 
-    1. Specify the channel name from where you want to subscribe the Operator.
-    2. Specify the name of the Operator to subscribe to.
-    3. Specify the name of the CatalogSource that provides the Operator.
-    4. The namespace of the CatalogSource. Use `openshift-marketplace` for the default software catalog sources.
+    where:
+
+    `spec.channel`
+    :   Specifies the channel name from where you want to subscribe the Operator.
+
+    `spec.name`
+    :   Specifies the name of the Operator to subscribe to.
+
+    `spec.source`
+    :   Specifies the name of the CatalogSource that provides the Operator.
+
+    `spec.sourceNamespace`
+    :   Specifies the namespace of the CatalogSource. Use `openshift-marketplace` for the default software catalog sources.
 
 3. Apply the `Subscription` to the cluster:
 
