@@ -28,7 +28,7 @@ Subscriptions can report the following condition types:
 
 - [Refreshing failing subscriptions](olm-deleting-operators-from-cluster.md#olm-refresh-subs_olm-deleting-operators-from-a-cluster)
 
-## Viewing Operator subscription status by using the CLI { #olm-status-viewing-cli_olm-status }
+## View Operator subscription status by using the CLI { #olm-status-viewing-cli_olm-status }
 
 You can view Operator subscription status by using the CLI.
 
@@ -74,7 +74,7 @@ You can view Operator subscription status by using the CLI.
 
         Default OpenShift Container Platform cluster Operators are managed by the Cluster Version Operator (CVO) and they do not have a `Subscription` object. Application Operators are managed by Operator Lifecycle Manager (OLM) and they have a `Subscription` object.
 
-## Viewing Operator catalog source status by using the CLI { #olm-cs-status-cli_olm-status }
+## View Operator catalog source status by using the CLI { #olm-cs-status-cli_olm-status }
 
 You can view the status of an Operator catalog source by using the CLI.
 

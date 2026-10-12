@@ -6,7 +6,7 @@ title: Verifying node health
 
 You can verify and troubleshoot node-related issues by reviewing the status, resource usage, and configuration of a node.
 
-## Reviewing node status, resource usage, and configuration { #reviewing-node-status-use-and-configuration_verifying-node-health }
+## Review node status, resource usage, and configuration { #reviewing-node-status-use-and-configuration_verifying-node-health }
 
 Review cluster node health status, resource consumption statistics, and node logs. Additionally, query `kubelet` status on individual nodes.
 

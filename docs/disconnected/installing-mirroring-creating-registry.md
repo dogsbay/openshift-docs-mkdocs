@@ -14,7 +14,7 @@ For more information, see "Red Hat Quay".
 
     The *mirror registry for Red Hat OpenShift* is not intended to be a substitute for a production deployment of Red Hat Quay.
 
-## Prerequisites { #prerequisites_installing-mirroring-creating-registry }
+## Prerequisites for creating a mirror registry { #prerequisites_installing-mirroring-creating-registry }
 
 There are several prerequisites that you must meet before you can create a mirror registry.
 

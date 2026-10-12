@@ -19,7 +19,7 @@ You can install a Google Cloud cluster with the support for configuring multi-ar
 
     Before adding a secondary architecture node to your cluster, it is recommended to install the Multiarch Tuning Operator, and deploy a `ClusterPodPlacementConfig` custom resource. For more information, see "Managing workloads on multi-architecture clusters by using the Multiarch Tuning Operator".
 
-## Installing a cluster with multi-architecture support { #installing-a-cluster-with-multiarch-support_installing-gcp-multiarch-support }
+## Install a cluster with multi-architecture support { #installing-a-cluster-with-multiarch-support_installing-gcp-multiarch-support }
 
 You can install a cluster with multi-architecture support to use compute machines with different Central Processing Unit (CPU) architectures. Modifying your configuration file helps ensure your control plane and worker nodes deploy with the correct architecture.
 

@@ -12,7 +12,7 @@ Install the External Secrets Management Console Plug-in from the OpenShift Conta
 
     For more information about the support scope of Red Hat Technology Preview features, see [Technology Preview Features Support Scope](https://access.redhat.com/support/offerings/techpreview/).
 
-## Installing the External Secrets Management Console Plug-in { #external-secrets-console-plugin-install-web-console_external-secrets-console-plugin-install }
+## Installing the External Secrets Management Console Plug-in by using the web console { #external-secrets-console-plugin-install-web-console_external-secrets-console-plugin-install }
 
 You can use the web console to install the External Secrets Management Console Plug-in.
 

@@ -31,11 +31,11 @@ You can submit a support case to Red Hat Support by using the Customer Support 
 
 ## Creating a Jira issue { #virt-creating-jira-issue_virt-support-overview }
 
-To report a bug, use the Red Hat Issue Router (RHIR), which is available in the Customer Portal Labs.
+To report a bug, use the Red Hat Issue Router (RHIR), which is available in the Customer Portal Labs.
 
 **Procedure**
 
-1. Access the RHIR.
+1. Access the [RHIR](https://access.redhat.com/labs/rhir/?product=cnv).
 
 2. In the list of all OpenShift Virtualization components, find the component for which you want to report an issue.
 
@@ -124,5 +124,4 @@ The OpenShift Container Platform web console displays resource usage, alerts, ev
 - [Submitting a support case](../../support/getting-support.md#support-submitting-a-case_getting-support)
 - [Collecting data about your environment](virt-collecting-virt-data.md#virt-collecting-data-about-your-environment_virt-collecting-virt-data)
 - [Using the `must-gather` tool for OpenShift Virtualization](virt-collecting-virt-data.md#virt-using-virt-must-gather_virt-collecting-virt-data)
-- [Red Hat Issue Router](https://access.redhat.com/labs/rhir/?product=cnv)
 - [Red Hat Jira account](https://redhat.atlassian.net/jira)

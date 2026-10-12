@@ -1003,7 +1003,9 @@ You can use the provided CloudFormation template to create a stack of the follow
 
 ### CloudFormation template for the VPC Carrier Gateway { #installation-cloudformation-vpc-carrier-gw_installing-aws-wavelength-zone }
 
-Use the CloudFormation template to deploy the Carrier Gateway on Amazon Web Services (AWS) Wavelength infrastructure. The template automates the creation of an AWS Carrier Gateway for OpenShift Container Platform. The template provisions an `AWS::EC2::CarrierGateway` and associates it with the cluster VPC to enable traffic routing to provide direct internet connectivity for resources in Wavelength Zones that use carrier networks.
+Use the CloudFormation template to deploy the Carrier Gateway on Amazon Web Services (AWS) Wavelength infrastructure. The template automates the creation of an AWS Carrier Gateway for OpenShift Container Platform.
+
+The template provisions an `AWS::EC2::CarrierGateway` and associates it with the cluster VPC to enable traffic routing to provide direct internet connectivity for resources in Wavelength Zones that use carrier networks.
 
 ```yaml title="CloudFormation template for VPC Carrier Gateway"
 AWSTemplateFormatVersion: 2010-09-09

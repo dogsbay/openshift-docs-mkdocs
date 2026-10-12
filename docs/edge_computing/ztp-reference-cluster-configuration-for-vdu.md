@@ -679,7 +679,7 @@ metadata:
   namespace: openshift-logging
   annotations: {}
 spec:
-  channel: "stable-6.0"
+  channel: "stable-6.6"
   name: cluster-logging
   source: redhat-operators-disconnected
   sourceNamespace: openshift-marketplace
@@ -830,7 +830,7 @@ metadata:
   namespace: openshift-logging
   annotations: {}
 spec:
-  channel: "stable-6.0"
+  channel: "stable-6.6"
   name: cluster-logging
   source: redhat-operators-disconnected
   sourceNamespace: openshift-marketplace

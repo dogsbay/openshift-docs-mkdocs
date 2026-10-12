@@ -36,7 +36,7 @@ Subscriptions can report the following condition types:
 
 - [Catalog health requirements](../../operators/understanding/olm/olm-understanding-olm.md#olm-cs-health_olm-understanding-olm)
 
-## Viewing Operator subscription status by using the CLI { #olm-status-viewing-cli_troubleshooting-operator-issues }
+## View Operator subscription status by using the CLI { #olm-status-viewing-cli_troubleshooting-operator-issues }
 
 You can view Operator subscription status by using the CLI.
 
@@ -82,7 +82,7 @@ You can view Operator subscription status by using the CLI.
 
         Default OpenShift Container Platform cluster Operators are managed by the Cluster Version Operator (CVO) and they do not have a `Subscription` object. Application Operators are managed by Operator Lifecycle Manager (OLM) and they have a `Subscription` object.
 
-## Viewing Operator catalog source status by using the CLI { #olm-cs-status-cli_troubleshooting-operator-issues }
+## View Operator catalog source status by using the CLI { #olm-cs-status-cli_troubleshooting-operator-issues }
 
 You can view the status of an Operator catalog source by using the CLI.
 
@@ -187,7 +187,7 @@ You can view the status of an Operator catalog source by using the CLI.
 - [States of Connectivity (gRPC documentation)](https://grpc.github.io/grpc/core/md_doc_connectivity-semantics-and-api.html)
 - [Accessing images for Operators from private registries](../../operators/admin/olm-managing-custom-catalogs.md#olm-accessing-images-private-registries_olm-managing-custom-catalogs)
 
-## Querying Operator pod status { #querying-operator-pod-status_troubleshooting-operator-issues }
+## Query Operator pod status { #querying-operator-pod-status_troubleshooting-operator-issues }
 
 You can list Operator pods within a cluster and their status. You can also collect a detailed Operator pod summary.
 
@@ -249,7 +249,7 @@ You can list Operator pods within a cluster and their status. You can also colle
 
     5. Exit from the debug shell.
 
-## Gathering Operator logs { #gathering-operator-logs_troubleshooting-operator-issues }
+## Gather Operator logs { #gathering-operator-logs_troubleshooting-operator-issues }
 
 If you experience Operator issues, you can gather detailed diagnostic information from Operator pod logs.
 
