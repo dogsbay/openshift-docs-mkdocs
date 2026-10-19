@@ -738,7 +738,7 @@ The example `install-config.yaml` files demonstrate all of the possible Red Hat
 
     This sample file is provided for reference only. You must obtain your `install-config.yaml` file by using the installation program.
 
-??? note "Example single stack `install-config.yaml` file"
+??? note "Example single stack \`install-config.yaml\` file"
 
     ```yaml
     apiVersion: v1
@@ -775,7 +775,7 @@ The example `install-config.yaml` files demonstrate all of the possible Red Hat
     sshKey: ssh-ed25519 AAAA...
     ```
 
-??? note "Example dual stack `install-config.yaml` file"
+??? note "Example dual stack \`install-config.yaml\` file"
 
     ```yaml
     apiVersion: v1

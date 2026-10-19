@@ -27,7 +27,7 @@ $ opm <command> [<subcommand>] [<argument>] [<flags>]
 
     For the most recent list of major functionality that has been deprecated or removed within OpenShift Container Platform, refer to the *Deprecated and removed features* section of the OpenShift Container Platform release notes.
 
-## generate { #opm-cli-ref-generate_{Context} }
+## generate { #opm-cli-ref-generate_-Context- }
 
 Generate various artifacts for declarative config indexes.
 

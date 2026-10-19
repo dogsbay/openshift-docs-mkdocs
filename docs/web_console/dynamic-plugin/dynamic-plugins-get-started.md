@@ -2,7 +2,7 @@
 title: Getting started with dynamic plugins
 ---
 
-# Getting started with dynamic plugins { #dynamic-plugins-get-started_{context} }
+# Getting started with dynamic plugins { #dynamic-plugins-get-started_-context- }
 
 To get started using the dynamic plugin, you must set up your environment to write a new OpenShift Container Platform dynamic plugin.
 

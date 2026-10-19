@@ -120,7 +120,7 @@ stringData:
   service_account.json: <base64-encoded_service_account>
 ```
 
-```yaml title="Red&#160;Hat OpenStack Platform (RHOSP) secret format"
+```yaml title="Red&amp;#160;Hat OpenStack Platform (RHOSP) secret format"
 apiVersion: v1
 kind: Secret
 metadata:

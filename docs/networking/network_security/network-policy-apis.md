@@ -1,8 +1,8 @@
 ---
-title: Understanding network policy APIs
+title: Understand network policy APIs
 ---
 
-# Understanding network policy APIs { #network-policy-apis }
+# Understand network policy APIs { #network-policy-apis }
 
 Network policy is defined using both cluster-scoped and namespace-scoped network policy APIs. By defining network policy across these different levels, you can create sophisticated network security configurations for your clusters, including full multi-tenant isolation.
 

@@ -152,7 +152,7 @@ Either Data Protection Application (DPA) configuration will work.
 
         For troubleshooting tips, see the [troubleshooting documentation](https://access.redhat.com/articles/5456281).
 
-## Cleaning up a cluster after a backup with OADP and ROSA STS { #cleanup-a-backup-oadp-rosa-sts_oadp-rosa-backing-up-and-cleaning-example }
+## Clean up a cluster after a backup with OADP and ROSA STS { #cleanup-a-backup-oadp-rosa-sts_oadp-rosa-backing-up-and-cleaning-example }
 
 Uninstall the OpenShift API for Data Protection (OADP) Operator together with the backups and the S3 bucket from the hello-world example.
 

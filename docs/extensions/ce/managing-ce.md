@@ -475,7 +475,7 @@ The following procedure uses the `openshift-pipelines-operator-rh.clusterservice
 
 1. Create a new cluster role manifest, similar to the following example:
 
-    ```yaml title="Example <extension>-cluster-role.yaml file"
+    ```yaml title="Example &lt;extension&gt;-cluster-role.yaml file"
     apiVersion: rbac.authorization.k8s.io/v1
     kind: ClusterRole
     metadata:
@@ -484,7 +484,7 @@ The following procedure uses the `openshift-pipelines-operator-rh.clusterservice
 
 2. Edit your cluster role manifest to include permission to update finalizers on the extension, similar to the following example:
 
-    ```yaml title="Example &lt;extension>-cluster-role.yaml"
+    ```yaml title="Example &amp;lt;extension&gt;-cluster-role.yaml"
     apiVersion: rbac.authorization.k8s.io/v1
     kind: ClusterRole
     metadata:

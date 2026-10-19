@@ -783,7 +783,7 @@ spec:
 </table>
 
 
-```yaml title="Export services with the name &quot;ratings&quot; from all namespaces in the red-mesh to blue-mesh."
+```yaml title="Export services with the name &amp;quot;ratings&amp;quot; from all namespaces in the red-mesh to blue-mesh."
 kind: ExportedServiceSet
 apiVersion: federation.maistra.io/v1
 metadata:
@@ -995,7 +995,7 @@ spec:
 </table>
 
 
-```yaml title="Import the &quot;bookinfo/ratings&quot; service from the red-mesh into blue-mesh"
+```yaml title="Import the &amp;quot;bookinfo/ratings&amp;quot; service from the red-mesh into blue-mesh"
 kind: ImportedServiceSet
 apiVersion: federation.maistra.io/v1
 metadata:
@@ -1010,7 +1010,7 @@ spec:
       name: ratings
 ```
 
-```yaml title="Import all services from the red-mesh’s west-data-center namespace into the green-mesh. These services will be accessible as &lt;name>.west-data-center.svc.red-mesh-imports.local"
+```yaml title="Import all services from the red-mesh’s west-data-center namespace into the green-mesh. These services will be accessible as &amp;lt;name&gt;.west-data-center.svc.red-mesh-imports.local"
 kind: ImportedServiceSet
 apiVersion: federation.maistra.io/v1
 metadata:

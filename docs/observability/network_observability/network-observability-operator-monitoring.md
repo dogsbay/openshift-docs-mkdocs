@@ -1,8 +1,8 @@
 ---
-title: Monitoring the Network Observability Operator
+title: Monitor the Network Observability Operator
 ---
 
-# Monitoring the Network Observability Operator { #network-observability-operator-monitoring }
+# Monitor the Network Observability Operator { #network-observability-operator-monitoring }
 
 Use the OpenShift Container Platform web console to monitor alerts related to the Network Observability Operator’s health. This helps you maintain system stability and quickly detect operational issues.
 

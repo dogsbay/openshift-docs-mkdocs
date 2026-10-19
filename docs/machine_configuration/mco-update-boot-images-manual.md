@@ -1638,14 +1638,14 @@ This procedure requires the `clouds.yaml` file, which is needed by the OpenStack
         It might take several minutes for the image to upload. When the upload is complete, details on the image displays, similar to the following example:
 
         ```terminal title="Example output"
-        +------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-        | Field            | Value                                                                                                                                                                               |
-        +------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-        | checksum         | 469fa549f706617ff15b41bd2a919679                                                                                                                                                    |
-        # ...                                                                                                                                                         |
-        | disk_format      | qcow2                                                                                                                                                                               |
+        +------------------+----------------------------------------+
+        | Field            | Value                                  
+        +------------------+----------------------------------------+
+        | checksum         | 469fa549f706617ff15b41bd2a919679       |
+        # ...                                                       |
+        | disk_format      | qcow2                                  |
         # ...
-        | name             | rhcos 9.6 boot image            
+        | name             | rhcos 9.6 boot image
         ```
 
     5. Optional: Verify that the image has uploaded and is in active state by running the following command:

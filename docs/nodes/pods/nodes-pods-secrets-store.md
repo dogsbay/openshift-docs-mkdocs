@@ -46,7 +46,9 @@ The Secrets Store CSI Driver Operator has been tested with the following secrets
 
 ### Automatic rotation { #secrets-store-auto-rotation_nodes-pods-secrets-store }
 
-To maintain synchronization with your external secret provider, the Secrets Store CSI Driver Operator automatically rotates secret content in mounted volumes. The Secrets Store CSI Driver Operator uses this process to ensure that updates in the external store are automatically reflected in your pods and secrets.
+To maintain synchronization with your external secret provider, the Secrets Store CSI Driver Operator automatically rotates secret content in mounted volumes. 
+
+The Secrets Store CSI Driver Operator uses this process to ensure that updates in the external store are automatically reflected in your pods and secrets.
 
 If you enabled synchronization of mounted content as Kubernetes secrets, the Kubernetes secrets are also rotated.
 

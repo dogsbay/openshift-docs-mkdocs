@@ -1,8 +1,8 @@
 ---
-title: About network observability
+title: Network observability overview
 ---
 
-# About network observability { #network-observability-overview }
+# Network observability overview { #network-observability-overview }
 
 Use the Network Observability Operator to observe network traffic via `eBPF` technology, providing troubleshooting insights through Prometheus metrics and Loki logs.
 

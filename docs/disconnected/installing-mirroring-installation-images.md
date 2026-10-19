@@ -64,7 +64,7 @@ For mirrored registries, to view the source of pulled images, you must review th
 
 Before you begin mirroring images, you must prepare the host to retrieve content and push it to the remote location.
 
-### Installing the OpenShift CLI on Linux { #cli-installing-cli-linux_installing-mirroring-installation-images }
+### Install the OpenShift CLI on Linux { #cli-installing-cli-linux_installing-mirroring-installation-images }
 
 To manage your cluster and deploy applications from the command line on Linux, install the OpenShift CLI (`oc`) binary. You can download the OpenShift CLI (`oc`) from the Red  Customer Portal.
 
@@ -106,7 +106,7 @@ To manage your cluster and deploy applications from the command line on Linux, i
     $ oc <command>
     ```
 
-### Installing the OpenShift CLI on Windows { #cli-installing-cli-windows_installing-mirroring-installation-images }
+### Install the OpenShift CLI on Windows { #cli-installing-cli-windows_installing-mirroring-installation-images }
 
 To manage your cluster and deploy applications from the command line on Windows, install the OpenShift CLI (`oc`) binary. You can download the OpenShift CLI (`oc`) from the Red  Customer Portal.
 
@@ -142,7 +142,7 @@ To manage your cluster and deploy applications from the command line on Windows,
     C:\> oc <command>
     ```
 
-### Installing the OpenShift CLI on macOS { #cli-installing-cli-macos_installing-mirroring-installation-images }
+### Install the OpenShift CLI on macOS { #cli-installing-cli-macos_installing-mirroring-installation-images }
 
 To manage your cluster and deploy applications from the command line on macOS, install the OpenShift CLI (`oc`) binary. You can download the OpenShift CLI (`oc`) from the Red  Customer Portal.
 
@@ -184,7 +184,7 @@ To manage your cluster and deploy applications from the command line on macOS, i
     $ oc <command>
     ```
 
-## Configuring credentials that allow images to be mirrored { #installation-adding-registry-pull-secret_installing-mirroring-installation-images }
+## Configure credentials that allow images to be mirrored { #installation-adding-registry-pull-secret_installing-mirroring-installation-images }
 
 Create a container image registry credentials file so that you can mirror images from Red Hat to your mirror. Complete the following steps on the installation host.
 
@@ -288,7 +288,7 @@ Create a container image registry credentials file so that you can mirror images
         }
         ```
 
-## Mirroring the OpenShift Container Platform image repository { #installation-mirror-repository_installing-mirroring-installation-images }
+## Mirror the OpenShift Container Platform image repository { #installation-mirror-repository_installing-mirroring-installation-images }
 
 Mirror the OpenShift Container Platform image repository to your registry to use during cluster installation or upgrade. Complete the following steps on the mirror host.
 
@@ -486,7 +486,7 @@ Use the following principles to determine which images you need to mirror for yo
 - Set `samplesRegistry` of the Cluster Samples Operator configuration object to the mirrored registry.
 - Then set the Cluster Samples Operator to `Managed` to install the image streams you have mirrored.
 
-## Mirroring Operator catalogs for use with disconnected clusters { #olm-mirror-catalog_installing-mirroring-installation-images }
+## Mirror Operator catalogs for use with disconnected clusters { #olm-mirror-catalog_installing-mirroring-installation-images }
 
 You can mirror the Operator contents of a Red Hat-provided catalog, or a custom catalog, into a container image registry using the `oc adm catalog mirror` command. 
 

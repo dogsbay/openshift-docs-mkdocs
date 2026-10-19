@@ -6,7 +6,7 @@ title: Managing distributed workloads with the Leader Worker Set Operator
 
 You can use the Leader Worker Set Operator to manage distributed inference workloads and process large-scale inference requests efficiently.
 
-## Installing the Leader Worker Set Operator { #lws-install-operator_lws-managing }
+## Install the Leader Worker Set Operator { #lws-install-operator_lws-managing }
 
 You can install the Leader Worker Set Operator through the OpenShift Container Platform web console to begin managing distributed AI workloads.
 
@@ -51,7 +51,7 @@ You can install the Leader Worker Set Operator through the OpenShift Container P
     2. Under **Provided APIs**, click **Create instance** in the **LeaderWorkerSetOperator** pane.
     3. Click **Create**.
 
-## Deploying a leader worker set { #lws-config_lws-managing }
+## Deploy a leader worker set { #lws-config_lws-managing }
 
 You can use the Leader Worker Set Operator to deploy a leader worker set to assist with managing distributed workloads across nodes.
 

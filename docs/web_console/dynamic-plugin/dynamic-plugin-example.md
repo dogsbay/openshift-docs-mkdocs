@@ -2,7 +2,7 @@
 title: Dynamic plugin example
 ---
 
-# Dynamic plugin example { #dynamic-plugin-example_{context} }
+# Dynamic plugin example { #dynamic-plugin-example_-context- }
 
 Before working through the example, verify that the plugin is working by following the steps in the Dynamic plugin development documentation.
 

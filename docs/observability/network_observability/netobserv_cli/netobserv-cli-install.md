@@ -6,7 +6,7 @@ title: Installing the Network Observability CLI
 
 The Network Observability CLI (oc netobserv) is a standalone OpenShift CLI (`oc`) plugin used to debug and troubleshoot cluster network traffic. It operates independently of the Network Observability Operator to gather immediate network performance diagnostics.
 
-## About the Network Observability CLI { #network-observability-netoberv-cli-about_netobserv-cli-install }
+## Network Observability CLI overview { #network-observability-netoberv-cli-about_netobserv-cli-install }
 
 Use the Network Observability CLI (`oc netobserv`) to quickly debug and troubleshoot networking issues. This tool provides instant, live insight into flows and packets without installing the Network Observability Operator.
 
@@ -16,7 +16,7 @@ The Network Observability CLI is a flow and packet visualization tool that relie
 
     CLI capture is meant to run only for short durations, such as 8-10 minutes. If it runs for too long, it can be difficult to delete the running process.
 
-## Installing the Network Observability CLI { #network-observability-cli-install_netobserv-cli-install }
+## Install the Network Observability CLI { #network-observability-cli-install_netobserv-cli-install }
 
 The Network Observability CLI gives you a lightweight way to quickly debug and troubleshoot network observability. It must be installed separately.
 

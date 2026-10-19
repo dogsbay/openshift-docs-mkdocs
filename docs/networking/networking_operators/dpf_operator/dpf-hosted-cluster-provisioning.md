@@ -188,7 +188,7 @@ You must create a pull secret and an SSH key secret in the clusters namespace be
     ```terminal
     $ oc create secret generic $PULL_SECRET_NAME \
         --from-file=.dockerconfigjson=$OPENSHIFT_PULL_SECRET \
-        --type=Opaque \
+        --type=kubernetes.io/dockerconfigjson \
         -n $CLUSTERS_NAMESPACE
     ```
 

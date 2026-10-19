@@ -2,7 +2,7 @@
 title: Monitoring project and application metrics by using the Developer perspective
 ---
 
-# Monitoring project and application metrics by using the Developer perspective { #odc-monitoring-project-and-application-metrics-using-developer-perspective_{context} }
+# Monitoring project and application metrics by using the Developer perspective { #odc-monitoring-project-and-application-metrics-using-developer-perspective_-context- }
 
 The **Observe** view in the **Developer** perspective enables you to monitor project and application metrics to track performance, troubleshoot issues, and respond to alerts. For example, CPU, memory, and bandwidth usage, and network related information.
 

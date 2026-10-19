@@ -1131,7 +1131,7 @@ To provide network connectivity for your cluster on Microsoft Azure Stack Hub, y
 
 Use the `01_vnet.json` Azure Resource Manager (ARM) template to deploy the virtual network (VNet) for your OpenShift Container Platform cluster.
 
-??? note "`01_vnet.json` ARM template"
+??? note "\`01_vnet.json\` ARM template"
 
     ```json
 
@@ -1285,7 +1285,7 @@ To provision cluster nodes on Microsoft Azure Stack Hub, you must use a valid Re
 
 Use the `02_storage.json` Azure Resource Manager (ARM) template to deploy stored Red Hat Enterprise Linux CoreOS (RHCOS) image resources for your OpenShift Container Platform cluster.
 
-??? note "`02_storage.json` ARM template"
+??? note "\`02_storage.json\` ARM template"
 
     ```json
 
@@ -1528,7 +1528,7 @@ Load balancing requires the following DNS records:
 
 Use the `03_infra.json` Azure Resource Manager (ARM) template to deploy networking objects and load balancers for your OpenShift Container Platform cluster.
 
-??? note "`03_infra.json` ARM template"
+??? note "\`03_infra.json\` ARM template"
 
     ```json
 
@@ -1862,7 +1862,7 @@ To initialize your OpenShift Container Platform cluster on Microsoft Azure Stack
 
 Use the `04_bootstrap.json` Azure Resource Manager (ARM) template to deploy the bootstrap machine for your OpenShift Container Platform cluster.
 
-??? note "`04_bootstrap.json` ARM template"
+??? note "\`04_bootstrap.json\` ARM template"
 
     ```json
 
@@ -2115,7 +2115,7 @@ If you do not use the provided ARM template to create your control plane machine
 
 Use the `05_masters.json` Azure Resource Manager (ARM) template to deploy the control plane machines for your OpenShift Container Platform cluster.
 
-??? note "`05_masters.json` ARM template"
+??? note "\`05_masters.json\` ARM template"
 
     ```json
 
@@ -2414,7 +2414,7 @@ If you do not use the provided ARM template to create your control plane machine
 
 Use the `06_workers.json` Azure Resource Manager (ARM) template to deploy worker machines for your OpenShift Container Platform cluster.
 
-??? note "`06_workers.json` ARM template"
+??? note "\`06_workers.json\` ARM template"
 
     ```json
 

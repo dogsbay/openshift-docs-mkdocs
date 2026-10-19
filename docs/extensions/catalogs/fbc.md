@@ -119,7 +119,7 @@ _Meta: {
 
 The `olm.package` schema specifies package-level metadata for Operators in file-based catalogs, including name, default channel, and icon. Use this schema reference when you build or validate Operator package definitions for Operator Lifecycle Manager (OLM).
 
-??? note "`olm.package` schema"
+??? note "\`olm.package\` schema"
 
     ```go
     #Package: {
@@ -150,7 +150,7 @@ If a bundle entry represents an edge in multiple `olm.channel` blobs, it can onl
 
 It is valid for an entry’s `replaces` value to reference another bundle name that cannot be found in this catalog or another catalog. However, all other channel invariants must hold true, such as a channel not having multiple heads.
 
-??? note "`olm.channel` schema"
+??? note "\`olm.channel\` schema"
 
     ```go
     #Channel: {
@@ -190,7 +190,7 @@ It is valid for an entry’s `replaces` value to reference another bundle name t
 
 The `olm.bundle` schema defines the structure of bundle entries stored in an Operator catalog index. It specifies required fields such as package name, bundle name, image reference, and optional properties and related images.
 
-??? note "`olm.bundle` schema"
+??? note "\`olm.bundle\` schema"
 
     ```go
     #Bundle: {

@@ -756,7 +756,7 @@ where:
 
         For production OpenShift Container Platform clusters on which you want to perform installation debugging or disaster recovery, specify an SSH key that your `ssh-agent` process uses.
 
-## Installing the OpenShift CLI on Linux { #cli-installing-cli-linux_installing-ibm-cloud-restricted }
+## Install the OpenShift CLI on Linux { #cli-installing-cli-linux_installing-ibm-cloud-restricted }
 
 To manage your cluster and deploy applications from the command line on Linux, install the OpenShift CLI (`oc`) binary. You can download the OpenShift CLI (`oc`) from the Red  Customer Portal.
 
@@ -798,7 +798,7 @@ To manage your cluster and deploy applications from the command line on Linux, i
     $ oc <command>
     ```
 
-## Installing the OpenShift CLI on Windows { #cli-installing-cli-windows_installing-ibm-cloud-restricted }
+## Install the OpenShift CLI on Windows { #cli-installing-cli-windows_installing-ibm-cloud-restricted }
 
 To manage your cluster and deploy applications from the command line on Windows, install the OpenShift CLI (`oc`) binary. You can download the OpenShift CLI (`oc`) from the Red  Customer Portal.
 
@@ -834,7 +834,7 @@ To manage your cluster and deploy applications from the command line on Windows,
     C:\> oc <command>
     ```
 
-## Installing the OpenShift CLI on macOS { #cli-installing-cli-macos_installing-ibm-cloud-restricted }
+## Install the OpenShift CLI on macOS { #cli-installing-cli-macos_installing-ibm-cloud-restricted }
 
 To manage your cluster and deploy applications from the command line on macOS, install the OpenShift CLI (`oc`) binary. You can download the OpenShift CLI (`oc`) from the Red  Customer Portal.
 

@@ -21,7 +21,7 @@ The `spec.agent.ebpf.advanced.scheduling`, `spec.processor.advanced.scheduling`,
 - `Affinity`
 - `PriorityClassName`
 
-```yaml title="Sample FlowCollector resource for spec.<component>.advanced.scheduling"
+```yaml title="Sample FlowCollector resource for spec.&lt;component&gt;.advanced.scheduling"
 apiVersion: flows.netobserv.io/v1beta2
 kind: FlowCollector
 metadata:

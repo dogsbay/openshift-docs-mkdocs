@@ -479,7 +479,7 @@ where:
 :   Provides reverse DNS resolution for the bootstrap machine.
 
 `control-plane0.ocp4.example.com.`
-:   Provides rebootstrap.ocp4.example.com.verse DNS resolution for the control plane machines.
+:   Provides reverse DNS resolution for the control plane machines.
 
 `compute0.ocp4.example.com.`
 :   Provides reverse DNS resolution for the compute machines.
@@ -1458,7 +1458,7 @@ Before you install OpenShift Container Platform, download the installation file 
 
         Alternatively, you can retrieve the installation program from the [Red Hat Customer Portal](https://access.redhat.com/downloads/content/290/), where you can specify a version of the installation program to download. However, you must have an active subscription to access this page.
 
-## Installing the OpenShift CLI on Linux { #cli-installing-cli-linux_installing-bare-metal }
+## Install the OpenShift CLI on Linux { #cli-installing-cli-linux_installing-bare-metal }
 
 To manage your cluster and deploy applications from the command line on Linux, install the OpenShift CLI (`oc`) binary. You can download the OpenShift CLI (`oc`) from the Red  Customer Portal.
 
@@ -1500,7 +1500,7 @@ To manage your cluster and deploy applications from the command line on Linux, i
     $ oc <command>
     ```
 
-## Installing the OpenShift CLI on Windows { #cli-installing-cli-windows_installing-bare-metal }
+## Install the OpenShift CLI on Windows { #cli-installing-cli-windows_installing-bare-metal }
 
 To manage your cluster and deploy applications from the command line on Windows, install the OpenShift CLI (`oc`) binary. You can download the OpenShift CLI (`oc`) from the Red  Customer Portal.
 
@@ -1536,7 +1536,7 @@ To manage your cluster and deploy applications from the command line on Windows,
     C:\> oc <command>
     ```
 
-## Installing the OpenShift CLI on macOS { #cli-installing-cli-macos_installing-bare-metal }
+## Install the OpenShift CLI on macOS { #cli-installing-cli-macos_installing-bare-metal }
 
 To manage your cluster and deploy applications from the command line on macOS, install the OpenShift CLI (`oc`) binary. You can download the OpenShift CLI (`oc`) from the Red  Customer Portal.
 
@@ -2860,7 +2860,7 @@ You can set the iSCSI target and initiator values for automatic mounting, bootin
     :   Specifies the location of the destination system. You must provide the IP address of the target portal, the associated port number, the target iSCSI node in IQN format, and the iSCSI logical unit number (LUN).
 
     `config.ign`
-    :   Specifies the Ignition configuration for the destination system. `<initiator_iqn>`:Specifies[] the iSCSI initiator, or client, name in IQN format. The initiator forms a session to connect to the iSCSI target. `<target_iqn>`:Specifies[] the iSCSI target, or server, name in IQN format.
+    :   Specifies the Ignition configuration for the destination system. `<initiator_iqn>`::Specifies the iSCSI initiator, or client, name in IQN format. The initiator forms a session to connect to the iSCSI target. `<target_iqn>`::Specifies the iSCSI target, or server, name in IQN format.
 
     For more information about the iSCSI options supported by `dracut`, see the `dracut.cmdline` manual page.
 
@@ -2906,7 +2906,7 @@ You can set the iSCSI target and initiator values for automatic mounting, bootin
     :   Specifies the path to the device. If you are using multipath, the multipath device, `/dev/mapper/mpatha`, If there are multiple multipath devices connected, or to be explicit, you can use the World Wide Name (WWN) symlink available in `/dev/disk/by-path`.
 
     `config.ign`
-    :   Specifies the Ignition configuration for the destination system. `rd.iscsi.firmware=1`:Specifies[] the iSCSI parameter is read from the BIOS firmware.
+    :   Specifies the Ignition configuration for the destination system. `rd.iscsi.firmware=1`::Specifies the iSCSI parameter is read from the BIOS firmware.
 
     `rd.multipath=default`
     :   Specifies if you want to enable multipathing. Optional parameter.

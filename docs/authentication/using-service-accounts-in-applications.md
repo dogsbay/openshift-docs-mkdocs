@@ -4,7 +4,7 @@ title: Using service accounts in applications
 
 # Using service accounts in applications { #using-service-accounts }
 
-## Service accounts overview { #service-accounts-overview_using-service-accounts }
+## Service accounts { #service-accounts-overview_using-service-accounts }
 
 You can use OpenShift Container Platform service accounts to allow a OpenShift Container Platform component to directly access the API. 
 

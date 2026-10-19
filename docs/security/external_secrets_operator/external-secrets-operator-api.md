@@ -174,7 +174,9 @@ The `componentName` field represents the different external-secrets components t
 
 ## condition { #eso-condition_external-secrets-operator-api }
 
-The `condition` object reports the current health and operational state of the External Secrets Operator for Red Hat OpenShift deployment. It provides a standardized status check by detailing the specific type of condition, its current status, and a message to verify deployment success or troubleshooting errors.
+The `condition` object reports the current health and operational state of the External Secrets Operator for Red Hat OpenShift deployment. 
+
+It provides a standardized status check by detailing the specific type of condition, its current status, and a message to verify deployment success or troubleshooting errors.
 
 | Field     | Type                                                                                                              | Description                                                     |
 | --------- | ----------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
@@ -367,7 +369,9 @@ The `externalSecretsConfigStatus` field shows the most recently observed status 
 
 ## externalSecretsManager { #eso-external-secrets-manager_external-secrets-operator-api }
 
-The `externalSecretsManager` object defines the configuration and information of deployments managed by the External Secrets Operator. Set the name to `cluster` as this allows only one instance of `externalSecretsManager` per cluster. You can configure global options by using `externalSecretsManager`. This serves as a centralized configuration for managing multiple controllers of the Operator. The Operator automatically creates the `externalSecretsManager` object during installation.
+The `externalSecretsManager` object defines the configuration and information of deployments managed by the External Secrets Operator. 
+
+Set the name to `cluster` as this allows only one instance of `externalSecretsManager` per cluster. You can configure global options by using `externalSecretsManager`. This serves as a centralized configuration for managing multiple controllers of the Operator. The Operator automatically creates the `externalSecretsManager` object during installation.
 
 | Field        | Type                                                                                                    | Description                                                                                             |
 | ------------ | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
@@ -448,7 +452,9 @@ The `featureName` field identifies an optional feature that can be configured on
 
 ## globalConfig { #eso-global-config_external-secrets-operator-api }
 
-The `globalConfig` field defines the baseline behavior and deployment parameters for the External Secrets Operator for Red Hat OpenShift. Use this section to apply labels to all managed resources and configure the logging verbosity. It also provides infrastructure-level controls to govern where and how the Operator is scheduled, alongside proxy settings for network compatibility.
+The `globalConfig` field defines the baseline behavior and deployment parameters for the External Secrets Operator for Red Hat OpenShift. 
+
+Use this section to apply labels to all managed resources and configure the logging verbosity. It also provides infrastructure-level controls to govern where and how the Operator is scheduled, alongside proxy settings for network compatibility.
 
 | Field          | Type                                                                                                                        | Description                                                                                                                                                                                                                                                                                                     | Default | Validation                                                                      |
 | -------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | ------------------------------------------------------------------------------- |

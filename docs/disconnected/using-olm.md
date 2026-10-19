@@ -68,7 +68,7 @@ To use only trusted or locally available Operator catalogs, disable the default 
 
         Or, you can use the web console to manage catalog sources. From the **Administration** → **Cluster Settings** → **Configuration** → **OperatorHub** page, click the **Sources** tab, where you can create, update, delete, disable, and enable individual sources.
 
-## Mirroring an Operator catalog { #olm-mirror-catalog_olm-restricted-networks }
+## Mirror an Operator catalog { #olm-mirror-catalog_olm-restricted-networks }
 
 For instructions about mirroring Operator catalogs for use with disconnected clusters, see "Mirroring Operator catalogs for use with disconnected clusters".
 
@@ -87,7 +87,7 @@ For instructions about mirroring Operator catalogs for use with disconnected clu
 - [Managing custom catalogs](../operators/admin/olm-managing-custom-catalogs.md#olm-managing-custom-catalogs-fb)
 - [Mirroring images for a disconnected installation by using the oc-mirror plugin v2](about-installing-oc-mirror-v2.md#about-installing-oc-mirror-v2)
 
-## Adding a catalog source to a cluster { #olm-creating-catalog-from-index_olm-restricted-networks }
+## Add a catalog source to a cluster { #olm-creating-catalog-from-index_olm-restricted-networks }
 
 To make Operators from a custom index image available for installation, create a catalog source that adds the catalog content to your cluster.
 

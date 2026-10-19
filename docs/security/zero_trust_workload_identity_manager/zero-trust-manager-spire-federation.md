@@ -2,7 +2,7 @@
 title: Zero Trust Workload Identity Manager SPIRE federation
 ---
 
-# Zero Trust Workload Identity Manager SPIRE federation { #zero-trust-manager-spire-federation_{context} }
+# Zero Trust Workload Identity Manager SPIRE federation { #zero-trust-manager-spire-federation_-context- }
 
 Configure SPIRE federation to enable workloads in different trust domains to securely authenticate each other across clusters, cloud providers, and organizational boundaries. By establishing trust relationships between separate SPIRE deployments, you can build a zero-trust architecture that spans multiple environments without compromising security or sharing secrets.
 

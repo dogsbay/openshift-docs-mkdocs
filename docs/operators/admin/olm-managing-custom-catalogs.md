@@ -679,7 +679,7 @@ If you do not want to update your SQLite database catalog image or migrate your 
 
 2. Edit your `<namespace>.yaml` file to add elevated pod security admission standards to your catalog source namespace, as shown in the following example:
 
-    ```yaml title="Example <namespace>.yaml file"
+    ```yaml title="Example &lt;namespace&gt;.yaml file"
     apiVersion: v1
     kind: Namespace
     metadata:
@@ -694,7 +694,7 @@ If you do not want to update your SQLite database catalog image or migrate your 
     1. Turn off pod security label synchronization by adding the `security.openshift.io/scc.podSecurityLabelSync=false` label to the namespace.
     2. Apply the pod security admission `pod-security.kubernetes.io/enforce` label. Set the label to `baseline` or `privileged`. Use the `baseline` pod security profile unless other workloads in the namespace require a `privileged` profile.
 
-## Adding a catalog source to a cluster { #olm-creating-catalog-from-index_olm-managing-custom-catalogs }
+## Add a catalog source to a cluster { #olm-creating-catalog-from-index_olm-managing-custom-catalogs }
 
 To make Operators from a custom index image available for installation, create a catalog source that adds the catalog content to your cluster.
 

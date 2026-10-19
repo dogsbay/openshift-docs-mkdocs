@@ -2,7 +2,7 @@
 title: Managing virtual machines by using OpenShift GitOps
 ---
 
-# Managing virtual machines by using OpenShift GitOps { #virt-managing-virtual-machines-by-using-openshift-gitops_{context} }
+# Managing virtual machines by using OpenShift GitOps { #virt-managing-virtual-machines-by-using-openshift-gitops_-context- }
 
 To automate and optimize virtual machine (VM) management in {VirtProductName}, you can use Red Hat OpenShift GitOps.
 

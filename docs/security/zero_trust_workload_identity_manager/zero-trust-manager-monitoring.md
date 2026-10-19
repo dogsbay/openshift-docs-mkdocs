@@ -2,7 +2,7 @@
 title: Monitoring Zero Trust Workload Identity Managergit
 ---
 
-# Monitoring Zero Trust Workload Identity Managergit { #zero-trust-manager-monitoring_{context} }
+# Monitoring Zero Trust Workload Identity Managergit { #zero-trust-manager-monitoring_-context- }
 
 Track the performance of the Zero Trust Workload Identity Manager by collecting metrics. Configure monitoring to collect metrics from the Security Production Identity Framework for Everyone (SPIRE) Server and SPIRE Agent components.
 

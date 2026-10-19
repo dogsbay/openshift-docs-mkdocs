@@ -485,7 +485,7 @@ For example:
 
         You can alternatively apply the following YAML to replace the volume:
 
-        ??? note "Sample replication controller with persistent volume claim named `pvc1`"
+        ??? note "Sample replication controller with persistent volume claim named \`pvc1\`"
 
             ```yaml
             kind: ReplicationController
@@ -536,7 +536,7 @@ For example:
 
         You can alternatively apply the following YAML to change the mount point:
 
-        ??? note "Sample deployment config with mount point set to `opt`."
+        ??? note "Sample deployment config with mount point set to \`opt\`."
 
             ```yaml
             kind: DeploymentConfig

@@ -32,7 +32,7 @@ Operator Lifecycle Manager (OLM) v1 includes several Red Hat-provided Operator 
 
 The following custom resource (CR) examples show the default catalogs installed on the cluster:
 
-```yaml title="Red&#160;Hat Operators catalog"
+```yaml title="Red&amp;#160;Hat Operators catalog"
 apiVersion: olm.operatorframework.io/v1
 kind: ClusterCatalog
 metadata:
@@ -63,7 +63,7 @@ priority: -200
     type: Image
 ```
 
-```yaml title="Red&#160;Hat Marketplace catalog"
+```yaml title="Red&amp;#160;Hat Marketplace catalog"
 apiVersion: olm.operatorframework.io/v1
 kind: ClusterCatalog
 metadata:

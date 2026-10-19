@@ -505,7 +505,9 @@ You can save on costs by creating a compute machine set that deploys machines as
 
 ## Machine sets that deploy machines on Ephemeral OS disks { #machineset-azure-ephemeral-os_creating-machineset-azure }
 
-You can create a compute machine set running on Microsoft Azure that deploys machines on Ephemeral OS disks. Ephemeral OS disks use local VM capacity rather than remote Microsoft Azure Storage. The configuration, therefore, incurs no additional cost and provides lower latency for reading, writing, and reimaging.
+You can create a compute machine set running on Microsoft Azure that deploys machines on Ephemeral OS disks. Ephemeral OS disks use local VM capacity rather than remote Microsoft Azure Storage. 
+
+The configuration, therefore, incurs no additional cost and provides lower latency for reading, writing, and reimaging.
 
 **Additional resources**
 
@@ -1137,12 +1139,12 @@ For more information, including limitations and suggested use cases for this Mic
     `<capacity_reservation_group>`
     :   Specifies the ID of the Capacity Reservation group that you want the machine set to deploy machines on.
 
-4. Save your changes and exit the object specification. tag:controlplane[]\[\]
+4. Save your changes and exit the object specification. tag::controlplane\[\]
 
     When you save an update to the control plane machine set, the Control Plane Machine Set Operator updates the control plane machines according to your configured update strategy.
 
     - For clusters that use the default `RollingUpdate` update strategy, the Operator automatically propagates the changes to your control plane configuration.
-    - For clusters that are configured to use the `OnDelete` update strategy, you must replace your control plane machines manually. end:controlplane[]\[\]
+    - For clusters that are configured to use the `OnDelete` update strategy, you must replace your control plane machines manually. end::controlplane\[\]
 
 **Verification**
 
@@ -1161,9 +1163,9 @@ For more information, including limitations and suggested use cases for this Mic
     end::controlplane[]
     ```
 
-    tag:compute[]\[\]
+    tag::compute\[\]
 
-    where `<machine_set_name>` is the name of the compute machine set. end:compute[]\[\]
+    where `<machine_set_name>` is the name of the compute machine set. end::compute\[\]
 
     In the output, verify that the characteristics of the listed machines match the parameters of your Capacity Reservation.
 

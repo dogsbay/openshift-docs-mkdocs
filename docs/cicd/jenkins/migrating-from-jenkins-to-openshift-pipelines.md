@@ -2,7 +2,7 @@
 title: Migrating from Jenkins to OpenShift Pipelines or Tekton
 ---
 
-# Migrating from Jenkins to OpenShift Pipelines or Tekton { #migrating-from-jenkins-to-openshift-pipelines_{context} }
+# Migrating from Jenkins to OpenShift Pipelines or Tekton { #migrating-from-jenkins-to-openshift-pipelines_-context- }
 
 You can migrate your CI/CD workflows from Jenkins to [Red Hat OpenShift Pipelines](https://docs.openshift.com/pipelines/latest/about/understanding-openshift-pipelines.html), a cloud-native CI/CD experience based on the Tekton project.
 

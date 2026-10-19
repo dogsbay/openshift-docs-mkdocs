@@ -140,7 +140,7 @@ By configuring data disks, you can attach disks to VMs and use them to store dat
     # ...
     ```
 
-    where tag:compute[]\[\]
+    where tag::compute\[\]
 
     `spec.template.spec.providerSpec.value.dataDisks`
     :   Specifies a collection of 1-29 data disk definitions. This sample configuration shows the formatting to include two data disk definitions.
@@ -156,9 +156,9 @@ By configuring data disks, you can attach disks to VMs and use them to store dat
     :   Specifies the data disk provisioning method. This value defaults to the vSphere default storage policy if not set. Valid values are `Thin`, `Thick`, and `EagerlyZeroed`.
 
     `spec.template.spec.providerSpec.value.dataDisks.sizeGiB`
-    :   Specifies the size of the data disk in GiB. The maximum size is 16,384 GiB. end:compute[]\[\]
+    :   Specifies the size of the data disk in GiB. The maximum size is 16,384 GiB. end::compute\[\]
 
-        tag:controlplane[]\[\]
+        tag::controlplane\[\]
 
     `spec.template.machines_v1beta1_machine_openshift_io.spec.providerSpec.value.dataDisks`
     :   Specifies a collection of 1-29 data disk definitions. This sample configuration shows the formatting to include two data disk definitions.
@@ -174,7 +174,7 @@ By configuring data disks, you can attach disks to VMs and use them to store dat
     :   Specifies the data disk provisioning method. This value defaults to the vSphere default storage policy if not set. Valid values are `Thin`, `Thick`, and `EagerlyZeroed`.
 
     `spec.template.machines_v1beta1_machine_openshift_io.spec.providerSpec.value.dataDisks.sizeGiB`
-    :   Specifies the size of the data disk in GiB. The maximum size is 16,384 GiB. end:controlplane[]\[\]
+    :   Specifies the size of the data disk in GiB. The maximum size is 16,384 GiB. end::controlplane\[\]
 
 **Additional resources**
 

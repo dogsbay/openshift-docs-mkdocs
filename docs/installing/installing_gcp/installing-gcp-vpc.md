@@ -727,7 +727,7 @@ Production environments can deny direct access to the internet and instead have 
 
         Only the `Proxy` object named `cluster` is supported, and you cannot create additional proxies.
 
-## Installing the OpenShift CLI on Linux { #cli-installing-cli-linux_installing-gcp-vpc }
+## Install the OpenShift CLI on Linux { #cli-installing-cli-linux_installing-gcp-vpc }
 
 To manage your cluster and deploy applications from the command line on Linux, install the OpenShift CLI (`oc`) binary. You can download the OpenShift CLI (`oc`) from the Red  Customer Portal.
 
@@ -769,7 +769,7 @@ To manage your cluster and deploy applications from the command line on Linux, i
     $ oc <command>
     ```
 
-## Installing the OpenShift CLI on Windows { #cli-installing-cli-windows_installing-gcp-vpc }
+## Install the OpenShift CLI on Windows { #cli-installing-cli-windows_installing-gcp-vpc }
 
 To manage your cluster and deploy applications from the command line on Windows, install the OpenShift CLI (`oc`) binary. You can download the OpenShift CLI (`oc`) from the Red  Customer Portal.
 
@@ -805,7 +805,7 @@ To manage your cluster and deploy applications from the command line on Windows,
     C:\> oc <command>
     ```
 
-## Installing the OpenShift CLI on macOS { #cli-installing-cli-macos_installing-gcp-vpc }
+## Install the OpenShift CLI on macOS { #cli-installing-cli-macos_installing-gcp-vpc }
 
 To manage your cluster and deploy applications from the command line on macOS, install the OpenShift CLI (`oc`) binary. You can download the OpenShift CLI (`oc`) from the Red  Customer Portal.
 

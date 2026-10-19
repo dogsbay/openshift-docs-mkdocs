@@ -122,7 +122,7 @@ You can use any machine that meets these access requirements and follows your co
 
 **Additional resources**
 
-- [Amazon Virtual Private Cloud (AWS China documentation)](https://docs.amazonaws.cn/en_us/aws/latest/userguide/vpc.html)
+- [Amazon Virtual Private Cloud (AWS China documentation)](https://docs.amazonaws.cn/en_us/aws/latest/userguide/vpc.html) {.\_additional-resources}
 
 ### Private clusters in AWS { #private-clusters-about-aws_installing-aws-specialized-region }
 

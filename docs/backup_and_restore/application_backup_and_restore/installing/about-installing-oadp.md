@@ -99,7 +99,7 @@ The following AWS S3 compatible object storage providers are known to work with 
 
 - [Scality ARTESCA S3 object storage (Scality documentation)](https://downloads.scality.com/artesca-ova/doc/general_introduction.html#)
 
-## Configuring Multicloud Object Gateway (MCG) for disaster recovery on OpenShift Data Foundation { #oadp-configuring-noobaa-for-dr_about-installing-oadp }
+## Configure Multicloud Object Gateway (MCG) for disaster recovery on OpenShift Data Foundation { #oadp-configuring-noobaa-for-dr_about-installing-oadp }
 
 If you use cluster storage for your MCG bucket `backupStorageLocation` on OpenShift Data Foundation, configure MCG as an external object store.
 

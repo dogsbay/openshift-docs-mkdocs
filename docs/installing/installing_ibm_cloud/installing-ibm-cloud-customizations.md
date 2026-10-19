@@ -1124,7 +1124,7 @@ When the cluster deployment completes successfully:
         - The Ignition config files that the installation program generates contain certificates that expire after 24 hours, which are then renewed at that time. If the cluster is shut down before renewing the certificates and the cluster is later restarted after the 24 hours have elapsed, the cluster automatically recovers the expired certificates. The exception is that you must manually approve the pending `node-bootstrapper` certificate signing requests (CSRs) to recover kubelet certificates. See the documentation for *Recovering from expired control plane certificates* for more information.
         - It is recommended that you use Ignition config files within 12 hours after they are generated because the 24-hour certificate rotates from 16 to 22 hours after the cluster is installed. By using the Ignition config files within 12 hours, you can avoid installation failure if the certificate update runs during installation.
 
-## Installing the OpenShift CLI on Linux { #cli-installing-cli-linux_installing-ibm-cloud-customizations }
+## Install the OpenShift CLI on Linux { #cli-installing-cli-linux_installing-ibm-cloud-customizations }
 
 To manage your cluster and deploy applications from the command line on Linux, install the OpenShift CLI (`oc`) binary. You can download the OpenShift CLI (`oc`) from the Red  Customer Portal.
 
@@ -1166,7 +1166,7 @@ To manage your cluster and deploy applications from the command line on Linux, i
     $ oc <command>
     ```
 
-## Installing the OpenShift CLI on Windows { #cli-installing-cli-windows_installing-ibm-cloud-customizations }
+## Install the OpenShift CLI on Windows { #cli-installing-cli-windows_installing-ibm-cloud-customizations }
 
 To manage your cluster and deploy applications from the command line on Windows, install the OpenShift CLI (`oc`) binary. You can download the OpenShift CLI (`oc`) from the Red  Customer Portal.
 
@@ -1202,7 +1202,7 @@ To manage your cluster and deploy applications from the command line on Windows,
     C:\> oc <command>
     ```
 
-## Installing the OpenShift CLI on macOS { #cli-installing-cli-macos_installing-ibm-cloud-customizations }
+## Install the OpenShift CLI on macOS { #cli-installing-cli-macos_installing-ibm-cloud-customizations }
 
 To manage your cluster and deploy applications from the command line on macOS, install the OpenShift CLI (`oc`) binary. You can download the OpenShift CLI (`oc`) from the Red  Customer Portal.
 

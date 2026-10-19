@@ -1874,7 +1874,7 @@ To provide network connectivity for your cluster on Microsoft Azure, you can cre
 
 Use the `01_vnet.json` Azure Resource Manager (ARM) template to deploy the virtual network (VNet) for your OpenShift Container Platform cluster.
 
-??? note "`01_vnet.json` ARM template"
+??? note "\`01_vnet.json\` ARM template"
 
     ```json
 
@@ -2015,7 +2015,7 @@ To provision cluster nodes on Microsoft Azure, you must use a valid Red Hat Ent
 
 Use the `02_storage.json` Azure Resource Manager (ARM) template to deploy stored Red Hat Enterprise Linux CoreOS (RHCOS) image resources for your OpenShift Container Platform cluster.
 
-??? note "`02_storage.json` ARM template"
+??? note "\`02_storage.json\` ARM template"
 
     ```json
 
@@ -2354,7 +2354,7 @@ To enable cluster communication on Microsoft Azure, you must deploy networking a
 
 Use the `03_infra.json` Azure Resource Manager (ARM) template to deploy networking objects and load balancers for your OpenShift Container Platform cluster.
 
-??? note "`03_infra.json` ARM template"
+??? note "\`03_infra.json\` ARM template"
 
     ```json
 
@@ -2666,7 +2666,7 @@ To initialize your OpenShift Container Platform cluster on Microsoft Azure, you 
 
 Use the `04_bootstrap.json` Azure Resource Manager (ARM) template to deploy the bootstrap machine for your OpenShift Container Platform cluster.
 
-??? note "`04_bootstrap.json` ARM template"
+??? note "\`04_bootstrap.json\` ARM template"
 
     ```json
 
@@ -2910,7 +2910,7 @@ If you do not use the provided ARM template to create your control plane machine
 
 Use the `05_masters.json` Azure Resource Manager (ARM) template to deploy the control plane machines for your OpenShift Container Platform cluster.
 
-??? note "`05_masters.json` ARM template"
+??? note "\`05_masters.json\` ARM template"
 
     ```json
 
@@ -3219,7 +3219,7 @@ If you do not use the provided ARM template to create your control plane machine
 
 Use the `06_workers.json` Azure Resource Manager (ARM) template to deploy worker machines for your OpenShift Container Platform cluster.
 
-??? note "`06_workers.json` ARM template"
+??? note "\`06_workers.json\` ARM template"
 
     ```json
 
@@ -3400,7 +3400,7 @@ Use the `06_workers.json` Azure Resource Manager (ARM) template to deploy worker
 
     ```
 
-## Installing the OpenShift CLI on Linux { #cli-installing-cli-linux_installing-azure-user-infra }
+## Install the OpenShift CLI on Linux { #cli-installing-cli-linux_installing-azure-user-infra }
 
 To manage your cluster and deploy applications from the command line on Linux, install the OpenShift CLI (`oc`) binary. You can download the OpenShift CLI (`oc`) from the Red  Customer Portal.
 
@@ -3442,7 +3442,7 @@ To manage your cluster and deploy applications from the command line on Linux, i
     $ oc <command>
     ```
 
-## Installing the OpenShift CLI on Windows { #cli-installing-cli-windows_installing-azure-user-infra }
+## Install the OpenShift CLI on Windows { #cli-installing-cli-windows_installing-azure-user-infra }
 
 To manage your cluster and deploy applications from the command line on Windows, install the OpenShift CLI (`oc`) binary. You can download the OpenShift CLI (`oc`) from the Red  Customer Portal.
 
@@ -3478,7 +3478,7 @@ To manage your cluster and deploy applications from the command line on Windows,
     C:\> oc <command>
     ```
 
-## Installing the OpenShift CLI on macOS { #cli-installing-cli-macos_installing-azure-user-infra }
+## Install the OpenShift CLI on macOS { #cli-installing-cli-macos_installing-azure-user-infra }
 
 To manage your cluster and deploy applications from the command line on macOS, install the OpenShift CLI (`oc`) binary. You can download the OpenShift CLI (`oc`) from the Red  Customer Portal.
 

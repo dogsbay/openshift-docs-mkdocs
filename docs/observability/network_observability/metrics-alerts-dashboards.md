@@ -244,7 +244,7 @@ where:
 `spec.buckets`
 :   Specifies custom buckets for RTT precision. The optimal precision ranges between 5ms and 250ms.
 
-## Create metrics from nested or array fields in the Traffic flows table { #network-observability-creating-metrics-network-events_metrics-dashboards-alerts }
+## Create metrics from nested fields in Traffic flows { #network-observability-creating-metrics-network-events_metrics-dashboards-alerts }
 
 Create a `FlowMetric` custom resource to generate metrics for nested or array fields in the **Traffic flows** table, such as **Network events** or **Interfaces**.
 

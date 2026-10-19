@@ -1068,7 +1068,7 @@ In this example, the `crio-credential-provider` configuration was generated from
         # ...
         ```
 
-### Configuring image registry repository mirroring { #images-configuration-registry-mirror-configuring_image-configuration }
+### Configure image registry repository mirroring { #images-configuration-registry-mirror-configuring_image-configuration }
 
 You can create postinstallation mirror configuration custom resources (CR) to redirect image pull requests from a source image registry to a mirrored image registry.
 
@@ -1345,7 +1345,7 @@ You can use the following table for information about parameters when configurin
 </table>
 
 
-### Converting ImageContentSourcePolicy (ICSP) files for image registry repository mirroring { #images-configuration-registry-mirror-convert_image-configuration }
+### Convert ImageContentSourcePolicy (ICSP) files for image registry repository mirroring { #images-configuration-registry-mirror-convert_image-configuration }
 
 You can convert existing `ImageContentSourcePolicy` (ICSP) files to `ImageDigestMirrorSet` files to configure image registry repository mirroring.
 

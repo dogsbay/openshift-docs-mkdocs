@@ -141,7 +141,7 @@ Before you install OpenShift Container Platform, download the installation file 
 
         Alternatively, you can retrieve the installation program from the [Red Hat Customer Portal](https://access.redhat.com/downloads/content/290/), where you can specify a version of the installation program to download. However, you must have an active subscription to access this page.
 
-## Installing the OpenShift CLI on Linux { #cli-installing-cli-linux_installing-azure-preparing-upi }
+## Install the OpenShift CLI on Linux { #cli-installing-cli-linux_installing-azure-preparing-upi }
 
 To manage your cluster and deploy applications from the command line on Linux, install the OpenShift CLI (`oc`) binary. You can download the OpenShift CLI (`oc`) from the Red  Customer Portal.
 
@@ -183,7 +183,7 @@ To manage your cluster and deploy applications from the command line on Linux, i
     $ oc <command>
     ```
 
-## Installing the OpenShift CLI on Windows { #cli-installing-cli-windows_installing-azure-preparing-upi }
+## Install the OpenShift CLI on Windows { #cli-installing-cli-windows_installing-azure-preparing-upi }
 
 To manage your cluster and deploy applications from the command line on Windows, install the OpenShift CLI (`oc`) binary. You can download the OpenShift CLI (`oc`) from the Red  Customer Portal.
 
@@ -219,7 +219,7 @@ To manage your cluster and deploy applications from the command line on Windows,
     C:\> oc <command>
     ```
 
-## Installing the OpenShift CLI on macOS { #cli-installing-cli-macos_installing-azure-preparing-upi }
+## Install the OpenShift CLI on macOS { #cli-installing-cli-macos_installing-azure-preparing-upi }
 
 To manage your cluster and deploy applications from the command line on macOS, install the OpenShift CLI (`oc`) binary. You can download the OpenShift CLI (`oc`) from the Red  Customer Portal.
 

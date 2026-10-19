@@ -6,7 +6,7 @@ title: Understanding and creating service accounts
 
 To control API access without sharing regular user credentials, you can use service accounts.
 
-## Service accounts overview { #service-accounts-overview_understanding-service-accounts }
+## Service accounts { #service-accounts-overview_understanding-service-accounts }
 
 You can use OpenShift Container Platform service accounts to allow a OpenShift Container Platform component to directly access the API. 
 

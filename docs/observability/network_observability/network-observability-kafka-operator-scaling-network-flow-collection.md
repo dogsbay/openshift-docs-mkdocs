@@ -1,8 +1,8 @@
 ---
-title: Scaling network flow collection with Kafka
+title: Scale network flow collection with Kafka
 ---
 
-# Scaling network flow collection with Kafka { #network-observability-kafka-operator-scaling-network-flow-collection }
+# Scale network flow collection with Kafka { #network-observability-kafka-operator-scaling-network-flow-collection }
 
 Scale your network flow collection by using the Kafka Operator to manage high-volume telemetry. Configure compression to reduce network bandwidth while balancing CPU overhead in large-scale cluster environments.
 
@@ -27,7 +27,7 @@ You can install the Kafka Operator as Red Hat AMQ Streams from the Operator Hub.
 
     To uninstall Kafka, refer to the uninstallation process that corresponds with the method you used to install.
 
-## Reducing network bandwidth for flow telemetry { #network-observability-kafka-compression-benefits_network-observability-kafka-operator-scaling-network-flow-collection }
+## Kafka compression benefits for network flow telemetry { #network-observability-kafka-compression-benefits_network-observability-kafka-operator-scaling-network-flow-collection }
 
 Enable Kafka compression for flow records to optimize network traffic. This configuration reduces network bandwidth consumption while increasing the CPU load on the eBPF agent.
 

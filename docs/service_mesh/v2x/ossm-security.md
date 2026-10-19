@@ -418,7 +418,7 @@ You can configure your own JSON Web Key Sets (JWKS) resolver certificate authori
 
 A `ConfigMap` such as `pilot-jwks-cacerts-<SMCP name>` is created with the CA `.pem data`.
 
-```yaml title="Example ConfigMap pilot-jwks-cacerts-<SMCP name>"
+```yaml title="Example ConfigMap pilot-jwks-cacerts-&lt;SMCP name&gt;"
 kind: ConfigMap
 apiVersion: v1
 data:
