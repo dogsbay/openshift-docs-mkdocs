@@ -6,9 +6,9 @@ title: SSH access for virtual machines
 
 You can use SSH to securely access your virtual machines (VMs) from the command line. You can set up your SSH configuration using the `virtctl ssh` command, `virtctl port-forward` command, a service, or a secondary network.
 
-## Access configuration considerations { #virt-access-configuration-considerations_virt-accessing-vm-ssh }
+## Options for connecting to VMs { #virt-access-configuration-considerations_virt-accessing-vm-ssh }
 
-Each method for configuring access to a virtual machine (VM) has advantages and limitations, depending on the traffic load and client requirements.
+Your goal determines the best way to connect to a virtual machine (VM), whether troubleshooting, automating configuration with Ansible, or providing access to clients outside the cluster.
 
 !!! note
 
@@ -21,7 +21,7 @@ If the internal cluster network cannot handle the traffic load, you can configur
     - Recommended for troubleshooting VMs.
     - `virtctl port-forwarding` recommended for automated configuration of VMs with Ansible.
     - Dynamic public SSH keys can be used to provision VMs with Ansible.
-    - Not recommended for high-traffic applications like Rsync or Remote Desktop Protocol because of the burden on the API server.
+    - Not recommended for high-traffic applications such as Rsync or Remote Desktop Protocol because of the burden on the API server.
     - The API server must be able to handle the traffic load.
     - The clients must be able to access the API server.
     - The clients must have access credentials for the cluster.
@@ -48,6 +48,6 @@ Secondary network
 - [OpenShift Virtualization Tuning &amp; Scaling Guide](https://access.redhat.com/articles/6994974)
 - [Connecting a virtual machine to a Linux bridge network](../../vm_networking/virt-connecting-vm-to-linux-bridge.md#virt-connecting-vm-to-linux-bridge)
 - [Connecting a virtual machine to an SR-IOV network](../../vm_networking/virt-connecting-vm-to-sriov.md#virt-connecting-vm-to-sriov)
-- [Creating a Linux bridge NAD by using the web console](../../vm_networking/virt-connecting-vm-to-linux-bridge.md#virt-creating-linux-bridge-nad-web_virt-connecting-vm-to-linux-bridge)
-- [Configuring SR-IOV additional network](../../vm_networking/virt-connecting-vm-to-sriov.md#nw-sriov-additional-network_virt-connecting-vm-to-sriov)
+- [Create a Linux bridge NAD by using the web console](../../vm_networking/virt-connecting-vm-to-linux-bridge.md#virt-creating-linux-bridge-nad-web_virt-connecting-vm-to-linux-bridge)
+- [Configure an SR-IOV additional network](../../vm_networking/virt-connecting-vm-to-sriov.md#nw-sriov-additional-network_virt-connecting-vm-to-sriov)
 - [Accessing a virtual machine by using its external FQDN](../../vm_networking/virt-accessing-vm-secondary-network-fqdn.md#virt-accessing-vm-secondary-network-fqdn)

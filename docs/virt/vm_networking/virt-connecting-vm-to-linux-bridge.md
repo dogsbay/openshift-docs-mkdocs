@@ -16,11 +16,9 @@ To create a Linux bridge network and attach a VM to the network, perform the fol
 
     OpenShift Virtualization does not support Linux bridge bonding modes 0, 5, and 6. For more information, see "Additional resources".
 
-## Creating a Linux bridge NNCP { #virt-creating-linux-bridge-nncp_virt-connecting-vm-to-linux-bridge }
+## Create a Linux bridge node network configuration policy { #virt-creating-linux-bridge-nncp_virt-connecting-vm-to-linux-bridge }
 
-After you install the Kubernetes NMState Operator, you can configure a Linux bridge network for live migration or external access to virtual machines (VMs).
-
-You can create a `NodeNetworkConfigurationPolicy` (NNCP) manifest for a Linux bridge network.
+You can configure a Linux bridge network for live migration or external access to virtual machines (VMs) by creating a `NodeNetworkConfigurationPolicy` (NNCP) manifest.
 
 **Prerequisites**
 
@@ -28,7 +26,7 @@ You can create a `NodeNetworkConfigurationPolicy` (NNCP) manifest for a Linux br
 
 **Procedure**
 
-- Create the `NodeNetworkConfigurationPolicy` manifest. This example includes sample values that you must replace with your own information.
+1. Configure the `NNCP` manifest. This example includes sample values that you must replace with your own information.
 
     ```yaml
     apiVersion: nmstate.io/v1
@@ -52,21 +50,21 @@ You can create a `NodeNetworkConfigurationPolicy` (NNCP) manifest for a Linux br
                 - name: eth1
     ```
 
-    - `metadata.name` defines the name of the node network configuration policy.
+    - `metadata.name`: Defines the name of the node network configuration policy.
 
-    - `spec.desiredState.interfaces.name` defines the name of the new Linux bridge.
+    - `spec.desiredState.interfaces.name`: Defines the name of the new Linux bridge.
 
-    - `spec.desiredState.interfaces.description` is an optional field that can be used to define a human-readable description for the bridge.
+    - `spec.desiredState.interfaces.description`: Optional field that can be used to define a human-readable description for the bridge.
 
-    - `spec.desiredState.interfaces.type` defines the interface type. In this example, the type is a Linux bridge.
+    - `spec.desiredState.interfaces.type`: Defines the interface type. In this example, the type is a Linux bridge.
 
-    - `spec.desiredState.interfaces.state` defines the requested state for the interface after creation.
+    - `spec.desiredState.interfaces.state`: Defines the requested state for the interface after creation.
 
-    - `spec.desiredState.interfaces.ipv4.enabled` defines whether the ipv4 protocol is active. Setting this to `false` disables IPv4 addressing on this bridge.
+    - `spec.desiredState.interfaces.ipv4.enabled`: Defines whether the ipv4 protocol is active. Setting this to `false` disables IPv4 addressing on this bridge.
 
-    - `spec.desiredState.interfaces.bridge.options.stp.enabled` defines whether Spanning Tree Protocol (STP) is active. Setting this to `false` disables STP on this bridge.
+    - `spec.desiredState.interfaces.bridge.options.stp.enabled`: Defines whether Spanning Tree Protocol (STP) is active. Setting this to `false` disables STP on this bridge.
 
-    - `spec.desiredState.interfaces.bridge.port.name` defines the node NIC that the bridge is attached to.
+    - `spec.desiredState.interfaces.bridge.port.name`: Defines the node NIC that the bridge is attached to.
 
         !!! note
 
@@ -78,9 +76,15 @@ You can create a `NodeNetworkConfigurationPolicy` (NNCP) manifest for a Linux br
             $ sudo ethtool -K <osa-interface-name> rx-vlan-filter off
             ```
 
-## Creating a Linux bridge NAD by using the web console { #virt-creating-linux-bridge-nad-web_virt-connecting-vm-to-linux-bridge }
+2. Create the `NNCP` manifest:
 
-Use the OpenShift Container Platform web console to create a network attachment definition (NAD) that connects pods and virtual machines to a layer-2 network.
+    ```
+    $ oc apply -f linux-bridge-nncp.yaml
+    ```
+
+## Create a Linux bridge NAD by using the web console { #virt-creating-linux-bridge-nad-web_virt-connecting-vm-to-linux-bridge }
+
+Use the OpenShift Container Platform web console to create a `NetworkAttachmentDefinition` (`net-attach-def`) that connects pods and virtual machines to a layer-2 network.
 
 !!! warning
 
@@ -106,7 +110,7 @@ Use the OpenShift Container Platform web console to create a network attachment 
 
     !!! note
 
-        Open Systems Adapter (OSA) interfaces on IBM Z(R) do not support VLAN filtering and drop VLAN-tagged traffic. Avoid using VLAN-tagged NADs with OSA interfaces.
+        Open Systems Adapter (OSA) interfaces on IBM Z(R) do not support VLAN filtering and drop VLAN-tagged traffic. Avoid using VLAN-tagged `NetworkAttachmentDefinitions` with OSA interfaces.
 
 7. Optional: Select **MAC Spoof Check** to enable MAC spoof filtering. This feature provides security against a MAC spoofing attack by allowing only a single MAC address to exit the pod.
 
@@ -132,7 +136,7 @@ Use the OpenShift Container Platform web console to create a network attachment 
 
 9. Click **Create**.
 
-## Creating a Linux bridge NAD by using the CLI { #virt-creating-linux-bridge-nad-cli_virt-connecting-vm-to-linux-bridge }
+## Create a Linux bridge NAD by using the CLI { #virt-creating-linux-bridge-nad-cli_virt-connecting-vm-to-linux-bridge }
 
 You can create a network attachment definition (NAD) to provide layer-2 networking to pods and virtual machines (VMs) by using the command line.
 
@@ -225,7 +229,7 @@ The NAD and the VM must be in the same namespace.
     $ oc get network-attachment-definition bridge-network
     ```
 
-### Enabling port isolation for a Linux bridge NAD { #virt-linux-bridge-nad-port-isolation_virt-connecting-vm-to-linux-bridge }
+### Enable port isolation for a Linux bridge NAD { #virt-linux-bridge-nad-port-isolation_virt-connecting-vm-to-linux-bridge }
 
 You can enable port isolation for a Linux bridge network attachment definition (NAD) so that virtual machines (VMs) or pods that run on the same virtual LAN (VLAN) can operate in isolation from one another.
 
@@ -278,9 +282,9 @@ Isolating ports in this way can provide enhanced security for VM workloads that 
 
 3. Optional: If you edited a running virtual machine, you must restart it for the changes to take effect.
 
-## Configuring a VM network interface by using the web console { #virt-vm-creating-nic-web_virt-connecting-vm-to-linux-bridge }
+## Add a VM network interface in the web console { #virt-vm-creating-nic-web_virt-connecting-vm-to-linux-bridge }
 
-You can configure a network interface for a virtual machine (VM) by using the OpenShift Container Platform web console.
+You can add a network interface to a virtual machine (VM) from the OpenShift Container Platform web console and attach it to an existing network attachment definition. Restart or live migrate the VM to apply the change.
 
 **Prerequisites**
 
@@ -332,7 +336,7 @@ Information about networking fields in the virtual machine wizard.
 </table>
 
 
-## Configuring a VM network interface by using the CLI { #virt-attaching-vm-secondary-network-cli_virt-connecting-vm-to-linux-bridge }
+## Configure a VM network interface by using the CLI { #virt-attaching-vm-secondary-network-cli_virt-connecting-vm-to-linux-bridge }
 
 You can configure a virtual machine (VM) network interface for a bridge network by using the command line.
 

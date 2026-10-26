@@ -435,6 +435,25 @@ An Operator group defines multitenant configuration for OLM-installed Operators 
 
 The set of target namespaces is provided by a comma-delimited string stored in the `olm.targetNamespaces` annotation of a cluster service version (CSV). This annotation is applied to the CSV instances of member Operators and is projected into their deployments.
 
+!!! warning
+
+    Do not install Operators that require cluster-scoped permissions in namespaces where non-administrator users have any of the following permissions:
+
+    - Default `edit` cluster role
+
+    - Service account token creation
+
+    - Workload creation, for example:
+
+        - Pods
+        - Replica sets
+        - Deployments
+        - Jobs
+        - Cron jobs
+        - Daemon sets
+
+    For more information, see [Audit and secure delegated Operator installations (Red Hat Knowledgebase)](https://access.redhat.com/articles/7149230).
+
 **Additional resources**
 
 - [Operator groups](olm-understanding-operatorgroups.md#olm-understanding-operatorgroups)

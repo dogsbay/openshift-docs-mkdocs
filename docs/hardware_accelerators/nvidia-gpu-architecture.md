@@ -27,6 +27,8 @@ The following list details these prerequisites:
 
 ## NVIDIA GPU enablement { #nvidia-gpu-enablement_nvidia-gpu-architecture }
 
+NVIDIA GPU enablement makes GPU hardware available to workloads that run on OpenShift Container Platform clusters.
+
 The following diagram shows how the GPU architecture is enabled for OpenShift:
 
 **Figure 1. NVIDIA GPU enablement**
@@ -35,7 +37,11 @@ The following diagram shows how the GPU architecture is enabled for OpenShift:
 
 !!! note
 
-    MIG is supported on GPUs starting with the NVIDIA Ampere generation. For a list of GPUs that support MIG, see the [NVIDIA MIG User Guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#supported-gpus).
+    MIG is supported on GPUs starting with the NVIDIA Ampere generation. For a list of GPUs that support MIG, see "NVIDIA MIG User Guide.
+
+**Additional resources**
+
+- [NVIDIA MIG User Guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#supported-gpus)
 
 ### GPUs and bare metal { #nvidia-gpu-bare-metal_nvidia-gpu-architecture }
 

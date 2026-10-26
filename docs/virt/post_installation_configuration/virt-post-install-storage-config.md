@@ -20,11 +20,13 @@ The HPP is a local storage provisioner designed for OpenShift Virtualization. To
 
     HPP storage pools must not be in the same partition as the operating system. Otherwise, the storage pools might fill the operating system partition. If the operating system partition is full, this might negatively impact performance, or the node can become unstable or unusable.
 
-### Creating a storage class for the CSI driver with the storagePools stanza { #virt-creating-storage-class-csi-driver_virt-post-install-storage-config }
+### Create a storage class for the CSI driver with the storagePools stanza { #virt-creating-storage-class-csi-driver_virt-post-install-storage-config }
 
 To use the hostpath provisioner (HPP) you must create an associated storage class for the Container Storage Interface (CSI) driver.
 
-When you create a storage class, you set parameters that affect the dynamic provisioning of persistent volumes (PVs) that belong to that storage class. You cannot update a `StorageClass` object’s parameters after you create it.
+!!! note
+
+    When you create a storage class, you set parameters that affect the dynamic provisioning of persistent volumes (PVs) that belong to that storage class. You cannot update a `StorageClass` object’s parameters after you create it.
 
 **Procedure**
 

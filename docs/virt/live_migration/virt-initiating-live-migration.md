@@ -14,7 +14,7 @@ You can cancel a live migration by using the web console or the command line. Th
 
     You can also initiate and cancel live migration by using the `virtctl migrate <vm_name>` and `virtctl migrate-cancel <vm_name>` commands.
 
-## Initiating live migration by using the web console { #virt-initiating-vm-migration-web_virt-initiating-live-migration }
+## Start live migration by using the web console { #virt-initiating-vm-migration-web_virt-initiating-live-migration }
 
 You can live migrate a running virtual machine (VM) to a different node in the cluster by using the OpenShift Container Platform web console.
 
@@ -43,7 +43,7 @@ You can live migrate a running virtual machine (VM) to a different node in the c
 
 4. Click **Migrate Virtual Machine**.
 
-## Initiating live migration by using the CLI { #virt-initiating-vm-migration-cli_virt-initiating-live-migration }
+## Start live migration by using the CLI { #virt-initiating-vm-migration-cli_virt-initiating-live-migration }
 
 You can initiate the live migration of a running virtual machine (VM) by using the command line to create a `VirtualMachineInstanceMigration` object for the VM.
 
@@ -103,7 +103,7 @@ You can initiate the live migration of a running virtual machine (VM) by using t
         Target Node Domain Detected:  true
     ```
 
-## Canceling live migration by using the web console { #virt-canceling-vm-migration-web_virt-initiating-live-migration }
+## Cancel live migration by using the web console { #virt-canceling-vm-migration-web_virt-initiating-live-migration }
 
 You can cancel the live migration of a virtual machine (VM) by using the OpenShift Container Platform web console.
 
@@ -116,7 +116,7 @@ You can cancel the live migration of a virtual machine (VM) by using the OpenShi
 1. Navigate to **Virtualization** → **VirtualMachines** in the web console.
 2. Select **Cancel Migration** on the Options menu ![](../../images/kebab.png "Options menu") beside a VM.
 
-## Canceling live migration by using the CLI { #virt-canceling-vm-migration-cli_virt-initiating-live-migration }
+## Cancel live migration by using the CLI { #virt-canceling-vm-migration-cli_virt-initiating-live-migration }
 
 Cancel the live migration of a virtual machine by deleting the `VirtualMachineInstanceMigration` object associated with the migration.
 

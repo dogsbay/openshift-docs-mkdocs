@@ -6,7 +6,7 @@ title: Configuring and viewing IP addresses
 
 You can configure an IP address when you create a virtual machine (VM). The IP address is provisioned with cloud-init. View the IP address of a VM by using the OpenShift Container Platform web console or the command line. The network information is collected by the QEMU guest agent.
 
-## Configuring a static IP address when creating a virtual machine by using the web console { #virt-configuring-ip-vm-web_virt-configuring-viewing-ips-for-vms }
+## Configure a VM IP address by using the web console { #virt-configuring-ip-vm-web_virt-configuring-viewing-ips-for-vms }
 
 You can configure a static IP address when you create a virtual machine (VM) by using the web console. The IP address is provisioned with cloud-init.
 
@@ -30,7 +30,7 @@ You can configure a static IP address when you create a virtual machine (VM) by 
 8. Click **Apply**.
 9. Click **Create VirtualMachine**.
 
-## Configuring an IP address when creating a virtual machine by using the CLI { #virt-configuring-ip-vm-cli_virt-configuring-viewing-ips-for-vms }
+## Configure a VM IP address by using the CLI { #virt-configuring-ip-vm-cli_virt-configuring-viewing-ips-for-vms }
 
 You can configure a static or dynamic IP address when you create a virtual machine (VM). The IP address is provisioned with cloud-init.
 
@@ -94,7 +94,7 @@ You can configure a static or dynamic IP address when you create a virtual machi
             # ...
         ```
 
-## Viewing the IP address of a virtual machine by using the web console { #virt-viewing-vmi-ip-web_virt-configuring-viewing-ips-for-vms }
+## View a VM IP address by using the web console { #virt-viewing-vmi-ip-web_virt-configuring-viewing-ips-for-vms }
 
 You can view the IP address of a virtual machine (VM) by using the OpenShift Container Platform web console.
 
@@ -108,7 +108,7 @@ You can view the IP address of a virtual machine (VM) by using the OpenShift Con
 2. Select a VM to open the **VirtualMachine details** page.
 3. Click the **Details** tab to view the IP address.
 
-## Viewing the IP address of a virtual machine by using the CLI { #virt-viewing-vmi-ip-cli_virt-configuring-viewing-ips-for-vms }
+## View a VM IP address by using the CLI { #virt-viewing-vmi-ip-cli_virt-configuring-viewing-ips-for-vms }
 
 You can view the IP address of a virtual machine (VM) by using the command line.
 

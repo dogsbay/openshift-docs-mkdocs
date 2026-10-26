@@ -320,7 +320,7 @@ The following example shows how to generate metrics from the **Network events** 
 
 **Additional resources**
 
-- [Network Flows format reference](json-flows-format-reference.md#network-observability-flows-format_json_reference)
+- [Network Flows format reference](network-observability-api-reference.md#network-flows-format_network_observability)
 
 ## Configure custom charts using FlowMetric API { #network-observability-custom-charts-flowmetrics_metrics-dashboards-alerts }
 

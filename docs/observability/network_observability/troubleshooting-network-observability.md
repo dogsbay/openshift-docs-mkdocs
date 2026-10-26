@@ -355,6 +355,6 @@ Configure Loki to improve the query performance
 
 **Additional resources**
 
-- [Network flows format reference](json-flows-format-reference.md#network-observability-flows-format_json_reference)
-- [FlowMetric API reference](flowmetric-api.md#flowmetric-flows-netobserv-io-v1alpha1)
+- [Network flows format reference](network-observability-api-reference.md#network-flows-format_network_observability)
+- [FlowMetric API reference](network-observability-api-reference.md#flowmetric-api_network_observability)
 - [Configuring custom metrics by using FlowMetric API](metrics-alerts-dashboards.md#network-observability-configuring-custom-metrics_metrics-dashboards-alerts)

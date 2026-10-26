@@ -253,4 +253,4 @@ For example, the following high level steps describe how to perform a Control Pl
 - [Red Hat OpenShift Container Platform Operator Update Information Checker](https://access.redhat.com/labs/ocpouic/?operator=logging&&ocp_versions=4.10,4.11,4.12)
 - [Performing a Control Plane Only update using the web console](control-plane-only-update.md#updating-control-plane-only-update-console_control-plane-only-update)
 - [Performing a Control Plane Only update using the CLI](control-plane-only-update.md#updating-control-plane-only-update-cli_control-plane-only-update)
-- [Preventing workload updates during a Control Plane Only update](../../virt/updating/upgrading-virt.md#virt-preventing-workload-updates-during-control-plane-only-update_upgrading-virt)
+- [Prevent workload updates during a Control Plane Only update](../../virt/updating/upgrading-virt.md#virt-preventing-workload-updates-during-control-plane-only-update_upgrading-virt)

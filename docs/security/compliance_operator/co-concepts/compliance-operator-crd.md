@@ -1,8 +1,8 @@
 ---
-title: Understanding the Custom Resource Definitions
+title: About the Compliance Operator custom resource definitions
 ---
 
-# Understanding the Custom Resource Definitions { #custom-resource-definitions }
+# About the Compliance Operator custom resource definitions { #custom-resource-definitions }
 
 You can use the Custom Resource Definitions (CRDs) provided by the Compliance Operator to run compliance scans and get remediation for the issues found.
 

@@ -12,7 +12,7 @@ As an administrator, you can expose a set of host and virtual machine (VM) metri
 
     The `vm-dump-metrics` tool is not supported on the Red Hat Enterprise Linux (RHEL) 9 platform.
 
-## Enabling or disabling the downward metrics feature gate in a YAML file { #virt-enabling-disabling-downward-metrics-feature-gate-yaml_virt-exposing-downward-metrics }
+## Enable or disable downward metrics by editing the HyperConverged CR { #virt-enabling-disabling-downward-metrics-feature-gate-yaml_virt-exposing-downward-metrics }
 
 To expose downward metrics for a host virtual machine, you can enable the `downwardMetrics` feature gate by editing a YAML file.
 
@@ -59,7 +59,7 @@ To expose downward metrics for a host virtual machine, you can enable the `downw
         # ...
         ```
 
-## Enabling or disabling the downward metrics feature gate from the CLI { #virt-enabling-disabling-downward-metrics-feature-gate-cli_virt-exposing-downward-metrics }
+## Enable or disable downward metrics by running an `oc patch` command { #virt-enabling-disabling-downward-metrics-feature-gate-cli_virt-exposing-downward-metrics }
 
 To expose downward metrics for a host virtual machine, you can enable the `downwardMetrics` feature gate by using the command line.
 
@@ -90,7 +90,7 @@ To expose downward metrics for a host virtual machine, you can enable the `downw
           "value": false}]'
         ```
 
-## Configuring a downward metrics device { #virt-configuring-downward-metrics_virt-exposing-downward-metrics }
+## Configure a downward metrics device { #virt-configuring-downward-metrics_virt-exposing-downward-metrics }
 
 You can enable the capturing of downward metrics for a host VM by creating a configuration file that includes a `downwardMetrics` device. Adding this device establishes that the metrics are exposed through a `virtio-serial` port.
 
@@ -149,7 +149,7 @@ You can enable the capturing of downward metrics for a host VM by creating a con
 
 - `spec.volumes.cloudInitNoCloud.userdata.password` defines the password for the `fedora` user.
 
-## Viewing downward metrics by using the CLI { #virt-viewing-downward-metrics-cli_virt-exposing-downward-metrics }
+## View downward metrics by using the CLI { #virt-viewing-downward-metrics-cli_virt-exposing-downward-metrics }
 
 You can view downward metrics by entering a command from inside a guest virtual machine (VM).
 
@@ -165,7 +165,7 @@ You can view downward metrics by entering a command from inside a guest virtual 
     $ sudo cat /dev/virtio-ports/org.github.vhostmd.1
     ```
 
-## Viewing downward metrics by using the vm-dump-metrics tool { #virt-viewing-downward-metrics-tool_virt-exposing-downward-metrics }
+## View downward metrics by using the vm-dump-metrics tool { #virt-viewing-downward-metrics-tool_virt-exposing-downward-metrics }
 
 To view downward metrics, install the `vm-dump-metrics` tool and then use the tool to expose the metrics results.
 
@@ -208,4 +208,4 @@ To view downward metrics, install the `vm-dump-metrics` tool and then use the to
 
 **Additional resources**
 
-- [Viewing downward metrics by using the command line](virt-exposing-downward-metrics.md#virt-viewing-downward-metrics-cli_virt-exposing-downward-metrics)
+- [View downward metrics by using the CLI](virt-exposing-downward-metrics.md#virt-viewing-downward-metrics-cli_virt-exposing-downward-metrics)

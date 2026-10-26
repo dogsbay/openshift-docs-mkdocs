@@ -513,4 +513,4 @@ If required, create further VMs for `master-1` and `master-2`, for example.
 **Additional resources**
 
 - [Recommended resources for topologies](../installing/installing_with_agent_based_installer/preparing-to-install-with-agent-based-installer.md#agent-based-installer-recommended-resources_preparing-to-install-with-agent-based-installer)
-- [Connecting a virtual machine to a secondary localnet user-defined network](../virt/vm_networking/virt-connecting-vm-to-secondary-udn.md#virt-connecting-vm-to-secondary-udn)
+- [Connect a virtual machine to a physical network by using an Open vSwitch bridge](../virt/vm_networking/virt-connecting-vm-to-physical-network-ovs-bridge.md#virt-connecting-vm-to-physical-network-ovs-bridge)

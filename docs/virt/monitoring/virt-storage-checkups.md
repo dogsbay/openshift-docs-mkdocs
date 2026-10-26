@@ -15,7 +15,7 @@ Running a predefined checkup in an existing namespace involves setting up a serv
     - Verify that the checkup image is from a trustworthy source before applying it.
     - Review the checkup permissions before creating the `Role` and `RoleBinding` objects.
 
-## Retaining resources for troubleshooting storage checkups { #virt-retain-storage-checkup-resources_virt-storage-checkups }
+## Keep checkup resources for troubleshooting { #virt-retain-storage-checkup-resources_virt-storage-checkups }
 
 The predefined storage checkup includes `skipTeardown` configuration options, which control resource clean up after a storage checkup runs. By default, the `skipTeardown` field value is `Never`, which means that the checkup always performs teardown steps and deletes all resources after the checkup runs.
 
@@ -52,7 +52,7 @@ You can retain resources for further inspection in case a failure occurs by sett
     $ oc apply -f storage_checkup.yaml -n <checkup_namespace>
     ```
 
-## Running a storage checkup by using the web console { #virt-storage-checkup-web-console_virt-storage-checkups }
+## Run a storage checkup by using the web console { #virt-storage-checkup-web-console_virt-storage-checkups }
 
 You can run a storage checkup to validate that storage is working correctly for virtual machines.
 
@@ -70,7 +70,7 @@ You can run a storage checkup to validate that storage is working correctly for 
 
 You can view the status of the storage checkup in the **Checkups** list on the **Storage** tab. Click on the name of the checkup for more details.
 
-## Running a storage checkup by using the CLI { #virt-checking-storage-configuration_virt-storage-checkups }
+## Run a storage checkup by using the CLI { #virt-checking-storage-configuration_virt-storage-checkups }
 
 Use a predefined checkup to verify that the OpenShift Container Platform cluster storage is configured optimally to run OpenShift Virtualization workloads.
 
@@ -308,7 +308,7 @@ Use a predefined checkup to verify that the OpenShift Container Platform cluster
         $ oc delete -f <storage_sa_roles_rolebinding>.yaml
         ```
 
-## Troubleshooting a failed storage checkup { #virt-troubleshoot-storage-checkup_virt-storage-checkups }
+## Troubleshoot a failed storage checkup { #virt-troubleshoot-storage-checkup_virt-storage-checkups }
 
 If a storage checkup fails, there are steps that you can take to identify the reason for failure.
 
@@ -349,7 +349,7 @@ If a storage checkup fails, there are steps that you can take to identify the re
 **Additional resources**
 
 - [Collecting data for Red Hat Support](../support/virt-collecting-virt-data.md#virt-collecting-virt-data)
-- [Using the `must-gather` tool for OpenShift Virtualization](../support/virt-collecting-virt-data.md#virt-using-virt-must-gather_virt-collecting-virt-data)
+- [Use the `must-gather` tool for OpenShift Virtualization](../support/virt-collecting-virt-data.md#virt-using-virt-must-gather_virt-collecting-virt-data)
 
 ## Storage checkup error codes { #virt-troubleshoot-storage-checkup-error-codes_virt-storage-checkups }
 

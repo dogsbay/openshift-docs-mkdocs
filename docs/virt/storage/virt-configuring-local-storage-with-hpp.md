@@ -63,11 +63,13 @@ To use the hostpath provisioner (HPP) you must create an associated storage clas
 
     To solve this problem, use the Kubernetes pod scheduler to bind the persistent volume claim (PVC) to a PV on the correct node. By using the `StorageClass` value with `volumeBindingMode` parameter set to `WaitForFirstConsumer`, the binding and provisioning of the PV is delayed until a pod is created using the PVC.
 
-### Creating a storage class for the CSI driver with the storagePools stanza { #virt-creating-storage-class-csi-driver_virt-configuring-local-storage-with-hpp }
+### Create a storage class for the CSI driver with the storagePools stanza { #virt-creating-storage-class-csi-driver_virt-configuring-local-storage-with-hpp }
 
 To use the hostpath provisioner (HPP) you must create an associated storage class for the Container Storage Interface (CSI) driver.
 
-When you create a storage class, you set parameters that affect the dynamic provisioning of persistent volumes (PVs) that belong to that storage class. You cannot update a `StorageClass` object’s parameters after you create it.
+!!! note
+
+    When you create a storage class, you set parameters that affect the dynamic provisioning of persistent volumes (PVs) that belong to that storage class. You cannot update a `StorageClass` object’s parameters after you create it.
 
 **Procedure**
 

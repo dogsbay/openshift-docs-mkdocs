@@ -6,7 +6,7 @@ title: Deleting a machine
 
 If you need to remove a machine from your cluster, you can delete a specific machine. If the machine is part of a machine set, deleting the machine can help troubleshoot and resolve unhealthy nodes and other technical issues.
 
-## Deleting a specific machine { #machine-delete_deleting-machine }
+## Delete a specific machine { #machine-delete_deleting-machine }
 
 To remove a machine from your cluster, or restart a machine that is part of a machine set, you can use the OpenShift CLI (`oc`) to delete a specific machine.
 
