@@ -150,11 +150,11 @@ In some cases, device names won’t persist following a reboot. For example, on 
     worker   rendered-worker-4568f1b174066b4b1a4de794cf538fee   False     True       False      2              0                   0                     0                      6h21m
     ```
 
-The nodes will reboot and when the updating field returns to `false`, you can validate on the nodes by looking at the devices in a debug pod.
+    The nodes will reboot and when the updating field returns to `false`, you can validate on the nodes by looking at the devices in a debug pod.
 
 ## Configuring the NFD Operator { #rdma-configuring-the-nfd-operator_rdma-remote-direct-memory-access }
 
-The Node Feature Discovery (NFD) Operator manages the detection of hardware features and configuration in an OpenShift Container Platform cluster by labeling the nodes with hardware-specific information. NFD labels the host with node-specific attributes, such as PCI cards, kernel, operating system version, and so on.
+The Node Feature Discovery (NFD) Operator manages the detection of hardware features and configuration in an OpenShift Container Platform cluster by labeling the nodes with hardware-specific information.
 
 **Prerequisites**
 
@@ -349,7 +349,7 @@ The Node Feature Discovery (NFD) Operator manages the detection of hardware feat
 
 ## Configuring the SR-IOV Operator { #rdma-configuring-the-sriov-operator_rdma-remote-direct-memory-access }
 
-Single root I/O virtualization (SR-IOV) enhances the performance of NVIDIA GPUDirect RDMA by providing sharing across multiple pods from a single device.
+Single root I/O virtualization (SR-IOV) enhances the performance of NVIDIA GPUDirect RDMA by providing sharing across multiple pods from a single device. 
 
 **Prerequisites**
 
@@ -616,7 +616,7 @@ The NVIDIA network Operator manages NVIDIA networking resources and networking r
 
 ## Configuring the GPU Operator { #rdma-configuring-the-gpu-operator_rdma-remote-direct-memory-access }
 
-The GPU Operator automates the management of the NVIDIA drivers, device plugins for GPUs, the NVIDIA Container Toolkit, and other components required for GPU provisioning.
+The GPU Operator automates the management of the NVIDIA drivers, device plugins for GPUs, the NVIDIA Container Toolkit, and other components required for GPU provisioning.  
 
 **Prerequisites**
 

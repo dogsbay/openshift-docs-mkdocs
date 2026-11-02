@@ -16,7 +16,7 @@ A hot plugged disk remains attached to the VM even after reboot. You must unplug
 
     When you hot plug disks to the VirtIO (`virtio-blk`) bus, each disk uses a PCI Express (PCIe) slot in the VM. The number of PCIe slots is limited and pre-set automatically at the VM creation as specified in the "Available VirtIO Ports" table. Therefore, you can use `virtio-blk` for a small number of disks that does not exceed the number of available slots.
 
-## Hot plugging and hot unplugging a disk by using the web console { #virt-hot-plugging-disks-ui_virt-hot-plugging-virtual-disks }
+## Hot plug and unplug disks by using the web console { #virt-hot-plugging-disks-ui_virt-hot-plugging-virtual-disks }
 
 You can hot plug a disk by attaching it to a virtual machine (VM) while the VM is running by using the OpenShift Container Platform web console.
 

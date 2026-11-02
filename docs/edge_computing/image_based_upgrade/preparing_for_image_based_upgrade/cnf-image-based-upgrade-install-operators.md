@@ -499,10 +499,10 @@ Install and configure the OADP Operator with GitOps ZTP before starting the upgr
               policyName: "config-policy"
         ```
 
-where:
+        where:
 
-`your_credentials`
-:   Specifies your credentials for your S3 storage backend.
+        `your_credentials`
+        :   Specifies your credentials for your S3 storage backend.
 
 `OadpDataProtectionApplication.yaml`
 :   If more than one `backupLocations` entries are defined in the `OadpDataProtectionApplication` CR, ensure that each location has a corresponding `OadpBackupStorageLocation` CR added for status tracking. Ensure that the name of each additional `OadpBackupStorageLocation` CR is overridden with the correct index as described in the example `OadpBackupStorageLocationStatus.yaml` file.

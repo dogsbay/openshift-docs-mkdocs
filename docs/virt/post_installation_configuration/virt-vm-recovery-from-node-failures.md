@@ -6,7 +6,7 @@ title: Virtual machine recovery from node failures
 
 To ensure that virtual machines (VMs) recover automatically when a node fails, configure node health checks, automated remediation, and capacity planning. These recommendations come from chaos testing results and help minimize VM downtime during node failure conditions.
 
-## How node health monitoring protects virtual machines { #virt-about-recommended-node-practices_virt-vm-recovery-from-node-failures }
+## Node health monitoring for protection of virtual machines { #virt-about-recommended-node-practices_virt-vm-recovery-from-node-failures }
 
 By default, virtual machines (VMs) are not automatically recovered to other available nodes when a node fails. To minimize VM downtime and ensure workload resilience, configure node health monitoring and automated remediation.
 
@@ -43,7 +43,7 @@ You can configure a run strategy for a virtual machine (VM) by using the command
     # ...
     ```
 
-## Configuring node health checks for virtual machines { #virt-configuring-node-health-checks-for-vms_virt-vm-recovery-from-node-failures }
+## Configure node health checks for virtual machines { #virt-configuring-node-health-checks-for-vms_virt-vm-recovery-from-node-failures }
 
 You can configure the Node Health Check Operator to monitor node status and trigger automated remediation when a node becomes unhealthy.
 
@@ -158,7 +158,7 @@ Fence Agents Remediation (FAR)
     - Remediation actions start after the node conditions monitored by the Node Health Check Operator exceed the time specified in `spec.unhealthyConditions[].duration`.
     - Disruption to the node running the `self-node-remediation-controller-manager` pod increases recovery times.
 
-### Self Node Remediation configuration parameters { #virt-snr-configuration-parameters_virt-vm-recovery-from-node-failures }
+### Self Node Remediation (SNR) configuration parameters { #virt-snr-configuration-parameters_virt-vm-recovery-from-node-failures }
 
 You can tune the Self Node Remediation (SNR) Operator configuration to optimize recovery times and ensure availability of VM workloads.
 

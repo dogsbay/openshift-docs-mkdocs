@@ -13,13 +13,15 @@ You can incrementally migrate single-node OpenShift clusters from `SiteConfig` c
 
 ## Overview of migrating from SiteConfig CRs to ClusterInstance CRs { #ztp-migrate-clusterinstance-overview_ztp-migrate-clusterinstance }
 
-The `ClusterInstance` CR provides a more unified and generic approach to defining clusters and is the preferred method for managing cluster deployments in the GitOps ZTP workflow. The SiteConfig Operator, which manages the `ClusterInstance` custom resource (CR), is a fully developed controller shipped as an add-on within Red Hat Advanced Cluster Management (RHACM).
+The `ClusterInstance` CR provides a more unified and generic approach to defining clusters and is the preferred method for managing cluster deployments in the GitOps ZTP workflow.
+
+The SiteConfig Operator, which manages the `ClusterInstance` custom resource (CR), is a fully developed controller shipped as an add-on within Red Hat Advanced Cluster Management (RHACM).
 
 !!! warning
 
     The SiteConfig Operator only reconciles updates for `ClusterInstance` objects. The controller does not monitor or manage deprecated `SiteConfig` objects.
 
-The migration from `SiteConfig` CRs to `ClusterInstance` CRs provides several improvements, such as enhanced scalability and a clear separation of cluster parameters from the cluster deployment method. For more information about these improvements, and the SiteConfig Operator, see [SiteConfig](https://docs.redhat.com/en/documentation/red_hat_advanced_cluster_management_for_kubernetes/2.12/html-single/multicluster_engine_operator_with_red_hat_advanced_cluster_management/index#siteconfig-intro).
+The migration from `SiteConfig` CRs to `ClusterInstance` CRs provides several improvements, such as enhanced scalability and a clear separation of cluster parameters from the cluster deployment method.
 
 The migration process involves the following high-level steps:
 
@@ -74,6 +76,10 @@ The following Git repository folder structure is used as a basis for this exampl
 ...
 ```
 
+**Additional resources**
+
+- [SiteConfig](https://docs.redhat.com/en/documentation/red_hat_advanced_cluster_management_for_kubernetes/2.12/html-single/multicluster_engine_operator_with_red_hat_advanced_cluster_management/index#siteconfig-intro)
+
 ## Preparing a parallel Argo CD pipeline for ClusterInstance CRs { #ztp-creating-argocd-clusterinstance_ztp-migrate-clusterinstance }
 
 Create a parallel Argo CD project and application to manage the new `ClusterInstance` CRs and associated cluster resources.
@@ -122,12 +128,15 @@ Create a parallel Argo CD project and application to manage the new `ClusterInst
           - group: 'metal3.io'
             kind: DataImage
           - group: 'siteconfig.open-cluster-management.io'
-            kind: ClusterInstance (1)
+            kind: ClusterInstance
           sourceRepos:
           - '*'
         ```
 
-        1. The `ClusterInstance` CR manages the `siteconfig.open-cluster-management.io` object instead of the `SiteConfig` CR.
+        where:
+
+        `spec.namespaceResourceWhitelist[].kind`
+        :   The `ClusterInstance` CR manages the `siteconfig.open-cluster-management.io` object instead of the `SiteConfig` CR.
 
     2. Create a YAML file that defines the `Application` resource:
 
@@ -146,9 +155,9 @@ Create a parallel Argo CD project and application to manage the new `ClusterInst
             kind: ManagedCluster
             managedFieldsManagers:
             - controller
-          project: ztp-app-project-v2 (1)
+          project: ztp-app-project-v2
           source:
-            path: site-configs-v2 (2)
+            path: site-configs-v2
             repoURL: http://infra.5g-deployment.lab:3000/student/ztp-repository.git
             targetRevision: main
           syncPolicy:
@@ -158,8 +167,13 @@ Create a parallel Argo CD project and application to manage the new `ClusterInst
             - RespectIgnoreDifferences=true
         ```
 
-        1. The `project` field must match the name of the `AppProject` resource created in the previous step.
-        2. The `path` field must match the root folder in your Git repository that will contain the `ClusterInstance` CRs and associated resources.
+        where:
+
+        `spec.project`
+        :   Specifies the Argo CD project. The value must match the name of the `AppProject` resource created in the previous step.
+
+        `spec.source.path`
+        :   Specifies the root folder in your Git repository that will contain the `ClusterInstance` CRs and associated resources.
 
         !!! note
 
@@ -218,7 +232,9 @@ Create a parallel Argo CD project and application to manage the new `ClusterInst
 
 ## Transitioning the active-ocp-version ClusterImageSet { #ztp-active-ocp-version_ztp-migrate-clusterinstance }
 
-Optionally, the `active-ocp-version` `ClusterImageSet` is a GitOps Zero Touch Provisioning (ZTP) convention used in GitOps ZTP deployments. It provides a single, central definition of the OpenShift Container Platform release image to use when provisioning clusters.<br>By default, this resource is synchronized to the hub cluster from the `site-config/resources/` folder.
+Optionally, the `active-ocp-version` `ClusterImageSet` is a GitOps Zero Touch Provisioning (ZTP) convention used in GitOps ZTP deployments.
+
+It provides a single, central definition of the OpenShift Container Platform release image to use when provisioning clusters.<br>By default, this resource is synchronized to the hub cluster from the `site-config/resources/` folder.
 
 If your deployment uses an `active-ocp-version` `ClusterImageSet` CR, you must migrate it to the `resources/` folder in the new directroy that contains `ClusterInstance` CRs.<br>This prevents synchronization conflicts because both Argo CD applications cannot manage the same resource.
 
@@ -295,17 +311,22 @@ Migrate a single-node OpenShift cluster from using a `SiteConfig` CR to a `Clust
 
     ```text
     site-configs-v2/
-    ├── hub-1/ (1)
+    ├── hub-1/
     │   └── extra-manifest/
     ├── pre-reqs/
-    │   └── sno1/ (2)
+    │   └── sno1/
     ├── reference-manifest/
     │   └── 4.22/
     └── resources/
     ```
 
-    1. The `hub-1/` folder will contain the `ClusterInstance` CR for each cluster.
-    2. Mirror the target cluster, in this example `sno1`, to include the required pre-requisite resources such as the image registry pull secret, the baseboard management controller credentials, and so on.
+    where:
+
+    `hub-1/`
+    :   Contains the `ClusterInstance` CR for each cluster.
+
+    `pre-reqs/sno1/`
+    :   Contains the required pre-requisite resources for the target cluster, such as the image registry pull secret and the baseboard management controller credentials.
 
 2. Remove the target cluster from the original Argo CD application by commenting out the resources in the related files in Git:
 
@@ -472,11 +493,11 @@ Migrate a single-node OpenShift cluster from using a `SiteConfig` CR to a `Clust
     ```text
     site-configs-v2/
     ├── hub-1/
-    │   ├── sno1.yaml (1)
+    │   ├── sno1.yaml
     ├── extra-manifest/
-    │   ├── enable-crun-worker.yaml (2)
+    │   ├── enable-crun-worker.yaml
     │   └── enable-crun-master.yaml 
-    ├── kustomization.yaml (3)
+    ├── kustomization.yaml
     ├── pre-reqs/
     │   └── sno1/
     │       ├── bmc-credentials.yaml
@@ -490,9 +511,16 @@ Migrate a single-node OpenShift cluster from using a `SiteConfig` CR to a `Clust
         └── kustomization.yaml
     ```
 
-    1. This `ClusterInstance` CR for the `sno1` cluster.
-    2. The tool automatically generates the extra manifests referenced by the `ClusterInstance` CR.
-    3. The tool generates a `kuztomization.yaml` file snippet to create the `ConfigMap` resources that specifies the extra manifests. You can merge the generated `kustomization` snippet with your original `kuztomization.yaml` file.
+    where:
+
+    `hub-1/sno1.yaml`
+    :   The `ClusterInstance` CR for the `sno1` cluster.
+
+    `extra-manifest/`
+    :   Contains the extra manifests automatically generated by the `siteconfig-converter` tool and referenced by the `ClusterInstance` CR.
+
+    `kustomization.yaml`
+    :   The `kustomization.yaml` snippet generated by the tool to create the `ConfigMap` resources that specify the extra manifests. Merge this snippet with your original `kustomization.yaml` file.
 
 **Additional resources**
 

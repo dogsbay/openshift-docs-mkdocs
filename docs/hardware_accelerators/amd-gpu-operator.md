@@ -10,7 +10,9 @@ This documentation provides the information you need to enable, configure, and t
 
 ## About the AMD GPU Operator { #amd-about-amd-gpu-operator_amd-gpu-operator }
 
-The hardware acceleration capabilities of the AMD GPU Operator provide enhanced performance and cost efficiency for data scientists and developers using Red Hat OpenShift AI for creating artificial intelligence and machine learning (AI/ML) applications. Accelerating specific areas of GPU functions can minimize CPU processing and memory usage, improving overall application speed, memory consumption, and bandwidth restrictions.
+The hardware acceleration capabilities of the AMD GPU Operator provide enhanced performance and cost efficiency for data scientists and developers using Red Hat OpenShift AI for creating artificial intelligence and machine learning (AI/ML) applications. 
+
+Accelerating specific areas of GPU functions can minimize CPU processing and memory usage, improving overall application speed, memory consumption, and bandwidth restrictions.
 
 ## Installing the AMD GPU Operator { #amd-installing-gpu-operator_amd-gpu-operator }
 
@@ -26,7 +28,7 @@ Use the following steps in succession to install the AMD community release of th
 
 ## Testing the AMD GPU Operator { #amd-testing-the-amd-gpu-operator_amd-gpu-operator }
 
-Use the following procedure to test the ROCmInfo installation and view the logs for the AMD MI210 GPU.
+Use the following procedure to test the ROCmInfo installation and view the logs for the AMD MI210 GPU. 
 
 **Procedure**
 

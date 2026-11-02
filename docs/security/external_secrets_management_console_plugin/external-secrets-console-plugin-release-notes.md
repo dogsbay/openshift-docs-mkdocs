@@ -18,6 +18,6 @@ For more information, see [External Secrets Operator overview](../external_secre
 
 ## External Secrets Management Console Plug-in 0.1.0 (Technology Preview) { #external-secrets-console-plugin-release-notes-tp_external-secrets-console-plugin-release-notes }
 
-Issued: 9 July 2026
-
 This initial release of External Secrets Management Console Plug-in is a Technology Preview.
+
+Issued: 9 July 2026

@@ -3889,13 +3889,13 @@ On the provisioner node, the `install-config.yaml` file should use the newly cre
 
 Ensure that all required steps are completed before installing OpenShift Container Platform.
 
-- \[ \] OpenShift Container Platform installer has been retrieved.
-- \[ \] OpenShift Container Platform installer has been extracted.
-- \[ \] Required parameters for the `install-config.yaml` have been configured.
-- \[ \] The `hosts` parameter for the `install-config.yaml` has been configured.
-- \[ \] The `bmc` parameter for the `install-config.yaml` has been configured.
-- \[ \] Conventions for the values configured in the `bmc` `address` field have been applied.
-- \[ \] Created the OpenShift Container Platform manifests.
-- \[ \] (Optional) Deployed routers on compute nodes.
-- \[ \] (Optional) Created a disconnected registry.
-- \[ \] (Optional) Validate disconnected registry settings if in use.
+- [ ] OpenShift Container Platform installer has been retrieved.
+- [ ] OpenShift Container Platform installer has been extracted.
+- [ ] Required parameters for the `install-config.yaml` have been configured.
+- [ ] The `hosts` parameter for the `install-config.yaml` has been configured.
+- [ ] The `bmc` parameter for the `install-config.yaml` has been configured.
+- [ ] Conventions for the values configured in the `bmc` `address` field have been applied.
+- [ ] Created the OpenShift Container Platform manifests.
+- [ ] (Optional) Deployed routers on compute nodes.
+- [ ] (Optional) Created a disconnected registry.
+- [ ] (Optional) Validate disconnected registry settings if in use.

@@ -198,7 +198,7 @@ OpenShift Virtualization
 - [OpenShift Container Platform object maximums](../../scalability_and_performance/planning-your-environment-according-to-object-maximums.md#planning-your-environment-according-to-object-maximums)
 - [OpenShift Virtualization supported limits](../about_virt/virt-supported-limits.md#virt-supported-limits)
 - [Installing a FIPS-compliant cluster](../../installing/overview/installing-fips.md#installing-fips-mode_installing-fips)
-- [Configure CPU models](../managing_vms/cpu_models/virt-configuring-default-cpu-model.md#virt-configuring-default-cpu-model)
+- [Configure the default CPU model](../managing_vms/cpu_models/virt-configuring-default-cpu-model.md#virt-configuring-default-cpu-model)
 - [Deleting a virtual machine by using the web console](../managing_vms/virt-delete-vms.md#virt-delete-vm-web_virt-delete-vms)
 - [Configure a downward metrics device](../monitoring/virt-exposing-downward-metrics.md#virt-configuring-downward-metrics_virt-exposing-downward-metrics)
 - [Instance types](../creating_vm/virt-creating-vms-from-instance-types.md#virt-creating-vms-from-instance-types)

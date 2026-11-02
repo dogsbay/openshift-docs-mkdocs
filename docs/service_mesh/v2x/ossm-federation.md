@@ -148,25 +148,25 @@ The IP address found in the `.status.loadBalancer.ingress.ip` field of the ingre
 
 Federating services meshes involves the following activities:
 
-- \[ \] Configure networking between the clusters that you are going to federate.
+- [ ] Configure networking between the clusters that you are going to federate.
 
-    - \[ \] Configure the load balancers supporting the services associated with the federation gateways to support raw TLS traffic.
+    - [ ] Configure the load balancers supporting the services associated with the federation gateways to support raw TLS traffic.
 
-- \[ \] Installing the Red Hat OpenShift Service Mesh version 2.1 or later Operator in each of your clusters.
+- [ ] Installing the Red Hat OpenShift Service Mesh version 2.1 or later Operator in each of your clusters.
 
-- \[ \] Deploying a version 2.1 or later `ServiceMeshControlPlane` to each of your clusters.
+- [ ] Deploying a version 2.1 or later `ServiceMeshControlPlane` to each of your clusters.
 
-- \[ \] Configuring the SMCP for federation for each mesh that you want to federate:
+- [ ] Configuring the SMCP for federation for each mesh that you want to federate:
 
-    - \[ \] Create a federation egress gateway for each mesh you are going to federate with.
-    - \[ \] Create a federation ingress gateway for each mesh you are going to federate with.
-    - \[ \] Configure a unique trust domain.
+    - [ ] Create a federation egress gateway for each mesh you are going to federate with.
+    - [ ] Create a federation ingress gateway for each mesh you are going to federate with.
+    - [ ] Configure a unique trust domain.
 
-- \[ \] Federate two or more meshes by creating a `ServiceMeshPeer` resource for each mesh pair.
+- [ ] Federate two or more meshes by creating a `ServiceMeshPeer` resource for each mesh pair.
 
-- \[ \] Export services by creating an `ExportedServiceSet` resource to make services available from one mesh to a peer mesh.
+- [ ] Export services by creating an `ExportedServiceSet` resource to make services available from one mesh to a peer mesh.
 
-- \[ \] Import services by creating an `ImportedServiceSet` resource to import services shared by a mesh peer.
+- [ ] Import services by creating an `ImportedServiceSet` resource to import services shared by a mesh peer.
 
 ## Configuring a Service Mesh control plane for federation { #ossm-federation-config-smcp_federation }
 

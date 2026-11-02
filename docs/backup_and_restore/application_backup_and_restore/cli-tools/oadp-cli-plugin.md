@@ -78,7 +78,7 @@ The setup command automatically detects whether you have cluster-wide administra
 
 You can use the OADP command-line interface (CLI) to view and modify client configuration settings. Configuration is stored in `~/.config/velero/config.json`.
 
-**Prerequisites**
+Before you use these commands, ensure that the following conditions are met:
 
 - The OADP CLI plugin is installed.
 
@@ -157,7 +157,7 @@ You can use the OADP command-line interface (CLI) to generate and install shell 
 
 You can use the OADP command-line interface (CLI) to create, view, describe, download, and delete backups.
 
-**Prerequisites**
+Before you use these commands, ensure that the following conditions are met:
 
 - The OADP CLI plugin is installed and configured in admin mode.
 - You are logged in to the OpenShift Container Platform cluster as a user with `cluster-admin` privileges.
@@ -260,7 +260,7 @@ $ oc oadp backup delete <backup_name> [flags]
 
 You can use the OADP command-line interface (CLI) to create, view, describe, and delete restores.
 
-**Prerequisites**
+Before you use these commands, ensure that the following conditions are met:
 
 - The OADP CLI plugin is installed and configured in admin mode.
 - You are logged in to the OpenShift Container Platform cluster as a user with `cluster-admin` privileges.
@@ -352,7 +352,7 @@ $ oc oadp restore delete <restore_name> [flags]
 
 You can use the OADP command-line interface (CLI) to create, view, describe, and delete backup schedules. Schedules automate the creation of backups at specified intervals by using a cron expression.
 
-**Prerequisites**
+Before you use these commands, ensure that the following conditions are met:
 
 - The OADP CLI plugin is installed and configured in admin mode.
 - You are logged in to the OpenShift Container Platform cluster as a user with `cluster-admin` privileges.
@@ -431,7 +431,7 @@ $ oc oadp schedule delete <schedule_name> [flags]
 
 You can use the OADP command-line interface (CLI) to create, view, set, and delete backup storage locations (BSLs). Backup storage locations define where backup data is stored, such as an object storage bucket.
 
-**Prerequisites**
+Before you use these commands, ensure that the following conditions are met:
 
 - The OADP CLI plugin is installed and configured in admin mode.
 - You are logged in to the OpenShift Container Platform cluster as a user with `cluster-admin` privileges.
@@ -504,7 +504,7 @@ $ oc oadp backup-location delete <bsl_name> [flags]
 
 You can use the OADP command-line interface (CLI) to create, view, set, and delete volume snapshot locations (VSLs). Volume snapshot locations define where persistent volume (PV) snapshots are stored.
 
-**Prerequisites**
+Before you use these commands, ensure that the following conditions are met:
 
 - The OADP CLI plugin is installed and configured in admin mode.
 - You are logged in to the OpenShift Container Platform cluster as a user with `cluster-admin` privileges.
@@ -571,7 +571,7 @@ $ oc oadp snapshot-location delete <vsl_name> [flags]
 
 When the OADP Operator is configured with `nonAdmin.requireApprovalForBSL: true`, non-admin users who create a `NonAdminBackupStorageLocation` (NABSL) object trigger an approval request. You can use the OADP command-line interface (CLI) to view, describe, approve, and reject these requests.
 
-**Prerequisites**
+Before you use these commands, ensure that the following conditions are met:
 
 - The OADP CLI plugin is installed and configured in admin mode.
 - You are logged in to the OpenShift Container Platform cluster as a user with `cluster-admin` privileges.
@@ -694,8 +694,6 @@ You can use OADP self-service to complete the following tasks:
 - `ResourceModifiers` and volume policies are not supported for non-administrator backup and restore operations.
 - Backup and restore logs by using a `NonAdminDownloadRequest` object are not supported for default backup storage locations (BSLs). To access logs, you must create a `NonAdminBackupStorageLocation` object.
 
-**Prerequisites**
-
 Before you use OADP self-service, a cluster administrator must complete the following tasks:
 
 - Install and configure the OADP Operator with `nonAdmin.enable: true` in the `DataProtectionApplication` CR specification.
@@ -715,7 +713,7 @@ Before you use OADP self-service, a cluster administrator must complete the foll
 
 You can use the OADP command-line interface (CLI) to create, view, describe, and delete non-admin backups in your namespace.
 
-**Prerequisites**
+Before you use these commands, ensure that the following conditions are met:
 
 - The OADP CLI plugin is installed and configured in non-admin mode.
 - You are logged in to the OpenShift Container Platform cluster and your current namespace context is set to the namespace you want to back up.
@@ -835,7 +833,7 @@ $ oc oadp nonadmin backup delete my-backup --confirm
 
 You can use the OADP command-line interface (CLI) to create, view, describe, and delete non-administrator restores in your namespace.
 
-**Prerequisites**
+Before you use these commands, ensure that the following conditions are met:
 
 - The OADP CLI plugin is installed and configured in non-administrator mode.
 - You are logged in to the OpenShift Container Platform cluster and your current namespace context is set to the namespace you want to restore into.
@@ -969,7 +967,7 @@ You can use the OADP command-line interface (CLI) to create and view `NonAdminBa
 
     Updating or deleting NABSLs after creation is not supported for non-administrator users.
 
-**Prerequisites**
+Before you use these commands, ensure that the following conditions are met:
 
 - The OADP CLI plugin is installed and configured in non-administrator mode.
 - You are logged in to the OpenShift Container Platform cluster and your current namespace context is set to the target namespace.
@@ -1046,4 +1044,4 @@ where:
 **Additional resources**
 
 - [Backing up applications](../backing_up_and_restoring/backing-up-applications.md#backing-up-applications)
-- [Velero 1.16 documentation](https://velero.io/docs/v1.16/)
+- [Velero 1.18 documentation](https://velero.io/docs/)

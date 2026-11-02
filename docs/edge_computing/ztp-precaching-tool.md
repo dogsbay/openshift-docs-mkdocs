@@ -24,7 +24,11 @@ The factory-precaching-cli tool does the following:
 
 ## Getting the factory-precaching-cli tool { #ztp-getting-tool_pre-caching }
 
-The factory-precaching-cli tool Go binary is publicly available in [the {rds_first} tools container image](https://quay.io/openshift-kni/telco-ran-tools:latest). The factory-precaching-cli tool Go binary in the container image is executed on the server running an RHCOS live image using `podman`. If you are working in a disconnected environment or have a private registry, you need to copy the image there so you can download the image to the server.
+The factory-precaching-cli tool Go binary in the container image is executed on the server running an RHCOS live image using `podman`.
+
+The factory-precaching-cli tool Go binary is publicly available in [the {rds_first} tools container image](https://quay.io/openshift-kni/telco-ran-tools:latest).
+
+If you are working in a disconnected environment or have a private registry, you need to copy the image there so you can download the image to the server.
 
 **Procedure**
 
@@ -512,7 +516,9 @@ You can also pre-cache Day-2 Operators used in the 5G Radio Access Network (RAN)
 
 ### Pre-caching custom images in disconnected environments { #ztp-custom-pre-caching-in-disconnected-environment_pre-caching }
 
-The `--generate-imageset` argument stops the factory-precaching-cli tool after the `ImageSetConfiguration` custom resource (CR) is generated. This allows you to customize the `ImageSetConfiguration` CR before downloading any images. After you customized the CR, you can use the `--skip-imageset` argument to download the images that you specified in the `ImageSetConfiguration` CR.
+The `--generate-imageset` argument stops the factory-precaching-cli tool after the `ImageSetConfiguration` custom resource (CR) is generated.
+
+This allows you to customize the `ImageSetConfiguration` CR before downloading any images. After you customized the CR, you can use the `--skip-imageset` argument to download the images that you specified in the `ImageSetConfiguration` CR.
 
 You can customize the `ImageSetConfiguration` CR in the following ways:
 
@@ -688,7 +694,9 @@ You can customize the `ImageSetConfiguration` CR in the following ways:
 
 ## Pre-caching images in GitOps ZTP { #ztp-pre-caching-config-con_pre-caching }
 
-The `ClusterInstance` manifest defines the installation and configuration parameters for an OpenShift Container Platform cluster. In the GitOps Zero Touch Provisioning (ZTP) provisioning workflow, the factory-precaching-cli tool uses the following fields in the `ClusterInstance` manifest to load the pre-cached images:
+The `ClusterInstance` manifest defines the installation and configuration parameters for an OpenShift Container Platform cluster.
+
+In the GitOps Zero Touch Provisioning (ZTP) provisioning workflow, the factory-precaching-cli tool uses the following fields in the `ClusterInstance` manifest to load the pre-cached images:
 
 - `spec.ignitionConfigOverride`
 - `spec.nodes[].ignitionConfigOverride`

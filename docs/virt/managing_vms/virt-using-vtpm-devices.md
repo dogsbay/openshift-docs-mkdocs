@@ -10,7 +10,7 @@ To run Windows 11 or other workloads that require a Trusted Platform Module, you
 
     With OpenShift Virtualization 4.18 and newer, you can export virtual machines (VMs) with attached vTPM devices, create snapshots of these VMs, and restore VMs from these snapshots. However, cloning a VM with a vTPM device attached to it or creating a new VM from its snapshot is not supported.
 
-## About vTPM devices { #virt-about-vtpm-devices_virt-using-vtpm-devices }
+## vTPM devices and state persistence { #virt-about-vtpm-devices_virt-using-vtpm-devices }
 
 A virtual Trusted Platform Module (vTPM) device functions like a physical Trusted Platform Module (TPM) hardware chip. You can use a vTPM device with any operating system, but Windows 11 requires the presence of a TPM chip to install or boot.
 
@@ -48,7 +48,7 @@ spec:
 
 If you do not enable vTPM, then the VM does not recognize a TPM device, even if the node has one.
 
-## Adding a vTPM device to a virtual machine { #virt-adding-vtpm-to-vm_virt-using-vtpm-devices }
+## Add a vTPM device to a virtual machine { #virt-adding-vtpm-to-vm_virt-using-vtpm-devices }
 
 Adding a virtual Trusted Platform Module (vTPM) device to a virtual machine (VM) allows you to run a VM created from a Windows 11 image without a physical TPM device. A vTPM device also stores secrets for that VM.
 

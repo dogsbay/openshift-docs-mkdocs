@@ -36,7 +36,7 @@ You can increase the size of a virtual machine (VM) disk by expanding the persis
 
 6. Click **Save**.
 
-## Expanding a VM disk PVC by using the CLI { #virt-expanding-vm-disk-pvc-cli_virt-expanding-vm-disks }
+## Expand a VM disk PVC by using the CLI { #virt-expanding-vm-disk-pvc-cli_virt-expanding-vm-disks }
 
 You can increase the size of a virtual machine (VM) disk by expanding the persistent volume claim (PVC) of the disk. To specify the increased PVC volume, you can edit the `PersistentVolumeClaim` manifest by using the OpenShift CLI (`oc`).
 
@@ -74,7 +74,7 @@ You can increase the size of a virtual machine (VM) disk by expanding the persis
 
     - `spec.resources.requests.storage` specifies the new disk size.
 
-## Expanding available virtual storage by adding blank data volumes { #virt-expanding-storage-with-data-volumes_virt-expanding-vm-disks }
+## Expand VM storage by adding blank data volumes { #virt-expanding-storage-with-data-volumes_virt-expanding-vm-disks }
 
 You can expand the available storage of a virtual machine (VM) by adding blank data volumes.
 

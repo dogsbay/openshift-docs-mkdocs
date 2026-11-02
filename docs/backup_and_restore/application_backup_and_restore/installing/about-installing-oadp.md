@@ -4,7 +4,7 @@ title: About installing OADP
 
 # About installing OADP { #about-installing-oadp }
 
-As a cluster administrator, you install the OpenShift API for Data Protection (OADP) by installing the OADP Operator. The OADP Operator installs [Velero 1.16](https://velero.io/docs/v1.16/).
+As a cluster administrator, you install the OpenShift API for Data Protection (OADP) by installing the OADP Operator. The OADP Operator installs Velero 1.18.
 
 To back up Kubernetes resources and internal images, you must have object storage as a backup location, such as one of the following storage types:
 
@@ -20,8 +20,6 @@ You can configure multiple backup storage locations within the same namespace fo
 !!! note
 
     Unless specified otherwise, "NooBaa" refers to the open source project that provides lightweight object storage, while "Multicloud Object Gateway (MCG)" refers to the Red Hat distribution of NooBaa.
-
-    For more information on the MCG, see [Accessing the Multicloud Object Gateway with your applications](https://access.redhat.com/documentation/en-us/red_hat_openshift_data_foundation/4.13/html-single/managing_hybrid_and_multicloud_resources/index#accessing-the-multicloud-object-gateway-with-your-applications_rhodf).
 
 You can back up persistent volumes (PVs) by using snapshots or a File System Backup (FSB).
 
@@ -44,7 +42,9 @@ You create a default `Secret` and then you install the Data Protection Applicati
 
 ## AWS S3 compatible backup storage providers { #oadp-s3-compatible-backup-storage-providers_about-installing-oadp }
 
-OADP works with many S3-compatible object storage providers. Several object storage providers are certified and tested with every release of OADP. Various S3 providers are known to work with OADP but are not specifically tested and certified. These providers will be supported on a best-effort basis. Additionally, there are a few S3 object storage providers with known issues and limitations that are listed in this documentation.
+OADP works with many S3-compatible object storage providers. Several object storage providers are certified and tested with every release of OADP.
+
+Various S3 providers are known to work with OADP but are not specifically tested and certified. These providers will be supported on a best-effort basis. Additionally, there are a few S3 object storage providers with known issues and limitations that are listed in this documentation.
 
 !!! note
 
@@ -87,8 +87,6 @@ The following AWS S3 compatible object storage providers, are known to work with
 
     Unless specified otherwise, "NooBaa" refers to the open source project that provides lightweight object storage, while "Multicloud Object Gateway (MCG)" refers to the Red Hat distribution of NooBaa.
 
-    For more information on the MCG, see [Accessing the Multicloud Object Gateway with your applications](https://access.redhat.com/documentation/en-us/red_hat_openshift_data_foundation/4.13/html-single/managing_hybrid_and_multicloud_resources/index#accessing-the-multicloud-object-gateway-with-your-applications_rhodf).
-
 ### Backup storage providers with known limitations { #oadp-s3-compatible-backup-storage-providers-known-limitations }
 
 The following AWS S3 compatible object storage providers are known to work with Velero through the AWS plugin with a limited feature set:
@@ -98,6 +96,7 @@ The following AWS S3 compatible object storage providers are known to work with 
 **Additional resources**
 
 - [Scality ARTESCA S3 object storage (Scality documentation)](https://downloads.scality.com/artesca-ova/doc/general_introduction.html#)
+- [Accessing the Multicloud Object Gateway with your applications](https://access.redhat.com/documentation/en-us/red_hat_openshift_data_foundation/4.13/html-single/managing_hybrid_and_multicloud_resources/index#accessing-the-multicloud-object-gateway-with-your-applications_rhodf)
 
 ## Configure Multicloud Object Gateway (MCG) for disaster recovery on OpenShift Data Foundation { #oadp-configuring-noobaa-for-dr_about-installing-oadp }
 
@@ -111,21 +110,9 @@ If you use cluster storage for your MCG bucket `backupStorageLocation` on OpenSh
 
     Unless specified otherwise, "NooBaa" refers to the open source project that provides lightweight object storage, while "Multicloud Object Gateway (MCG)" refers to the Red Hat distribution of NooBaa.
 
-    For more information on the MCG, see [Accessing the Multicloud Object Gateway with your applications](https://access.redhat.com/documentation/en-us/red_hat_openshift_data_foundation/4.13/html-single/managing_hybrid_and_multicloud_resources/index#accessing-the-multicloud-object-gateway-with-your-applications_rhodf).
-
 **Procedure**
 
 - Configure MCG as an external object store as described in [Adding storage resources for hybrid or Multicloud](https://access.redhat.com/documentation/en-us/red_hat_openshift_data_foundation/4.13/html/managing_hybrid_and_multicloud_resources/adding-storage-resources-for-hybrid-or-multicloud_rhodf#doc-wrapper).
-
-**Additional resources**
-
-- [Installing OADP on Amazon Web Services](installing-oadp-aws.md#installing-oadp-aws)
-- [Installing OADP on Microsoft Azure](installing-oadp-azure.md#installing-oadp-azure)
-- [Installing OADP on Google Cloud](installing-oadp-gcp.md#installing-oadp-gcp)
-- [Installing OADP on Multicloud Object Gateway](installing-oadp-mcg.md#installing-oadp-mcg)
-- [Installing OADP on OpenShift Data Foundation](installing-oadp-ocs.md#installing-oadp-ocs)
-- [Backing up applications with File System Backup: Kopia or Restic](../backing_up_and_restoring/oadp-backing-up-applications-restic-doc.md#backing-up-applications)
-- [Cluster service version](../../../operators/understanding/olm/olm-understanding-olm.md#olm-csv_olm-understanding-olm)
 
 ## About OADP update channels { #about-oadp-update-channels_about-installing-oadp }
 
@@ -189,7 +176,9 @@ The primary reason for the absence of support for other S3-compatible object sto
 
 ## Velero CPU and memory requirements based on collected data { #oadp-velero-cpu-memory-requirements_about-installing-oadp }
 
-The following recommendations are based on observations of performance made in the scale and performance lab. The backup and restore resources can be impacted by the type of plugin, the amount of resources required by that backup or restore, and the respective data contained in the persistent volumes (PVs) related to those resources.
+The following recommendations are based on observations of performance made in the scale and performance lab.
+
+The backup and restore resources can be impacted by the type of plugin, the amount of resources required by that backup or restore, and the respective data contained in the persistent volumes (PVs) related to those resources.
 
 ### CPU and memory requirement for configurations { #_cpu_and_memory_requirement_for_configurations }
 
@@ -211,7 +200,7 @@ The following recommendations are based on observations of performance made in t
 
 **Additional resources**
 
-- [Customize Velero Install (Velero documentation)](https://velero.io/docs/v1.11/customize-installation/#customize-resource-requests-and-limits/)
+- [Customize Velero Install (Velero documentation)](https://velero.io/docs/latest/customize-installation/#customize-resource-requests-and-limits/)
 
 ### NodeAgent CPU for large usage { #oadp-backup-restore-for-large-usage_about-installing-oadp }
 
@@ -232,3 +221,14 @@ In some environments, you might need to adjust Ceph MDS pod resources to avoid p
 **Additional resources**
 
 - [Changing the CPU and memory resources on the rook-ceph pods](https://docs.redhat.com/documentation/en-us/red_hat_openshift_data_foundation/latest/html/troubleshooting_openshift_data_foundation/changing-resources-for-the-openshift-data-foundation-components_rhodf#changing_the_cpu_and_memory_resources_on_the_rook_ceph_pods)
+
+**Additional resources**
+
+- [Velero 1.18](https://velero.io/docs/)
+- [Installing OADP on Amazon Web Services](installing-oadp-aws.md#installing-oadp-aws)
+- [Installing OADP on Microsoft Azure](installing-oadp-azure.md#installing-oadp-azure)
+- [Installing OADP on Google Cloud](installing-oadp-gcp.md#installing-oadp-gcp)
+- [Installing OADP on Multicloud Object Gateway](installing-oadp-mcg.md#installing-oadp-mcg)
+- [Installing OADP on OpenShift Data Foundation](installing-oadp-ocs.md#installing-oadp-ocs)
+- [Backing up applications with File System Backup: Kopia or Restic](../backing_up_and_restoring/oadp-backing-up-applications-restic-doc.md#backing-up-applications)
+- [Cluster service version](../../../operators/understanding/olm/olm-understanding-olm.md#olm-csv_olm-understanding-olm)

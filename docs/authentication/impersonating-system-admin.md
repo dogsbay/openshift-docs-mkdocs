@@ -79,9 +79,9 @@ You can start user impersonation from multiple locations in the OpenShift Contai
 
 4. Click **Impersonate** to impersonate your selected user, groups, or both.
 
-!!! note
+    !!! note
 
-    Selecting one group uses the existing single-group impersonation behavior. Selecting no groups uses regular single-user impersonation.
+        Selecting one group uses the existing single-group impersonation behavior. Selecting no groups uses regular single-user impersonation.
 
 ## Start impersonation from the Users or Groups pages { #starting-impersonation-users-groups-pages_impersonating-system-admin }
 
