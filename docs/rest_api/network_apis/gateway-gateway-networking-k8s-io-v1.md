@@ -133,7 +133,7 @@ Required
 Description
 :   Listeners associated with this Gateway. Listeners define logical endpoints that are bound on this Gateway’s addresses. At least one Listener MUST be specified.
 
-    ## Distinct Listeners
+    ## Distinct Listeners { #distinct-listeners }
 
     Each Listener in a set of Listeners (for example, in a single Gateway) MUST be *distinct*, in that a traffic flow MUST be able to be assigned to exactly one listener. (This section uses "set of Listeners" rather than "Listeners in a single Gateway" because implementations MAY merge configuration from multiple Gateways onto a single data plane, and these rules *also* apply in that case).
 
@@ -188,7 +188,7 @@ Description
 
     The wildcard character will match any number of characters *and dots* to the left, however, so `"\*.example.com"` will match both `"foo.bar.example.com"` *and* `"bar.example.com"`.
 
-    ## Handling indistinct Listeners
+    ## Handling indistinct Listeners { #handling-indistinct-listeners }
 
     If a set of Listeners contains Listeners that are not distinct, then those Listeners are *Conflicted*, and the implementation MUST set the "Conflicted" condition in the Listener Status to "True".
 
@@ -203,7 +203,7 @@ Description
 
     The implementation MUST set a "ListenersNotValid" condition on the Gateway Status when the Gateway contains Conflicted Listeners whether or not they accept the Gateway. That Condition SHOULD clearly indicate in the Message which Listeners are conflicted, and which are Accepted. Additionally, the Listener status for those listeners SHOULD indicate which Listeners are conflicted and not Accepted.
 
-    ## General Listener behavior
+    ## General Listener behavior { #general-listener-behavior }
 
     Note that, for all distinct Listeners, requests SHOULD match at most one Listener. For example, if Listeners are defined for "foo.example.com" and "*.example.com", a request to "foo.example.com" SHOULD only be routed using routes attached to the "foo.example.com" Listener (and not the "*.example.com" Listener).
 
@@ -211,7 +211,7 @@ Description
 
     Implementations that *do* support Listener Isolation SHOULD claim support for the Extended `GatewayHTTPListenerIsolation` feature and pass the associated conformance tests.
 
-    ## Compatible Listeners
+    ## Compatible Listeners { #compatible-listeners }
 
     A Gateway’s Listeners are considered *compatible* if:
 

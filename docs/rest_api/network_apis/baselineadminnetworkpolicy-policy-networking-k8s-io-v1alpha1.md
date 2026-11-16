@@ -889,7 +889,7 @@ Type
 ### .status.conditions\[\] { #_statusconditions }
 
 Description
-:   ## Condition contains details for one aspect of the current state of this API Resource.
+:   ## Condition contains details for one aspect of the current state of this API Resource. { #condition-contains-details-for-one-aspect-of-the-current-state-of-this-api-resource }
 
     This struct is intended for direct use as an array at the field path .status.conditions.  For example,
 
